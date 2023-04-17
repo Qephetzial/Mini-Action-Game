@@ -1,0 +1,246 @@
+
+
+
+html *,
+html *:before,
+html *:after {
+    box-sizing: border-box;
+    transition: 0.5s ease-in-out;
+}
+
+html span {
+    transition: none;
+}
+
+*:before,
+*:after {
+    z-index: -1;
+}
+
+
+
+.lineBoxing {
+    display: inline-block;
+    margin-right: 3rem;
+    margin-left: 3rem;
+    width: 100px;
+    height: 30px;
+
+}
+
+a {
+    position: center;
+    text-decoration: none;
+    line-height: 27px;
+    color: black;
+    text-align: center;
+}
+
+@media (min-width: 600px) {
+    .wrap {
+        width: 50%;
+        float: left;
+    }
+}
+
+.play {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 150px;
+    height: 30px;
+    margin: 5rem auto;
+    text-transform: uppercase;
+    border: 1px solid currentColor;
+    border-radius: 6px;
+}
+
+.transparent {
+    background: transparent;
+}
+
+.as {
+    vertical-align: top;
+}
+.select {
+    margin-top: 12px;
+}
+
+.arrow {
+    border: transparent;
+    width: 50px;
+}
+
+.refBtn {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 150px;
+    height: 30px;
+    margin-left: 50px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    border: 1px solid currentColor;
+    border-radius: 6px;
+}
+
+
+.blockBox {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 100px;
+    height: 30px;
+    margin: 1rem auto;
+    text-transform: uppercase;
+    border: 1px solid currentColor;
+    border-radius: 6px;
+}
+
+[class^=btn-] {
+    position: relative;
+    overflow: hidden;
+    max-width: 250px;
+    text-transform: uppercase;
+    border: 1px solid currentColor;
+    border-radius: 6px;
+}
+
+.btn-10 {
+    color: coral;
+}
+.btn-10:before, .btn-10:after,
+.btn-10 span:before,
+.btn-10 span:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 80px;
+    background-color: rgba(255, 127, 80, 0.5);
+    transition: 1s;
+}
+.btn-10:after,
+.btn-10 span:before {
+    left: auto;
+    right: 0;
+}
+.btn-10 span:before,
+.btn-10 span:after {
+    transition-delay: 0.6s;
+}
+.btn-10:hover {
+    color: #603078;
+}
+.btn-10:hover:before, .btn-10:hover:after,
+.btn-10:hover span:before,
+.btn-10:hover span:after {
+    width: 250px;
+}
+.btn-10:active {
+    background-color: coral;
+}
+
+@-webkit-keyframes criss-cross-left {
+    0% {
+        left: -20px;
+    }
+    50% {
+        left: 50%;
+        width: 20px;
+        height: 20px;
+    }
+    100% {
+        left: 50%;
+        width: 375px;
+        height: 375px;
+    }
+}
+
+@keyframes criss-cross-left {
+    0% {
+        left: -20px;
+    }
+    50% {
+        left: 50%;
+        width: 20px;
+        height: 20px;
+    }
+    100% {
+        left: 50%;
+        width: 375px;
+        height: 375px;
+    }
+}
+@-webkit-keyframes criss-cross-right {
+    0% {
+        right: -20px;
+    }
+    50% {
+        right: 50%;
+        width: 20px;
+        height: 20px;
+    }
+    100% {
+        right: 50%;
+        width: 375px;
+        height: 375px;
+    }
+}
+@keyframes criss-cross-right {
+    0% {
+        right: -20px;
+    }
+    50% {
+        right: 50%;
+        width: 20px;
+        height: 20px;
+    }
+    100% {
+        right: 50%;
+        width: 375px;
+        height: 375px;
+    }
+}
+
+.btn-11 {
+    position: relative;
+    color: coral;
+    transition: 1.5s;
+    background: #603078;
+}
+.btn-11:before, .btn-11:after {
+    position: absolute;
+    top: 50%;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: #603078;
+    border-radius: 50%;
+}
+.btn-11:before {
+    left: -20px;
+    transform: translate(-50%, -50%);
+}
+.btn-11:after {
+    right: -20px;
+    transform: translate(50%, -50%);
+}
+.btn-11:hover {
+    color: coral;
+}
+.btn-11:hover:before {
+    -webkit-animation: criss-cross-left 1s both;
+    animation: criss-cross-left 1s both;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+}
+.btn-11:hover:after {
+    -webkit-animation: criss-cross-right 1s both;
+    animation: criss-cross-right 1s both;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+}
+
