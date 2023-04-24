@@ -1,12 +1,9 @@
 import React, {useEffect, useState} from "react";
-import '../style/Main.css';
 import Difficulty from "./components/Difficulty";
 import Balance from "../genericComponents/Balance";
 import HeroSelector from "./components/HeroSelector";
 import Button from "../genericComponents/Button";
 import HeroSData from "./components/HeroSData";
-import '../style/Buttons.css';
-import {Outlet} from "react-router-dom";
 
 
 function Main() {
@@ -105,7 +102,6 @@ function Main() {
                 heroes={heroes}
               />
           </div>
-          <Outlet/>
       </>
   );
 }

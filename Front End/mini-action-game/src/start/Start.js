@@ -1,13 +1,11 @@
 import React from "react";
-import '../style/Buttons.css'
-import '../style/Main.css'
 import {Outlet} from "react-router-dom";
-import SB from "./SB";
+import StartButton from "./components/StartButton";
 
 function Start() {
     return (
         <>
-            <SB
+            <StartButton
             />
             <Outlet/>
         </>

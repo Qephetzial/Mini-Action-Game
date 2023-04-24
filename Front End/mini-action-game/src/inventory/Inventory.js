@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Button from "../genericComponents/Button";
 import DisplayHero from "./components/DisplayHero";
-import '../style/Main.css'
-import '../style/Buttons.css'
 import ItemPlaceHolder from "./components/ItemPlaceHolder";
 
 function Inventory() {
