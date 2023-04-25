@@ -23,6 +23,7 @@ public class AppUser {
     private UUID id;
     @Column(unique=true)
     private String name;
+    private int gold;
     // @OneToMany
     //private List<PlayableCharacter> heroes;
     //@OneToMany

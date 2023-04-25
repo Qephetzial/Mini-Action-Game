@@ -4,12 +4,18 @@ import Balance from "../genericComponents/Balance";
 import HeroSelector from "./components/HeroSelector";
 import Button from "../genericComponents/Button";
 import HeroSData from "./components/HeroSData";
+import {useLocation} from "react-router-dom";
 
 
 function Main() {
 
 
-    const [gold, setGold] = useState('100000')
+    const location = useLocation();
+    const data = location.state;
+
+    useEffect(()=>setGold(data.gold))
+    const [gold, setGold] = useState()
+
 
 
     const [heroes, setHeroes] = useState([

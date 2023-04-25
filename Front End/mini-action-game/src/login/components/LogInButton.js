@@ -6,20 +6,23 @@ function LogInButton({style}) {
     const navigate = useNavigate();
 
     const [users, setUsers] = useState([])
+    const [appUser, setAppUser] = useState()
 
     const [state, setState] = useState('choose')
 
     let newUser = {
-        name:''
+        name:'',
+        gold:0
     };
 
     async function getUsers() {
         const requestOptions = {
             method: 'GET'
         }
-        const response = await fetch(`/api/user/get-users`, requestOptions);
-        setUsers(await response.json())
+        const response = await (await fetch(`/api/user/get-users`, requestOptions)).json();
+        setUsers(response)
         setState('logIn')
+        setAppUser(response[0])
     }
 
     async function saveUser() {
@@ -32,10 +35,14 @@ function LogInButton({style}) {
         navigate('/main')
     }
 
-    function logIn(){
-        navigate('/main')
+    const handleChange = event => {
+        const user = {selectValue: event.currentTarget.value};
+        for (let i = 0; i < users.length; i++) {
+            if (users[i].name === user.selectValue){
+                setAppUser(users[i])
+            }
+        }
     }
-
 
 
     if (state === 'choose') {
@@ -55,15 +62,15 @@ function LogInButton({style}) {
     } else {
         return (
             <div>
-                <select>
+                <select onChange={handleChange}>
                     {users.map(user => {
                         return <option key={user.id}>{user.name}</option>
                     })}
                 </select>
-                <button className={style} onClick={()=>logIn()}>Log in</button>
+                <button className={style} onClick={()=>navigate('/main', {state: appUser})}>Log in</button>
             </div>
         )
     }
 }
 
-export default LogInButton
+export default LogInButton;
