@@ -1,22 +1,19 @@
 package com.beta.MiniActionGame.model.entity;
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public class CanAttack extends Entity {
-    private final int strength;
-    private final int defence;
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+public abstract class CanAttack extends Creature {
+    private int strength;
+    private int defence;
 
-    public CanAttack(String name, int health, Alignment alignment, int strength, int defence) {
-        super(name, health, alignment);
-        this.strength = strength;
-        this.defence = defence;
-    }
-
-    public int getStrength() {
-        return strength;
-    }
-
-    public int getDefence() {
-        return defence;
-    }
 }
 
 
