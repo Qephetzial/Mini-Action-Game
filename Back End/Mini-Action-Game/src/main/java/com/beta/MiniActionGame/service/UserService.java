@@ -10,14 +10,16 @@ import java.util.List;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-
+    private final PlayableCharacterService playableCharacterService;
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PlayableCharacterService playableCharacterService) {
         this.userRepository = userRepository;
+        this.playableCharacterService = playableCharacterService;
     }
 
     public void saveUser (AppUser appUser) {
-        System.out.println("...");
+        playableCharacterService.createHeroes();
+        appUser.setHeroes(playableCharacterService.getHeroes());
         userRepository.save(appUser);
     }
 
