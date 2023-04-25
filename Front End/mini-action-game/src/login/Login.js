@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import LogInButton from "./components/LogInButton";
 
-function Login() {
+function Login({setAppUser}) {
     useEffect(()=>{
         let startButton = document.getElementById('startBtn')
         if (startButton !== null) {
@@ -9,13 +9,14 @@ function Login() {
         }
     })
 
-    const [logInButtonStyle, setlogInButtonStyle] = useState('btn-10 play')
+    const [logInButtonStyle, setlogInButtonStyle] = useState('btn-10 play select lineBoxing transparent')
 
     return (
         <div style={{textAlign:"center"}}>
             <div className="loginButtons">
                 <LogInButton
                 style={logInButtonStyle}
+                setAppUser={setAppUser}
                 />
             </div>
         </div>

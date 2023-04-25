@@ -3,7 +3,7 @@ import Button from "../genericComponents/Button";
 import DisplayHero from "./components/DisplayHero";
 import ItemPlaceHolder from "./components/ItemPlaceHolder";
 
-function Inventory() {
+function Inventory({appUser, setAppUser}) {
 
 
     useEffect(()=>{
@@ -11,18 +11,6 @@ function Inventory() {
         if (startButton !== null) {
             startButton.style.display = 'None'
         }
-    })
-
-
-    const [hero, setHero] = useState({
-        link: 'heroes/mage.gif',
-        condition: 'SELECTED',
-        class: 'bonus',
-        hitPoint: 170,
-        damage: 90,
-        defence: 40,
-        movementSpeed: 3,
-        ultimatePower: "freeze"
     })
 
 
@@ -65,15 +53,15 @@ function Inventory() {
             <Button
                 text={'BACK'}
                 href={'/main'}
-                classes={"refBtn btn-10"}
+                classes={"refBtn btn-10 select lineBoxing transparent"}
             />
             <Button
                 text={'LUCKY SHOP'}
                 href={'/lucky-shop'}
-                classes={"refBtn btn-10"}
+                classes={"refBtn btn-10 select lineBoxing transparent"}
             />
             <DisplayHero
-                hero={hero}
+                appUser={appUser}
             />
             <div className='placHolderBlock'>
                 <div className=''>

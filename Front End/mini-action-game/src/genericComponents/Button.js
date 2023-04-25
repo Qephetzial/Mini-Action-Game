@@ -1,9 +1,13 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
 
 function Button({text, href, classes}) {
+
+    const navigate = useNavigate();
+
     return (
-        <a className={classes} href={href}><span>{text}</span></a>
+        <button className={classes} onClick={()=>{navigate(href)}}><span>{text}</span></button>
     );
 }
 

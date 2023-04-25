@@ -67,12 +67,12 @@ function LuckyShop() {
             <Button
                 text={'BACK'}
                 href={'/main'}
-                classes={"refBtn btn-10"}
+                classes={"refBtn btn-10 select lineBoxing transparent"}
             />
             <Button
                 text={'Inventory'}
                 href={'/inventory'}
-                classes={"refBtn btn-10"}
+                classes={"refBtn btn-10 select lineBoxing transparent"}
             />
             <div className="Balance">
                 <Balance

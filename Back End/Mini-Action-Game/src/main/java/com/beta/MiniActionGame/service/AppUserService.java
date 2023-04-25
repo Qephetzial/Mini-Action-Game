@@ -18,8 +18,7 @@ public class AppUserService {
     }
 
     public void saveUser (AppUser appUser) {
-        playableCharacterService.createHeroes();
-        appUser.setHeroes(playableCharacterService.getHeroes());
+        appUser.setHeroes(playableCharacterService.createHeroes());
         appUserRepository.save(appUser);
     }
 

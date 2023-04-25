@@ -35,8 +35,8 @@ function HeroSelector({heroes, setHeroes, gold, setGold}) {
 
 
     const select = () => {
-        if (heroes[0].condition === 'BUY' && heroes[0].price < gold) {
-            setGold(gold-heroes[0].price)
+        if (heroes[0].condition === 'BUY' && heroes[0].value < gold) {
+            setGold(gold-heroes[0].value)
             conditionChanger()
         } else if (heroes[0].condition !== 'BUY'){
             conditionChanger()
@@ -60,9 +60,9 @@ function HeroSelector({heroes, setHeroes, gold, setGold}) {
   return (
     <div>
         <div>
-            <span className="hero"><img className="leftSide" src={heroes[heroes.length-1].link} alt={heroes[heroes.length-1].class} border="0"/></span>
-            <span className="hero"><img className="main" src={heroes[0].link} alt={heroes[0].class} border="0"/></span>
-            <span className="hero"><img className="rightSide" src={heroes[1].link} alt={heroes[1].class} border="0"/></span>
+            <span className="hero"><img className="leftSide" src={"heroes/"+heroes[heroes.length-1].png} alt={heroes[heroes.length-1].name} border="0"/></span>
+            <span className="hero"><img className="main" src={"heroes/"+heroes[0].png} alt={heroes[0].name} border="0"/></span>
+            <span className="hero"><img className="rightSide" src={"heroes/"+heroes[1].png} alt={heroes[1].name} border="0"/></span>
         </div>
         <div className="fixed">
             <a className="lineBoxing arrow as"  onClick={rollLeft}><span><img className="arrow" src={"pngwing.left.png"} alt="left button" border="0" width="30"/></span></a>

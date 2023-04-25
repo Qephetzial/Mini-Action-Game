@@ -12,12 +12,12 @@ function HeroSData({heroes}) {
                 <h5>UltimatePower:&nbsp;</h5>
             </div>
             <div className='data2 inLine'>
-                <h5>{heroes[0].class}</h5>
-                <h5>{heroes[0].hitPoint}</h5>
-                <h5>{heroes[0].damage}</h5>
+                <h5>{heroes[0].name}</h5>
+                <h5>{heroes[0].health}</h5>
+                <h5>{heroes[0].strength}</h5>
                 <h5>{heroes[0].defence}</h5>
                 <h5>{heroes[0].movementSpeed}</h5>
-                <h5>{heroes[0].ultimatePower}</h5>
+                <h5>None</h5>
             </div>
         </div>
     )

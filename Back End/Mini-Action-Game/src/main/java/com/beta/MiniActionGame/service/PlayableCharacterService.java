@@ -68,17 +68,17 @@ public class PlayableCharacterService {
         return mage;
     }
 
-    public void createHeroes() {
-        fighterRepository.save(createFighter());
-        rangerRepository.save(createRanger());
-        mageRepository.save(createMage());
-    }
-
-    public List<PlayableCharacter> getHeroes() {
+    public List<PlayableCharacter> createHeroes() {
+        Fighter fighter = createFighter();
+        Ranger ranger = createRanger();
+        Mage mage = createMage();
+        fighterRepository.save(fighter);
+        rangerRepository.save(ranger);
+        mageRepository.save(mage);
         List<PlayableCharacter> heroes = new ArrayList<>();
-        heroes.add(fighterRepository.findAll().get(0));
-        heroes.add(rangerRepository.findAll().get(0));
-        heroes.add(mageRepository.findAll().get(0));
+        heroes.add(fighter);
+        heroes.add(ranger);
+        heroes.add(mage);
         return heroes;
     }
 }
