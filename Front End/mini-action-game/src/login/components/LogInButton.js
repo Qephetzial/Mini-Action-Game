@@ -19,7 +19,7 @@ function LogInButton({style, setAppUser}) {
         const requestOptions = {
             method: 'GET'
         }
-        const response = await (await fetch(`/api/user/get-users`, requestOptions)).json();
+        const response = await (await fetch(`/api/user/get-appUsers`, requestOptions)).json();
         setUsers(response)
         setState('logIn')
         setAppUser(response[0])

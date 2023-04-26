@@ -9,9 +9,9 @@ import HeroSData from "./components/HeroSData";
 function Main({appUser, setAppUser}) {
 
 
-    useEffect(()=>setGold(appUser.gold))
-    const [gold, setGold] = useState()
 
+    const [gold, setGold] = useState();
+    useEffect(()=>setGold(appUser.gold))
 
     const [heroes, setHeroes] = useState(appUser.heroes)
 
@@ -46,6 +46,8 @@ function Main({appUser, setAppUser}) {
                   setHeroes={setHeroes}
                   gold={gold}
                   setGold={setGold}
+                  appUser={appUser}
+                  setAppUser={setAppUser}
               />
               <div className="Difficulty">
                 <Difficulty/>

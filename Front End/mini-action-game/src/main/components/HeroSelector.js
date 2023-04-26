@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import '../../style/HeroSelector.css'
 
-function HeroSelector({heroes, setHeroes, gold, setGold}) {
+function HeroSelector({heroes, setHeroes, gold, setGold, appUser, setAppUser}) {
 
     const [condition, setCondition] = useState(heroes[0].condition)
 
@@ -34,26 +34,76 @@ function HeroSelector({heroes, setHeroes, gold, setGold}) {
     };
 
 
-    const select = () => {
+    const select = async () => {
         if (heroes[0].condition === 'BUY' && heroes[0].value < gold) {
-            setGold(gold-heroes[0].value)
-            conditionChanger()
+            await conditionChanger()
+            await updateAppUser(gold-heroes[0].value)
         } else if (heroes[0].condition !== 'BUY'){
-            conditionChanger()
+            await conditionChanger()
+            await updateAppUser(gold)
         }
     };
 
 
-    function conditionChanger () {
+    async function conditionChanger () {
+        let modifiedHeroes = []
+        let conditions = []
+        let types = []
         let newHeroes = [...heroes]
         for (let i = 0; i < newHeroes.length; i++) {
             if (newHeroes[i].condition === 'SELECTED') {
                 newHeroes[i].condition = 'SELECT'
+                modifiedHeroes.push(newHeroes[i].id)
+                conditions.push(newHeroes[i].condition)
+                types.push(newHeroes[i].name)
             }
         }
         newHeroes[0].condition = 'SELECTED'
         setCondition(newHeroes[0].condition)
+        modifiedHeroes.push(newHeroes[0].id)
+        conditions.push(newHeroes[0].condition)
+        types.push(newHeroes[0].name)
         setHeroes(newHeroes)
+        await updateHeroes(modifiedHeroes, conditions, types)
+    }
+
+
+    async function updateHeroes(heroesId, conditions, types) {
+        const lists = {
+            uuids: heroesId,
+            conditions: conditions,
+            types: types
+        }
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(lists)
+        }
+        await fetch(`/api/hero/update-heroes`, requestOptions);
+    }
+
+    async function updateAppUser(gold){
+        let heroesId= [];
+        let heroesType= [];
+        for (const hero of heroes) {
+            heroesId.push(hero.id)
+            heroesType.push(hero.name)
+        }
+        const user = {
+            uuid: appUser.id,
+            gold: gold,
+            heroesId: heroesId,
+            heroesTypes: heroesType
+        }
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(user)
+        }
+        const response = await (await fetch(`/api/user/update-appUser`, requestOptions)).json();
+        setAppUser(response)
+        setGold(response.gold)
+
     }
 
 

@@ -35,6 +35,7 @@ function ItemPlaceHolder({item}) {
 
     let stats = []
 
+    let i = -1;
 
     for (const property in item) {
         if (item[property] !== null && property !== 'link') {
@@ -61,7 +62,8 @@ function ItemPlaceHolder({item}) {
                     <span style={{alignSelf:"center"}}>
                         <ul className='inLine' style={{textAlign:"left"}}>
                             {stats.map(stat => {
-                                return <li>{stat}</li>
+                                i++
+                                return <li key={i}>{stat}</li>
                             })}
                         </ul>
                     </span>

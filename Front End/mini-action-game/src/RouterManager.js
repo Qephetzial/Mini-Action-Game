@@ -9,7 +9,6 @@ import React, {useState} from "react";
 
 function RouterManager() {
     const [appUser, setAppUser] = useState();
-    console.log(appUser+"...")
     return(
         <BrowserRouter>
             <Routes>
