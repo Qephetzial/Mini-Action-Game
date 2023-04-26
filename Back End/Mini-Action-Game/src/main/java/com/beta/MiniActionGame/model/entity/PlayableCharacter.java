@@ -1,6 +1,5 @@
 package com.beta.MiniActionGame.model.entity;
 
-import com.beta.MiniActionGame.model.item.Armor;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

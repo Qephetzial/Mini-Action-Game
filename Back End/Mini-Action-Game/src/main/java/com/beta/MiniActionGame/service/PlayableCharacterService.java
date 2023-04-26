@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PlayableCharacterService {
@@ -91,15 +92,95 @@ public class PlayableCharacterService {
         Ranger ranger = createRanger();
         Mage mage = createMage();
         Demon demon = createDemon();
-        fighterRepository.save(fighter);
-        rangerRepository.save(ranger);
-        mageRepository.save(mage);
-        demonRepository.save(demon);
+        updateFighter(fighter);
+        updateRanger(ranger);
+        updateMage(mage);
+        updateDemon(demon);
         List<PlayableCharacter> heroes = new ArrayList<>();
         heroes.add(fighter);
         heroes.add(ranger);
         heroes.add(demon);
         heroes.add(mage);
+        return heroes;
+    }
+
+    public void updateHeroes(List<UUID> heroesId, List<String> conditions, List<String> types){
+        for (int i = 0; i < heroesId.size(); i++) {
+            switch (types.get(i)) {
+                case "Fighter" -> {
+                    Fighter fighter = getFighterById(heroesId.get(i));
+                    fighter.setCondition(conditions.get(i));
+                    updateFighter(fighter);
+                }
+                case "Ranger" -> {
+                    Ranger ranger = getRangerById(heroesId.get(i));
+                    ranger.setCondition(conditions.get(i));
+                    updateRanger(ranger);
+                }
+                case "Mage" -> {
+                    Mage mage = getMageById(heroesId.get(i));
+                    mage.setCondition(conditions.get(i));
+                    updateMage(mage);
+                }
+                case "Demon" -> {
+                    Demon demon = getDemonById(heroesId.get(i));
+                    demon.setCondition(conditions.get(i));
+                    updateDemon(demon);
+                }
+            }
+        }
+    }
+
+    public Fighter getFighterById(UUID id) {
+        return fighterRepository.findById(id).orElse(null);
+    }
+
+    public void updateFighter(Fighter fighter) {
+        fighterRepository.save(fighter);
+    }
+
+    public Ranger getRangerById(UUID id) {
+        return rangerRepository.findById(id).orElse(null);
+    }
+
+    public void updateRanger(Ranger ranger) {
+        rangerRepository.save(ranger);
+    }
+
+    public Mage getMageById(UUID id) {
+        return mageRepository.findById(id).orElse(null);
+    }
+
+    public void updateMage(Mage mage) {
+        mageRepository.save(mage);
+    }
+
+    public Demon getDemonById(UUID id) {
+        return demonRepository.findById(id).orElse(null);
+    }
+
+    public void updateDemon(Demon demon) {
+        demonRepository.save(demon);
+    }
+
+    public List<PlayableCharacter> getHeroesById(List<UUID> uuids, List<String> types){
+        List<PlayableCharacter> heroes = new ArrayList<>();
+        for (int i = 0; i < uuids.size(); i++) {
+            switch (types.get(i)) {
+                case "Fighter" -> {
+                    heroes.add(getFighterById(uuids.get(i)));
+                }
+                case "Ranger" -> {
+                    heroes.add(getRangerById(uuids.get(i)));
+                }
+                case "Mage" -> {
+                    heroes.add(getMageById(uuids.get(i)));
+                }
+                case "Demon" -> {
+                    heroes.add(getDemonById(uuids.get(i)));
+                }
+            }
+        }
         return heroes;
     }
 }
