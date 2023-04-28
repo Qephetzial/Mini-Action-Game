@@ -1,6 +1,8 @@
 package com.beta.MiniActionGame.model.entity;
 
+import com.beta.MiniActionGame.model.item.CommonAndUnCommonArmor;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,4 +19,6 @@ public abstract class PlayableCharacter extends CanAttack implements Movement {
     private String condition;
     private String png;
     private String gif;
+    @OneToOne
+    private CommonAndUnCommonArmor armor;
 }

@@ -19,13 +19,15 @@ public class PlayableCharacterService {
     private final RangerRepository rangerRepository;
     private final MageRepository mageRepository;
     private final DemonRepository demonRepository;
+    private final ArmorService armorService;
 
     @Autowired
-    public PlayableCharacterService(FighterRepository fighterRepository, RangerRepository rangerRepository, MageRepository mageRepository, DemonRepository demonRepository) {
+    public PlayableCharacterService(FighterRepository fighterRepository, RangerRepository rangerRepository, MageRepository mageRepository, DemonRepository demonRepository, ArmorService armorService) {
         this.fighterRepository = fighterRepository;
         this.rangerRepository = rangerRepository;
         this.mageRepository = mageRepository;
         this.demonRepository = demonRepository;
+        this.armorService = armorService;
     }
 
     private Fighter createFighter() {
@@ -40,6 +42,7 @@ public class PlayableCharacterService {
         fighter.setCondition("SELECTED");
         fighter.setPng("fighter.png");
         fighter.setGif("fighter.gif");
+        fighter.setArmor(armorService.createCommonLightArmor());
         return fighter;
     }
 
@@ -55,6 +58,7 @@ public class PlayableCharacterService {
         ranger.setCondition("BUY");
         ranger.setPng("ranger.png");
         ranger.setGif("ranger.gif");
+        ranger.setArmor(armorService.createCommonLightArmor());
         return ranger;
     }
 
@@ -70,6 +74,7 @@ public class PlayableCharacterService {
         mage.setCondition("BUY");
         mage.setPng("mage.png");
         mage.setGif("mage.gif");
+        mage.setArmor(armorService.createCommonLightArmor());
         return mage;
     }
 
@@ -85,6 +90,7 @@ public class PlayableCharacterService {
         demon.setCondition("BUY");
         demon.setPng("demon.png");
         demon.setGif("demon.gif");
+        demon.setArmor(armorService.createCommonLightArmor());
         return demon;
     }
 

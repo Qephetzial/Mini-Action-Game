@@ -21,7 +21,7 @@ function ItemPlaceHolder({item}) {
 
 
     if (item !== null) {
-        image = <img style={{width: 100, height: 100}} src={item.link} alt="item"/>
+        image = <img style={{width: 100, height: 100}} src={"armors/"+item.imageLink} alt="item"/>
     }
 
 
@@ -29,7 +29,7 @@ function ItemPlaceHolder({item}) {
 
 
     if (item !== null) {
-        mImage = <img style={{width: 400, height: 400, backgroundColor:"white"}} src={item.link} alt="item"/>
+        mImage = <img style={{width: 400, height: 400, backgroundColor:"white"}} src={"armors/"+item.imageLink} alt="item"/>
     }
 
 

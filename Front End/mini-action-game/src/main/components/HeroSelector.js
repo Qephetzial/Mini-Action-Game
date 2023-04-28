@@ -46,25 +46,16 @@ function HeroSelector({heroes, setHeroes, gold, setGold, appUser, setAppUser}) {
 
 
     async function conditionChanger () {
-        let modifiedHeroes = []
-        let conditions = []
-        let types = []
         let newHeroes = [...heroes]
         for (let i = 0; i < newHeroes.length; i++) {
             if (newHeroes[i].condition === 'SELECTED') {
                 newHeroes[i].condition = 'SELECT'
-                modifiedHeroes.push(newHeroes[i].id)
-                conditions.push(newHeroes[i].condition)
-                types.push(newHeroes[i].name)
             }
         }
         newHeroes[0].condition = 'SELECTED'
         setCondition(newHeroes[0].condition)
-        modifiedHeroes.push(newHeroes[0].id)
-        conditions.push(newHeroes[0].condition)
-        types.push(newHeroes[0].name)
         setHeroes(newHeroes)
-        await updateHeroes(modifiedHeroes, conditions, types)
+        await updateHeroes()
     }
 
 

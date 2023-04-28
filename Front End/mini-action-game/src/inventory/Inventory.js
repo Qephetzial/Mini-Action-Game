@@ -66,15 +66,15 @@ function Inventory({appUser, setAppUser}) {
             <div className='placHolderBlock'>
                 <div className=''>
                     <ItemPlaceHolder
-                        item={items[0]}
+                        item={null}
                         index={'0'}
                     />
                     <ItemPlaceHolder
-                        item={items[1]}
+                        item={null}
                         index={'1'}
                     />
                     <ItemPlaceHolder
-                        item={items[2]}
+                        item={null}
                         index={'2'}
                     />
                     <ItemPlaceHolder
@@ -155,11 +155,11 @@ function Inventory({appUser, setAppUser}) {
             </div>
             <div className='displayHero'>
                 <ItemPlaceHolder
-                    item={items[0]}
+                    item={null}
                     index={20}
                 />
                 <ItemPlaceHolder
-                    item={items[2]}
+                    item={appUser.heroes[0].armor}
                     index={21}
                 />
             </div>
