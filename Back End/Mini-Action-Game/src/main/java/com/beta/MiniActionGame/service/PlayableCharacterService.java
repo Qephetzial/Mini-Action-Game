@@ -1,5 +1,6 @@
 package com.beta.MiniActionGame.service;
 
+import com.beta.MiniActionGame.communicator.PlayableCharacterCommunicator;
 import com.beta.MiniActionGame.model.entity.*;
 import com.beta.MiniActionGame.repository.playableCharacter.DemonRepository;
 import com.beta.MiniActionGame.repository.playableCharacter.FighterRepository;
@@ -104,31 +105,11 @@ public class PlayableCharacterService {
         return heroes;
     }
 
-    public void updateHeroes(List<UUID> heroesId, List<String> conditions, List<String> types){
-        for (int i = 0; i < heroesId.size(); i++) {
-            switch (types.get(i)) {
-                case "Fighter" -> {
-                    Fighter fighter = getFighterById(heroesId.get(i));
-                    fighter.setCondition(conditions.get(i));
-                    updateFighter(fighter);
-                }
-                case "Ranger" -> {
-                    Ranger ranger = getRangerById(heroesId.get(i));
-                    ranger.setCondition(conditions.get(i));
-                    updateRanger(ranger);
-                }
-                case "Mage" -> {
-                    Mage mage = getMageById(heroesId.get(i));
-                    mage.setCondition(conditions.get(i));
-                    updateMage(mage);
-                }
-                case "Demon" -> {
-                    Demon demon = getDemonById(heroesId.get(i));
-                    demon.setCondition(conditions.get(i));
-                    updateDemon(demon);
-                }
-            }
-        }
+    public void updateHeroes(PlayableCharacterCommunicator playableCharacterCommunicator){
+        fighterRepository.save(playableCharacterCommunicator.getFighter());
+        rangerRepository.save(playableCharacterCommunicator.getRanger());
+        mageRepository.save(playableCharacterCommunicator.getMage());
+        demonRepository.save(playableCharacterCommunicator.getDemon());
     }
 
     public Fighter getFighterById(UUID id) {

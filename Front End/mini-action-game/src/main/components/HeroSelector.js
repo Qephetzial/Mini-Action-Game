@@ -68,16 +68,37 @@ function HeroSelector({heroes, setHeroes, gold, setGold, appUser, setAppUser}) {
     }
 
 
-    async function updateHeroes(heroesId, conditions, types) {
-        const lists = {
-            uuids: heroesId,
-            conditions: conditions,
-            types: types
+    async function updateHeroes() {
+        let fighter = null
+        let ranger = null
+        let mage = null
+        let demon = null
+        for (const hero of heroes) {
+            switch (hero.name) {
+                case "Fighter":
+                    fighter = hero
+                    break
+                case "Ranger":
+                    ranger = hero
+                    break
+                case "Mage":
+                    mage = hero
+                    break
+                case "Demon":
+                    demon = hero
+                    break
+            }
+        }
+        const hero = {
+            fighter: fighter,
+            ranger: ranger,
+            mage: mage,
+            demon: demon
         }
         const requestOptions = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(lists)
+            body: JSON.stringify(hero)
         }
         await fetch(`/api/hero/update-heroes`, requestOptions);
     }

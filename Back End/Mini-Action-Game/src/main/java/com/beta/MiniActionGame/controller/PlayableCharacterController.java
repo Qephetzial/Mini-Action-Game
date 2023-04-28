@@ -18,6 +18,6 @@ public class PlayableCharacterController {
 
     @PostMapping("/update-heroes")
     public void updateHeroes(@RequestBody PlayableCharacterCommunicator playableCharacterCommunicator) {
-        playableCharacterService.updateHeroes(playableCharacterCommunicator.getUuids(), playableCharacterCommunicator.getConditions(), playableCharacterCommunicator.getTypes());
+        playableCharacterService.updateHeroes(playableCharacterCommunicator);
     }
 }
