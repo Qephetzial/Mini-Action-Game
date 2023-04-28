@@ -13,9 +13,9 @@ function HeroSData({heroes}) {
             </div>
             <div className='data2 inLine'>
                 <h5>{heroes[0].name}</h5>
-                <h5>{heroes[0].health}</h5>
+                <h5>{heroes[0].health} + <span style={{color:"green"}}>{heroes[0].armor.health}</span></h5>
                 <h5>{heroes[0].strength}</h5>
-                <h5>{heroes[0].defence}</h5>
+                <h5>{heroes[0].defence} + <span style={{color:"green"}}>{heroes[0].armor.defence}</span></h5>
                 <h5>{heroes[0].movementSpeed}</h5>
                 <h5>None</h5>
             </div>

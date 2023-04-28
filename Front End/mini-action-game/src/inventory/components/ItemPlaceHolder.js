@@ -38,7 +38,7 @@ function ItemPlaceHolder({item}) {
     let i = -1;
 
     for (const property in item) {
-        if (item[property] !== null && property !== 'link') {
+        if (item[property] !== null && property !== 'imageLink' && property !== 'id') {
             stats.push(`${property}: ${item[property]}`)
         }
     }
