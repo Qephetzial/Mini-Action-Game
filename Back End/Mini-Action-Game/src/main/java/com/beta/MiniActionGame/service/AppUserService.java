@@ -41,4 +41,10 @@ public class AppUserService {
         appUserRepository.save(appUser);
         return appUser;
     }
+
+    public AppUser createAppUser(AppUser appUser) {
+        appUser.setHeroes(playableCharacterService.createHeroes());
+        appUserRepository.save(appUser);
+        return appUserRepository.findByName(appUser.getName());
+    }
 }

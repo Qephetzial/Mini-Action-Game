@@ -20,6 +20,11 @@ public class AppUserController {
         this.appUserService = appUserService;
     }
 
+    @PostMapping("/create")
+    public AppUser createAppUser(@RequestBody AppUser appUser) {
+        return appUserService.createAppUser(appUser);
+    }
+
     @PostMapping("/save")
     public void saveAppUser(@RequestBody AppUser appUser){
         appUserService.saveAppUser(appUser);

@@ -25,13 +25,14 @@ function LogInButton({style, setAppUser}) {
         setAppUser(response[0])
     }
 
-    async function saveUser() {
+    async function createUser() {
         const requestOptions = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(newUser)
         }
-        await fetch(`/api/user/save`, requestOptions);
+        const response = await (await fetch(`/api/user/create`, requestOptions)).json();
+        setAppUser(response)
         navigate('/main')
     }
 
@@ -56,7 +57,7 @@ function LogInButton({style, setAppUser}) {
         return (
             <div>
                 <input placeholder='Your name' onChange={(event)=> newUser.name = event.currentTarget.value}/>
-                <button className={style} onClick={async()=>{await saveUser()}}><span>Sign up</span></button>
+                <button className={style} onClick={async()=>{await createUser()}}><span>Sign up</span></button>
             </div>
         )
     } else {

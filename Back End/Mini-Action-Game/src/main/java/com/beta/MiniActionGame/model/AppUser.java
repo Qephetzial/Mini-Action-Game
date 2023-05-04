@@ -22,7 +22,7 @@ public class AppUser {
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
-    @Column(unique=true)
+    @Column(unique=true, name = "name")
     private String name;
     private int gold;
     @OneToMany
