@@ -10,8 +10,7 @@ function Main({appUser, setAppUser}) {
 
 
 
-    const [gold, setGold] = useState();
-    useEffect(()=>setGold(appUser.gold))
+    const [gold, setGold] = useState(appUser.gold);
 
     const [heroes, setHeroes] = useState(appUser.heroes)
 
@@ -57,7 +56,7 @@ function Main({appUser, setAppUser}) {
                 classes={"play btn-10"}
               />
               <HeroSData
-                heroes={heroes}
+                hero={heroes[0]}
               />
           </div>
       </>

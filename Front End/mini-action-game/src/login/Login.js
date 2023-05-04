@@ -9,7 +9,7 @@ function Login({setAppUser}) {
         }
     })
 
-    const [logInButtonStyle, setlogInButtonStyle] = useState('btn-10 play select lineBoxing transparent')
+    const [logInButtonStyle] = useState('btn-10 play select lineBoxing transparent')
 
     return (
         <div style={{textAlign:"center"}}>
