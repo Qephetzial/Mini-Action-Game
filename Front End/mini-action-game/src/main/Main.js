@@ -6,7 +6,7 @@ import Button from "../genericComponents/Button";
 import HeroSData from "./components/HeroSData";
 
 
-function Main({appUser, setAppUser}) {
+function Main({appUser, setAppUser, activeButton, setActiveButton}) {
 
 
 
@@ -49,7 +49,10 @@ function Main({appUser, setAppUser}) {
                   setAppUser={setAppUser}
               />
               <div className="Difficulty">
-                <Difficulty/>
+                <Difficulty
+                    activeButton={activeButton}
+                    setActiveButton={setActiveButton}
+                />
               </div>
               <Button
                 text={'PLAY'}

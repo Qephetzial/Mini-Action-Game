@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-function Difficulty() {
-    const [activeButton, setActiveButton] = useState("easy");
+function Difficulty({activeButton, setActiveButton}) {
 
     const handleClick = (difficulty) => {
         setActiveButton(difficulty);

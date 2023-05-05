@@ -9,6 +9,7 @@ import React, {useState} from "react";
 
 function RouterManager() {
     const [appUser, setAppUser] = useState();
+    const [activeButton, setActiveButton] = useState("easy");
     return(
         <BrowserRouter>
             <Routes>
@@ -22,6 +23,8 @@ function RouterManager() {
                         <Main
                             appUser={appUser}
                             setAppUser={setAppUser}
+                            activeButton={activeButton}
+                            setActiveButton={setActiveButton}
                         />
                     }/>
                     <Route path="inventory" element={
