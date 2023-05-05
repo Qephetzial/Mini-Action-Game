@@ -1,7 +1,7 @@
-package com.beta.MiniActionGame.repository.Item;
+package com.beta.MiniActionGame.repository.item;
 
 
-import com.beta.MiniActionGame.model.item.CommonAndUnCommonArmor;
+import com.beta.MiniActionGame.model.item.armor.CommonAndUnCommonArmor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

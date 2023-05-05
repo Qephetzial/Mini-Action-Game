@@ -1,6 +1,6 @@
-package com.beta.MiniActionGame.repository.Item;
+package com.beta.MiniActionGame.repository.item;
 
-import com.beta.MiniActionGame.model.item.LegendaryArmor;
+import com.beta.MiniActionGame.model.item.armor.LegendaryArmor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

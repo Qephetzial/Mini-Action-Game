@@ -1,11 +1,11 @@
 package com.beta.MiniActionGame.service;
 
-import com.beta.MiniActionGame.model.item.CommonAndUnCommonArmor;
+import com.beta.MiniActionGame.model.item.armor.CommonAndUnCommonArmor;
 import com.beta.MiniActionGame.model.item.ItemType;
 import com.beta.MiniActionGame.model.item.Rarity;
-import com.beta.MiniActionGame.repository.Item.CommonAndUnCommonArmorRepository;
-import com.beta.MiniActionGame.repository.Item.LegendaryArmorRepository;
-import com.beta.MiniActionGame.repository.Item.RareAndEpicArmorRepository;
+import com.beta.MiniActionGame.repository.item.CommonAndUnCommonArmorRepository;
+import com.beta.MiniActionGame.repository.item.LegendaryArmorRepository;
+import com.beta.MiniActionGame.repository.item.RareAndEpicArmorRepository;
 import org.springframework.stereotype.Service;
 
 @Service
