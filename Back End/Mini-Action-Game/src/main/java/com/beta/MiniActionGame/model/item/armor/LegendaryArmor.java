@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class LegendaryArmor extends Items {
+public class LegendaryArmor extends Armor {
     private DamageType resistance;
     private DamageType secondaryResistance;
     private int movementSpeed;

@@ -14,39 +14,9 @@ function Inventory({appUser, setAppUser}) {
     })
 
 
-    const [items, setItems] = useState([
-        {
-            type: 'sword',
-            link: 'swords/legendary-demonic-sword.png',
-            name: 'Great Sword',
-            damage: 15,
-            defence: null,
-            health: null,
-            movementSpeed: null,
-            rarity: 'unCommon',
-        },
-        {
-            type: 'bow',
-            link: 'bows/legendary-grasp-bow.png',
-            name: 'Long Bow',
-            damage: 20,
-            defence: null,
-            health: null,
-            movementSpeed: 1,
-            rarity: 'unCommon',
-        },
-        {
-            type: 'armor',
-            link: 'armors/rare-light-armor.png',
-            name: 'Chain Mail',
-            damage: null,
-            defence: 10,
-            health: 20,
-            movementSpeed: 1,
-            rarity: 'unCommon',
-        }
-    ])
+    const [items, setItems] = useState([])
 
+    console.log(appUser.items.commonAndUnCommonArmors[0])
 
     return (
         <>
@@ -66,7 +36,7 @@ function Inventory({appUser, setAppUser}) {
             <div className='placHolderBlock'>
                 <div className=''>
                     <ItemPlaceHolder
-                        item={null}
+                        item={appUser.items.commonAndUnCommonArmors[0]}
                         index={'0'}
                     />
                     <ItemPlaceHolder
