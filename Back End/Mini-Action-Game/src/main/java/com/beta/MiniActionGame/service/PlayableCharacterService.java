@@ -42,7 +42,7 @@ public class PlayableCharacterService {
         fighter.setCondition("SELECTED");
         fighter.setPng("fighter.png");
         fighter.setGif("fighter.gif");
-        fighter.setArmor(armorService.createCommonLightArmor());
+        fighter.setArmor(armorService.createCommonHeavyArmor());
         return fighter;
     }
 
@@ -90,7 +90,7 @@ public class PlayableCharacterService {
         demon.setCondition("BUY");
         demon.setPng("demon.png");
         demon.setGif("demon.gif");
-        demon.setArmor(armorService.createCommonLightArmor());
+        demon.setArmor(armorService.createCommonMediumArmor());
         return demon;
     }
 

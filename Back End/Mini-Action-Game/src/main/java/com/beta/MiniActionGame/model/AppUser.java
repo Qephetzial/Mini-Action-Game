@@ -1,5 +1,6 @@
 package com.beta.MiniActionGame.model;
 
+import com.beta.MiniActionGame.model.collector.ItemCollector;
 import com.beta.MiniActionGame.model.entity.PlayableCharacter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,6 +28,6 @@ public class AppUser {
     private int gold;
     @OneToMany
     private List<PlayableCharacter> heroes;
-    //@OneToMany
-    //private List<Item> items;
+    @OneToOne
+    private ItemCollector items;
 }
