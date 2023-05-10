@@ -1,10 +1,11 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Start from "./start/Start";
+import Layout from "./start/Layout";
 import Login from "./login/Login";
 import Main from "./main/Main";
 import Inventory from "./inventory/Inventory";
 import LuckyShop from "./luckyShop/LuckyShop";
 import React, {useState} from "react";
+import StartButton from "./start/components/StartButton";
 
 
 function RouterManager() {
@@ -13,7 +14,8 @@ function RouterManager() {
     return(
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Start/>}>
+                <Route path="/" element={<Layout/>}>
+                    <Route path="/" element={<StartButton/>}/>
                     <Route path="login" element={
                         <Login
                             setAppUser={setAppUser}

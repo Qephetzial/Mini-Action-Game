@@ -2,15 +2,13 @@ import React from "react";
 import {Outlet} from "react-router-dom";
 import StartButton from "./components/StartButton";
 
-function Start() {
+function Layout() {
 
     return (
         <>
-            <StartButton
-            />
             <Outlet/>
         </>
     )
 }
 
-export default Start
+export default Layout

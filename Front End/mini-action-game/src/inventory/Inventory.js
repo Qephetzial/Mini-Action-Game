@@ -6,13 +6,6 @@ import ItemPlaceHolder from "./components/ItemPlaceHolder";
 function Inventory({appUser, setAppUser}) {
 
 
-    useEffect(()=>{
-        let startButton = document.getElementById('startBtn')
-        if (startButton !== null) {
-            startButton.style.display = 'None'
-        }
-    })
-
     const [items, setItems] = useState([])
 
     return (

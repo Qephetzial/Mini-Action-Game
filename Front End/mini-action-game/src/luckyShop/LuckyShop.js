@@ -6,12 +6,6 @@ import Balance from "../genericComponents/Balance";
 function LuckyShop() {
 
 
-    useEffect(()=>{
-        let startButton = document.getElementById('startBtn')
-        if (startButton !== null) {
-            startButton.style.display = 'None'
-        }
-    })
 
 
     const [gold, setGold] = useState('1000')
