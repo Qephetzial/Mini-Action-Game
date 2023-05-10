@@ -26,7 +26,7 @@ public class PlayableCharacterService {
         this.mageRepository = mageRepository;
         this.demonRepository = demonRepository;
     }
-    
+
     public Fighter getFighterById(UUID id) {
         return fighterRepository.findById(id).orElse(null);
     }
