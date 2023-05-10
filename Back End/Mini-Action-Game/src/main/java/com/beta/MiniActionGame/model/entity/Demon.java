@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Demon extends PlayableCharacter{
+public class Demon extends Hero {
     @Override
     public void move() {
 

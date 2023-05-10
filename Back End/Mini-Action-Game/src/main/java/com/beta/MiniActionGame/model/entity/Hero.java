@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public abstract class PlayableCharacter extends CanAttack implements Movement {
+public abstract class Hero extends Attacker implements Movement {
     private int movementSpeed;
     private int value;
     private String condition;

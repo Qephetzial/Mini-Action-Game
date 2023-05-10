@@ -5,7 +5,6 @@ import com.beta.MiniActionGame.model.AppUser;
 import com.beta.MiniActionGame.repository.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.UUID;
 

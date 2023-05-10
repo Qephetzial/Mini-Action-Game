@@ -13,10 +13,7 @@ function Inventory({appUser, setAppUser}) {
         }
     })
 
-
     const [items, setItems] = useState([])
-
-    console.log(appUser.items.commonAndUnCommonArmors[0])
 
     return (
         <>
@@ -36,7 +33,7 @@ function Inventory({appUser, setAppUser}) {
             <div className='placHolderBlock'>
                 <div className=''>
                     <ItemPlaceHolder
-                        item={appUser.items.commonAndUnCommonArmors[0]}
+                        item={null}
                         index={'0'}
                     />
                     <ItemPlaceHolder
@@ -129,7 +126,7 @@ function Inventory({appUser, setAppUser}) {
                     index={20}
                 />
                 <ItemPlaceHolder
-                    item={appUser.heroes[0].armor}
+                    item={null}
                     index={21}
                 />
             </div>

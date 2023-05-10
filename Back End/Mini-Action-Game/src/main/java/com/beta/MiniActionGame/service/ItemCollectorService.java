@@ -6,18 +6,15 @@ import com.beta.MiniActionGame.model.item.armor.CommonAndUnCommonArmor;
 import com.beta.MiniActionGame.model.item.armor.LegendaryArmor;
 import com.beta.MiniActionGame.model.item.armor.RareAndEpicArmor;
 import com.beta.MiniActionGame.repository.ItemCollectorRepository;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
 @Service
+@AllArgsConstructor
 public class ItemCollectorService {
-
-    private final ItemCollectorRepository itemCollectorRepository;
-
-    public ItemCollectorService(ItemCollectorRepository itemCollectorRepository) {
-        this.itemCollectorRepository = itemCollectorRepository;
-    }
 
     public ItemCollector createItemCollector(){
         ItemCollector itemCollector = new ItemCollector();

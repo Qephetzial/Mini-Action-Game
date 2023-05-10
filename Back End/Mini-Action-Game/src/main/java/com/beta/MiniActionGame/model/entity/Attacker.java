@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public abstract class CanAttack extends Creature {
+public abstract class Attacker extends Creature {
     private int strength;
     private int defence;
 
