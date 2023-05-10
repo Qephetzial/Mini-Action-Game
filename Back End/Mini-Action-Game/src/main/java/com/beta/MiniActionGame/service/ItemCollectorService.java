@@ -24,7 +24,6 @@ public class ItemCollectorService {
         itemCollector.setCommonAndUnCommonArmors(new ArrayList<>());
         itemCollector.setRareAndEpicArmors(new ArrayList<>());
         itemCollector.setLegendaryArmors(new ArrayList<>());
-        itemCollectorRepository.save(itemCollector);
         return itemCollector;
     }
 
@@ -34,17 +33,14 @@ public class ItemCollectorService {
                 case COMMON, UNCOMMON -> {
                     CommonAndUnCommonArmor commonAndUnCommonArmor = (CommonAndUnCommonArmor) item;
                     itemCollector.getCommonAndUnCommonArmors().add(commonAndUnCommonArmor);
-                    itemCollectorRepository.save(itemCollector);
                 }
                 case RARE, EPIC -> {
                     RareAndEpicArmor rareAndEpicArmor = (RareAndEpicArmor) item;
                     itemCollector.getRareAndEpicArmors().add(rareAndEpicArmor);
-                    itemCollectorRepository.save(itemCollector);
                 }
                 case LEGENDARY -> {
                     LegendaryArmor legendaryArmor = (LegendaryArmor) item;
                     itemCollector.getLegendaryArmors().add(legendaryArmor);
-                    itemCollectorRepository.save(itemCollector);
                 }
             }}
         }

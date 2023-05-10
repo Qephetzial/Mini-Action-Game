@@ -1,4 +1,4 @@
-package com.beta.MiniActionGame.service;
+package com.beta.MiniActionGame.factory;
 
 import com.beta.MiniActionGame.model.item.DamageType;
 import com.beta.MiniActionGame.model.item.armor.CommonAndUnCommonArmor;
@@ -6,22 +6,12 @@ import com.beta.MiniActionGame.model.item.ItemType;
 import com.beta.MiniActionGame.model.item.Rarity;
 import com.beta.MiniActionGame.model.item.armor.LegendaryArmor;
 import com.beta.MiniActionGame.model.item.armor.RareAndEpicArmor;
-import com.beta.MiniActionGame.repository.item.CommonAndUnCommonArmorRepository;
-import com.beta.MiniActionGame.repository.item.LegendaryArmorRepository;
-import com.beta.MiniActionGame.repository.item.RareAndEpicArmorRepository;
-import org.springframework.stereotype.Service;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
-@Service
-public class ArmorService {
-    private final CommonAndUnCommonArmorRepository commonAndUnCommonArmorRepository;
-    private final RareAndEpicArmorRepository rareAndEpicArmorRepository;
-    private final LegendaryArmorRepository legendaryArmorRepository;
-
-    public ArmorService(CommonAndUnCommonArmorRepository commonAndUnCommonArmorRepository, RareAndEpicArmorRepository rareAndEpicArmorRepository, LegendaryArmorRepository legendaryArmorRepository) {
-        this.commonAndUnCommonArmorRepository = commonAndUnCommonArmorRepository;
-        this.rareAndEpicArmorRepository = rareAndEpicArmorRepository;
-        this.legendaryArmorRepository = legendaryArmorRepository;
-    }
+@Component
+@NoArgsConstructor
+public class ArmorFactory {
 
     public CommonAndUnCommonArmor createCommonLightArmor() {
         CommonAndUnCommonArmor commonLightArmor = new CommonAndUnCommonArmor();
@@ -31,7 +21,6 @@ public class ArmorService {
         commonLightArmor.setItemType(ItemType.ARMOR);
         commonLightArmor.setHealth(60);
         commonLightArmor.setDefence(10);
-        commonAndUnCommonArmorRepository.save(commonLightArmor);
         return commonLightArmor;
     }
 
@@ -43,7 +32,6 @@ public class ArmorService {
         commonMediumArmor.setItemType(ItemType.ARMOR);
         commonMediumArmor.setHealth(55);
         commonMediumArmor.setDefence(15);
-        commonAndUnCommonArmorRepository.save(commonMediumArmor);
         return commonMediumArmor;
     }
 
@@ -55,7 +43,6 @@ public class ArmorService {
         commonHeavyArmor.setItemType(ItemType.ARMOR);
         commonHeavyArmor.setHealth(120);
         commonHeavyArmor.setDefence(2);
-        commonAndUnCommonArmorRepository.save(commonHeavyArmor);
         return commonHeavyArmor;
     }
 
@@ -67,7 +54,6 @@ public class ArmorService {
         unCommonAssassinArmor.setItemType(ItemType.ARMOR);
         unCommonAssassinArmor.setHealth(70);
         unCommonAssassinArmor.setDefence(13);
-        commonAndUnCommonArmorRepository.save(unCommonAssassinArmor);
         return unCommonAssassinArmor;
     }
 
@@ -79,7 +65,6 @@ public class ArmorService {
         unCommonChestPlateArmor.setItemType(ItemType.ARMOR);
         unCommonChestPlateArmor.setHealth(60);
         unCommonChestPlateArmor.setDefence(20);
-        commonAndUnCommonArmorRepository.save(unCommonChestPlateArmor);
         return unCommonChestPlateArmor;
     }
 
@@ -91,7 +76,6 @@ public class ArmorService {
         unCommonHealthArmor.setItemType(ItemType.ARMOR);
         unCommonHealthArmor.setHealth(180);
         unCommonHealthArmor.setDefence(1);
-        commonAndUnCommonArmorRepository.save(unCommonHealthArmor);
         return unCommonHealthArmor;
     }
 
@@ -104,7 +88,6 @@ public class ArmorService {
         rareAndEpicArmor.setHealth(300);
         rareAndEpicArmor.setDefence(50);
         rareAndEpicArmor.setResistance(DamageType.POISON);
-        rareAndEpicArmorRepository.save(rareAndEpicArmor);
         return rareAndEpicArmor;
     }
 
@@ -117,7 +100,6 @@ public class ArmorService {
         rareAndEpicArmor.setHealth(350);
         rareAndEpicArmor.setDefence(45);
         rareAndEpicArmor.setResistance(DamageType.COLD);
-        rareAndEpicArmorRepository.save(rareAndEpicArmor);
         return rareAndEpicArmor;
     }
 
@@ -130,7 +112,6 @@ public class ArmorService {
         rareAndEpicArmor.setHealth(250);
         rareAndEpicArmor.setDefence(65);
         rareAndEpicArmor.setResistance(DamageType.FIRE);
-        rareAndEpicArmorRepository.save(rareAndEpicArmor);
         return rareAndEpicArmor;
     }
 
@@ -143,9 +124,9 @@ public class ArmorService {
         rareAndEpicArmor.setHealth(600);
         rareAndEpicArmor.setDefence(80);
         rareAndEpicArmor.setResistance(DamageType.POISON);
-        rareAndEpicArmorRepository.save(rareAndEpicArmor);
         return rareAndEpicArmor;
     }
+
     public RareAndEpicArmor createEpicMediumArmor() {
         RareAndEpicArmor rareAndEpicArmor = new RareAndEpicArmor();
         rareAndEpicArmor.setName("Medium Armor");
@@ -155,7 +136,6 @@ public class ArmorService {
         rareAndEpicArmor.setHealth(550);
         rareAndEpicArmor.setDefence(90);
         rareAndEpicArmor.setResistance(DamageType.COLD);
-        rareAndEpicArmorRepository.save(rareAndEpicArmor);
         return rareAndEpicArmor;
     }
 
@@ -168,7 +148,6 @@ public class ArmorService {
         rareAndEpicArmor.setHealth(400);
         rareAndEpicArmor.setDefence(150);
         rareAndEpicArmor.setResistance(DamageType.FIRE);
-        rareAndEpicArmorRepository.save(rareAndEpicArmor);
         return rareAndEpicArmor;
     }
 
@@ -183,7 +162,6 @@ public class ArmorService {
         legendaryArmor.setResistance(DamageType.POISON);
         legendaryArmor.setSecondaryResistance(DamageType.SLASHING);
         legendaryArmor.setMovementSpeed(2);
-        legendaryArmorRepository.save(legendaryArmor);
         return legendaryArmor;
     }
 
@@ -198,7 +176,6 @@ public class ArmorService {
         legendaryArmor.setResistance(DamageType.COLD);
         legendaryArmor.setSecondaryResistance(DamageType.SLASHING);
         legendaryArmor.setMovementSpeed(1);
-        legendaryArmorRepository.save(legendaryArmor);
         return legendaryArmor;
     }
 
@@ -213,7 +190,6 @@ public class ArmorService {
         legendaryArmor.setResistance(DamageType.FIRE);
         legendaryArmor.setSecondaryResistance(DamageType.PIERCING);
         legendaryArmor.setMovementSpeed(1);
-        legendaryArmorRepository.save(legendaryArmor);
         return legendaryArmor;
     }
 }

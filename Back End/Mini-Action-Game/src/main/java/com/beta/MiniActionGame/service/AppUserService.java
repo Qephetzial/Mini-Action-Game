@@ -1,10 +1,7 @@
 package com.beta.MiniActionGame.service;
 
-import com.beta.MiniActionGame.communicator.AppUserCommunicator;
+
 import com.beta.MiniActionGame.model.AppUser;
-import com.beta.MiniActionGame.model.collector.ItemCollector;
-import com.beta.MiniActionGame.model.entity.PlayableCharacter;
-import com.beta.MiniActionGame.model.item.Items;
 import com.beta.MiniActionGame.repository.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,22 +12,17 @@ import java.util.UUID;
 @Service
 public class AppUserService {
     private final AppUserRepository appUserRepository;
-    private final PlayableCharacterService playableCharacterService;
-
-    private final ArmorService armorService;
-
     private final ItemCollectorService itemCollectorService;
+    private final HeroCollectorService heroCollectorService;
 
     @Autowired
-    public AppUserService(AppUserRepository appUserRepository, PlayableCharacterService playableCharacterService, ItemCollectorService itemCollectorService, ArmorService armorService) {
+    public AppUserService(AppUserRepository appUserRepository, ItemCollectorService itemCollectorService, HeroCollectorService heroCollectorService) {
         this.appUserRepository = appUserRepository;
-        this.playableCharacterService = playableCharacterService;
         this.itemCollectorService = itemCollectorService;
-        this.armorService = armorService;
+        this.heroCollectorService = heroCollectorService;
     }
 
     public void saveAppUser (AppUser appUser) {
-        appUser.setHeroes(playableCharacterService.createHeroes());
         appUserRepository.save(appUser);
     }
 
@@ -42,22 +34,15 @@ public class AppUserService {
         return appUserRepository.findById(id).orElse(null);
     }
 
-    public AppUser updateAppUser (AppUserCommunicator appUserCommunicator) {
-        AppUser appUser = getAppUserById(appUserCommunicator.getUuid());
-        appUser.setGold(appUserCommunicator.getGold());
-        List<PlayableCharacter> heroes = playableCharacterService.getHeroesById(appUserCommunicator.getHeroesId(), appUserCommunicator.getHeroesTypes());
-        appUser.setHeroes(heroes);
+    public AppUser updateAppUser (AppUser appUser) {
         appUserRepository.save(appUser);
         return appUser;
     }
 
     public AppUser createAppUser(AppUser appUser) {
-        appUser.setHeroes(playableCharacterService.createHeroes());
-        ItemCollector itemCollector = new ItemCollector();
+        appUser.setHeroes(heroCollectorService.createHeroCollector());
         appUser.setItems(itemCollectorService.createItemCollector());
         appUserRepository.save(appUser);
-        Items armor = armorService.createUnCommonLightArmor();
-        itemCollectorService.addItem(appUser.getItems(), armor);
         return appUserRepository.findByName(appUser.getName());
     }
 }

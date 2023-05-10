@@ -12,7 +12,6 @@ function LogInButton({style, setAppUser}) {
     let newUser = {
         name:'',
         gold:0,
-        heroes:null
     };
 
     async function getUsers() {

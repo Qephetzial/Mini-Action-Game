@@ -12,7 +12,7 @@ function Main({appUser, setAppUser, activeButton, setActiveButton}) {
 
     const [gold, setGold] = useState(appUser.gold);
 
-    const [heroes, setHeroes] = useState(appUser.heroes)
+    const [heroes, setHeroes] = useState([appUser.heroes.fighter, appUser.heroes.ranger, appUser.heroes.demon, appUser.heroes.mage])
 
     useEffect(()=>{
         let startButton = document.getElementById('startBtn')

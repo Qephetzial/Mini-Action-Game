@@ -1,6 +1,5 @@
 package com.beta.MiniActionGame.controller;
 
-import com.beta.MiniActionGame.communicator.AppUserCommunicator;
 import com.beta.MiniActionGame.model.AppUser;
 import com.beta.MiniActionGame.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +30,17 @@ public class AppUserController {
     }
 
     @PostMapping("/update-appUser")
-    public AppUser updateAppUser(@RequestBody AppUserCommunicator appUserCommunicator) {
-        return appUserService.updateAppUser(appUserCommunicator);
+    public AppUser updateAppUser(@RequestBody AppUser appUser) {
+        return appUserService.updateAppUser(appUser);
     }
 
     @GetMapping("/get-appUsers")
     public List<AppUser> getAppUsers(){
         return appUserService.getAppUsers();
+    }
+
+    @PostMapping("/update-heroes")
+    public void updateHeroes(@RequestBody AppUser appUser){
+        appUserService.updateAppUser(appUser);
     }
 }
