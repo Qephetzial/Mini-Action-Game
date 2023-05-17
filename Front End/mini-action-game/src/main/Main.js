@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import Difficulty from "./components/Difficulty";
 import Balance from "../genericComponents/Balance";
 import HeroSelector from "./components/HeroSelector";
@@ -8,14 +8,14 @@ import HeroSData from "./components/HeroSData";
 
 function Main({appUser, setAppUser, activeButton, setActiveButton}) {
 
-    const [gold, setGold] = useState(appUser.gold);
-    const [heroes, setHeroes] = useState([appUser.heroes.fighter, appUser.heroes.ranger, appUser.heroes.demon, appUser.heroes.mage])
+    const [coin, setCoin] = useState(appUser.coin);
+    const [heroes, setHeroes] = useState(appUser.heroes)
 
   return (
           <div id="main" className="App">
               <div className="Balance">
                 <Balance
-                    gold={gold}
+                    coin={coin}
                 />
               </div>
               <Button
@@ -31,8 +31,8 @@ function Main({appUser, setAppUser, activeButton, setActiveButton}) {
               <HeroSelector
                   heroes={heroes}
                   setHeroes={setHeroes}
-                  gold={gold}
-                  setGold={setGold}
+                  coin={coin}
+                  setCoin={setCoin}
                   appUser={appUser}
                   setAppUser={setAppUser}
               />

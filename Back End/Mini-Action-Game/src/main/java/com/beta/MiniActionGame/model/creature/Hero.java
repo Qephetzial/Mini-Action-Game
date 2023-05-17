@@ -1,6 +1,7 @@
 package com.beta.MiniActionGame.model.creature;
 
 import com.beta.MiniActionGame.model.item.Armor;
+import com.beta.MiniActionGame.model.item.Weapon;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
@@ -35,4 +36,8 @@ public class Hero extends Attacker{
     //This field determines what kind of armor the hero has.
     @OneToOne
     private Armor armor;
+
+    //This field determines what kind of weapon the hero has.
+    @OneToOne
+    private Weapon weapon;
 }

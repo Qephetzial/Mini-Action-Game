@@ -3,12 +3,12 @@ import Button from "../genericComponents/Button";
 import Chest from "./components/Chest";
 import Balance from "../genericComponents/Balance";
 
-function LuckyShop() {
+function LuckyShop({appUser, setAppUser}) {
 
 
 
 
-    const [gold, setGold] = useState('1000')
+    const [coin, setCoin] = useState(appUser.coin)
 
 
     const [chests, setChests] = useState([
@@ -70,7 +70,7 @@ function LuckyShop() {
             />
             <div className="Balance">
                 <Balance
-                    gold={gold}
+                    coin={coin}
                 />
             </div>
             <div style={{textAlign:'center', marginTop:"1rem"}}>

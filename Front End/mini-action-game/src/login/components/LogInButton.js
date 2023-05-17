@@ -11,10 +11,10 @@ function LogInButton({style, setAppUser}) {
 
     let newUser = {
         name:'',
-        gold:0,
+        coin:0,
     };
 
-    async function getUsers() {
+    async function getAppUsers() {
         const requestOptions = {
             method: 'GET'
         }
@@ -24,7 +24,7 @@ function LogInButton({style, setAppUser}) {
         setAppUser(response[0])
     }
 
-    async function createUser() {
+    async function createAppUser() {
         const requestOptions = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -49,14 +49,14 @@ function LogInButton({style, setAppUser}) {
         return (
             <div style={{display:'inline-flex'}}>
                 <button className={style} onClick={()=>{setState('signUp')}}><span>Sign up</span></button>
-                <button className={style} onClick={async()=>{await getUsers()}}><span>Sign in</span></button>
+                <button className={style} onClick={async()=>{await getAppUsers()}}><span>Sign in</span></button>
             </div>
         )
     } else if (state === 'signUp') {
         return (
             <div>
                 <input placeholder='Your name' onChange={(event)=> newUser.name = event.currentTarget.value}/>
-                <button className={style} onClick={async()=>{await createUser()}}><span>Sign up</span></button>
+                <button className={style} onClick={async()=>{await createAppUser()}}><span>Sign up</span></button>
             </div>
         )
     } else {

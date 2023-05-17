@@ -2,45 +2,32 @@ package com.beta.MiniActionGame.controller;
 
 import com.beta.MiniActionGame.model.AppUser;
 import com.beta.MiniActionGame.service.AppUserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
-
 @RestController
+@AllArgsConstructor
 @RequestMapping("/api/user")
 public class AppUserController {
 
     private final AppUserService appUserService;
 
-    @Autowired
-    public AppUserController(AppUserService appUserService) {
-        this.appUserService = appUserService;
-    }
-
+    //This route creates the app user after registering and returning it.
     @PostMapping("/create")
     public AppUser createAppUser(@RequestBody AppUser appUser) {
         return appUserService.createAppUser(appUser);
     }
 
-    @PostMapping("/save")
-    public void saveAppUser(@RequestBody AppUser appUser){
-        appUserService.saveAppUser(appUser);
-    }
-
-    @PostMapping("/update-appUser")
-    public AppUser updateAppUser(@RequestBody AppUser appUser) {
-        return appUserService.updateAppUser(appUser);
-    }
-
+    //This route returns the app users for login. It's a temporary solution before the proper log in system.
     @GetMapping("/get-appUsers")
     public List<AppUser> getAppUsers(){
         return appUserService.getAppUsers();
     }
 
-    @PostMapping("/update-heroes")
-    public void updateHeroes(@RequestBody AppUser appUser){
-        appUserService.updateAppUser(appUser);
+    //This route updates any changes in app user
+    @PostMapping("/update-appUser")
+    public void updateAppUser(@RequestBody AppUser appUser) {
+         appUserService.updateAppUser(appUser);
     }
 }

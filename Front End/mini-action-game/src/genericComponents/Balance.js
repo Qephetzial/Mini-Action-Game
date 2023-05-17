@@ -1,7 +1,7 @@
 import React from "react";
 
-function Balance({gold}) {
-  return <h2>BALANCE: {gold}G</h2>
+function Balance({coin}) {
+  return <h2>BALANCE: {coin}Coin</h2>
 }
 
 export default Balance

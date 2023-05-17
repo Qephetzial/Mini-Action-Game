@@ -1,19 +1,17 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 function DisplayHero({appUser}) {
-    let heroGif = '';
-    if (appUser.heroes.fighter.condition === 'SELECTED') {
-        heroGif = appUser.heroes.fighter.gif;
-    } else if (appUser.heroes.ranger.condition === 'SELECTED') {
-        heroGif = appUser.heroes.ranger.gif;
-    } else if (appUser.heroes.mage.condition === 'SELECTED') {
-        heroGif = appUser.heroes.mage.gif;
-    }  else if (appUser.heroes.demon.condition === 'SELECTED') {
-        heroGif = appUser.heroes.demon.gif;
-    }
+    const[heroGif, setHeroGif] = useState();
+    useEffect(()=> {
+        for (const hero of appUser.heroes) {
+            if (hero.selected) {
+                setHeroGif(hero.gif);
+            }
+        }
+    })
 
     return (
-        <img className='displayHero' src={"heroes/"+ heroGif} alt="selected hero"/>
+        <img className='displayHero' src={heroGif} alt="selected hero"/>
     )
 }
 

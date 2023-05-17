@@ -21,8 +21,8 @@ public class HeroFactory {
         fighter.setValue(0);
         fighter.setObtained(true);
         fighter.setSelected(true);
-        fighter.setPng("fighter.png");
-        fighter.setGif("fighter.gif");
+        fighter.setPng("heroes/fighter.png");
+        fighter.setGif("heroes/fighter.gif");
         return fighter;
     }
 
@@ -38,8 +38,8 @@ public class HeroFactory {
         ranger.setValue(1000);
         ranger.setObtained(false);
         ranger.setSelected(false);
-        ranger.setPng("ranger.png");
-        ranger.setGif("ranger.gif");
+        ranger.setPng("heroes/ranger.png");
+        ranger.setGif("heroes/ranger.gif");
         return ranger;
     }
 
@@ -55,8 +55,8 @@ public class HeroFactory {
         mage.setValue(4000);
         mage.setObtained(false);
         mage.setSelected(false);
-        mage.setPng("mage.png");
-        mage.setGif("mage.gif");
+        mage.setPng("heroes/mage.png");
+        mage.setGif("heroes/mage.gif");
         return mage;
     }
 
@@ -72,8 +72,8 @@ public class HeroFactory {
         demon.setValue(10000);
         demon.setObtained(false);
         demon.setSelected(false);
-        demon.setPng("demon.png");
-        demon.setGif("demon.gif");
+        demon.setPng("heroes/demon.png");
+        demon.setGif("heroes/demon.gif");
         return demon;
     }
 }

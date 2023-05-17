@@ -2,6 +2,7 @@ package com.beta.MiniActionGame.model;
 
 import com.beta.MiniActionGame.model.creature.Hero;
 import com.beta.MiniActionGame.model.item.Armor;
+import com.beta.MiniActionGame.model.item.Weapon;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,4 +42,8 @@ public class AppUser {
     @OneToMany (cascade = CascadeType.ALL)
     //This field contains the armors what is not on the heroes and the user collected.
     private List<Armor> armors;
+
+    @OneToMany (cascade = CascadeType.ALL)
+    //This field contains the weapons what is not on the heroes and the user collected.
+    private List<Weapon> weapons;
 }

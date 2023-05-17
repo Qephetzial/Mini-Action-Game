@@ -35,7 +35,11 @@ function RouterManager() {
                             setAppUser={setAppUser}
                         />
                     }/>
-                    <Route path="lucky-shop" element={<LuckyShop/>}/>
+                    <Route path="lucky-shop" element={
+                        <LuckyShop
+                            appUser={appUser}
+                            setAppUser={setAppUser}
+                        />}/>
                 </Route>
             </Routes>
         </BrowserRouter>
