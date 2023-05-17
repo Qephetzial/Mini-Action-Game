@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 //This class contains a blueprint for every playable characters.
 public class HeroFactory {
 
-    //Fighter blueprint.
+    //Blueprint of a fighter hero.
     public Hero createFighter() {
         Hero fighter = new Hero();
         fighter.setName(CreatureType.FIGHTER);
@@ -26,7 +26,7 @@ public class HeroFactory {
         return fighter;
     }
 
-    //Ranger blueprint.
+    //Blueprint of a ranger hero.
     public Hero createRanger() {
         Hero ranger = new Hero();
         ranger.setName(CreatureType.RANGER);
@@ -43,7 +43,7 @@ public class HeroFactory {
         return ranger;
     }
 
-    //Mage blueprint.
+    //Blueprint of a mage hero.
     public Hero createMage() {
         Hero mage = new Hero();
         mage.setName(CreatureType.MAGE);
@@ -60,7 +60,7 @@ public class HeroFactory {
         return mage;
     }
 
-    //Demon blueprint.
+    //Blueprint of a demon hero.
     public Hero createDemon() {
         Hero demon = new Hero();
         demon.setName(CreatureType.DEMON);
