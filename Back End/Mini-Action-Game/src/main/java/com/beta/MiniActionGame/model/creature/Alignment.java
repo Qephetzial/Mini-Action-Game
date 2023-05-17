@@ -1,4 +1,4 @@
-package com.beta.MiniActionGame.model.entity;
+package com.beta.MiniActionGame.model.creature;
 
 public enum Alignment {
         EVIL,

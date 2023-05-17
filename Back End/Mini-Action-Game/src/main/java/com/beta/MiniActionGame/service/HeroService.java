@@ -1,7 +1,7 @@
 package com.beta.MiniActionGame.service;
 
 import com.beta.MiniActionGame.factory.HeroFactory;
-import com.beta.MiniActionGame.model.entity.Hero;
+import com.beta.MiniActionGame.model.creature.Hero;
 import com.beta.MiniActionGame.repository.hero.HeroRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

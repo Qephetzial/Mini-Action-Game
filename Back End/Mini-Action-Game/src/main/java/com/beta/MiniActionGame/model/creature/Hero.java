@@ -1,9 +1,8 @@
-package com.beta.MiniActionGame.model.entity;
+package com.beta.MiniActionGame.model.creature;
 
 import com.beta.MiniActionGame.model.item.Armor;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

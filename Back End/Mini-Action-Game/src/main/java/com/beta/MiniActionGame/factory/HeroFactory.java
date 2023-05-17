@@ -1,16 +1,18 @@
 package com.beta.MiniActionGame.factory;
 
-import com.beta.MiniActionGame.model.entity.*;
+import com.beta.MiniActionGame.model.creature.*;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @NoArgsConstructor
+//This class contains a blueprint for every playable characters.
 public class HeroFactory {
 
+    //Fighter blueprint.
     public Hero createFighter() {
         Hero fighter = new Hero();
-        fighter.setName("Fighter");
+        fighter.setName(CreatureType.FIGHTER);
         fighter.setHealth(1000);
         fighter.setAlignment(Alignment.GOOD);
         fighter.setStrength(80);
@@ -24,9 +26,10 @@ public class HeroFactory {
         return fighter;
     }
 
+    //Ranger blueprint.
     public Hero createRanger() {
         Hero ranger = new Hero();
-        ranger.setName("Ranger");
+        ranger.setName(CreatureType.RANGER);
         ranger.setHealth(800);
         ranger.setAlignment(Alignment.GOOD);
         ranger.setStrength(100);
@@ -40,9 +43,10 @@ public class HeroFactory {
         return ranger;
     }
 
+    //Mage blueprint.
     public Hero createMage() {
         Hero mage = new Hero();
-        mage.setName("Mage");
+        mage.setName(CreatureType.MAGE);
         mage.setHealth(700);
         mage.setAlignment(Alignment.GOOD);
         mage.setStrength(130);
@@ -56,9 +60,10 @@ public class HeroFactory {
         return mage;
     }
 
+    //Demon blueprint.
     public Hero createDemon() {
         Hero demon = new Hero();
-        demon.setName("Demon");
+        demon.setName(CreatureType.DEMON);
         demon.setHealth(1500);
         demon.setAlignment(Alignment.GOOD);
         demon.setStrength(150);

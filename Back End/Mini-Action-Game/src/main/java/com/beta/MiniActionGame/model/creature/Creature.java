@@ -1,8 +1,7 @@
-package com.beta.MiniActionGame.model.entity;
+package com.beta.MiniActionGame.model.creature;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
-//This is the core class for every entity. Every entity must be inherited from this class.
+//This is the core class for every entity. Every creature must be inherited from this class.
 public abstract class Creature {
 
     @Id
@@ -23,8 +22,8 @@ public abstract class Creature {
     //A unique ID to the creature.
     private UUID id;
 
-    //This field determines the creature's type.
-    private String name;
+    //This field determines the creature's type/race.
+    private CreatureType name;
 
     //This field determines how much hit point the creature has.
     private int health;
