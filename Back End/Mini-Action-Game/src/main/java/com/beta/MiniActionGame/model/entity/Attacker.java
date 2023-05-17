@@ -7,7 +7,6 @@ import lombok.Setter;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 //Entities who extend this class are able to deal damage.

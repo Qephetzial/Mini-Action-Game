@@ -2,7 +2,6 @@ package com.beta.MiniActionGame.model.item;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,16 +10,26 @@ import java.util.UUID;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+//This class is the core of every item. All the item must be inherited from this class.
 public abstract class Items {
+
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    //A unique ID to the item.
     private UUID id;
+
+    //This field determines the item name.
     private String name;
+
+    //This field determines how rare the item is. Also, the ENUM contains the worth of the item.
     private Rarity rarity;
-    private String imageLink;
+
+    //This field determines the image represented on the front-end.
+    private String image;
+
+    //This field determines the item's type.
     private ItemType itemType;
 }

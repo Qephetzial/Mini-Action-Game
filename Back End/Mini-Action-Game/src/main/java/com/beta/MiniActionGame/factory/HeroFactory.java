@@ -17,7 +17,8 @@ public class HeroFactory {
         fighter.setDefence(40);
         fighter.setMovementSpeed(1);
         fighter.setValue(0);
-        fighter.setCondition("SELECTED");
+        fighter.setObtained(true);
+        fighter.setSelected(true);
         fighter.setPng("fighter.png");
         fighter.setGif("fighter.gif");
         return fighter;
@@ -32,7 +33,8 @@ public class HeroFactory {
         ranger.setDefence(30);
         ranger.setMovementSpeed(2);
         ranger.setValue(1000);
-        ranger.setCondition("BUY");
+        ranger.setObtained(false);
+        ranger.setSelected(false);
         ranger.setPng("ranger.png");
         ranger.setGif("ranger.gif");
         return ranger;
@@ -47,7 +49,8 @@ public class HeroFactory {
         mage.setDefence(20);
         mage.setMovementSpeed(1);
         mage.setValue(4000);
-        mage.setCondition("BUY");
+        mage.setObtained(false);
+        mage.setSelected(false);
         mage.setPng("mage.png");
         mage.setGif("mage.gif");
         return mage;
@@ -62,7 +65,8 @@ public class HeroFactory {
         demon.setDefence(50);
         demon.setMovementSpeed(3);
         demon.setValue(10000);
-        demon.setCondition("BUY");
+        demon.setObtained(false);
+        demon.setSelected(false);
         demon.setPng("demon.png");
         demon.setGif("demon.gif");
         return demon;
