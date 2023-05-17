@@ -3,23 +3,18 @@ package com.beta.MiniActionGame.service;
 
 import com.beta.MiniActionGame.model.AppUser;
 import com.beta.MiniActionGame.repository.AppUserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@AllArgsConstructor
 public class AppUserService {
     private final AppUserRepository appUserRepository;
-    private final ItemCollectorService itemCollectorService;
-    private final HeroCollectorService heroCollectorService;
-
-    @Autowired
-    public AppUserService(AppUserRepository appUserRepository, ItemCollectorService itemCollectorService, HeroCollectorService heroCollectorService) {
-        this.appUserRepository = appUserRepository;
-        this.itemCollectorService = itemCollectorService;
-        this.heroCollectorService = heroCollectorService;
-    }
+    private final HeroService heroService;
 
     public void saveAppUser (AppUser appUser) {
         appUserRepository.save(appUser);
@@ -39,8 +34,8 @@ public class AppUserService {
     }
 
     public AppUser createAppUser(AppUser appUser) {
-        appUser.setHeroes(heroCollectorService.createHeroCollector());
-        appUser.setItems(itemCollectorService.createItemCollector());
+        appUser.setHeroes(heroService.createHeroes());
+        appUser.setArmors(new ArrayList<>());
         appUserRepository.save(appUser);
         return appUserRepository.findByName(appUser.getName());
     }

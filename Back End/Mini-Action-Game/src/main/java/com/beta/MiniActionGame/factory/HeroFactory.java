@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class HeroFactory {
 
-    public Fighter createFighter() {
-        Fighter fighter = new Fighter();
+    public Hero createFighter() {
+        Hero fighter = new Hero();
         fighter.setName("Fighter");
         fighter.setHealth(1000);
         fighter.setAlignment(Alignment.GOOD);
@@ -23,8 +23,8 @@ public class HeroFactory {
         return fighter;
     }
 
-    public Ranger createRanger() {
-        Ranger ranger = new Ranger();
+    public Hero createRanger() {
+        Hero ranger = new Hero();
         ranger.setName("Ranger");
         ranger.setHealth(800);
         ranger.setAlignment(Alignment.GOOD);
@@ -38,8 +38,8 @@ public class HeroFactory {
         return ranger;
     }
 
-    public Mage createMage() {
-        Mage mage = new Mage();
+    public Hero createMage() {
+        Hero mage = new Hero();
         mage.setName("Mage");
         mage.setHealth(700);
         mage.setAlignment(Alignment.GOOD);
@@ -53,8 +53,8 @@ public class HeroFactory {
         return mage;
     }
 
-    public Demon createDemon() {
-        Demon demon = new Demon();
+    public Hero createDemon() {
+        Hero demon = new Hero();
         demon.setName("Demon");
         demon.setHealth(1500);
         demon.setAlignment(Alignment.GOOD);

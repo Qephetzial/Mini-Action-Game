@@ -1,6 +1,6 @@
 package com.beta.MiniActionGame.model;
 
-import com.beta.MiniActionGame.model.collector.HeroCollector;
+import com.beta.MiniActionGame.model.entity.Hero;
 import com.beta.MiniActionGame.model.item.Armor;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,8 +27,8 @@ public class AppUser {
     @Column(unique=true, name = "name")
     private String name;
     private int gold;
-    @OneToOne (cascade = CascadeType.ALL)
-    private HeroCollector heroes;
+    @OneToMany (cascade = CascadeType.ALL)
+    private List<Hero> heroes;
     @OneToMany (cascade = CascadeType.ALL)
     private List<Armor> armors;
 }

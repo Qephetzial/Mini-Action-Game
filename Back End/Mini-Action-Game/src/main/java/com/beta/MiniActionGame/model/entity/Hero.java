@@ -1,5 +1,6 @@
 package com.beta.MiniActionGame.model.entity;
 
+import com.beta.MiniActionGame.model.item.Armor;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
@@ -12,12 +13,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public abstract class Hero extends Attacker implements Movement {
+public class Hero extends Attacker{
     private int movementSpeed;
     private int value;
     private String condition;
     private String png;
     private String gif;
     @OneToOne
-    private CommonAndUnCommonArmor armor;
+    private Armor armor;
 }
