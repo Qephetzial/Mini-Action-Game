@@ -1,13 +1,15 @@
 package com.beta.MiniActionGame.model;
 
 import com.beta.MiniActionGame.model.collector.HeroCollector;
-import com.beta.MiniActionGame.model.collector.ItemCollector;
+import com.beta.MiniActionGame.model.item.Armor;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
+
+import java.util.List;
 import java.util.UUID;
 
 
@@ -27,6 +29,6 @@ public class AppUser {
     private int gold;
     @OneToOne (cascade = CascadeType.ALL)
     private HeroCollector heroes;
-    @OneToOne (cascade = CascadeType.ALL)
-    private ItemCollector items;
+    @OneToMany (cascade = CascadeType.ALL)
+    private List<Armor> armors;
 }

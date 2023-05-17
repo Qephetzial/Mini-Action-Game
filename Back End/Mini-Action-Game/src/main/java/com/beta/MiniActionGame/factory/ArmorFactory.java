@@ -1,11 +1,9 @@
 package com.beta.MiniActionGame.factory;
 
 import com.beta.MiniActionGame.model.item.DamageType;
-import com.beta.MiniActionGame.model.item.armor.CommonAndUnCommonArmor;
 import com.beta.MiniActionGame.model.item.ItemType;
 import com.beta.MiniActionGame.model.item.Rarity;
-import com.beta.MiniActionGame.model.item.armor.LegendaryArmor;
-import com.beta.MiniActionGame.model.item.armor.RareAndEpicArmor;
+import com.beta.MiniActionGame.model.item.Armor;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -13,8 +11,8 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class ArmorFactory {
 
-    public CommonAndUnCommonArmor createCommonLightArmor() {
-        CommonAndUnCommonArmor commonLightArmor = new CommonAndUnCommonArmor();
+    public Armor createCommonLightArmor() {
+        Armor commonLightArmor = new Armor();
         commonLightArmor.setName("Light Armor");
         commonLightArmor.setRarity(Rarity.COMMON);
         commonLightArmor.setImageLink("armors/common-light-armor.png");
@@ -24,8 +22,8 @@ public class ArmorFactory {
         return commonLightArmor;
     }
 
-    public CommonAndUnCommonArmor createCommonMediumArmor() {
-        CommonAndUnCommonArmor commonMediumArmor = new CommonAndUnCommonArmor();
+    public Armor createCommonMediumArmor() {
+        Armor commonMediumArmor = new Armor();
         commonMediumArmor.setName("Medium Armor");
         commonMediumArmor.setRarity(Rarity.COMMON);
         commonMediumArmor.setImageLink("armors/common-medium-armor.png");
@@ -35,8 +33,8 @@ public class ArmorFactory {
         return commonMediumArmor;
     }
 
-    public CommonAndUnCommonArmor createCommonHeavyArmor() {
-        CommonAndUnCommonArmor commonHeavyArmor = new CommonAndUnCommonArmor();
+    public Armor createCommonHeavyArmor() {
+        Armor commonHeavyArmor = new Armor();
         commonHeavyArmor.setName("Heavy Armor");
         commonHeavyArmor.setRarity(Rarity.COMMON);
         commonHeavyArmor.setImageLink("armors/common-heavy-armor.png");
@@ -46,8 +44,8 @@ public class ArmorFactory {
         return commonHeavyArmor;
     }
 
-    public CommonAndUnCommonArmor createUnCommonLightArmor() {
-        CommonAndUnCommonArmor unCommonAssassinArmor = new CommonAndUnCommonArmor();
+    public Armor createUnCommonLightArmor() {
+        Armor unCommonAssassinArmor = new Armor();
         unCommonAssassinArmor.setName("Light Armor");
         unCommonAssassinArmor.setRarity(Rarity.UNCOMMON);
         unCommonAssassinArmor.setImageLink("armors/uncommon-light-armor.png");
@@ -57,8 +55,8 @@ public class ArmorFactory {
         return unCommonAssassinArmor;
     }
 
-    public CommonAndUnCommonArmor createUnCommonMediumArmor() {
-        CommonAndUnCommonArmor unCommonChestPlateArmor = new CommonAndUnCommonArmor();
+    public Armor createUnCommonMediumArmor() {
+        Armor unCommonChestPlateArmor = new Armor();
         unCommonChestPlateArmor.setName("Medium Armor");
         unCommonChestPlateArmor.setRarity(Rarity.UNCOMMON);
         unCommonChestPlateArmor.setImageLink("armors/common-medium-armor.png");
@@ -68,8 +66,8 @@ public class ArmorFactory {
         return unCommonChestPlateArmor;
     }
 
-    public CommonAndUnCommonArmor createUnCommonHeavyArmor() {
-        CommonAndUnCommonArmor unCommonHealthArmor = new CommonAndUnCommonArmor();
+    public Armor createUnCommonHeavyArmor() {
+        Armor unCommonHealthArmor = new Armor();
         unCommonHealthArmor.setName("Health Armor");
         unCommonHealthArmor.setRarity(Rarity.UNCOMMON);
         unCommonHealthArmor.setImageLink("armors/common-heavy-armor.png");
@@ -79,8 +77,8 @@ public class ArmorFactory {
         return unCommonHealthArmor;
     }
 
-    public RareAndEpicArmor createRareLightArmor() {
-        RareAndEpicArmor rareAndEpicArmor = new RareAndEpicArmor();
+    public Armor createRareLightArmor() {
+        Armor rareAndEpicArmor = new Armor();
         rareAndEpicArmor.setName("Light Armor");
         rareAndEpicArmor.setRarity(Rarity.RARE);
         rareAndEpicArmor.setImageLink("armors/rare-light-armor.png");
@@ -91,8 +89,8 @@ public class ArmorFactory {
         return rareAndEpicArmor;
     }
 
-    public RareAndEpicArmor createRareMediumArmor() {
-        RareAndEpicArmor rareAndEpicArmor = new RareAndEpicArmor();
+    public Armor createRareMediumArmor() {
+        Armor rareAndEpicArmor = new Armor();
         rareAndEpicArmor.setName("Medium Armor");
         rareAndEpicArmor.setRarity(Rarity.RARE);
         rareAndEpicArmor.setImageLink("armors/rare-medium-armor.png");
@@ -103,8 +101,8 @@ public class ArmorFactory {
         return rareAndEpicArmor;
     }
 
-    public RareAndEpicArmor createRareHeavyArmor() {
-        RareAndEpicArmor rareAndEpicArmor = new RareAndEpicArmor();
+    public Armor createRareHeavyArmor() {
+        Armor rareAndEpicArmor = new Armor();
         rareAndEpicArmor.setName("Heavy Armor");
         rareAndEpicArmor.setRarity(Rarity.RARE);
         rareAndEpicArmor.setImageLink("armors/rare-heavy-armor.png");
@@ -115,8 +113,8 @@ public class ArmorFactory {
         return rareAndEpicArmor;
     }
 
-    public RareAndEpicArmor createEpicLightArmor() {
-        RareAndEpicArmor rareAndEpicArmor = new RareAndEpicArmor();
+    public Armor createEpicLightArmor() {
+        Armor rareAndEpicArmor = new Armor();
         rareAndEpicArmor.setName("Light Armor");
         rareAndEpicArmor.setRarity(Rarity.EPIC);
         rareAndEpicArmor.setImageLink("armors/epic-light-armor.png");
@@ -127,8 +125,8 @@ public class ArmorFactory {
         return rareAndEpicArmor;
     }
 
-    public RareAndEpicArmor createEpicMediumArmor() {
-        RareAndEpicArmor rareAndEpicArmor = new RareAndEpicArmor();
+    public Armor createEpicMediumArmor() {
+        Armor rareAndEpicArmor = new Armor();
         rareAndEpicArmor.setName("Medium Armor");
         rareAndEpicArmor.setRarity(Rarity.EPIC);
         rareAndEpicArmor.setImageLink("armors/epic-medium-armor.png");
@@ -139,8 +137,8 @@ public class ArmorFactory {
         return rareAndEpicArmor;
     }
 
-    public RareAndEpicArmor createEpicHeavyArmor() {
-        RareAndEpicArmor rareAndEpicArmor = new RareAndEpicArmor();
+    public Armor createEpicHeavyArmor() {
+        Armor rareAndEpicArmor = new Armor();
         rareAndEpicArmor.setName("Heavy Armor");
         rareAndEpicArmor.setRarity(Rarity.EPIC);
         rareAndEpicArmor.setImageLink("armors/epic-heavy-armor.png");
@@ -151,8 +149,8 @@ public class ArmorFactory {
         return rareAndEpicArmor;
     }
 
-    public LegendaryArmor createLegendaryLightArmor() {
-        LegendaryArmor legendaryArmor = new LegendaryArmor();
+    public Armor createLegendaryLightArmor() {
+        Armor legendaryArmor = new Armor();
         legendaryArmor.setName("Light Armor");
         legendaryArmor.setRarity(Rarity.LEGENDARY);
         legendaryArmor.setImageLink("armors/legendary-light-armor.png");
@@ -165,8 +163,8 @@ public class ArmorFactory {
         return legendaryArmor;
     }
 
-    public LegendaryArmor createLegendaryMediumArmor() {
-        LegendaryArmor legendaryArmor = new LegendaryArmor();
+    public Armor createLegendaryMediumArmor() {
+        Armor legendaryArmor = new Armor();
         legendaryArmor.setName("Medium Armor");
         legendaryArmor.setRarity(Rarity.LEGENDARY);
         legendaryArmor.setImageLink("armors/legendary-medium-armor.png");
@@ -179,8 +177,8 @@ public class ArmorFactory {
         return legendaryArmor;
     }
 
-    public LegendaryArmor createLegendaryHeavyArmor() {
-        LegendaryArmor legendaryArmor = new LegendaryArmor();
+    public Armor createLegendaryHeavyArmor() {
+        Armor legendaryArmor = new Armor();
         legendaryArmor.setName("Heavy Armor");
         legendaryArmor.setRarity(Rarity.LEGENDARY);
         legendaryArmor.setImageLink("armors/legendary-heavy-armor.png");

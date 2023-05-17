@@ -1,5 +1,6 @@
-package com.beta.MiniActionGame.model.item.armor;
+package com.beta.MiniActionGame.model.item;
 
+import com.beta.MiniActionGame.model.item.DamageType;
 import com.beta.MiniActionGame.model.item.Items;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
@@ -12,7 +13,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public abstract class Armor extends Items {
+public class Armor extends Items {
     private int health;
     private int defence;
+    private DamageType resistance;
+    private DamageType secondaryResistance;
+    private int movementSpeed;
 }
