@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function Chest({index, chest}) {
+function Chest({index, chest, appUser}) {
 
 
     const id = "myModal"+index
@@ -39,6 +39,29 @@ function Chest({index, chest}) {
     }
 
 
+    const createItem = async() => {
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(appUser)
+        }
+        switch (index) {
+            case '0':
+                await fetch(`/api/chest/iron`, requestOptions);
+                break;
+            case '1':
+                await fetch(`/api/chest/bronze`, requestOptions);
+                break;
+            case '2':
+                await fetch(`/api/chest/silver`, requestOptions);
+                break;
+            case '3':
+                await fetch(`/api/chest/golden`, requestOptions);
+                break;
+        }
+
+    }
+
     return (
         <>
             <div onClick={openModal} style={{display:'inline-flex'}}>
@@ -58,7 +81,7 @@ function Chest({index, chest}) {
                         </ul>
                     </span>
                     <span style={{alignSelf:"flex-end"}}>
-                        <button className='blockBox btn-10 transparent'><span>BUY</span></button>
+                        <button className='blockBox btn-10 transparent' onClick={createItem}><span>BUY</span></button>
                     </span>
                 </div>
             </div>

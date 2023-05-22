@@ -77,20 +77,24 @@ function LuckyShop({appUser, setAppUser}) {
                 <Chest
                     index={'0'}
                     chest={chests[0]}
+                    appUser={appUser}
                 />
                 <Chest
                     index={'1'}
                     chest={chests[1]}
+                    appUser={appUser}
                 />
             </div>
             <div style={{textAlign:'center'}}>
                 <Chest
                     index={'2'}
                     chest={chests[2]}
+                    appUser={appUser}
                 />
                 <Chest
                     index={'3'}
                     chest={chests[3]}
+                    appUser={appUser}
                 />
             </div>
         </>
