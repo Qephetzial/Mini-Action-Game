@@ -18,10 +18,12 @@ function LogInButton({style, setAppUser}) {
         const requestOptions = {
             method: 'GET'
         }
-        const response = await (await fetch(`/api/user/get-appUsers`, requestOptions)).json();
-        setUsers(response)
-        setState('logIn')
-        setAppUser(response[0])
+        try {
+            const response = await (await fetch(`/api/user`, requestOptions)).json();
+            setUsers(response)
+            setState('logIn')
+            setAppUser(response[0])
+        } catch (error) {console.log(error)}
     }
 
     async function createAppUser() {
@@ -30,7 +32,7 @@ function LogInButton({style, setAppUser}) {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(newUser)
         }
-        const response = await (await fetch(`/api/user/create`, requestOptions)).json();
+        const response = await (await fetch(`/api/user`, requestOptions)).json();
         setAppUser(response)
         navigate('/main')
     }

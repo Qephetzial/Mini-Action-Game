@@ -1,17 +1,23 @@
 import React, {useState} from "react";
 import '../../style/HeroSelector.css'
 
+const getButtonText = ({selected, obtained}) => {
+    if (selected && obtained) {
+        return "SELECTED";
+    } else if (!selected && obtained) {
+        return "SELECT";
+    } else { return "BUY"}
+}
+
 function HeroSelector({heroes, setHeroes, coin, setCoin, appUser, setAppUser}) {
-
-    const [obtained, setObtained] = useState(heroes[0].obtained);
-    const [selected, setSelected] = useState(heroes[0].selected);
-    const [buttonText, setButtonText] = useState('SELECTED')
-
+    const obtained = heroes[0].obtained;
+    const selected = heroes[0].selected;
+    const buttonText = getButtonText({selected, obtained});
 
     let btnClass = ''
 
 
-    if (!selected) {
+    if (!heroes[0].selected) {
         btnClass = 'btn-10'
     } else {
         btnClass = 'btn-11'
@@ -23,33 +29,16 @@ function HeroSelector({heroes, setHeroes, coin, setCoin, appUser, setAppUser}) {
     const rollRight = () => {
         let newHeroes = [...heroes]
         newHeroes.push(newHeroes.shift())
-        setSelected(newHeroes[0].selected)
-        setObtained(newHeroes[0].obtained)
         setHeroes(newHeroes)
-        changeButtonText();
     };
 
 
     const rollLeft = () => {
         let newHeroes = [...heroes];
         newHeroes.unshift(newHeroes.pop());
-        setSelected(newHeroes[0].selected);
-        setObtained(newHeroes[0].obtained);
         setHeroes(newHeroes);
-        changeButtonText();
     };
 
-    const changeButtonText = () => {
-        if (obtained) {
-            if (selected) {
-                setButtonText("SELECTED");
-            } else {
-                setButtonText("SELECT");
-            }
-        } else {
-            setButtonText("BUY");
-        }
-    }
 
     const select = async () => {
         if (!obtained && heroes[0].value < coin) {
@@ -65,7 +54,7 @@ function HeroSelector({heroes, setHeroes, coin, setCoin, appUser, setAppUser}) {
     };
 
 
-    async function conditionChanger () {
+    async function conditionChanger() {
         let newHeroes = [...heroes]
         for (let i = 0; i < newHeroes.length; i++) {
             if (newHeroes[i].selected) {
@@ -74,31 +63,18 @@ function HeroSelector({heroes, setHeroes, coin, setCoin, appUser, setAppUser}) {
         }
         newHeroes[0].obtained = true;
         newHeroes[0].selected = true;
-        setSelected(newHeroes[0].selected)
         setHeroes(newHeroes)
-        await updateHeroes()
+        await updateAppUser()
     }
 
-
-    async function updateHeroes() {
-        const requestOptions = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(appUser)
-        }
-        await fetch(`/api/user/update-heroes`, requestOptions);
-    }
 
     async function updateAppUser(){
         const requestOptions = {
-            method: 'POST',
+            method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(appUser)
         }
-        const response = await (await fetch(`/api/user/update-appUser`, requestOptions)).json();
-        setAppUser(response)
-        setCoin(response.coin)
-
+        await fetch(`/api/user`, requestOptions);
     }
 
 
