@@ -21,6 +21,14 @@ Body {
   }
 }
 
+
+.grid {
+  position: absolute;
+  display: grid;
+  gap: 10px;
+  grid-auto-flow: column;
+}
+
 .placeHolder {
   background: white;
   width: 100px;

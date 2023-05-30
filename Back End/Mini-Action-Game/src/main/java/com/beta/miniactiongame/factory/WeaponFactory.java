@@ -20,7 +20,7 @@ public class WeaponFactory {
         Weapon sword = new Weapon();
         sword.setName("Black sword");
         sword.setRarity(Rarity.COMMON);
-        sword.setImage("swords/common-black-sword.png");
+        sword.setPng("swords/common-black-sword.png");
         sword.setItemType(ItemType.SWORD);
         sword.setDamage(14);
         sword.setDamageType(DamageType.SLASHING);
@@ -36,7 +36,7 @@ public class WeaponFactory {
         Weapon sword = new Weapon();
         sword.setName("Bear sword");
         sword.setRarity(Rarity.COMMON);
-        sword.setImage("swords/common-bear-sword.png");
+        sword.setPng("swords/common-bear-sword.png");
         sword.setItemType(ItemType.SWORD);
         sword.setDamage(27);
         sword.setDamageType(DamageType.SLASHING);
@@ -52,7 +52,7 @@ public class WeaponFactory {
         Weapon sword = new Weapon();
         sword.setName("Red metal sword");
         sword.setRarity(Rarity.COMMON);
-        sword.setImage("swords/common-redMetal-sword.png");
+        sword.setPng("swords/common-redMetal-sword.png");
         sword.setItemType(ItemType.SWORD);
         sword.setDamage(14);
         sword.setDamageType(DamageType.SLASHING);
@@ -68,7 +68,7 @@ public class WeaponFactory {
         Weapon sword = new Weapon();
         sword.setName("Ancient sword");
         sword.setRarity(Rarity.UNCOMMON);
-        sword.setImage("swords/uncommon-ancient-sword.png");
+        sword.setPng("swords/uncommon-ancient-sword.png");
         sword.setItemType(ItemType.SWORD);
         sword.setDamage(45);
         sword.setDamageType(DamageType.SLASHING);
@@ -84,7 +84,7 @@ public class WeaponFactory {
         Weapon sword = new Weapon();
         sword.setName("Bone sword");
         sword.setRarity(Rarity.UNCOMMON);
-        sword.setImage("swords/uncommon-bone-sword.png");
+        sword.setPng("swords/uncommon-bone-sword.png");
         sword.setItemType(ItemType.SWORD);
         sword.setDamage(31);
         sword.setDamageType(DamageType.SLASHING);
@@ -100,7 +100,7 @@ public class WeaponFactory {
         Weapon sword = new Weapon();
         sword.setName("Eagle sword");
         sword.setRarity(Rarity.UNCOMMON);
-        sword.setImage("swords/uncommon-eagle-sword.png");
+        sword.setPng("swords/uncommon-eagle-sword.png");
         sword.setItemType(ItemType.SWORD);
         sword.setDamage(30);
         sword.setDamageType(DamageType.SLASHING);
@@ -116,7 +116,7 @@ public class WeaponFactory {
         Weapon sword = new Weapon();
         sword.setName("Cursed sword");
         sword.setRarity(Rarity.RARE);
-        sword.setImage("swords/rare-cursed-sword.png");
+        sword.setPng("swords/rare-cursed-sword.png");
         sword.setItemType(ItemType.SWORD);
         sword.setDamage(90);
         sword.setDamageType(DamageType.SLASHING);
@@ -132,7 +132,7 @@ public class WeaponFactory {
         Weapon sword = new Weapon();
         sword.setName("Executioner sword");
         sword.setRarity(Rarity.RARE);
-        sword.setImage("swords/rare-executioner-sword.png");
+        sword.setPng("swords/rare-executioner-sword.png");
         sword.setItemType(ItemType.SWORD);
         sword.setDamage(130);
         sword.setDamageType(DamageType.SLASHING);
@@ -148,7 +148,7 @@ public class WeaponFactory {
         Weapon sword = new Weapon();
         sword.setName("Necrotic sword");
         sword.setRarity(Rarity.RARE);
-        sword.setImage("swords/rare-necrotic-sword.png");
+        sword.setPng("swords/rare-necrotic-sword.png");
         sword.setItemType(ItemType.SWORD);
         sword.setDamage(135);
         sword.setDamageType(DamageType.SLASHING);
@@ -164,7 +164,7 @@ public class WeaponFactory {
         Weapon sword = new Weapon();
         sword.setName("Head splashing Hammer");
         sword.setRarity(Rarity.EPIC);
-        sword.setImage("swords/epic-headSplashing-hammer.png");
+        sword.setPng("swords/epic-headSplashing-hammer.png");
         sword.setItemType(ItemType.SWORD);
         sword.setDamage(750);
         sword.setDamageType(DamageType.BLUDGEONING);
@@ -180,7 +180,7 @@ public class WeaponFactory {
         Weapon sword = new Weapon();
         sword.setName("Heroic Axe");
         sword.setRarity(Rarity.EPIC);
-        sword.setImage("swords/epic-heroic-axe.png");
+        sword.setPng("swords/epic-heroic-axe.png");
         sword.setItemType(ItemType.SWORD);
         sword.setDamage(260);
         sword.setDamageType(DamageType.SLASHING);
@@ -196,7 +196,7 @@ public class WeaponFactory {
         Weapon sword = new Weapon();
         sword.setName("Magma Axe");
         sword.setRarity(Rarity.EPIC);
-        sword.setImage("swords/epic-magma-axe.png");
+        sword.setPng("swords/epic-magma-axe.png");
         sword.setItemType(ItemType.SWORD);
         sword.setDamage(255);
         sword.setDamageType(DamageType.FIRE);
@@ -212,7 +212,7 @@ public class WeaponFactory {
         Weapon sword = new Weapon();
         sword.setName("Demonic Spear");
         sword.setRarity(Rarity.LEGENDARY);
-        sword.setImage("swords/legendary-demonic-spear.png");
+        sword.setPng("swords/legendary-demonic-spear.png");
         sword.setItemType(ItemType.SWORD);
         sword.setDamage(700);
         sword.setDamageType(DamageType.POISON);
@@ -228,7 +228,7 @@ public class WeaponFactory {
         Weapon sword = new Weapon();
         sword.setName("Samurai Sword");
         sword.setRarity(Rarity.LEGENDARY);
-        sword.setImage("swords/legendary-samurai-sword.png");
+        sword.setPng("swords/legendary-samurai-sword.png");
         sword.setItemType(ItemType.SWORD);
         sword.setDamage(1000);
         sword.setDamageType(DamageType.SLASHING);
@@ -244,7 +244,7 @@ public class WeaponFactory {
         Weapon sword = new Weapon();
         sword.setName("Demonic Scythe");
         sword.setRarity(Rarity.LEGENDARY);
-        sword.setImage("swords/legendary-demonic-scythe.png");
+        sword.setPng("swords/legendary-demonic-scythe.png");
         sword.setItemType(ItemType.SWORD);
         sword.setDamage(1650);
         sword.setDamageType(DamageType.SLASHING);
@@ -260,7 +260,7 @@ public class WeaponFactory {
         Weapon bow = new Weapon();
         bow.setName("Bone Bow");
         bow.setRarity(Rarity.COMMON);
-        bow.setImage("bows/common-bone-bow.png");
+        bow.setPng("bows/common-bone-bow.png");
         bow.setItemType(ItemType.BOW);
         bow.setDamage(36);
         bow.setDamageType(DamageType.PIERCING);
@@ -276,7 +276,7 @@ public class WeaponFactory {
         Weapon bow = new Weapon();
         bow.setName("Old Bow");
         bow.setRarity(Rarity.COMMON);
-        bow.setImage("bows/common-old-bow.png");
+        bow.setPng("bows/common-old-bow.png");
         bow.setItemType(ItemType.BOW);
         bow.setDamage(37);
         bow.setDamageType(DamageType.PIERCING);
@@ -292,7 +292,7 @@ public class WeaponFactory {
         Weapon bow = new Weapon();
         bow.setName("Birch Bow");
         bow.setRarity(Rarity.COMMON);
-        bow.setImage("bows/common-birch-bow.png");
+        bow.setPng("bows/common-birch-bow.png");
         bow.setItemType(ItemType.BOW);
         bow.setDamage(18);
         bow.setDamageType(DamageType.PIERCING);
@@ -308,7 +308,7 @@ public class WeaponFactory {
         Weapon bow = new Weapon();
         bow.setName("Fast Bow");
         bow.setRarity(Rarity.UNCOMMON);
-        bow.setImage("bows/uncommon-fast-bow.png");
+        bow.setPng("bows/uncommon-fast-bow.png");
         bow.setItemType(ItemType.BOW);
         bow.setDamage(33);
         bow.setDamageType(DamageType.PIERCING);
@@ -324,7 +324,7 @@ public class WeaponFactory {
         Weapon bow = new Weapon();
         bow.setName("Curved Bow");
         bow.setRarity(Rarity.UNCOMMON);
-        bow.setImage("bows/uncommon-curved-bow.png");
+        bow.setPng("bows/uncommon-curved-bow.png");
         bow.setItemType(ItemType.BOW);
         bow.setDamage(50);
         bow.setDamageType(DamageType.PIERCING);
@@ -340,7 +340,7 @@ public class WeaponFactory {
         Weapon bow = new Weapon();
         bow.setName("Strong Bow");
         bow.setRarity(Rarity.UNCOMMON);
-        bow.setImage("bows/uncommon-strong-bow.png");
+        bow.setPng("bows/uncommon-strong-bow.png");
         bow.setItemType(ItemType.BOW);
         bow.setDamage(85);
         bow.setDamageType(DamageType.PIERCING);
@@ -356,7 +356,7 @@ public class WeaponFactory {
         Weapon bow = new Weapon();
         bow.setName("Curling Bow");
         bow.setRarity(Rarity.RARE);
-        bow.setImage("bows/rare-curling-bow.png");
+        bow.setPng("bows/rare-curling-bow.png");
         bow.setItemType(ItemType.BOW);
         bow.setDamage(120);
         bow.setDamageType(DamageType.PIERCING);
@@ -372,7 +372,7 @@ public class WeaponFactory {
         Weapon bow = new Weapon();
         bow.setName("Piercing Bow");
         bow.setRarity(Rarity.RARE);
-        bow.setImage("bows/rare-piercing-bow.png");
+        bow.setPng("bows/rare-piercing-bow.png");
         bow.setItemType(ItemType.BOW);
         bow.setDamage(250);
         bow.setDamageType(DamageType.PIERCING);
@@ -388,7 +388,7 @@ public class WeaponFactory {
         Weapon bow = new Weapon();
         bow.setName("Skeleton Bow");
         bow.setRarity(Rarity.RARE);
-        bow.setImage("bows/rare-skeleton-bow.png");
+        bow.setPng("bows/rare-skeleton-bow.png");
         bow.setItemType(ItemType.BOW);
         bow.setDamage(160);
         bow.setDamageType(DamageType.PIERCING);
@@ -404,7 +404,7 @@ public class WeaponFactory {
         Weapon bow = new Weapon();
         bow.setName("Crossbow");
         bow.setRarity(Rarity.EPIC);
-        bow.setImage("bows/epic-crossbow.png");
+        bow.setPng("bows/epic-crossbow.png");
         bow.setItemType(ItemType.BOW);
         bow.setDamage(650);
         bow.setDamageType(DamageType.PIERCING);
@@ -420,7 +420,7 @@ public class WeaponFactory {
         Weapon bow = new Weapon();
         bow.setName("Frost Bow");
         bow.setRarity(Rarity.EPIC);
-        bow.setImage("bows/epic-frost-bow.png");
+        bow.setPng("bows/epic-frost-bow.png");
         bow.setItemType(ItemType.BOW);
         bow.setDamage(300);
         bow.setDamageType(DamageType.COLD);
@@ -436,7 +436,7 @@ public class WeaponFactory {
         Weapon bow = new Weapon();
         bow.setName("Poison Bow");
         bow.setRarity(Rarity.EPIC);
-        bow.setImage("bows/epic-poison-bow.png");
+        bow.setPng("bows/epic-poison-bow.png");
         bow.setItemType(ItemType.BOW);
         bow.setDamage(320);
         bow.setDamageType(DamageType.POISON);
@@ -452,7 +452,7 @@ public class WeaponFactory {
         Weapon bow = new Weapon();
         bow.setName("Grasp Bow");
         bow.setRarity(Rarity.LEGENDARY);
-        bow.setImage("bows/legendary-grasp-bow.png");
+        bow.setPng("bows/legendary-grasp-bow.png");
         bow.setItemType(ItemType.BOW);
         bow.setDamage(1400);
         bow.setDamageType(DamageType.PIERCING);
@@ -468,7 +468,7 @@ public class WeaponFactory {
         Weapon bow = new Weapon();
         bow.setName("Magma Bow");
         bow.setRarity(Rarity.LEGENDARY);
-        bow.setImage("bows/legendary-magma-bow.png");
+        bow.setPng("bows/legendary-magma-bow.png");
         bow.setItemType(ItemType.BOW);
         bow.setDamage(1200);
         bow.setDamageType(DamageType.FIRE);
@@ -484,7 +484,7 @@ public class WeaponFactory {
         Weapon bow = new Weapon();
         bow.setName("Precision Bow");
         bow.setRarity(Rarity.LEGENDARY);
-        bow.setImage("bows/legendary-precision-bow.png");
+        bow.setPng("bows/legendary-precision-bow.png");
         bow.setItemType(ItemType.BOW);
         bow.setDamage(1600);
         bow.setDamageType(DamageType.PIERCING);
@@ -500,7 +500,7 @@ public class WeaponFactory {
         Weapon staff = new Weapon();
         staff.setName("Leafy Staff");
         staff.setRarity(Rarity.COMMON);
-        staff.setImage("staffs/common-leafy-staff.png");
+        staff.setPng("staffs/common-leafy-staff.png");
         staff.setItemType(ItemType.STAFF);
         staff.setDamage(40);
         staff.setDamageType(DamageType.BLUDGEONING);
@@ -516,7 +516,7 @@ public class WeaponFactory {
         Weapon staff = new Weapon();
         staff.setName("Sickle Staff");
         staff.setRarity(Rarity.COMMON);
-        staff.setImage("staffs/common-sickle-staff.png");
+        staff.setPng("staffs/common-sickle-staff.png");
         staff.setItemType(ItemType.STAFF);
         staff.setDamage(40);
         staff.setDamageType(DamageType.BLUDGEONING);
@@ -532,7 +532,7 @@ public class WeaponFactory {
         Weapon staff = new Weapon();
         staff.setName("Steel Staff");
         staff.setRarity(Rarity.COMMON);
-        staff.setImage("staffs/common-steel-staff.png");
+        staff.setPng("staffs/common-steel-staff.png");
         staff.setItemType(ItemType.STAFF);
         staff.setDamage(40);
         staff.setDamageType(DamageType.BLUDGEONING);
@@ -548,7 +548,7 @@ public class WeaponFactory {
         Weapon staff = new Weapon();
         staff.setName("Light and Dark Staff");
         staff.setRarity(Rarity.UNCOMMON);
-        staff.setImage("staffs/uncommon-light&dark-staff.png");
+        staff.setPng("staffs/uncommon-light&dark-staff.png");
         staff.setItemType(ItemType.STAFF);
         staff.setDamage(40);
         staff.setDamageType(DamageType.BLUDGEONING);
@@ -564,7 +564,7 @@ public class WeaponFactory {
         Weapon staff = new Weapon();
         staff.setName("Orb Staff");
         staff.setRarity(Rarity.UNCOMMON);
-        staff.setImage("staffs/uncommon-orb-staff.png");
+        staff.setPng("staffs/uncommon-orb-staff.png");
         staff.setItemType(ItemType.STAFF);
         staff.setDamage(40);
         staff.setDamageType(DamageType.BLUDGEONING);
@@ -580,7 +580,7 @@ public class WeaponFactory {
         Weapon staff = new Weapon();
         staff.setName("Winged Staff");
         staff.setRarity(Rarity.UNCOMMON);
-        staff.setImage("staffs/uncommon-winged-staff.png");
+        staff.setPng("staffs/uncommon-winged-staff.png");
         staff.setItemType(ItemType.STAFF);
         staff.setDamage(40);
         staff.setDamageType(DamageType.BLUDGEONING);
@@ -596,7 +596,7 @@ public class WeaponFactory {
         Weapon staff = new Weapon();
         staff.setName("Gem Staff");
         staff.setRarity(Rarity.RARE);
-        staff.setImage("staffs/rare-gem-staff.png");
+        staff.setPng("staffs/rare-gem-staff.png");
         staff.setItemType(ItemType.STAFF);
         staff.setDamage(40);
         staff.setDamageType(DamageType.BLUDGEONING);
@@ -612,7 +612,7 @@ public class WeaponFactory {
         Weapon staff = new Weapon();
         staff.setName("Holy Staff");
         staff.setRarity(Rarity.RARE);
-        staff.setImage("staffs/rare-holy-staff.png");
+        staff.setPng("staffs/rare-holy-staff.png");
         staff.setItemType(ItemType.STAFF);
         staff.setDamage(40);
         staff.setDamageType(DamageType.BLUDGEONING);
@@ -628,7 +628,7 @@ public class WeaponFactory {
         Weapon staff = new Weapon();
         staff.setName("Sea Staff");
         staff.setRarity(Rarity.RARE);
-        staff.setImage("staffs/rare-sea-staff.png");
+        staff.setPng("staffs/rare-sea-staff.png");
         staff.setItemType(ItemType.STAFF);
         staff.setDamage(40);
         staff.setDamageType(DamageType.BLUDGEONING);
@@ -644,7 +644,7 @@ public class WeaponFactory {
         Weapon staff = new Weapon();
         staff.setName("Cobra Staff");
         staff.setRarity(Rarity.EPIC);
-        staff.setImage("staffs/epic-cobra-staff.png");
+        staff.setPng("staffs/epic-cobra-staff.png");
         staff.setItemType(ItemType.STAFF);
         staff.setDamage(40);
         staff.setDamageType(DamageType.BLUDGEONING);
@@ -660,7 +660,7 @@ public class WeaponFactory {
         Weapon staff = new Weapon();
         staff.setName("Elder Staff");
         staff.setRarity(Rarity.EPIC);
-        staff.setImage("staffs/epic-elder-staff.png");
+        staff.setPng("staffs/epic-elder-staff.png");
         staff.setItemType(ItemType.STAFF);
         staff.setDamage(40);
         staff.setDamageType(DamageType.BLUDGEONING);
@@ -676,7 +676,7 @@ public class WeaponFactory {
         Weapon staff = new Weapon();
         staff.setName("Necrotic Staff");
         staff.setRarity(Rarity.EPIC);
-        staff.setImage("staffs/epic-necrotic-staff.png");
+        staff.setPng("staffs/epic-necrotic-staff.png");
         staff.setItemType(ItemType.STAFF);
         staff.setDamage(40);
         staff.setDamageType(DamageType.BLUDGEONING);
@@ -692,7 +692,7 @@ public class WeaponFactory {
         Weapon staff = new Weapon();
         staff.setName("Fire Tentacle Staff");
         staff.setRarity(Rarity.LEGENDARY);
-        staff.setImage("staffs/legendary-fireTentacle-staff.png");
+        staff.setPng("staffs/legendary-fireTentacle-staff.png");
         staff.setItemType(ItemType.STAFF);
         staff.setDamage(40);
         staff.setDamageType(DamageType.FIRE);
@@ -708,7 +708,7 @@ public class WeaponFactory {
         Weapon staff = new Weapon();
         staff.setName("Naga Staff");
         staff.setRarity(Rarity.LEGENDARY);
-        staff.setImage("staffs/legendary-naga-staff.png");
+        staff.setPng("staffs/legendary-naga-staff.png");
         staff.setItemType(ItemType.STAFF);
         staff.setDamage(40);
         staff.setDamageType(DamageType.FIRE);
@@ -724,7 +724,7 @@ public class WeaponFactory {
         Weapon staff = new Weapon();
         staff.setName("Syphon Staff");
         staff.setRarity(Rarity.LEGENDARY);
-        staff.setImage("staffs/legendary-syphon-staff.png");
+        staff.setPng("staffs/legendary-syphon-staff.png");
         staff.setItemType(ItemType.STAFF);
         staff.setDamage(40);
         staff.setDamageType(DamageType.POISON);

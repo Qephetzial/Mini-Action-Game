@@ -18,12 +18,10 @@ function LogInButton({style, setAppUser}) {
         const requestOptions = {
             method: 'GET'
         }
-        try {
-            const response = await (await fetch(`/api/user`, requestOptions)).json();
-            setUsers(response)
-            setState('logIn')
-            setAppUser(response[0])
-        } catch (error) {console.log(error)}
+        const response = await (await fetch(`/api/user`, requestOptions)).json();
+        setUsers(response)
+        setState('logIn')
+        setAppUser(response[0])
     }
 
     async function createAppUser() {

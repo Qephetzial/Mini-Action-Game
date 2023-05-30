@@ -5,6 +5,7 @@ import com.beta.miniactiongame.service.AppUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
@@ -30,4 +31,7 @@ public class AppUserController {
     public void updateAppUser(@RequestBody AppUser appUser) {
          appUserService.updateAppUser(appUser);
     }
+
+    @GetMapping("/{id}")
+    public AppUser findAppUserById(@PathVariable UUID id) {return appUserService.findById(id);}
 }

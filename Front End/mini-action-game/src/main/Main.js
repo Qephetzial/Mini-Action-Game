@@ -22,6 +22,8 @@ function Main({appUser, setAppUser, activeButton, setActiveButton}) {
                 text={'INVENTORY'}
                 href={'/inventory'}
                 classes={'refBtn btn-10 select lineBoxing transparent'}
+                appUser={appUser}
+                setAppUser={setAppUser}
               />
               <Button
                 text={'LUCKY SHOP'}

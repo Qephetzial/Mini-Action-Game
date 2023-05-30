@@ -2,6 +2,7 @@ import React, {useState} from "react";
 
 function Chest({index, chest, appUser}) {
 
+    const [img, setImg] = useState(<img src={chest.png} alt={chest.Type} style={{width:"400px"}}/>)
 
     const id = "myModal"+index
 
@@ -33,7 +34,7 @@ function Chest({index, chest, appUser}) {
 
 
     for (const property in chest) {
-        if (chest[property] !== null && property !== 'link') {
+        if (chest[property] !== null && property !== 'png') {
             stats.push(`${property}: ${chest[property]}`)
         }
     }
@@ -45,33 +46,49 @@ function Chest({index, chest, appUser}) {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(appUser)
         }
+        let route = null
         switch (index) {
             case '0':
-                await fetch(`/api/chest/iron`, requestOptions);
+                route = "iron";
                 break;
             case '1':
-                await fetch(`/api/chest/bronze`, requestOptions);
+                route = "bronze";
                 break;
             case '2':
-                await fetch(`/api/chest/silver`, requestOptions);
+                route = "silver";
                 break;
             case '3':
-                await fetch(`/api/chest/golden`, requestOptions);
+                route = "golden";
                 break;
         }
+        const response = await(await fetch(`/api/chest/${route}`, requestOptions)).json();
+        setImg(<img src={response[0].png} alt={response[0].Type} style={{width:"400px", backgroundColor:"white"}}/>)
+        if (response[0].type == "ARMOR") {
+            appUser.armors.push(response[0])
+        } else {
+            appUser.weapons.push(response[0])
+        }
+        if (response.size === 2) {setTimeout(() => {setImg(<img src={response[1].png} alt={response[1].Type}
+                                                                style={{width:"400px", backgroundColor:"white"}}/>)},5000)
+            if (response[1].type == "ARMOR") {
+                appUser.armors.push(response[0])
+            } else {
+                appUser.weapons.push(response[0])
+            }
+        }
+        setTimeout(() => {setImg(<img src={chest.png} alt={chest.Type} style={{width:"400px"}}/>)},5000)
 
     }
 
     return (
         <>
             <div onClick={openModal} style={{display:'inline-flex'}}>
-                <img src={chest.link} alt={chest.Type} style={{width:"350px"}}/>
+                <img src={chest.png} alt={chest.Type} style={{width:"350px"}}/>
             </div>
             <div id={id} className={className}>
                 <div className="modal-content" style={{display:"inline-flex"}}>
-                    <span onClick={closeModal} className="close">&times;</span>
                     <span className="inLine">
-                        <img src={chest.link} alt={chest.Type} style={{width:"400px"}}/>
+                        {img}
                     </span>
                     <span style={{alignSelf:"center"}}>
                         <ul className='inLine' style={{textAlign:"left"}}>
@@ -83,6 +100,7 @@ function Chest({index, chest, appUser}) {
                     <span style={{alignSelf:"flex-end"}}>
                         <button className='blockBox btn-10 transparent' onClick={createItem}><span>BUY</span></button>
                     </span>
+                    <span onClick={closeModal} className="close">&times;</span>
                 </div>
             </div>
         </>

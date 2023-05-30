@@ -28,7 +28,7 @@ public abstract class Items {
     private Rarity rarity;
 
     //This field determines the image represented on the front-end.
-    private String image;
+    private String png;
 
     //This field determines the item's type.
     private ItemType itemType;

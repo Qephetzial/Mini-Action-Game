@@ -13,7 +13,7 @@ function LuckyShop({appUser, setAppUser}) {
 
     const [chests, setChests] = useState([
         {
-            link: 'chests/iron-chest.png',
+            png: 'chests/iron-chest.png',
             Type: 'IronChest',
             Price: '150G',
             commonDropChance: "80%",
@@ -23,7 +23,7 @@ function LuckyShop({appUser, setAppUser}) {
             legendaryDropChance: "0%"
         },
         {
-            link: 'chests/bronze-chest.png',
+            png: 'chests/bronze-chest.png',
             Type: 'BronzeChest',
             Price: '250G',
             commonDropChance: "70.3%",
@@ -33,7 +33,7 @@ function LuckyShop({appUser, setAppUser}) {
             legendaryDropChance: "0.1%"
         },
         {
-            link: 'chests/silver-chest.png',
+            png: 'chests/silver-chest.png',
             Type: 'SilverChest',
             Price: '400G',
             commonDropChance: "60%",
@@ -43,7 +43,7 @@ function LuckyShop({appUser, setAppUser}) {
             legendaryDropChance: "0.5%"
         },
         {
-            link: 'chests/golden-chest.png',
+            png: 'chests/golden-chest.png',
             Type: 'goldenChest',
             Price: '700G',
             commonDropChance: "50%",
@@ -64,9 +64,11 @@ function LuckyShop({appUser, setAppUser}) {
                 classes={"refBtn btn-10 select lineBoxing transparent"}
             />
             <Button
-                text={'Inventory'}
+                text={'INVENTORY'}
                 href={'/inventory'}
                 classes={"refBtn btn-10 select lineBoxing transparent"}
+                appUser={appUser}
+                setAppUser={setAppUser}
             />
             <div className="Balance">
                 <Balance

@@ -7,10 +7,10 @@ import com.beta.miniactiongame.model.item.Items;
 import com.beta.miniactiongame.model.item.Weapon;
 import com.beta.miniactiongame.repository.AppUserRepository;
 import lombok.AllArgsConstructor;
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -48,5 +48,9 @@ public class AppUserService {
             }
         }
         updateAppUser(appUser);
+    }
+
+    public AppUser findById(UUID id) {
+        return appUserRepository.findById(id).orElse(null);
     }
 }
