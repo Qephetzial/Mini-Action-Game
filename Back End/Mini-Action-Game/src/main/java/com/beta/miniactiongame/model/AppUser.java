@@ -4,12 +4,13 @@ import com.beta.miniactiongame.model.creature.Hero;
 import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.Weapon;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,8 +20,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 //This class is for the user.
-public class AppUser {
+public class AppUser implements UserDetails {
 
     //This is a unique ID for the app user.
     @Id
@@ -29,8 +31,12 @@ public class AppUser {
     private UUID id;
 
     //This field determines the username, and it's unique for all user.
-    @Column(unique=true, name = "name")
+    @Column(unique=true)
     private String name;
+
+    private String password;
+
+    private Role role;
 
     //This field determines how much coin the user has.
     private int coin;
@@ -54,5 +60,35 @@ public class AppUser {
 
     public void addWeapon(Weapon weapon) {
         weapons.add(weapon);
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    @Override
+    public String getUsername() {
+        return name;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true ;
     }
 }

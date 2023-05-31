@@ -7,6 +7,7 @@ import com.beta.miniactiongame.model.item.Items;
 import com.beta.miniactiongame.model.item.Weapon;
 import com.beta.miniactiongame.repository.AppUserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +19,6 @@ public class AppUserService {
     private final AppUserRepository appUserRepository;
     private final HeroService heroService;
 
-    //This method initialises the necessary fields for the app user.
-    public AppUser createAppUser(AppUser appUser) {
-        appUser.setHeroes(heroService.createHeroes());
-        appUser.setArmors(new ArrayList<>());
-        appUser.setWeapons(new ArrayList<>());
-        appUserRepository.save(appUser);
-        return appUserRepository.findByName(appUser.getName());
-    }
 
     //This method returns all the registered app user for the login. It's a temporary solution.
     public List<AppUser> getAppUsers() {
