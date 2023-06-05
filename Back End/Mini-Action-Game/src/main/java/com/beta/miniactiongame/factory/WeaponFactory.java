@@ -1,9 +1,6 @@
 package com.beta.miniactiongame.factory;
 
-import com.beta.miniactiongame.model.item.DamageType;
-import com.beta.miniactiongame.model.item.ItemType;
-import com.beta.miniactiongame.model.item.Rarity;
-import com.beta.miniactiongame.model.item.Weapon;
+import com.beta.miniactiongame.model.item.*;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 

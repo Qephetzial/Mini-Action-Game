@@ -1,11 +1,14 @@
 import React from "react";
 import {Outlet} from "react-router-dom";
-import StartButton from "./components/StartButton";
+import Header from "../header/Header";
 
-function Layout() {
+function Layout({appUser}) {
 
     return (
         <>
+            <Header
+                appUser={appUser}
+            />
             <Outlet/>
         </>
     )

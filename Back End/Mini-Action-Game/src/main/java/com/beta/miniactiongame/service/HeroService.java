@@ -12,7 +12,7 @@ import java.util.List;
 public class HeroService {
     private final HeroFactory heroFactory;
 
-
+    //This method creates heroes and return them in a list
     public List<Hero> createHeroes() {
         List<Hero> heroes = new ArrayList<>();
         heroes.add(heroFactory.createFighter());

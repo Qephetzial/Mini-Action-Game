@@ -35,7 +35,6 @@ function LogInButton({style, setAppUser}) {
     }
 
     async function logIn(jwtToken) {
-        console.log(jwtToken)
         const decodedToken = jwt(jwtToken)
         const requestOptions = {
             method: 'GET',

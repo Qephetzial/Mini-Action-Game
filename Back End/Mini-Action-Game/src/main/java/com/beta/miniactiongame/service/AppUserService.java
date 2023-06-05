@@ -1,17 +1,12 @@
 package com.beta.miniactiongame.service;
 
 import com.beta.miniactiongame.model.AppUser;
-import com.beta.miniactiongame.model.item.Armor;
-import com.beta.miniactiongame.model.item.ItemType;
-import com.beta.miniactiongame.model.item.Items;
-import com.beta.miniactiongame.model.item.Weapon;
+import com.beta.miniactiongame.model.item.*;
 import com.beta.miniactiongame.repository.AppUserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -24,6 +19,7 @@ public class AppUserService {
         appUserRepository.save(appUser);
     }
 
+    //This method downcast the item and add it to the corresponding list of the user
     public void addItem(List<Items> items, AppUser appUser) {
         for (Items item: items) {
             if (item.getItemType().equals(ItemType.ARMOR)) {
@@ -37,8 +33,8 @@ public class AppUserService {
         updateAppUser(appUser);
     }
 
-
+    //This method find and return an AppUser by name
     public AppUser getAppUser(String name) {
-        return appUserRepository.findByName(name).orElseThrow();
+        return appUserRepository.findByName(name).orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 }

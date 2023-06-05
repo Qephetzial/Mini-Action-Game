@@ -14,7 +14,10 @@ function RouterManager() {
     return(
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Layout/>}>
+                <Route path="/" element={
+                    <Layout
+                        appUser={appUser}
+                    />}>
                     <Route path="/" element={<StartButton/>}/>
                     <Route path="login" element={
                         <Login

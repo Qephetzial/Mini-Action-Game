@@ -1,17 +1,10 @@
 package com.beta.miniactiongame.service;
 
-import com.beta.miniactiongame.factory.ArmorFactory;
-import com.beta.miniactiongame.factory.WeaponFactory;
-import com.beta.miniactiongame.model.AppUser;
+import com.beta.miniactiongame.factory.*;
 import com.beta.miniactiongame.model.item.Items;
 import lombok.AllArgsConstructor;
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -21,10 +14,12 @@ public class ChestService {
     private final WeaponFactory weaponFactory;
     private final Random random = new Random();
 
+    //This method returns a random integer between 0 and the given maximum value
     private int getRandomInteger(int max) {
         return random.nextInt(max);
     }
 
+    //This method create a random item or occasionally two and return them in list
     public List<Items> openChest(int common, int unCommon, int rare, int epic, boolean bonusLoot) {
         int rarity = getRandomInteger(1000);
         int type = getRandomInteger(4);
@@ -74,8 +69,8 @@ public class ChestService {
                 };
                 case 2 -> switch (finalItem) {
                     case 0 -> weaponFactory.createUnCommonBowOne();
-                    case 1 -> weaponFactory.createCommonBowTwo();
-                    case 2 -> weaponFactory.createCommonBowThree();
+                    case 1 -> weaponFactory.createUnCommonBowTwo();
+                    case 2 -> weaponFactory.createUnCommonBowThree();
                     default -> throw new IllegalStateException("Unexpected value: " + finalItem);
                 };
                 case 3 -> switch (finalItem) {

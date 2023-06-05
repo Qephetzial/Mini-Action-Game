@@ -18,6 +18,7 @@ public class AuthController {
 
     private final AuthService authService;
 
+    //This route create a user and a jwt token for later authentication saved by http-only cookie
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request,
@@ -27,10 +28,12 @@ public class AuthController {
         Cookie cookie = new Cookie("appUser-token", jwtToken.getToken());
         cookie.setHttpOnly(true);
         cookie.setPath("/");
+        cookie.setMaxAge(60*60*24);
         response.addCookie(cookie);
         return ResponseEntity.ok(jwtToken);
     }
 
+    //This route authenticate the user for log in and create a jwt token for later authentication saved by http-only cookie
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request,
@@ -40,6 +43,7 @@ public class AuthController {
         Cookie cookie = new Cookie("appUser-token", jwtToken.getToken());
         cookie.setHttpOnly(true);
         cookie.setPath("/");
+        cookie.setMaxAge(60*60*24);
         response.addCookie(cookie);
         return ResponseEntity.ok(jwtToken);
     }

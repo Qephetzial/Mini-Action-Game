@@ -1,8 +1,6 @@
 package com.beta.miniactiongame.factory;
 
-import com.beta.miniactiongame.model.creature.Alignment;
-import com.beta.miniactiongame.model.creature.CreatureType;
-import com.beta.miniactiongame.model.creature.Hero;
+import com.beta.miniactiongame.model.creature.*;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 

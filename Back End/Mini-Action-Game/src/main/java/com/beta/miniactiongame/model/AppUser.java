@@ -34,6 +34,7 @@ public class AppUser implements UserDetails {
     @Column(unique=true)
     private String name;
 
+    //This field
     private String password;
 
     private Role role;

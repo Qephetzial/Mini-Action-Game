@@ -1,9 +1,6 @@
 package com.beta.miniactiongame.service;
 
-import com.beta.miniactiongame.auth.AuthenticationRequest;
-import com.beta.miniactiongame.auth.AuthenticationResponse;
-import com.beta.miniactiongame.auth.JwtService;
-import com.beta.miniactiongame.auth.RegisterRequest;
+import com.beta.miniactiongame.auth.*;
 import com.beta.miniactiongame.model.AppUser;
 import com.beta.miniactiongame.model.Role;
 import com.beta.miniactiongame.repository.AppUserRepository;
@@ -25,11 +22,12 @@ public class AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
+    //This method creates the AppUser and a jwt token and return the token
     public AuthenticationResponse register(RegisterRequest request) {
         var appUser = AppUser.builder()
                 .name(request.getName())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .coin(0)
+                .coin(10000)
                 .heroes(heroService.createHeroes())
                 .armors(new ArrayList<>())
                 .weapons(new ArrayList<>())
@@ -40,6 +38,7 @@ public class AuthService {
         return AuthenticationResponse.builder().token(jwtToken).build();
     }
 
+    //This method creates and returns a jwt token upon logging in
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate( new UsernamePasswordAuthenticationToken(request.getName(), request.getPassword()));
         var appUser = appUserRepository.findByName(request.getName()).orElseThrow();
