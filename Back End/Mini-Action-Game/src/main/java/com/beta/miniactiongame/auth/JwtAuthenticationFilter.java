@@ -2,6 +2,7 @@ package com.beta.miniactiongame.auth;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
@@ -28,14 +29,23 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             @NonNull HttpServletResponse response,
             @NonNull FilterChain filterChain
     ) throws ServletException, IOException {
-        final String authHeader = request.getHeader("Authorization");
         final String jwtToken;
         final String appUserName;
-        if (authHeader == null || !authHeader.startsWith("Bearer")) {
+        Cookie[] cookies = request.getCookies();
+        Cookie jwtCookie = null;
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("appUser-token")) {
+                    jwtCookie = cookie;
+                    break;
+                }
+            }
+        }
+        if (jwtCookie == null) {
             filterChain.doFilter(request, response);
             return;
         }
-        jwtToken = authHeader.substring(7);
+        jwtToken = jwtCookie.getValue();
         appUserName = jwtService.extractAppUserName(jwtToken);
         if (appUserName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(appUserName);

@@ -17,13 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class AppUserService {
     private final AppUserRepository appUserRepository;
-    private final HeroService heroService;
 
-
-    //This method returns all the registered app user for the login. It's a temporary solution.
-    public List<AppUser> getAppUsers() {
-        return appUserRepository.findAll();
-    }
 
     //This method updates any changes in the app user.
     public void updateAppUser (AppUser appUser) {
@@ -43,7 +37,8 @@ public class AppUserService {
         updateAppUser(appUser);
     }
 
-    public AppUser findById(UUID id) {
-        return appUserRepository.findById(id).orElse(null);
+
+    public AppUser getAppUser(String name) {
+        return appUserRepository.findByName(name).orElseThrow();
     }
 }

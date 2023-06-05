@@ -4,8 +4,7 @@ import com.beta.miniactiongame.model.AppUser;
 import com.beta.miniactiongame.service.AppUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
-import java.util.UUID;
+
 
 @RestController
 @AllArgsConstructor
@@ -14,10 +13,9 @@ public class AppUserController {
 
     private final AppUserService appUserService;
 
-    //This route returns the app users for login. It's a temporary solution before the proper log in system.
-    @GetMapping
-    public List<AppUser> getAppUsers(){
-        return appUserService.getAppUsers();
+    @GetMapping("/get-{name}")
+    public AppUser getAppUser(@PathVariable String name) {
+        return appUserService.getAppUser(name);
     }
 
     //This route updates any changes in app user
@@ -26,6 +24,4 @@ public class AppUserController {
          appUserService.updateAppUser(appUser);
     }
 
-    @GetMapping("/{id}")
-    public AppUser findAppUserById(@PathVariable UUID id) {return appUserService.findById(id);}
 }

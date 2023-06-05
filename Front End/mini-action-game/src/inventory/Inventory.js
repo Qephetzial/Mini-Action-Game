@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import Button from "../genericComponents/Button";
 import DisplayHero from "./components/DisplayHero";
 import ItemPlaceHolder from "./components/ItemPlaceHolder";

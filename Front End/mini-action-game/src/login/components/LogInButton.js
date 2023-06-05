@@ -1,47 +1,48 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import jwt from "jwt-decode";
 
 function LogInButton({style, setAppUser}) {
 
     const navigate = useNavigate();
 
-    const [users, setUsers] = useState([])
-
     const [state, setState] = useState('choose')
 
-    let newUser = {
-        name:'',
-        coin:0,
+    let userDetails = {
+        name:"",
+        password:"",
     };
 
-    async function getAppUsers() {
-        const requestOptions = {
-            method: 'GET'
-        }
-        const response = await (await fetch(`/api/user`, requestOptions)).json();
-        setUsers(response)
-        setState('logIn')
-        setAppUser(response[0])
-    }
 
-    async function createAppUser() {
+    async function signUp() {
         const requestOptions = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(newUser)
+            body: JSON.stringify(userDetails)
         }
-        const response = await (await fetch(`/api/user`, requestOptions)).json();
-        setAppUser(response)
-        navigate('/main')
+        const response = await (await fetch(`/api/app-user/auth/register`, requestOptions)).json();
+        await logIn(response.token)
     }
 
-    const handleChange = event => {
-        const user = {selectValue: event.currentTarget.value};
-        for (let i = 0; i < users.length; i++) {
-            if (users[i].name === user.selectValue){
-                setAppUser(users[i])
-            }
+    async function signIn() {
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(userDetails)
         }
+        const response = await (await fetch(`/api/app-user/auth/authenticate`, requestOptions)).json();
+        await logIn(response.token);
+    }
+
+    async function logIn(jwtToken) {
+        console.log(jwtToken)
+        const decodedToken = jwt(jwtToken)
+        const requestOptions = {
+            method: 'GET',
+        }
+        const response = await (await fetch(`/api/user/get-${decodedToken.sub}`, requestOptions)).json();
+        setAppUser(response)
+        navigate('/main')
     }
 
 
@@ -49,25 +50,23 @@ function LogInButton({style, setAppUser}) {
         return (
             <div style={{display:'inline-flex'}}>
                 <button className={style} onClick={()=>{setState('signUp')}}><span>Sign up</span></button>
-                <button className={style} onClick={async()=>{await getAppUsers()}}><span>Sign in</span></button>
+                <button className={style} onClick={()=>{setState("signIn")}}><span>Sign in</span></button>
             </div>
         )
     } else if (state === 'signUp') {
         return (
             <div>
-                <input placeholder='Your name' onChange={(event)=> newUser.name = event.currentTarget.value}/>
-                <button className={style} onClick={async()=>{await createAppUser()}}><span>Sign up</span></button>
+                <input placeholder='Your name' onChange={(event)=> userDetails.name = event.currentTarget.value}/>
+                <input type="password" placeholder='Password' onChange={(event)=> userDetails.password = event.currentTarget.value}/>
+                <button className={style} onClick={async()=>{await signUp()}}><span>Sign up</span></button>
             </div>
         )
     } else {
         return (
             <div>
-                <select onChange={handleChange}>
-                    {users.map(user => {
-                        return <option key={user.id}>{user.name}</option>
-                    })}
-                </select>
-                <button className={style} onClick={()=>navigate('/main')}><span>Sign in</span></button>
+                <input placeholder='Your name' onChange={(event)=> userDetails.name = event.currentTarget.value}/>
+                <input type="password" placeholder='Password' onChange={(event)=> userDetails.password = event.currentTarget.value}/>
+                <button className={style} onClick={async()=>{await signIn()}}><span>Sign in</span></button>
             </div>
         )
     }
