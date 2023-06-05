@@ -8,7 +8,6 @@ It's a mini action game where the goal is to clear the dungeon from the monsters
 <li>-> 3 difficulty levels</li>
 <li>-> Special monsters with high rewards</li></ul>
 
-<h5>Here is an uml class diagram for the project:</h5> [link to uml](www.plantuml.com/plantuml/png/VLFXRfim4Fxlf-01mWj4qrG6D4KYk8AmQ3yzk19hO2FRwHPDVVSTTZ0XxVhBT-VlxhlxpdxGXYbp7dhIz4ph81h7MeCA_fAGjzkWhhE4X88Di0qgexZeIDZ97c-uC2GyWPAWjq7EjVdoXCvNJ3CmO2Z38vPz3usHYhmHuWXMSKl3r20L9aJJISBVm4Ofq3zQOyfaFxLHh361gn0hOEQiuBCUJy1wSxfsoNhUYG64GPBP_A1kP0nhVk7iyCU0QDT4Y0JH-P8jl81em7blysoJ0ZxRbyFiGRx2n5gD0BDshwm_mzLkf6YvuL8i4uoYkv6SltZ72NQdrwrS8Cx3CYZIxoXDDgH8wqCPvHkIVi_ozVX-CPz9gfZYvh8DIdkk6xHBFrn6X6TNowjY6_MYUXg_eNivFrPhL7nWwbA2vjemYqtOm3gmNA66ISB_0tmpJgPttRGJr6y31unFheOF9BU8rbTUiSpYEucmRaptUrfiI5quYvHHcU86dhDuG_9qbnP9LFxmURDsc1cLUrfkI7Ma9Uxk6psYVOWU7prseKLqbKVLKrRi49dNoIwbXNMUixIChVMOJRmnpHECqgoYXVsIys-NOMWVxogm_i7-C-3DyejM69jbj_q-Fh_FYMN1UNU-jlj0rodeNV-eR1P6RbLtgNV11rplUUZ_0G00) <br>
 <h2>Technologies:</h2>
 <ul>
 <li>Back-end-> Java Spring</li>
