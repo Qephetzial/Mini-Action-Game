@@ -45,6 +45,7 @@ function HeroSelector({heroes, setHeroes, coin, setCoin, appUser, setAppUser}) {
             let newAppUser = appUser;
             newAppUser.coin = coin - heroes[0].value;
             setAppUser(newAppUser);
+            setCoin(newAppUser.coin)
             await conditionChanger();
             await updateAppUser();
         } else if (obtained){
