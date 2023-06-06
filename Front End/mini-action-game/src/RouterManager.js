@@ -9,7 +9,9 @@ import StartButton from "./start/components/StartButton";
 
 
 function RouterManager() {
-    const [appUser, setAppUser] = useState();
+    const storedAppUser = localStorage.getItem('appUser');
+    const [appUser, setAppUser] = useState(JSON.parse(storedAppUser));
+
     const [activeButton, setActiveButton] = useState("easy");
     return(
         <BrowserRouter>

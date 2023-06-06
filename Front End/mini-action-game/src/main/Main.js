@@ -7,7 +7,6 @@ import HeroSData from "./components/HeroSData";
 
 
 function Main({appUser, setAppUser, activeButton, setActiveButton}) {
-    console.log(appUser)
     const [coin, setCoin] = useState(appUser.coin);
     const [heroes, setHeroes] = useState(appUser.heroes)
 

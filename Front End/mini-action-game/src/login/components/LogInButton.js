@@ -41,6 +41,7 @@ function LogInButton({style, setAppUser}) {
         }
         const response = await (await fetch(`/api/user/get-${decodedToken.sub}`, requestOptions)).json();
         setAppUser(response)
+        localStorage.setItem('appUser', JSON.stringify(response));
         navigate('/main')
     }
 

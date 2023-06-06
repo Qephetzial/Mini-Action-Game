@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import '../../style/HeroSelector.css'
 
 const getButtonText = ({selected, obtained}) => {
@@ -41,7 +41,7 @@ function HeroSelector({heroes, setHeroes, coin, setCoin, appUser, setAppUser}) {
 
 
     const select = async () => {
-        if (!obtained && heroes[0].value < coin) {
+        if (!obtained && heroes[0].value <= coin) {
             let newAppUser = appUser;
             newAppUser.coin = coin - heroes[0].value;
             setAppUser(newAppUser);
@@ -75,6 +75,7 @@ function HeroSelector({heroes, setHeroes, coin, setCoin, appUser, setAppUser}) {
             body: JSON.stringify(appUser)
         }
         await fetch(`/api/user`, requestOptions);
+        localStorage.setItem('appUser', JSON.stringify(appUser));
     }
 
 

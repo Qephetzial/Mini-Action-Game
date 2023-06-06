@@ -76,6 +76,7 @@ function Chest({index, chest, appUser}) {
                 appUser.weapons.push(response[0])
             }
         }
+        localStorage.setItem('appUser', JSON.stringify(appUser));
         setTimeout(() => {setImg(<img src={chest.png} alt={chest.Type} style={{width:"400px"}}/>)},5000)
 
     }
