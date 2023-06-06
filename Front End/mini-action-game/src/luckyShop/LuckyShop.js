@@ -80,11 +80,13 @@ function LuckyShop({appUser, setAppUser}) {
                     index={'0'}
                     chest={chests[0]}
                     appUser={appUser}
+                    setCoin={setCoin}
                 />
                 <Chest
                     index={'1'}
                     chest={chests[1]}
                     appUser={appUser}
+                    setCoin={setCoin}
                 />
             </div>
             <div style={{textAlign:'center'}}>
@@ -92,11 +94,13 @@ function LuckyShop({appUser, setAppUser}) {
                     index={'2'}
                     chest={chests[2]}
                     appUser={appUser}
+                    setCoin={setCoin}
                 />
                 <Chest
                     index={'3'}
                     chest={chests[3]}
                     appUser={appUser}
+                    setCoin={setCoin}
                 />
             </div>
         </>

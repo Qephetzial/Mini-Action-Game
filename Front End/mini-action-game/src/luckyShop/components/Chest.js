@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function Chest({index, chest, appUser}) {
+function Chest({index, chest, appUser, setCoin}) {
 
     const [img, setImg] = useState(<img src={chest.png} alt={chest.Type} style={{width:"400px"}}/>)
 
@@ -41,25 +41,49 @@ function Chest({index, chest, appUser}) {
 
 
     const createItem = async() => {
+        let route = null
+        switch (index) {
+            case '0':
+                if (appUser.coin < 150) {
+                    return;
+                } else {
+                    appUser.coin -= 150;
+                    setCoin(appUser.coin)
+                    route = "iron";
+                    break;
+                }
+            case '1':
+                if (appUser.coin < 250) {
+                    return;
+                } else {
+                    appUser.coin -= 250;
+                    setCoin(appUser.coin)
+                    route = "bronze";
+                    break;
+                }
+            case '2':
+                if (appUser.coin < 400) {
+                    return;
+                } else {
+                    appUser.coin -= 400;
+                    setCoin(appUser.coin)
+                    route = "silver";
+                    break;
+                }
+            case '3':
+                if (appUser.coin < 700) {
+                    return;
+                } else {
+                    appUser.coin -= 700;
+                    setCoin(appUser.coin)
+                    route = "golden";
+                    break;
+                }
+        }
         const requestOptions = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(appUser)
-        }
-        let route = null
-        switch (index) {
-            case '0':
-                route = "iron";
-                break;
-            case '1':
-                route = "bronze";
-                break;
-            case '2':
-                route = "silver";
-                break;
-            case '3':
-                route = "golden";
-                break;
         }
         const response = await(await fetch(`/api/chest/${route}`, requestOptions)).json();
         setImg(<img src={response[0].png} alt={response[0].Type} style={{width:"400px", backgroundColor:"white"}}/>)
