@@ -29,19 +29,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             @NonNull HttpServletResponse response,
             @NonNull FilterChain filterChain
     ) throws ServletException, IOException {
-        final String jwtToken;
-        final String appUserName;
+        String jwtToken;
+        String appUserName;
         Cookie[] cookies = request.getCookies();
         Cookie jwtCookie = null;
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("appUser-token")) {
                     jwtCookie = cookie;
-                    break;
                 }
             }
         }
-        if (jwtCookie == null) {
+        if (jwtCookie == null || request.getServletPath().equals("/api/app-user/auth/register") || request.getServletPath().equals("/api/app-user/auth/authenticate")) {
             filterChain.doFilter(request, response);
             return;
         }

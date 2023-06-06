@@ -15,7 +15,12 @@ public class AppUserService {
 
 
     //This method updates any changes in the app user.
-    public void updateAppUser (AppUser appUser) {
+    public void updateAppUser (AppUser updatedAppUser) {
+        AppUser appUser = getAppUser(updatedAppUser.getName());
+        appUser.setCoin(updatedAppUser.getCoin());
+        appUser.setHeroes(updatedAppUser.getHeroes());
+        appUser.setArmors(updatedAppUser.getArmors());
+        appUser.setWeapons(updatedAppUser.getWeapons());
         appUserRepository.save(appUser);
     }
 
