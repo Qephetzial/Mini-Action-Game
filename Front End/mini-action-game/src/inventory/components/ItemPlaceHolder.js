@@ -109,7 +109,7 @@ function ItemPlaceHolder({item, appUser, setAppUser}) {
                             })}
                         </ul>
                     </span>
-                    <span>
+                    <span style={{alignSelf:"flex-end"}}>
                         <button className='blockBox btn-10 transparent' onClick={equipItem}><span>EQUIP</span></button>
                         <button className='blockBox btn-10 transparent' ><span>SELL</span></button>
                     </span>
