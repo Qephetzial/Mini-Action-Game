@@ -11,7 +11,7 @@ function LuckyShop({appUser, setAppUser}) {
     const [coin, setCoin] = useState(appUser.coin)
 
 
-    const [chests, setChests] = useState([
+    const chests = [
         {
             png: 'chests/iron-chest.png',
             Type: 'IronChest',
@@ -51,9 +51,9 @@ function LuckyShop({appUser, setAppUser}) {
             rareDropChance: "15%",
             epicDropChance: "9%",
             legendaryDropChance: "1%",
-            chanceForBonusDrop: "0,5%"
+            chanceForBonusDrop: "0,1%"
         }
-    ])
+    ]
 
 
     return (
