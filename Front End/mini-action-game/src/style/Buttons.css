@@ -136,7 +136,7 @@ a {
     transition-delay: 0.6s;
 }
 .btn-10:hover {
-    color: #603078;
+    color: black;
 }
 .btn-10:hover:before, .btn-10:hover:after,
 .btn-10:hover span:before,
@@ -213,7 +213,7 @@ a {
     position: relative;
     color: coral;
     transition: 1.5s;
-    background: #603078;
+    background: black;
 }
 .btn-11:before, .btn-11:after {
     position: absolute;
@@ -221,7 +221,7 @@ a {
     content: "";
     width: 10px;
     height: 10px;
-    background-color: #603078;
+    background-color: black;
     border-radius: 50%;
 }
 .btn-11:before {
