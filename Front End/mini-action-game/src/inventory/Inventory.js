@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Button from "../genericComponents/Button";
 import DisplayHero from "./components/DisplayHero";
 import ItemPlaceHolder from "./components/ItemPlaceHolder";
@@ -7,6 +7,18 @@ import ItemPlaceHolder from "./components/ItemPlaceHolder";
 function Inventory({appUser, setAppUser}) {
 
     const items = appUser.weapons.concat(appUser.armors);
+    let displayableItems = [];
+    const [forStart, setForStart] = useState(0);
+    const [forEnd, setForEnd] = useState(30)
+
+    for (let i = forStart; i < forEnd; i++) {
+        if (items.length <= i) {
+            displayableItems.push(null)
+        } else {
+            displayableItems.push(items[i]);
+        }
+    }
+
 
     return (
         <>
@@ -36,7 +48,7 @@ function Inventory({appUser, setAppUser}) {
                 </div>
             </div>
             <div className='inLine grid'>
-                    {items.map(item => {
+                    {displayableItems.map(item => {
                         return <ItemPlaceHolder item={item}/>
                     })}
             </div>
