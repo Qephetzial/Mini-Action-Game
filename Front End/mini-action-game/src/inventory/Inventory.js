@@ -64,12 +64,18 @@ function Inventory({appUser, setAppUser}) {
                     <ItemPlaceHolder
                         item={appUser.heroes[0].armor}
                         index={'21'}
+                        appUser={appUser}
+                        setAppUser={setAppUser}
                     />
                 </div>
             </div>
             <div className='inLine grid'>
                     {displayableItems.map(item => {
-                        return <ItemPlaceHolder item={item}/>
+                        return <ItemPlaceHolder
+                            item={item}
+                            appUser={appUser}
+                            setAppUser={setAppUser}
+                        />
                     })}
             </div>
             <div style={{textAlign:"center"}}>

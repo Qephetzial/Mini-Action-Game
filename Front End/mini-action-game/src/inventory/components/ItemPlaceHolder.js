@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function ItemPlaceHolder({item}) {
+function ItemPlaceHolder({item, appUser, setAppUser}) {
 
 
     const[className, setClassName] = useState("modalClose")
@@ -32,13 +32,49 @@ function ItemPlaceHolder({item}) {
         mImage = <img style={{width: 400, height: 400, backgroundColor:"white"}} src={item.png} alt="item"/>
     }
 
+    const equipItem = async() => {
+        let newAppUser = appUser
+        if (item.itemType === "ARMOR") {
+            for (const hero of newAppUser.heroes) {
+                if (hero.selected) {
+                    hero.armor = item
+                }
+            }
+            for (let i = 0; i < newAppUser.armors.length; i++) {
+                if (newAppUser.armors[i].id === item.id) {
+                    newAppUser.armors.splice(i, 1)
+                }
+            }
+        } else {
+            for (const hero of newAppUser.heroes) {
+                if (hero.selected) {
+                    hero.weapon = item
+                }
+            }
+            for (let i = 0; i < newAppUser.weapons.length; i++) {
+                if (newAppUser.weapons[i].id === item.id) {
+                    delete newAppUser.weapons.splice(i, 1)
+                }
+            }
+        }
+        setAppUser(newAppUser)
+        const requestOptions = {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(appUser)
+        }
+        await fetch(`/api/user`, requestOptions);
+        localStorage.setItem('appUser', JSON.stringify(appUser));
+
+    }
+
 
     let stats = []
 
     let i = -1;
 
     for (const property in item) {
-        if (item[property] !== null && property !== 'imageLink' && property !== 'id') {
+        if (item[property] !== null && property !== 'png' && property !== 'id') {
             stats.push(`${property}: ${item[property]}`)
         }
     }
@@ -66,6 +102,10 @@ function ItemPlaceHolder({item}) {
                                 return <li key={i}>{stat}</li>
                             })}
                         </ul>
+                    </span>
+                    <span>
+                        <button className='blockBox btn-10 transparent' onClick={equipItem}><span>EQUIP</span></button>
+                        <button className='blockBox btn-10 transparent' ><span>SELL</span></button>
                     </span>
                 </div>
             </div>
