@@ -88,9 +88,9 @@ function HeroSelector({heroes, setHeroes, coin, setCoin, appUser, setAppUser}) {
             <span className="hero"><img className="rightSide" src={heroes[1].png} alt={heroes[1].name} border="0"/></span>
         </div>
         <div className="fixed">
-            <a className="lineBoxing arrow as"  onClick={rollLeft}><span><img className="arrow" src={"pngwing.left.png"} alt="left button" border="0" width="30"/></span></a>
+            <a className="lineBoxing arrow as"  onClick={rollLeft}><span><img className="arrow" src={"supplementary/left-heroSelector-arrow.png"} alt="left button" border="0" width="30"/></span></a>
             <button id="selector" className={classList} onClick={select}><span>{buttonText}</span></button>
-            <a className="lineBoxing arrow as" onClick={rollRight}><span><img className="arrow" src={"pngwing.right.png"} alt="left button" border="0" width="30"/></span></a>
+            <a className="lineBoxing arrow as" onClick={rollRight}><span><img className="arrow" src={"supplementary/right-heroSelector-arrow.png"} alt="right button" border="0" width="30"/></span></a>
         </div>
     </div>
   );
