@@ -2,6 +2,7 @@ package com.beta.miniactiongame.model.creature;
 
 import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.Weapon;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
@@ -34,10 +35,10 @@ public class Hero extends Attacker{
     private String gif;
 
     //This field determines what kind of armor the hero has.
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     private Armor armor;
 
     //This field determines what kind of weapon the hero has.
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     private Weapon weapon;
 }
