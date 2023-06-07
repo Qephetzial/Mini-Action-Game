@@ -5,6 +5,11 @@ function ItemPlaceHolder({item, appUser, setAppUser}) {
 
     const[className, setClassName] = useState("modalClose")
 
+    let buttonClass = "blockBox btn-10 transparent";
+
+    if (appUser === null) {
+        buttonClass = "hide";
+    }
 
     const openModal = ()=> {
         if (item !== null) {
@@ -71,7 +76,7 @@ function ItemPlaceHolder({item, appUser, setAppUser}) {
         }
         await fetch(`/api/user`, requestOptions);
         localStorage.setItem('appUser', JSON.stringify(appUser));
-
+        closeModal();
     }
 
 
@@ -110,8 +115,8 @@ function ItemPlaceHolder({item, appUser, setAppUser}) {
                         </ul>
                     </span>
                     <span style={{alignSelf:"flex-end"}}>
-                        <button className='blockBox btn-10 transparent' onClick={equipItem}><span>EQUIP</span></button>
-                        <button className='blockBox btn-10 transparent' ><span>SELL</span></button>
+                        <button className={buttonClass} onClick={equipItem}><span>EQUIP</span></button>
+                        <button className={buttonClass} ><span>SELL</span></button>
                     </span>
                 </div>
             </div>

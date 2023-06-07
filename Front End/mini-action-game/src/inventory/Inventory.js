@@ -70,12 +70,12 @@ function Inventory({appUser, setAppUser}) {
                     <ItemPlaceHolder
                         item={selectedHero.weapon}
                         index={'20'}
+                        appUser={null}
                     />
                     <ItemPlaceHolder
                         item={selectedHero.armor}
                         index={'21'}
-                        appUser={appUser}
-                        setAppUser={setAppUser}
+                        appUser={null}
                     />
                 </div>
             </div>
