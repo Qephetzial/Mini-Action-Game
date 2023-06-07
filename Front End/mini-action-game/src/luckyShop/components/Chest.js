@@ -6,7 +6,7 @@ function Chest({index, chest, appUser, setCoin}) {
 
     const id = "myModal"+index
 
-
+    const [displayableProps, setDisplayableProps] = useState(chest)
     const[className, setClassName] = useState("modalClose")
 
 
@@ -33,9 +33,9 @@ function Chest({index, chest, appUser, setCoin}) {
     let stats = []
 
 
-    for (const property in chest) {
-        if (chest[property] !== null && property !== 'png') {
-            stats.push(`${property}: ${chest[property]}`)
+    for (const property in displayableProps) {
+        if (displayableProps[property] !== null && property !== 'png') {
+            stats.push(`${property}: ${displayableProps[property]}`)
         }
     }
 
@@ -86,14 +86,17 @@ function Chest({index, chest, appUser, setCoin}) {
             body: JSON.stringify(appUser)
         }
         const response = await(await fetch(`/api/chest/${route}`, requestOptions)).json();
+        setDisplayableProps(response[0])
         setImg(<img src={response[0].png} alt={response[0].Type} style={{width:"400px", backgroundColor:"white"}}/>)
         if (response[0].type == "ARMOR") {
             appUser.armors.push(response[0])
         } else {
             appUser.weapons.push(response[0])
         }
-        if (response.size === 2) {setTimeout(() => {setImg(<img src={response[1].png} alt={response[1].Type}
-                                                                style={{width:"400px", backgroundColor:"white"}}/>)},5000)
+        if (response.size === 2) {setTimeout(() => {
+            setImg(<img src={response[1].png} alt={response[1].Type} style={{width:"400px", backgroundColor:"white"}}/>);
+            setDisplayableProps(response[0])
+        },800)
             if (response[1].type == "ARMOR") {
                 appUser.armors.push(response[0])
             } else {
@@ -101,7 +104,10 @@ function Chest({index, chest, appUser, setCoin}) {
             }
         }
         localStorage.setItem('appUser', JSON.stringify(appUser));
-        setTimeout(() => {setImg(<img src={chest.png} alt={chest.Type} style={{width:"400px"}}/>)},5000)
+        setTimeout(() => {
+            setImg(<img src={chest.png} alt={chest.Type} style={{width:"400px"}}/>);
+            setDisplayableProps(chest)
+        },1200)
 
     }
 
