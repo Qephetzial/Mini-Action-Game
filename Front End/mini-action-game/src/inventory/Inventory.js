@@ -19,6 +19,26 @@ function Inventory({appUser, setAppUser}) {
         }
     }
 
+    const rollLeft=()=> {
+        if (forStart === 0) {
+        } else {
+            const newStart = forStart-30;
+            const newEnd = forEnd-30;
+            setForStart(newStart);
+            setForEnd(newEnd);
+        }
+    }
+
+    const rollRight=()=> {
+        if (items.length <= forStart+30) {
+        } else {
+            const newStart = forStart+30;
+            const newEnd = forEnd+30;
+            setForStart(newStart);
+            setForEnd(newEnd);
+        }
+    }
+
 
     return (
         <>
@@ -51,6 +71,10 @@ function Inventory({appUser, setAppUser}) {
                     {displayableItems.map(item => {
                         return <ItemPlaceHolder item={item}/>
                     })}
+            </div>
+            <div style={{textAlign:"center"}}>
+                <div className="lineBoxing arrow as" onClick={rollLeft}><span><img className="arrow" src={"supplementary/left-inventory-arrow.png"} alt="left button" border="0" width="30"/></span></div>
+                <div style={{float:"right"}} className="lineBoxing arrow as" onClick={rollRight}><span><img className="arrow" src={"supplementary/right-inventory-arrow.png"} alt="right button" border="0" width="30"/></span></div>
             </div>
         </>
     )
