@@ -137,6 +137,10 @@ Body {
   float: right;
 }
 
+.hide {
+  display: none;
+}
+
 .modalOpen {
   text-align: center;
   display: block;

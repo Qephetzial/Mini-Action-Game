@@ -9,12 +9,14 @@
 .leftSide {
     max-height: 300px;
     margin-right: 1rem;
-    margin-bottom: 4rem
+    margin-bottom: 4rem;
+    opacity: 70%;
 }
 
 .rightSide {
     max-height: 300px;
     margin-left: 1rem;
-    margin-bottom: 4rem
+    margin-bottom: 4rem;
+    opacity: 70%;
 }
 
