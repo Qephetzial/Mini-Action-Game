@@ -33,27 +33,33 @@ function ItemPlaceHolder({item, appUser, setAppUser}) {
     }
 
     const equipItem = async() => {
-        let newAppUser = appUser
+        let heroesArmor = null;
+        let heroesWeapon = null;
+        let newAppUser = appUser;
         if (item.itemType === "ARMOR") {
             for (const hero of newAppUser.heroes) {
                 if (hero.selected) {
-                    hero.armor = item
+                    heroesArmor = hero.armor;
+                    hero.armor = item;
+                    newAppUser.armors.push(heroesArmor);
                 }
             }
             for (let i = 0; i < newAppUser.armors.length; i++) {
                 if (newAppUser.armors[i].id === item.id) {
-                    newAppUser.armors.splice(i, 1)
+                    newAppUser.armors.splice(i, 1);
                 }
             }
         } else {
             for (const hero of newAppUser.heroes) {
                 if (hero.selected) {
-                    hero.weapon = item
+                    heroesWeapon = hero.weapon;
+                    hero.weapon = item;
+                    newAppUser.weapons.push(heroesWeapon);
                 }
             }
             for (let i = 0; i < newAppUser.weapons.length; i++) {
                 if (newAppUser.weapons[i].id === item.id) {
-                    delete newAppUser.weapons.splice(i, 1)
+                    newAppUser.weapons.splice(i, 1);
                 }
             }
         }
