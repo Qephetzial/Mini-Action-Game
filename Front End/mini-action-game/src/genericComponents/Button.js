@@ -2,7 +2,7 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 
 
-function Button({text, href, classes, appUser, setAppUser}) {
+function Button({text, href, classes, appUser, setAppUser, setHeaderCss}) {
 
     const navigate = useNavigate();
 
@@ -21,6 +21,7 @@ function Button({text, href, classes, appUser, setAppUser}) {
             body: JSON.stringify(appUser)
         }
         await fetch(`/api/user`,requestOptions)
+        setHeaderCss("hide")
     }
 
     return (

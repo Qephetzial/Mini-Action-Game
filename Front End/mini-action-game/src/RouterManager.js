@@ -11,6 +11,7 @@ import StartButton from "./start/components/StartButton";
 function RouterManager() {
     const storedAppUser = localStorage.getItem('appUser');
     const [appUser, setAppUser] = useState(JSON.parse(storedAppUser));
+    const [headerCss, setHeaderCss] = useState("hide")
 
     const [activeButton, setActiveButton] = useState("easy");
     return(
@@ -19,6 +20,8 @@ function RouterManager() {
                 <Route path="/" element={
                     <Layout
                         appUser={appUser}
+                        headerCss={headerCss}
+                        setHeaderCss={setHeaderCss}
                     />}>
                     <Route path="/" element={<StartButton/>}/>
                     <Route path="login" element={
@@ -32,6 +35,7 @@ function RouterManager() {
                             setAppUser={setAppUser}
                             activeButton={activeButton}
                             setActiveButton={setActiveButton}
+                            setHeaderCss={setHeaderCss}
                         />
                     }/>
                     <Route path="inventory" element={

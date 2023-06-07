@@ -6,9 +6,11 @@ import Button from "../genericComponents/Button";
 import HeroSData from "./components/HeroSData";
 
 
-function Main({appUser, setAppUser, activeButton, setActiveButton}) {
+function Main({appUser, setAppUser, activeButton, setActiveButton, setHeaderCss}) {
     const [coin, setCoin] = useState(appUser.coin);
     const [heroes, setHeroes] = useState(appUser.heroes)
+
+    setHeaderCss("")
 
   return (
           <div id="main" className="App">
