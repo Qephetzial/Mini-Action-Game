@@ -88,7 +88,7 @@ function Chest({index, chest, appUser, setCoin}) {
         const response = await(await fetch(`/api/chest/${route}`, requestOptions)).json();
         setDisplayableProps(response[0])
         setImg(<img src={response[0].png} alt={response[0].Type} style={{width:"400px", backgroundColor:"white"}}/>)
-        if (response[0].type == "ARMOR") {
+        if (response[0].itemType == "ARMOR") {
             appUser.armors.push(response[0])
         } else {
             appUser.weapons.push(response[0])
@@ -97,7 +97,7 @@ function Chest({index, chest, appUser, setCoin}) {
             setImg(<img src={response[1].png} alt={response[1].Type} style={{width:"400px", backgroundColor:"white"}}/>);
             setDisplayableProps(response[0])
         },800)
-            if (response[1].type == "ARMOR") {
+            if (response[1].itemType == "ARMOR") {
                 appUser.armors.push(response[0])
             } else {
                 appUser.weapons.push(response[0])
