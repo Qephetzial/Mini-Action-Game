@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function ItemPlaceHolder({item, appUser, setAppUser}) {
+function ItemPlaceHolder({item, appUser, setAppUser, setEquippedWeapon, setEquippedArmor}) {
 
 
     const[className, setClassName] = useState("modalClose")
@@ -47,6 +47,7 @@ function ItemPlaceHolder({item, appUser, setAppUser}) {
                     heroesArmor = hero.armor;
                     hero.armor = item;
                     newAppUser.armors.push(heroesArmor);
+                    setEquippedArmor(item)
                 }
             }
             for (let i = 0; i < newAppUser.armors.length; i++) {
@@ -60,6 +61,7 @@ function ItemPlaceHolder({item, appUser, setAppUser}) {
                     heroesWeapon = hero.weapon;
                     hero.weapon = item;
                     newAppUser.weapons.push(heroesWeapon);
+                    setEquippedWeapon(item)
                 }
             }
             for (let i = 0; i < newAppUser.weapons.length; i++) {

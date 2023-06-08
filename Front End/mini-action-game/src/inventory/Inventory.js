@@ -10,8 +10,11 @@ function Inventory({appUser, setAppUser}) {
     let displayableItems = [];
     const [forStart, setForStart] = useState(0);
     const [forEnd, setForEnd] = useState(30)
-
     const selectedHero = findTheSelected()
+    const [equippedWeapon, setEquippedWeapon] = useState(selectedHero.weapon)
+    const [equippedArmor, setEquippedArmor] = useState(selectedHero.armor)
+
+
 
     function findTheSelected() {
         for (const hero of appUser.heroes) {
@@ -68,12 +71,12 @@ function Inventory({appUser, setAppUser}) {
                 />
                 <div className='displayHero'>
                     <ItemPlaceHolder
-                        item={selectedHero.weapon}
+                        item={equippedWeapon}
                         index={'20'}
                         appUser={null}
                     />
                     <ItemPlaceHolder
-                        item={selectedHero.armor}
+                        item={equippedArmor}
                         index={'21'}
                         appUser={null}
                     />
@@ -85,6 +88,8 @@ function Inventory({appUser, setAppUser}) {
                             item={item}
                             appUser={appUser}
                             setAppUser={setAppUser}
+                            setEquippedWeapon={setEquippedWeapon}
+                            setEquippedArmor={setEquippedArmor}
                         />
                     })}
             </div>
