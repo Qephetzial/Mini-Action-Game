@@ -38,15 +38,14 @@ function ItemPlaceHolder({item, appUser, setAppUser, setEquippedWeapon, setEquip
     }
 
     async function equipItem() {
-        let heroesArmor = null;
-        let heroesWeapon = null;
         let newAppUser = appUser;
+        let newItems = [...items]
         if (item.itemType === "ARMOR") {
             for (const hero of newAppUser.heroes) {
                 if (hero.selected) {
-                    heroesArmor = hero.armor;
+                    newItems.push(hero.armor)
+                    newAppUser.armors.push(hero.armor);
                     hero.armor = item;
-                    newAppUser.armors.push(heroesArmor);
                     setEquippedArmor(item)
                 }
             }
@@ -55,12 +54,17 @@ function ItemPlaceHolder({item, appUser, setAppUser, setEquippedWeapon, setEquip
                     newAppUser.armors.splice(i, 1);
                 }
             }
+            for (let i = 0; i < newItems.length; i++) {
+                if (newItems[i].id === item.id) {
+                    newItems.splice(i, 1);
+                }
+            }
         } else {
             for (const hero of newAppUser.heroes) {
                 if (hero.selected) {
-                    heroesWeapon = hero.weapon;
+                    newItems.push(hero.weapon);
+                    newAppUser.weapons.push(hero.weapon);
                     hero.weapon = item;
-                    newAppUser.weapons.push(heroesWeapon);
                     setEquippedWeapon(item)
                 }
             }
@@ -69,7 +73,13 @@ function ItemPlaceHolder({item, appUser, setAppUser, setEquippedWeapon, setEquip
                     newAppUser.weapons.splice(i, 1);
                 }
             }
+            for (let i = 0; i < newItems.length; i++) {
+                if (newItems[i].id === item.id) {
+                    newItems.splice(i, 1);
+                }
+            }
         }
+        setItems(newItems)
         setAppUser(newAppUser)
         const requestOptions = {
             method: 'PUT',
