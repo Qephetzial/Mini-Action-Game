@@ -9,12 +9,12 @@ function Login({setAppUser}) {
     return (
         <>
             <ReactCurvedText
-                width={2000}
+                width={1700}
                 height={300}
                 cx={950}
-                cy={200}
+                cy={300}
                 rx={700}
-                ry={100}
+                ry={150}
                 startOffset={70}
                 reversed={true}
                 text="MY-MINI-ACTION-GAME"
