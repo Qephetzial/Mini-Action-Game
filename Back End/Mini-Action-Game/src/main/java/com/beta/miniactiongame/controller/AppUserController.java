@@ -2,12 +2,16 @@ package com.beta.miniactiongame.controller;
 
 import com.beta.miniactiongame.auth.JwtService;
 import com.beta.miniactiongame.model.AppUser;
+import com.beta.miniactiongame.model.item.Items;
 import com.beta.miniactiongame.service.AppUserService;
+import com.beta.miniactiongame.service.ItemService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 
 @RestController
@@ -16,11 +20,19 @@ import org.springframework.web.bind.annotation.*;
 public class AppUserController {
 
     private final AppUserService appUserService;
+    private final ItemService itemService;
 
-    //This rout returns a user by name
+    //This route returns a user by name
     @GetMapping("/get-{name}")
     public AppUser getAppUser(@PathVariable String name) {
         return appUserService.getAppUser(name);
+    }
+
+    //This route delete the item and adds its value to the appUser
+    @PutMapping("/{itemId}")
+    public void sellItem(@PathVariable UUID itemId, @RequestBody AppUser appUser) {
+        appUserService.updateAppUser(appUser);
+        itemService.deleteItem(itemId);
     }
 
     //This route updates any changes in app user

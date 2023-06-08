@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function ItemPlaceHolder({item, appUser, setAppUser, setEquippedWeapon, setEquippedArmor}) {
+function ItemPlaceHolder({item, appUser, setAppUser, setEquippedWeapon, setEquippedArmor, items, setItems}) {
 
 
     const[className, setClassName] = useState("modalClose")
@@ -37,7 +37,7 @@ function ItemPlaceHolder({item, appUser, setAppUser, setEquippedWeapon, setEquip
         mImage = <img style={{width: 400, height: 400, backgroundColor:"white"}} src={item.png} alt="item"/>
     }
 
-    const equipItem = async() => {
+    async function equipItem() {
         let heroesArmor = null;
         let heroesWeapon = null;
         let newAppUser = appUser;
@@ -81,6 +81,53 @@ function ItemPlaceHolder({item, appUser, setAppUser, setEquippedWeapon, setEquip
         closeModal();
     }
 
+    async function sellItem() {
+        switch (item.rarity) {
+            case "COMMON":
+                appUser.coin += 15;
+                break;
+            case "UNCOMMON":
+                appUser.coin += 45;
+                break;
+            case "RARE":
+                appUser.coin += 150;
+                break;
+            case "EPIC":
+                appUser.coin += 450;
+                break;
+            case "LEGENDARY":
+                appUser.coin += 900;
+                break;
+        }
+        if (item.itemType === "ARMOR") {
+            for (let i = 0; i < appUser.armors.length; i++) {
+                if (appUser.armors[i].id === item.id) {
+                    appUser.armors.splice(i, 1);
+                }
+            }
+        } else {
+            for (let i = 0; i < appUser.weapons.length; i++) {
+                if (appUser.weapons[i].id === item.id) {
+                    appUser.weapons.splice(i, 1);
+                }
+            }
+        }
+        const requestOptions = {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(appUser)
+        }
+        await fetch(`/api/user/${item.id}`, requestOptions);
+        localStorage.setItem('appUser', JSON.stringify(appUser));
+        let newItems = [...items]
+        for (let i = 0; i < newItems.length; i++) {
+            if (newItems[i].id === item.id) {
+                newItems.splice(i, 1);
+            }
+        }
+        setItems(newItems);
+        closeModal()
+    }
 
     let stats = []
 
@@ -118,7 +165,7 @@ function ItemPlaceHolder({item, appUser, setAppUser, setEquippedWeapon, setEquip
                     </span>
                     <span style={{alignSelf:"flex-end"}}>
                         <button className={buttonClass} onClick={equipItem}><span>EQUIP</span></button>
-                        <button className={buttonClass} ><span>SELL</span></button>
+                        <button className={buttonClass} onClick={sellItem} ><span>SELL</span></button>
                     </span>
                 </div>
             </div>

@@ -6,7 +6,7 @@ import ItemPlaceHolder from "./components/ItemPlaceHolder";
 
 function Inventory({appUser, setAppUser}) {
 
-    const items = appUser.weapons.concat(appUser.armors);
+    const [items, setItems] = useState(appUser.weapons.concat(appUser.armors));
     let displayableItems = [];
     const [forStart, setForStart] = useState(0);
     const [forEnd, setForEnd] = useState(30)
@@ -26,7 +26,7 @@ function Inventory({appUser, setAppUser}) {
 
     for (let i = forStart; i < forEnd; i++) {
         if (items.length <= i) {
-            displayableItems.push(null)
+            displayableItems.push(null);
         } else {
             displayableItems.push(items[i]);
         }
@@ -90,6 +90,8 @@ function Inventory({appUser, setAppUser}) {
                             setAppUser={setAppUser}
                             setEquippedWeapon={setEquippedWeapon}
                             setEquippedArmor={setEquippedArmor}
+                            items={items}
+                            setItems={setItems}
                         />
                     })}
             </div>
