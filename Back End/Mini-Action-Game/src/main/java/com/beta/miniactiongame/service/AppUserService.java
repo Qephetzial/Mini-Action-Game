@@ -40,6 +40,6 @@ public class AppUserService {
 
     //This method find and return an AppUser by name
     public AppUser getAppUser(String name) {
-        return appUserRepository.findByName(name).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return appUserRepository.findByName(name).orElseThrow(() -> new UsernameNotFoundException(name + " not found"));
     }
 }

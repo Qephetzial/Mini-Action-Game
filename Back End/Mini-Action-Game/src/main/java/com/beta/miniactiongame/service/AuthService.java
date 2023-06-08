@@ -27,7 +27,7 @@ public class AuthService {
         var appUser = AppUser.builder()
                 .name(request.getName())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .coin(10000)
+                .coin(100000)
                 .heroes(heroService.createHeroes())
                 .armors(new ArrayList<>())
                 .weapons(new ArrayList<>())
