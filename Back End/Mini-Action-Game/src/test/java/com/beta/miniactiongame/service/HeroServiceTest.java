@@ -4,12 +4,11 @@ import com.beta.miniactiongame.factory.ArmorFactory;
 import com.beta.miniactiongame.factory.HeroFactory;
 import com.beta.miniactiongame.factory.WeaponFactory;
 import com.beta.miniactiongame.model.creature.Hero;
-import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
-@AllArgsConstructor
+
 class HeroServiceTest {
 
     private final HeroService heroService = new HeroService(new HeroFactory(), new ArmorFactory(), new WeaponFactory());
