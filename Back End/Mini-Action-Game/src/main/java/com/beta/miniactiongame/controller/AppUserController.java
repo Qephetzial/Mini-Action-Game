@@ -1,8 +1,6 @@
 package com.beta.miniactiongame.controller;
 
-import com.beta.miniactiongame.auth.JwtService;
 import com.beta.miniactiongame.model.AppUser;
-import com.beta.miniactiongame.model.item.Items;
 import com.beta.miniactiongame.service.AppUserService;
 import com.beta.miniactiongame.service.ItemService;
 import jakarta.servlet.http.Cookie;

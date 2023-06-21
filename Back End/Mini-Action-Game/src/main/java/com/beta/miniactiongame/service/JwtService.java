@@ -1,4 +1,4 @@
-package com.beta.miniactiongame.auth;
+package com.beta.miniactiongame.service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
