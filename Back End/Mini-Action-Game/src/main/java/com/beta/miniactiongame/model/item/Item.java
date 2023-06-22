@@ -13,7 +13,7 @@ import java.util.UUID;
 @Getter
 @Setter
 //This class is the core of every item. All the item must be inherited from this class.
-public abstract class Items {
+public abstract class Item {
 
     //A unique ID to the item.
     @Id

@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 //This class for the weapons what can be equipped to the hero and increase the damage output.
-public class Weapon extends Items{
+public class Weapon extends Item {
 
     //This field determines how much bonus damage the weapon gives.
     private int damage;

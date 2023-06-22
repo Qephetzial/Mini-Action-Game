@@ -25,8 +25,8 @@ public class AppUserService {
     }
 
     //This method downcast the item and add it to the corresponding list of the user
-    public void addItem(List<Items> items, AppUser appUser) {
-        for (Items item: items) {
+    public void addItem(List<Item> items, AppUser appUser) {
+        for (Item item: items) {
             if (item.getItemType().equals(ItemType.ARMOR)) {
                 Armor armor = (Armor) item;
                 appUser.addArmor(armor);

@@ -1,7 +1,7 @@
 package com.beta.miniactiongame.service;
 
 import com.beta.miniactiongame.factory.*;
-import com.beta.miniactiongame.model.item.Items;
+import com.beta.miniactiongame.model.item.Item;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.*;
@@ -20,11 +20,11 @@ public class ChestService {
     }
 
     //This method create a random item or occasionally two and return them in list
-    public List<Items> openChest(int common, int unCommon, int rare, int epic, boolean bonusLoot) {
+    public List<Item> openChest(int common, int unCommon, int rare, int epic, boolean bonusLoot) {
         int rarity = getRandomInteger(1000);
         int type = getRandomInteger(4);
         int finalItem = getRandomInteger(3);
-        List<Items> item = new ArrayList<>();
+        List<Item> item = new ArrayList<>();
         if (rarity < common) {
             item.add(switch (type) {
                 case 0 -> switch (finalItem) {

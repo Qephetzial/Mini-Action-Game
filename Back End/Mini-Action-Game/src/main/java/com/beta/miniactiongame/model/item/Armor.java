@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 //This class for the armors what can be equipped to the hero and increase the survival chance.
-public class Armor extends Items {
+public class Armor extends Item {
 
     //This field determines how much bonus hit points the armor gives.
     private int health;

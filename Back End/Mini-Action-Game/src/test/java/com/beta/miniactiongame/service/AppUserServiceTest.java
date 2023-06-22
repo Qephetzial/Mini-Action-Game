@@ -27,7 +27,7 @@ class AppUserServiceTest {
     AppUserService appUserService;
     AppUser appUser;
     AppUser updatedAppUser;
-    List<Items> items;
+    List<Item> items;
 
     @BeforeEach
     void setUp() {
