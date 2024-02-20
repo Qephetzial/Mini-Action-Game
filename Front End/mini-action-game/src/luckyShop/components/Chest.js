@@ -41,7 +41,7 @@ function Chest({index, chest, appUser, setCoin}) {
 
 
     const createItem = async() => {
-        let route = null
+        let chestType = null
         switch (index) {
             case '0':
                 if (appUser.coin < 150) {
@@ -49,7 +49,7 @@ function Chest({index, chest, appUser, setCoin}) {
                 } else {
                     appUser.coin -= 150;
                     setCoin(appUser.coin)
-                    route = "iron";
+                    chestType = "IRON";
                     break;
                 }
             case '1':
@@ -58,7 +58,7 @@ function Chest({index, chest, appUser, setCoin}) {
                 } else {
                     appUser.coin -= 250;
                     setCoin(appUser.coin)
-                    route = "bronze";
+                    chestType = "BRONZE";
                     break;
                 }
             case '2':
@@ -67,7 +67,7 @@ function Chest({index, chest, appUser, setCoin}) {
                 } else {
                     appUser.coin -= 400;
                     setCoin(appUser.coin)
-                    route = "silver";
+                    chestType = "SILVER";
                     break;
                 }
             case '3':
@@ -76,7 +76,7 @@ function Chest({index, chest, appUser, setCoin}) {
                 } else {
                     appUser.coin -= 700;
                     setCoin(appUser.coin)
-                    route = "golden";
+                    chestType = "GOLDEN";
                     break;
                 }
         }
@@ -85,7 +85,7 @@ function Chest({index, chest, appUser, setCoin}) {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(appUser)
         }
-        const response = await(await fetch(`/api/chest/${route}`, requestOptions)).json();
+        const response = await(await fetch(`/api/chest?type=${chestType}`, requestOptions)).json();
         setDisplayableProps(response[0])
         setImg(<img src={response[0].png} alt={response[0].Type} style={{width:"400px", backgroundColor:"white"}}/>)
         if (response[0].itemType == "ARMOR") {
