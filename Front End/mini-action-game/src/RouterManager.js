@@ -4,6 +4,7 @@ import Login from "./login/Login";
 import Main from "./main/Main";
 import Inventory from "./inventory/Inventory";
 import LuckyShop from "./luckyShop/LuckyShop";
+import Map from "./map/Map";
 import React, {useState} from "react";
 import StartButton from "./start/components/StartButton";
 
@@ -12,6 +13,9 @@ function RouterManager() {
     const storedAppUser = localStorage.getItem('appUser');
     const [appUser, setAppUser] = useState(JSON.parse(storedAppUser));
     const [headerCss, setHeaderCss] = useState("hide")
+    const [layerOne, setLayerOne] = useState();
+    const [layerTwo, setLayerTwo] = useState();
+    const [playerCoords, setPlayerCoords] = useState()
 
     const [activeButton, setActiveButton] = useState("easy");
     return(
@@ -36,6 +40,9 @@ function RouterManager() {
                             activeButton={activeButton}
                             setActiveButton={setActiveButton}
                             setHeaderCss={setHeaderCss}
+                            setLayerOne={setLayerOne}
+                            setLayerTwo={setLayerTwo}
+                            setPlayerCoords={setPlayerCoords}
                         />
                     }/>
                     <Route path="inventory" element={
@@ -49,6 +56,14 @@ function RouterManager() {
                             appUser={appUser}
                             setAppUser={setAppUser}
                         />}/>
+                    <Route path="map" element={
+                        <Map
+                            layerOne={layerOne}
+                            layerTwo={layerTwo}
+                            setLayerTwo={setLayerTwo}
+                            playerCoords={playerCoords}
+                            setPlayerCoords={setPlayerCoords}
+                        />}></Route>
                 </Route>
             </Routes>
         </BrowserRouter>

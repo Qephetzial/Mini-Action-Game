@@ -6,10 +6,9 @@ import Button from "../genericComponents/Button";
 import HeroSData from "./components/HeroSData";
 
 
-function Main({appUser, setAppUser, activeButton, setActiveButton, setHeaderCss}) {
+function Main({appUser, setAppUser, activeButton, setActiveButton, setHeaderCss, setLayerOne, setLayerTwo, setPlayerCoords}) {
     const [coin, setCoin] = useState(appUser.coin);
-    const [heroes, setHeroes] = useState(appUser.heroes)
-
+    const [heroes, setHeroes] = useState(appUser.heroes);
     setHeaderCss("")
 
   return (
@@ -47,7 +46,12 @@ function Main({appUser, setAppUser, activeButton, setActiveButton, setHeaderCss}
               </div>
               <Button
                 text={'PLAY'}
-                classes={"play btn-10"}
+                classes={"play btn-10 transparent"}
+                setLayerOne={setLayerOne}
+                setLayerTwo={setLayerTwo}
+                href={'/map'}
+                setHeaderCss={setHeaderCss}
+                setPlayerCoords={setPlayerCoords}
               />
               <HeroSData
                 hero={heroes[0]}
