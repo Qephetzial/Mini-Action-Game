@@ -1,4 +1,4 @@
-package com.beta.miniactiongame.model.item;
+package com.beta.miniactiongame.util;
 
 public enum ChestType {
     IRON,
