@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class HeroServiceTest {
 
-    private final HeroService heroService = new HeroService(new HeroFactory(), new ArmorFactory(), new WeaponFactory());
+    private final HeroService heroService = new HeroService(new HeroFactory());
 
     @Test
     void createHeroes() {

@@ -14,7 +14,7 @@ function HeroSelector({heroes, setHeroes, coin, setCoin, appUser, setAppUser}) {
     const selected = heroes[0].selected;
     const buttonText = getButtonText({selected, obtained});
 
-    let btnClass = ''
+    let btnClass
 
 
     if (!heroes[0].selected) {
