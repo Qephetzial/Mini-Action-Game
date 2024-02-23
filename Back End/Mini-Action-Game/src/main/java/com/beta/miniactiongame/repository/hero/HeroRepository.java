@@ -11,5 +11,5 @@ import java.util.UUID;
 
 @Repository
 public interface HeroRepository extends JpaRepository<Hero, UUID> {
-    Optional<Hero> findByName(CreatureType name);
+    Optional<Hero> findHeroByName(CreatureType name);
 }
