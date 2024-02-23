@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.beta.miniactiongame.factory.ArmorFactory.*;
-import static com.beta.miniactiongame.factory.WeaponFactory.*;
 import static com.beta.miniactiongame.util.LootChest.getChest;
 import static com.beta.miniactiongame.util.UtilityMethods.getRandomInt;
 
