@@ -21,7 +21,7 @@ import java.util.UUID;
 public class UserHeroData {
     @Id
     @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @GenericGenerator(name = "uuid2", type = org.hibernate.id.uuid.UuidGenerator.class)
     private UUID id;
     @ManyToOne
     private Hero hero;
