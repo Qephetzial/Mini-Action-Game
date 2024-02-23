@@ -2,7 +2,6 @@ package com.beta.miniactiongame.repository.hero;
 
 import com.beta.miniactiongame.model.creature.CreatureType;
 import com.beta.miniactiongame.model.creature.Hero;
-import com.beta.miniactiongame.model.item.Armor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
