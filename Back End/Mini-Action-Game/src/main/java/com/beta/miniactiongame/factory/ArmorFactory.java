@@ -1,16 +1,32 @@
 package com.beta.miniactiongame.factory;
 
-import com.beta.miniactiongame.model.item.*;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
+import com.beta.miniactiongame.model.item.Armor;
+import com.beta.miniactiongame.model.item.DamageType;
+import com.beta.miniactiongame.model.item.ItemType;
+import com.beta.miniactiongame.model.item.Rarity;
+import lombok.experimental.UtilityClass;
 
-@Component
-@NoArgsConstructor
-//This class is the collection of armors blueprints.
-public class ArmorFactory {
+@UtilityClass
+public final class ArmorFactory {
+
+    public static final Armor commonArmorOne = createCommonArmorOne();
+    public static final Armor commonArmorTwo = createCommonArmorTwo();
+    public static final Armor commonArmorThree = createCommonArmorThree();
+    public static final Armor unCommonArmorOne = createUnCommonArmorOne();
+    public static final Armor unCommonArmorTwo = createUnCommonArmorTwo();
+    public static final Armor unCommonArmorThree = createUnCommonArmorThree();
+    public static final Armor rareArmorOne = createRareArmorOne();
+    public static final Armor rareArmorTwo = createRareArmorTwo();
+    public static final Armor rareArmorThree = createRareArmorThree();
+    public static final Armor epicArmorOne = createEpicArmorOne();
+    public static final Armor epicArmorTwo = createEpicArmorTwo();
+    public static final Armor epicArmorThree = createEpicArmorThree();
+    public static final Armor legendaryArmorOne = createLegendaryArmorOne();
+    public static final Armor legendaryArmorTwo = createLegendaryArmorTwo();
+    public static final Armor legendaryArmorThree = createLegendaryArmorThree();
 
     //Blueprint of common armor.
-    public Armor createCommonArmorOne() {
+    private static Armor createCommonArmorOne() {
         Armor armor = new Armor();
         armor.setName("Brigandine Armor");
         armor.setRarity(Rarity.COMMON);
@@ -25,7 +41,7 @@ public class ArmorFactory {
     }
 
     //Blueprint of common armor.
-    public Armor createCommonArmorTwo() {
+    private static Armor createCommonArmorTwo() {
         Armor armor = new Armor();
         armor.setName("Hide Armor");
         armor.setRarity(Rarity.COMMON);
@@ -40,7 +56,7 @@ public class ArmorFactory {
     }
 
     //Blueprint of common armor.
-    public Armor createCommonArmorThree() {
+    private static Armor createCommonArmorThree() {
         Armor armor = new Armor();
         armor.setName("Shadow Sakura Armor");
         armor.setRarity(Rarity.COMMON);
@@ -56,7 +72,7 @@ public class ArmorFactory {
 
 
     //Blueprint of uncommon armor.
-    public Armor createUnCommonArmorOne() {
+    private static Armor createUnCommonArmorOne() {
         Armor armor = new Armor();
         armor.setName("Studded Survival Armor");
         armor.setRarity(Rarity.UNCOMMON);
@@ -71,7 +87,7 @@ public class ArmorFactory {
     }
 
     //Blueprint of uncommon armor.
-    public Armor createUnCommonArmorTwo() {
+    private static Armor createUnCommonArmorTwo() {
         Armor armor = new Armor();
         armor.setName("Conquistador Armor");
         armor.setRarity(Rarity.UNCOMMON);
@@ -86,7 +102,7 @@ public class ArmorFactory {
     }
 
     //Blueprint of uncommon armor.
-    public Armor createUnCommonArmorThree() {
+    private static Armor createUnCommonArmorThree() {
         Armor armor = new Armor();
         armor.setName("Indomitable Samurai Armor");
         armor.setRarity(Rarity.UNCOMMON);
@@ -101,7 +117,7 @@ public class ArmorFactory {
     }
 
     //Blueprint of rare armor.
-    public Armor createRareArmorOne() {
+    private static Armor createRareArmorOne() {
         Armor armor = new Armor();
         armor.setName("Knight Banneret Armor");
         armor.setRarity(Rarity.RARE);
@@ -116,7 +132,7 @@ public class ArmorFactory {
     }
 
     //Blueprint of rare armor.
-    public Armor createRareArmorTwo() {
+    private static Armor createRareArmorTwo() {
         Armor armor = new Armor();
         armor.setName("Wide Mantle Robe");
         armor.setRarity(Rarity.RARE);
@@ -131,7 +147,7 @@ public class ArmorFactory {
     }
 
     //Blueprint of rare armor.
-    public Armor createRareArmorThree() {
+    private static Armor createRareArmorThree() {
         Armor armor = new Armor();
         armor.setName("Splint Armor");
         armor.setRarity(Rarity.RARE);
@@ -146,7 +162,7 @@ public class ArmorFactory {
     }
 
     //Blueprint of epic armor.
-    public Armor createEpicArmorOne() {
+    private static Armor createEpicArmorOne() {
         Armor armor = new Armor();
         armor.setName("Knight Challenger Armor");
         armor.setRarity(Rarity.EPIC);
@@ -161,7 +177,7 @@ public class ArmorFactory {
     }
 
     //Blueprint of epic armor.
-    public Armor createEpicArmorTwo() {
+    private static Armor createEpicArmorTwo() {
         Armor armor = new Armor();
         armor.setName("Dragon Knight Armor");
         armor.setRarity(Rarity.EPIC);
@@ -176,7 +192,7 @@ public class ArmorFactory {
     }
 
     //Blueprint of epic armor.
-    public Armor createEpicArmorThree() {
+    private static Armor createEpicArmorThree() {
         Armor armor = new Armor();
         armor.setName("Power Armor");
         armor.setRarity(Rarity.EPIC);
@@ -191,7 +207,7 @@ public class ArmorFactory {
     }
 
     //Blueprint of legendary armor.
-    public Armor createLegendaryArmorOne() {
+    private static Armor createLegendaryArmorOne() {
         Armor armor = new Armor();
         armor.setName("Devil's Armor");
         armor.setRarity(Rarity.LEGENDARY);
@@ -206,7 +222,7 @@ public class ArmorFactory {
     }
 
     //Blueprint of legendary armor.
-    public Armor createLegendaryArmorTwo() {
+    private static Armor createLegendaryArmorTwo() {
         Armor armor = new Armor();
         armor.setName("Hired Gun Armor");
         armor.setRarity(Rarity.LEGENDARY);
@@ -221,7 +237,7 @@ public class ArmorFactory {
     }
 
     //Blueprint of legendary armor.
-    public Armor createLegendaryArmorThree() {
+    private static Armor createLegendaryArmorThree() {
         Armor armor = new Armor();
         armor.setName("Combat Uniform");
         armor.setRarity(Rarity.LEGENDARY);

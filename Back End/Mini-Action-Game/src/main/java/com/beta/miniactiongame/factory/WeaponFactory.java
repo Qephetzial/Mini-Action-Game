@@ -1,19 +1,65 @@
 package com.beta.miniactiongame.factory;
 
-import com.beta.miniactiongame.model.item.*;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
+import com.beta.miniactiongame.model.item.DamageType;
+import com.beta.miniactiongame.model.item.ItemType;
+import com.beta.miniactiongame.model.item.Rarity;
+import com.beta.miniactiongame.model.item.Weapon;
+import lombok.experimental.UtilityClass;
 
-@Component
-@NoArgsConstructor
+@UtilityClass
 /*This class is the collection of weapon blueprints.
 (dps=damage per second, it's an estimated value that how much damage the weapon will cause as an average.
 The formula is "(100 * damage + crit chance * crit damage) / 100 * (attack speed / 10)."
 *The value calculated as a single target so weapons with aoe damage in game can cause way more damage)*/
-public class WeaponFactory {
+public final class WeaponFactory {
+    public static final Weapon commonSwordOne = createCommonSwordOne();
+    public static final Weapon commonSwordTwo = createCommonSwordTwo();
+    public static final Weapon commonSwordThree = createCommonSwordThree();
+    public static final Weapon commonBowOne = createCommonBowOne();
+    public static final Weapon commonBowTwo = createCommonBowTwo();
+    public static final Weapon commonBowThree = createCommonBowThree();
+    public static final Weapon commonStaffOne = createCommonStaffOne();
+    public static final Weapon commonStaffTwo = createCommonStaffTwo();
+    public static final Weapon commonStaffThree = createCommonStaffThree();
+    public static final Weapon unCommonSwordOne = createUnCommonSwordOne();
+    public static final Weapon unCommonSwordTwo = createUnCommonSwordTwo();
+    public static final Weapon unCommonSwordThree = createUnCommonSwordThree();
+    public static final Weapon unCommonBowOne = createUnCommonBowOne();
+    public static final Weapon unCommonBowTwo = createUnCommonBowTwo();
+    public static final Weapon unCommonBowThree = createUnCommonBowThree();
+    public static final Weapon unCommonStaffOne = createUnCommonStaffOne();
+    public static final Weapon unCommonStaffTwo = createUnCommonStaffTwo();
+    public static final Weapon unCommonStaffThree = createUnCommonStaffThree();
+    public static final Weapon rareSwordOne = createRareSwordOne();
+    public static final Weapon rareSwordTwo = createRareSwordTwo();
+    public static final Weapon rareSwordThree = createRareSwordThree();
+    public static final Weapon rareBowOne = createRareBowOne();
+    public static final Weapon rareBowTwo = createRareBowTwo();
+    public static final Weapon rareBowThree = createRareBowThree();
+    public static final Weapon rareStaffOne = createRareStaffOne();
+    public static final Weapon rareStaffTwo = createRareStaffTwo();
+    public static final Weapon rareStaffThree = createRareStaffThree();
+    public static final Weapon epicSwordOne = createEpicSwordOne();
+    public static final Weapon epicSwordTwo = createEpicSwordTwo();
+    public static final Weapon epicSwordThree = createEpicSwordThree();
+    public static final Weapon epicBowOne = createEpicBowOne();
+    public static final Weapon epicBowTwo = createEpicBowTwo();
+    public static final Weapon epicBowThree = createEpicBowThree();
+    public static final Weapon epicStaffOne = createEpicStaffOne();
+    public static final Weapon epicStaffTwo = createEpicStaffTwo();
+    public static final Weapon epicStaffThree = createEpicStaffThree();
+    public static final Weapon legendarySwordOne = createLegendarySwordOne();
+    public static final Weapon legendarySwordTwo = createLegendarySwordTwo();
+    public static final Weapon legendarySwordThree = createLegendarySwordThree();
+    public static final Weapon legendaryBowOne = createLegendaryBowOne();
+    public static final Weapon legendaryBowTwo = createLegendaryBowTwo();
+    public static final Weapon legendaryBowThree = createLegendaryBowThree();
+    public static final Weapon legendaryStaffOne = createLegendaryStaffOne();
+    public static final Weapon legendaryStaffTwo = createLegendaryStaffTwo();
+    public static final Weapon legendaryStaffThree = createLegendaryStaffThree();
 
     //Blueprint of common sword(dps=14.00).
-    public Weapon createCommonSwordOne() {
+    private static Weapon createCommonSwordOne() {
         Weapon sword = new Weapon();
         sword.setName("Black sword");
         sword.setRarity(Rarity.COMMON);
@@ -29,7 +75,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of common sword(dps=14.50).
-    public Weapon createCommonSwordTwo() {
+    private static Weapon createCommonSwordTwo() {
         Weapon sword = new Weapon();
         sword.setName("Bear sword");
         sword.setRarity(Rarity.COMMON);
@@ -45,7 +91,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of common sword(dps=14.45).
-    public Weapon createCommonSwordThree() {
+    private static Weapon createCommonSwordThree() {
         Weapon sword = new Weapon();
         sword.setName("Red metal sword");
         sword.setRarity(Rarity.COMMON);
@@ -61,7 +107,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of uncommon sword(dps=49.00).
-    public Weapon createUnCommonSwordOne() {
+    private static Weapon createUnCommonSwordOne() {
         Weapon sword = new Weapon();
         sword.setName("Ancient sword");
         sword.setRarity(Rarity.UNCOMMON);
@@ -77,7 +123,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of uncommon sword(dps=48.75).
-    public Weapon createUnCommonSwordTwo() {
+    private static Weapon createUnCommonSwordTwo() {
         Weapon sword = new Weapon();
         sword.setName("Bone sword");
         sword.setRarity(Rarity.UNCOMMON);
@@ -93,7 +139,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of uncommon sword(dps=48.75).
-    public Weapon createUnCommonSwordThree() {
+    private static Weapon createUnCommonSwordThree() {
         Weapon sword = new Weapon();
         sword.setName("Eagle sword");
         sword.setRarity(Rarity.UNCOMMON);
@@ -109,7 +155,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of rare sword(dps=150.00).
-    public Weapon createRareSwordOne() {
+    private static Weapon createRareSwordOne() {
         Weapon sword = new Weapon();
         sword.setName("Cursed sword");
         sword.setRarity(Rarity.RARE);
@@ -125,7 +171,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of rare sword(dps=150.00).
-    public Weapon createRareSwordTwo() {
+    private static Weapon createRareSwordTwo() {
         Weapon sword = new Weapon();
         sword.setName("Executioner sword");
         sword.setRarity(Rarity.RARE);
@@ -141,7 +187,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of rare sword(dps=150.00).
-    public Weapon createRareSwordThree() {
+    private static Weapon createRareSwordThree() {
         Weapon sword = new Weapon();
         sword.setName("Necrotic sword");
         sword.setRarity(Rarity.RARE);
@@ -157,7 +203,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of epic sword(dps=453.75).
-    public Weapon createEpicSwordOne() {
+    private static Weapon createEpicSwordOne() {
         Weapon sword = new Weapon();
         sword.setName("Head splashing Hammer");
         sword.setRarity(Rarity.EPIC);
@@ -173,7 +219,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of epic sword(dps=300.00*).
-    public Weapon createEpicSwordTwo() {
+    private static Weapon createEpicSwordTwo() {
         Weapon sword = new Weapon();
         sword.setName("Heroic Axe");
         sword.setRarity(Rarity.EPIC);
@@ -189,7 +235,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of epic sword(dps=293.25*).
-    public Weapon createEpicSwordThree() {
+    private static Weapon createEpicSwordThree() {
         Weapon sword = new Weapon();
         sword.setName("Magma Axe");
         sword.setRarity(Rarity.EPIC);
@@ -205,7 +251,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of legendary sword(dps=2420.00*).
-    public Weapon createLegendarySwordOne() {
+    private static Weapon createLegendarySwordOne() {
         Weapon sword = new Weapon();
         sword.setName("Demonic Spear");
         sword.setRarity(Rarity.LEGENDARY);
@@ -221,7 +267,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of legendary sword(dps=3945.00).
-    public Weapon createLegendarySwordTwo() {
+    private static Weapon createLegendarySwordTwo() {
         Weapon sword = new Weapon();
         sword.setName("Samurai Sword");
         sword.setRarity(Rarity.LEGENDARY);
@@ -237,7 +283,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of legendary sword(dps=2590.50*).
-    public Weapon createLegendarySwordThree() {
+    private static Weapon createLegendarySwordThree() {
         Weapon sword = new Weapon();
         sword.setName("Demonic Scythe");
         sword.setRarity(Rarity.LEGENDARY);
@@ -253,7 +299,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of common bow(dps=18,00).
-    public Weapon createCommonBowOne() {
+    private static Weapon createCommonBowOne() {
         Weapon bow = new Weapon();
         bow.setName("Bone Bow");
         bow.setRarity(Rarity.COMMON);
@@ -269,7 +315,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of common bow(dps=19.00).
-    public Weapon createCommonBowTwo() {
+    private static Weapon createCommonBowTwo() {
         Weapon bow = new Weapon();
         bow.setName("Old Bow");
         bow.setRarity(Rarity.COMMON);
@@ -285,7 +331,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of common bow(dps=19.20).
-    public Weapon createCommonBowThree() {
+    private static Weapon createCommonBowThree() {
         Weapon bow = new Weapon();
         bow.setName("Birch Bow");
         bow.setRarity(Rarity.COMMON);
@@ -301,7 +347,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of uncommon bow(dps=52.20).
-    public Weapon createUnCommonBowOne() {
+    private static Weapon createUnCommonBowOne() {
         Weapon bow = new Weapon();
         bow.setName("Fast Bow");
         bow.setRarity(Rarity.UNCOMMON);
@@ -317,7 +363,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of uncommon bow(dps=52.00).
-    public Weapon createUnCommonBowTwo() {
+    private static Weapon createUnCommonBowTwo() {
         Weapon bow = new Weapon();
         bow.setName("Curved Bow");
         bow.setRarity(Rarity.UNCOMMON);
@@ -333,7 +379,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of uncommon bow(dps=52.25).
-    public Weapon createUnCommonBowThree() {
+    private static Weapon createUnCommonBowThree() {
         Weapon bow = new Weapon();
         bow.setName("Strong Bow");
         bow.setRarity(Rarity.UNCOMMON);
@@ -349,7 +395,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of rare bow(dps=201.00).
-    public Weapon createRareBowOne() {
+    private static Weapon createRareBowOne() {
         Weapon bow = new Weapon();
         bow.setName("Curling Bow");
         bow.setRarity(Rarity.RARE);
@@ -365,7 +411,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of rare bow(dps=145.25*).
-    public Weapon createRareBowTwo() {
+    private static Weapon createRareBowTwo() {
         Weapon bow = new Weapon();
         bow.setName("Piercing Bow");
         bow.setRarity(Rarity.RARE);
@@ -381,7 +427,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of rare bow(dps=200.50).
-    public Weapon createRareBowThree() {
+    private static Weapon createRareBowThree() {
         Weapon bow = new Weapon();
         bow.setName("Skeleton Bow");
         bow.setRarity(Rarity.RARE);
@@ -397,7 +443,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of epic bow(dps=412.50*).
-    public Weapon createEpicBowOne() {
+    private static Weapon createEpicBowOne() {
         Weapon bow = new Weapon();
         bow.setName("Crossbow");
         bow.setRarity(Rarity.EPIC);
@@ -413,7 +459,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of epic bow(dps=598.50).
-    public Weapon createEpicBowTwo() {
+    private static Weapon createEpicBowTwo() {
         Weapon bow = new Weapon();
         bow.setName("Frost Bow");
         bow.setRarity(Rarity.EPIC);
@@ -429,7 +475,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of epic bow(dps=600.00).
-    public Weapon createEpicBowThree() {
+    private static Weapon createEpicBowThree() {
         Weapon bow = new Weapon();
         bow.setName("Poison Bow");
         bow.setRarity(Rarity.EPIC);
@@ -445,7 +491,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of legendary bow(dps=4700.00).
-    public Weapon createLegendaryBowOne() {
+    private static Weapon createLegendaryBowOne() {
         Weapon bow = new Weapon();
         bow.setName("Grasp Bow");
         bow.setRarity(Rarity.LEGENDARY);
@@ -461,7 +507,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of legendary bow(dps=3225.00*).
-    public Weapon createLegendaryBowTwo() {
+    private static Weapon createLegendaryBowTwo() {
         Weapon bow = new Weapon();
         bow.setName("Magma Bow");
         bow.setRarity(Rarity.LEGENDARY);
@@ -477,7 +523,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of legendary bow(dps=3468.75*).
-    public Weapon createLegendaryBowThree() {
+    private static Weapon createLegendaryBowThree() {
         Weapon bow = new Weapon();
         bow.setName("Precision Bow");
         bow.setRarity(Rarity.LEGENDARY);
@@ -493,7 +539,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of common staff(dps=20.00).
-    public Weapon createCommonStaffOne() {
+    private static Weapon createCommonStaffOne() {
         Weapon staff = new Weapon();
         staff.setName("Leafy Staff");
         staff.setRarity(Rarity.COMMON);
@@ -509,7 +555,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of common staff(dps=20.00).
-    public Weapon createCommonStaffTwo() {
+    private static Weapon createCommonStaffTwo() {
         Weapon staff = new Weapon();
         staff.setName("Sickle Staff");
         staff.setRarity(Rarity.COMMON);
@@ -525,7 +571,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of common staff(dps=20.00).
-    public Weapon createCommonStaffThree() {
+    private static Weapon createCommonStaffThree() {
         Weapon staff = new Weapon();
         staff.setName("Steel Staff");
         staff.setRarity(Rarity.COMMON);
@@ -541,7 +587,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of uncommon staff(dps=20.20).
-    public Weapon createUnCommonStaffOne() {
+    private static Weapon createUnCommonStaffOne() {
         Weapon staff = new Weapon();
         staff.setName("Light and Dark Staff");
         staff.setRarity(Rarity.UNCOMMON);
@@ -557,7 +603,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of uncommon staff(dps=20.20).
-    public Weapon createUnCommonStaffTwo() {
+    private static Weapon createUnCommonStaffTwo() {
         Weapon staff = new Weapon();
         staff.setName("Orb Staff");
         staff.setRarity(Rarity.UNCOMMON);
@@ -573,7 +619,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of uncommon staff(dps=20.20).
-    public Weapon createUnCommonStaffThree() {
+    private static Weapon createUnCommonStaffThree() {
         Weapon staff = new Weapon();
         staff.setName("Winged Staff");
         staff.setRarity(Rarity.UNCOMMON);
@@ -589,7 +635,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of rare staff(dps=21.00).
-    public Weapon createRareStaffOne() {
+    private static Weapon createRareStaffOne() {
         Weapon staff = new Weapon();
         staff.setName("Gem Staff");
         staff.setRarity(Rarity.RARE);
@@ -605,7 +651,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of rare staff(dps=21.00).
-    public Weapon createRareStaffTwo() {
+    private static Weapon createRareStaffTwo() {
         Weapon staff = new Weapon();
         staff.setName("Holy Staff");
         staff.setRarity(Rarity.RARE);
@@ -621,7 +667,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of rare staff(dps=).
-    public Weapon createRareStaffThree() {
+    private static Weapon createRareStaffThree() {
         Weapon staff = new Weapon();
         staff.setName("Sea Staff");
         staff.setRarity(Rarity.RARE);
@@ -637,7 +683,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of epic staff(dps=30.00).
-    public Weapon createEpicStaffOne() {
+    private static Weapon createEpicStaffOne() {
         Weapon staff = new Weapon();
         staff.setName("Cobra Staff");
         staff.setRarity(Rarity.EPIC);
@@ -653,7 +699,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of epic staff(dps=30.00).
-    public Weapon createEpicStaffTwo() {
+    private static Weapon createEpicStaffTwo() {
         Weapon staff = new Weapon();
         staff.setName("Elder Staff");
         staff.setRarity(Rarity.EPIC);
@@ -669,7 +715,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of epic staff(dps=30.00).
-    public Weapon createEpicStaffThree() {
+    private static Weapon createEpicStaffThree() {
         Weapon staff = new Weapon();
         staff.setName("Necrotic Staff");
         staff.setRarity(Rarity.EPIC);
@@ -685,7 +731,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of legendary staff(dps=80.00).
-    public Weapon createLegendaryStaffOne() {
+    private static Weapon createLegendaryStaffOne() {
         Weapon staff = new Weapon();
         staff.setName("Fire Tentacle Staff");
         staff.setRarity(Rarity.LEGENDARY);
@@ -701,7 +747,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of legendary staff(dps=80.00).
-    public Weapon createLegendaryStaffTwo() {
+    private static Weapon createLegendaryStaffTwo() {
         Weapon staff = new Weapon();
         staff.setName("Naga Staff");
         staff.setRarity(Rarity.LEGENDARY);
@@ -717,7 +763,7 @@ public class WeaponFactory {
     }
 
     //Blueprint of legendary staff(dps=30.00).
-    public Weapon createLegendaryStaffThree() {
+    private static Weapon createLegendaryStaffThree() {
         Weapon staff = new Weapon();
         staff.setName("Syphon Staff");
         staff.setRarity(Rarity.LEGENDARY);
