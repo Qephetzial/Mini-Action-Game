@@ -1,6 +1,5 @@
 package com.beta.miniactiongame.repository.item;
 
-import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.Weapon;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
