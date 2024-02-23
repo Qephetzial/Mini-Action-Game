@@ -13,7 +13,6 @@ public class HeroFactory {
 
     private final HeroService heroService;
 
-    //Blueprint of a fighter hero.
     public Hero getFighter() {
         Hero hero = heroService.getHeroByName(CreatureType.FIGHTER);
         if (hero == null) {
@@ -32,7 +31,6 @@ public class HeroFactory {
         return hero;
     }
 
-    //Blueprint of a ranger hero.
     public Hero getRanger() {
         Hero hero = heroService.getHeroByName(CreatureType.RANGER);
         if (hero == null) {
@@ -51,7 +49,6 @@ public class HeroFactory {
         return hero;
     }
 
-    //Blueprint of a mage hero.
     public Hero getMage() {
         Hero hero = heroService.getHeroByName(CreatureType.MAGE);
         if (hero == null) {
@@ -70,7 +67,6 @@ public class HeroFactory {
         return hero;
     }
 
-    //Blueprint of a demon hero.
     public Hero getDemon() {
         Hero hero = heroService.getHeroByName(CreatureType.DEMON);
         if (hero == null) {
@@ -89,4 +85,3 @@ public class HeroFactory {
         return hero;
     }
 }
-

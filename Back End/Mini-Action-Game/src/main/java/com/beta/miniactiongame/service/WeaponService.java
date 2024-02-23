@@ -18,5 +18,4 @@ public class WeaponService {
     public Weapon getWeaponByName(String name) {
         return weaponRepository.findByName(name).orElse(null);
     }
-
 }

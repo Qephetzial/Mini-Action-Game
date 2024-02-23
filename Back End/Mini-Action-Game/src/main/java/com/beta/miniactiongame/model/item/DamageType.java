@@ -6,5 +6,5 @@ public enum DamageType {
     BLUDGEONING,
     POISON,
     COLD,
-    FIRE;
+    FIRE
 }

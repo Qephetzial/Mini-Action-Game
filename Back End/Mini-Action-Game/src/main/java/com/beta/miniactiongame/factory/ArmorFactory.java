@@ -14,7 +14,6 @@ public class ArmorFactory {
 
     private final ArmorService armorService;
 
-    //Blueprint of common armor.
     public Armor getCommonArmorOne() {
         Armor armor = armorService.getArmorByName("Brigandine Armor");
         if (armor == null) {
@@ -33,7 +32,6 @@ public class ArmorFactory {
         return armor;
     }
 
-    //Blueprint of common armor.
     public Armor getCommonArmorTwo() {
         Armor armor = armorService.getArmorByName("Hide Armor");
         if(armor == null) {
@@ -52,7 +50,6 @@ public class ArmorFactory {
         return armor;
     }
 
-    //Blueprint of common armor.
     public Armor getCommonArmorThree() {
         Armor armor = armorService.getArmorByName("Shadow Sakura Armor");
         if(armor == null) {
@@ -71,8 +68,6 @@ public class ArmorFactory {
         return armor;
     }
 
-
-    //Blueprint of uncommon armor.
     public Armor getUnCommonArmorOne() {
         Armor armor = armorService.getArmorByName("Studded Survival Armor");
         if(armor == null) {
@@ -91,7 +86,6 @@ public class ArmorFactory {
         return armor;
     }
 
-    //Blueprint of uncommon armor.
     public Armor getUnCommonArmorTwo() {
         Armor armor = armorService.getArmorByName("Conquistador Armor");
         if(armor == null) {
@@ -110,7 +104,6 @@ public class ArmorFactory {
         return armor;
     }
 
-    //Blueprint of uncommon armor.
     public Armor getUnCommonArmorThree() {
         Armor armor = armorService.getArmorByName("Indomitable Samurai Armor");
         if(armor == null) {
@@ -129,7 +122,6 @@ public class ArmorFactory {
         return armor;
     }
 
-    //Blueprint of rare armor.
     public Armor getRareArmorOne() {
         Armor armor = armorService.getArmorByName("Knight Banneret Armor");
         if(armor == null) {
@@ -148,7 +140,6 @@ public class ArmorFactory {
         return armor;
     }
 
-    //Blueprint of rare armor.
     public Armor getRareArmorTwo() {
         Armor armor = armorService.getArmorByName("Wide Mantle Robe");
         if(armor == null) {
@@ -167,7 +158,6 @@ public class ArmorFactory {
         return armor;
     }
 
-    //Blueprint of rare armor.
     public Armor getRareArmorThree() {
         Armor armor = armorService.getArmorByName("Splint Armor");
         if(armor == null) {
@@ -186,7 +176,6 @@ public class ArmorFactory {
         return armor;
     }
 
-    //Blueprint of epic armor.
     public Armor getEpicArmorOne() {
         Armor armor = armorService.getArmorByName("Knight Challenger Armor");
         if(armor == null) {
@@ -205,7 +194,6 @@ public class ArmorFactory {
         return armor;
     }
 
-    //Blueprint of epic armor.
     public Armor getEpicArmorTwo() {
         Armor armor = armorService.getArmorByName("Dragon Knight Armor");
         if(armor == null) {
@@ -224,7 +212,6 @@ public class ArmorFactory {
         return armor;
     }
 
-    //Blueprint of epic armor.
     public Armor getEpicArmorThree() {
         Armor armor = armorService.getArmorByName("Power Armor");
         if(armor == null) {
@@ -243,7 +230,6 @@ public class ArmorFactory {
         return armor;
     }
 
-    //Blueprint of legendary armor.
     public Armor getLegendaryArmorOne() {
         Armor armor = armorService.getArmorByName("Devil's Armor");
         if(armor == null) {
@@ -262,7 +248,6 @@ public class ArmorFactory {
         return armor;
     }
 
-    //Blueprint of legendary armor.
     public Armor getLegendaryArmorTwo() {
         Armor armor = armorService.getArmorByName("Hired Gun Armor");
         if(armor == null) {
@@ -281,7 +266,6 @@ public class ArmorFactory {
         return armor;
     }
 
-    //Blueprint of legendary armor.
     public Armor getLegendaryArmorThree() {
         Armor armor = armorService.getArmorByName("Combat Uniform");
         if(armor == null) {

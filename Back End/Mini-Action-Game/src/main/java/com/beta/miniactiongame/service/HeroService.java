@@ -18,5 +18,4 @@ public class HeroService {
     public Hero getHeroByName(CreatureType name) {
         return heroRepository.findByName(name).orElse(null);
     }
-
 }
