@@ -5,7 +5,7 @@ function DisplayHero({appUser}) {
     useEffect(()=> {
         for (const hero of appUser.heroes) {
             if (hero.selected) {
-                setHeroGif(hero.gif);
+                setHeroGif(hero.hero.gif);
             }
         }
     })

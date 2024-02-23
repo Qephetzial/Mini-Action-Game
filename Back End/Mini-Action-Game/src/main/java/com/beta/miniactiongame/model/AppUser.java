@@ -1,11 +1,8 @@
 package com.beta.miniactiongame.model;
 
-import com.beta.miniactiongame.model.creature.Hero;
 import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.Weapon;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -46,15 +43,15 @@ public class AppUser implements UserDetails {
     private int coin;
 
     //This field contains all the playable character from the game.
-    @OneToMany
-    private List<Hero> heroes;
+    @OneToMany (cascade = CascadeType.ALL)
+    private List<UserHeroData> heroes;
 
     //This field contains the armors what is not on the heroes and the user collected.
     @ManyToMany
     private List<Armor> armors;
 
     //This field contains the weapons what is not on the heroes and the user collected.
-    @OneToMany
+    @ManyToMany
     private List<Weapon> weapons;
 
 

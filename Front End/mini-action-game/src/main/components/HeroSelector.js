@@ -41,9 +41,9 @@ function HeroSelector({heroes, setHeroes, coin, setCoin, appUser, setAppUser}) {
 
 
     const select = async () => {
-        if (!obtained && heroes[0].value <= coin) {
+        if (!obtained && heroes[0].hero.value <= coin) {
             let newAppUser = appUser;
-            newAppUser.coin = coin - heroes[0].value;
+            newAppUser.coin = coin - heroes[0].hero.value;
             setAppUser(newAppUser);
             setCoin(newAppUser.coin)
             await conditionChanger();
@@ -83,9 +83,9 @@ function HeroSelector({heroes, setHeroes, coin, setCoin, appUser, setAppUser}) {
   return (
     <div>
         <div>
-            <span className="hero"><img className="leftSide" src={heroes[heroes.length-1].png} alt={heroes[heroes.length-1].name} border="0"/></span>
-            <span className="hero"><img className="main" src={heroes[0].png} alt={heroes[0].name} border="0"/></span>
-            <span className="hero"><img className="rightSide" src={heroes[1].png} alt={heroes[1].name} border="0"/></span>
+            <span className="hero"><img className="leftSide" src={heroes[heroes.length-1].hero.png} alt={heroes[heroes.length-1].hero.name} border="0"/></span>
+            <span className="hero"><img className="main" src={heroes[0].hero.png} alt={heroes[0].hero.name} border="0"/></span>
+            <span className="hero"><img className="rightSide" src={heroes[1].hero.png} alt={heroes[1].hero.name} border="0"/></span>
         </div>
         <div className="fixed">
             <div className="lineBoxing arrow as"  onClick={rollLeft}><span><img className="arrow" src={"supplementary/left-heroSelector-arrow.png"} alt="left button" border="0" width="30"/></span></div>

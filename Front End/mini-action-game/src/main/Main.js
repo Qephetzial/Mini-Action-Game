@@ -54,7 +54,7 @@ function Main({appUser, setAppUser, activeButton, setActiveButton, setHeaderCss,
                 setPlayerCoords={setPlayerCoords}
               />
               <HeroSData
-                hero={heroes[0]}
+                hero={heroes[0].hero}
               />
           </div>
   );

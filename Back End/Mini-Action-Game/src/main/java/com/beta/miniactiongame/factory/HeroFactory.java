@@ -3,7 +3,7 @@ package com.beta.miniactiongame.factory;
 import com.beta.miniactiongame.model.creature.Alignment;
 import com.beta.miniactiongame.model.creature.CreatureType;
 import com.beta.miniactiongame.model.creature.Hero;
-import com.beta.miniactiongame.repository.hero.HeroRepository;
+import com.beta.miniactiongame.service.HeroService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class HeroFactory {
 
-    private final HeroRepository heroRepository;
+    private final HeroService heroService;
 
     //Blueprint of a fighter hero.
     public Hero getFighter() {
-        Hero hero = heroRepository.findHeroByName(CreatureType.FIGHTER).orElse(null);
+        Hero hero = heroService.getHeroByName(CreatureType.FIGHTER);
         if (hero == null) {
             hero = new Hero();
             hero.setName(CreatureType.FIGHTER);
@@ -25,18 +25,16 @@ public class HeroFactory {
             hero.setDefence(40);
             hero.setMovementSpeed(1);
             hero.setValue(0);
-            hero.setObtained(true);
-            hero.setSelected(true);
             hero.setPng("heroes/fighter.png");
             hero.setGif("heroes/fighter.gif");
-            heroRepository.save(hero);
+            heroService.saveHero(hero);
         }
         return hero;
     }
 
     //Blueprint of a ranger hero.
     public Hero getRanger() {
-        Hero hero = heroRepository.findHeroByName(CreatureType.RANGER).orElse(null);
+        Hero hero = heroService.getHeroByName(CreatureType.RANGER);
         if (hero == null) {
             hero = new Hero();
             hero.setName(CreatureType.RANGER);
@@ -46,18 +44,16 @@ public class HeroFactory {
             hero.setDefence(30);
             hero.setMovementSpeed(2);
             hero.setValue(1000);
-            hero.setObtained(false);
-            hero.setSelected(false);
             hero.setPng("heroes/ranger.png");
             hero.setGif("heroes/ranger.gif");
-            heroRepository.save(hero);
+            heroService.saveHero(hero);
         }
         return hero;
     }
 
     //Blueprint of a mage hero.
     public Hero getMage() {
-        Hero hero = heroRepository.findHeroByName(CreatureType.MAGE).orElse(null);
+        Hero hero = heroService.getHeroByName(CreatureType.MAGE);
         if (hero == null) {
             hero = new Hero();
             hero.setName(CreatureType.MAGE);
@@ -67,18 +63,16 @@ public class HeroFactory {
             hero.setDefence(20);
             hero.setMovementSpeed(1);
             hero.setValue(4000);
-            hero.setObtained(false);
-            hero.setSelected(false);
             hero.setPng("heroes/mage.png");
             hero.setGif("heroes/mage.gif");
-            heroRepository.save(hero);
+            heroService.saveHero(hero);
         }
         return hero;
     }
 
     //Blueprint of a demon hero.
     public Hero getDemon() {
-        Hero hero = heroRepository.findHeroByName(CreatureType.DEMON).orElse(null);
+        Hero hero = heroService.getHeroByName(CreatureType.DEMON);
         if (hero == null) {
             hero = new Hero();
             hero.setName(CreatureType.DEMON);
@@ -88,11 +82,9 @@ public class HeroFactory {
             hero.setDefence(50);
             hero.setMovementSpeed(3);
             hero.setValue(10000);
-            hero.setObtained(false);
-            hero.setSelected(false);
             hero.setPng("heroes/demon.png");
             hero.setGif("heroes/demon.gif");
-            heroRepository.save(hero);
+            heroService.saveHero(hero);
         }
         return hero;
     }

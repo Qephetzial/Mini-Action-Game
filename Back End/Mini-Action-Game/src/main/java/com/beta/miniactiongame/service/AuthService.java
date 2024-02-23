@@ -18,7 +18,7 @@ public class AuthService {
 
     private final AppUserRepository appUserRepository;
     private final PasswordEncoder passwordEncoder;
-    private final HeroService heroService;
+    private final UserHeroDataService userHeroDataService;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
@@ -28,7 +28,7 @@ public class AuthService {
                 .name(request.getName())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .coin(100000)
-                .heroes(heroService.createHeroes())
+                .heroes(userHeroDataService.getUserHeroData())
                 .armors(new ArrayList<>())
                 .weapons(new ArrayList<>())
                 .role(Role.USER)

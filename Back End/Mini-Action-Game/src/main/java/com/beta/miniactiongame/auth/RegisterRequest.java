@@ -1,6 +1,7 @@
 package com.beta.miniactiongame.auth;
 
 import com.beta.miniactiongame.model.Role;
+import com.beta.miniactiongame.model.UserHeroData;
 import com.beta.miniactiongame.model.creature.Hero;
 import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.Weapon;
@@ -24,7 +25,7 @@ public class RegisterRequest {
 
     private int coin;
 
-    private List<Hero> heroes;
+    private List<UserHeroData> heroes;
 
     private List<Armor> armors;
 
