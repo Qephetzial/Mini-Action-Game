@@ -1,6 +1,8 @@
 package com.beta.miniactiongame.service;
 
 import com.beta.miniactiongame.exceptions.WrongValueException;
+import com.beta.miniactiongame.factory.ArmorFactory;
+import com.beta.miniactiongame.factory.WeaponFactory;
 import com.beta.miniactiongame.model.item.Item;
 import com.beta.miniactiongame.util.ChestType;
 import com.beta.miniactiongame.util.LootChest;
@@ -18,6 +20,10 @@ import static com.beta.miniactiongame.util.UtilityMethods.getRandomInt;
 @Service
 @RequiredArgsConstructor
 public class ChestService {
+
+    private final ArmorFactory armorFactory;
+    private final WeaponFactory weaponFactory;
+
     private static final String ERROR_MESSAGE =
             "The value of type is forbidden. The wrong value is:";
 
@@ -31,82 +37,82 @@ public class ChestService {
         List<Item> items = new ArrayList<>();
         if (rarity < common) {
             items.add(switch (item) {
-                case 0 -> commonArmorOne;
-                case 1 -> commonArmorTwo;
-                case 2 -> commonArmorThree;
-                case 3 -> commonSwordOne;
-                case 4 -> commonSwordTwo;
-                case 5 -> commonSwordThree;
-                case 6 -> commonBowOne;
-                case 7 -> commonBowTwo;
-                case 8 -> commonBowThree;
-                case 9 -> commonStaffOne;
-                case 10 -> commonStaffTwo;
-                case 11 -> commonStaffThree;
+                case 0 -> armorFactory.getCommonArmorOne();
+                case 1 -> armorFactory.getCommonArmorTwo();
+                case 2 -> armorFactory.getCommonArmorThree();
+                case 3 -> weaponFactory.getCommonSwordOne();
+                case 4 -> weaponFactory.getCommonSwordTwo();
+                case 5 -> weaponFactory.getCommonSwordThree();
+                case 6 -> weaponFactory.getCommonBowOne();
+                case 7 -> weaponFactory.getCommonBowTwo();
+                case 8 -> weaponFactory.getCommonBowThree();
+                case 9 -> weaponFactory.getCommonStaffOne();
+                case 10 -> weaponFactory.getCommonStaffTwo();
+                case 11 -> weaponFactory.getCommonStaffThree();
                 default -> throw new WrongValueException(ERROR_MESSAGE + item);
             });
         } else if (rarity < unCommon) {
             items.add(switch (item) {
-                case 0 -> unCommonArmorOne;
-                case 1 -> unCommonArmorTwo;
-                case 2 -> unCommonArmorThree;
-                case 3 -> unCommonSwordOne;
-                case 4 -> unCommonSwordTwo;
-                case 5 -> unCommonSwordThree;
-                case 6 -> unCommonBowOne;
-                case 7 -> unCommonBowTwo;
-                case 8 -> unCommonBowThree;
-                case 9 -> unCommonStaffOne;
-                case 10 -> unCommonStaffTwo;
-                case 11 -> unCommonStaffThree;
+                case 0 -> armorFactory.getUnCommonArmorOne();
+                case 1 -> armorFactory.getUnCommonArmorTwo();
+                case 2 -> armorFactory.getUnCommonArmorThree();
+                case 3 -> weaponFactory.getUnCommonSwordOne();
+                case 4 -> weaponFactory.getUnCommonSwordTwo();
+                case 5 -> weaponFactory.getUnCommonSwordThree();
+                case 6 -> weaponFactory.getUnCommonBowOne();
+                case 7 -> weaponFactory.getUnCommonBowTwo();
+                case 8 -> weaponFactory.getUnCommonBowThree();
+                case 9 -> weaponFactory.getUnCommonStaffOne();
+                case 10 -> weaponFactory.getUnCommonStaffTwo();
+                case 11 -> weaponFactory.getUnCommonStaffThree();
                 default -> throw new WrongValueException(ERROR_MESSAGE + item);
             });
         } else if (rarity < rare) {
             items.add(switch (item) {
-                case 0 -> rareArmorOne;
-                case 1 -> rareArmorTwo;
-                case 2 -> rareArmorThree;
-                case 3 -> rareSwordOne;
-                case 4 -> rareSwordTwo;
-                case 5 -> rareSwordThree;
-                case 6 -> rareBowOne;
-                case 7 -> rareBowTwo;
-                case 8 -> rareBowThree;
-                case 9 -> rareStaffOne;
-                case 10 -> rareStaffTwo;
-                case 11 -> rareStaffThree;
+                case 0 -> armorFactory.getRareArmorOne();
+                case 1 -> armorFactory.getRareArmorTwo();
+                case 2 -> armorFactory.getRareArmorThree();
+                case 3 -> weaponFactory.getRareSwordOne();
+                case 4 -> weaponFactory.getRareSwordTwo();
+                case 5 -> weaponFactory.getRareSwordThree();
+                case 6 -> weaponFactory.getRareBowOne();
+                case 7 -> weaponFactory.getRareBowTwo();
+                case 8 -> weaponFactory.getRareBowThree();
+                case 9 -> weaponFactory.getRareStaffOne();
+                case 10 -> weaponFactory.getRareStaffTwo();
+                case 11 -> weaponFactory.getRareStaffThree();
                 default -> throw new WrongValueException(ERROR_MESSAGE + item);
             });
         } else if (rarity < epic) {
             items.add(switch (item) {
-                case 0 -> epicArmorOne;
-                case 1 -> epicArmorTwo;
-                case 2 -> epicArmorThree;
-                case 3 -> epicSwordOne;
-                case 4 -> epicSwordTwo;
-                case 5 -> epicSwordThree;
-                case 6 -> epicBowOne;
-                case 7 -> epicBowTwo;
-                case 8 -> epicBowThree;
-                case 9 -> epicStaffOne;
-                case 10 -> epicStaffTwo;
-                case 11 -> epicStaffThree;
+                case 0 -> armorFactory.getEpicArmorOne();
+                case 1 -> armorFactory.getEpicArmorTwo();
+                case 2 -> armorFactory.getEpicArmorThree();
+                case 3 -> weaponFactory.getEpicSwordOne();
+                case 4 -> weaponFactory.getEpicSwordTwo();
+                case 5 -> weaponFactory.getEpicSwordThree();
+                case 6 -> weaponFactory.getEpicBowOne();
+                case 7 -> weaponFactory.getEpicBowTwo();
+                case 8 -> weaponFactory.getEpicBowThree();
+                case 9 -> weaponFactory.getEpicStaffOne();
+                case 10 -> weaponFactory.getEpicStaffTwo();
+                case 11 -> weaponFactory.getEpicStaffThree();
                 default -> throw new WrongValueException(ERROR_MESSAGE + item);
             });
         } else if (rarity < 1000) {
             items.add(switch (item) {
-                case 0 -> legendaryArmorOne;
-                case 1 -> legendaryArmorTwo;
-                case 2 -> legendaryArmorThree;
-                case 3 -> legendarySwordOne;
-                case 4 -> legendarySwordTwo;
-                case 5 -> legendarySwordThree;
-                case 6 -> legendaryBowOne;
-                case 7 -> legendaryBowTwo;
-                case 8 -> legendaryBowThree;
-                case 9 -> legendaryStaffOne;
-                case 10 -> legendaryStaffTwo;
-                case 11 -> legendaryStaffThree;
+                case 0 -> armorFactory.getLegendaryArmorOne();
+                case 1 -> armorFactory.getLegendaryArmorTwo();
+                case 2 -> armorFactory.getLegendaryArmorThree();
+                case 3 -> weaponFactory.getLegendarySwordOne();
+                case 4 -> weaponFactory.getLegendarySwordTwo();
+                case 5 -> weaponFactory.getLegendarySwordThree();
+                case 6 -> weaponFactory.getLegendaryBowOne();
+                case 7 -> weaponFactory.getLegendaryBowTwo();
+                case 8 -> weaponFactory.getLegendaryBowThree();
+                case 9 -> weaponFactory.getLegendaryStaffOne();
+                case 10 -> weaponFactory.getLegendaryStaffTwo();
+                case 11 -> weaponFactory.getLegendaryStaffThree();
                 default -> throw new WrongValueException(ERROR_MESSAGE + item);
             });
         } else {

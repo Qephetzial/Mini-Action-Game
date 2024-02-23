@@ -1,11 +1,16 @@
 package com.beta.miniactiongame.service;
 
 import com.beta.miniactiongame.exceptions.WrongValueException;
+import com.beta.miniactiongame.factory.ArmorFactory;
+import com.beta.miniactiongame.factory.WeaponFactory;
 import com.beta.miniactiongame.model.item.Item;
 import com.beta.miniactiongame.model.item.Rarity;
 import com.beta.miniactiongame.util.UtilityMethods;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.MockedStatic;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
@@ -15,9 +20,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
 
+@ExtendWith(MockitoExtension.class)
 class ChestServiceTest {
 
-    private final ChestService chestService = new ChestService();
+    @Mock
+    private ArmorFactory armorFactory;
+
+    @Mock
+    private WeaponFactory weaponFactory;
+
+    private final ChestService chestService = new ChestService(armorFactory, weaponFactory);
 
     @Test
     void openChest() {

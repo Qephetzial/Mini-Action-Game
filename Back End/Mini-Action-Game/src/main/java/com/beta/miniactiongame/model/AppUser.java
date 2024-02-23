@@ -46,15 +46,15 @@ public class AppUser implements UserDetails {
     private int coin;
 
     //This field contains all the playable character from the game.
-    @OneToMany (cascade = CascadeType.ALL)
+    @OneToMany
     private List<Hero> heroes;
 
     //This field contains the armors what is not on the heroes and the user collected.
-    @OneToMany (cascade = CascadeType.ALL)
+    @ManyToMany
     private List<Armor> armors;
 
     //This field contains the weapons what is not on the heroes and the user collected.
-    @OneToMany (cascade = CascadeType.ALL)
+    @OneToMany
     private List<Weapon> weapons;
 
 

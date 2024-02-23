@@ -4,777 +4,913 @@ import com.beta.miniactiongame.model.item.DamageType;
 import com.beta.miniactiongame.model.item.ItemType;
 import com.beta.miniactiongame.model.item.Rarity;
 import com.beta.miniactiongame.model.item.Weapon;
-import lombok.experimental.UtilityClass;
+import com.beta.miniactiongame.service.WeaponService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
-@UtilityClass
-/*This class is the collection of weapon blueprints.
-(dps=damage per second, it's an estimated value that how much damage the weapon will cause as an average.
-The formula is "(100 * damage + crit chance * crit damage) / 100 * (attack speed / 10)."
-*The value calculated as a single target so weapons with aoe damage in game can cause way more damage)*/
-public final class WeaponFactory {
-    public static final Weapon commonSwordOne = createCommonSwordOne();
-    public static final Weapon commonSwordTwo = createCommonSwordTwo();
-    public static final Weapon commonSwordThree = createCommonSwordThree();
-    public static final Weapon commonBowOne = createCommonBowOne();
-    public static final Weapon commonBowTwo = createCommonBowTwo();
-    public static final Weapon commonBowThree = createCommonBowThree();
-    public static final Weapon commonStaffOne = createCommonStaffOne();
-    public static final Weapon commonStaffTwo = createCommonStaffTwo();
-    public static final Weapon commonStaffThree = createCommonStaffThree();
-    public static final Weapon unCommonSwordOne = createUnCommonSwordOne();
-    public static final Weapon unCommonSwordTwo = createUnCommonSwordTwo();
-    public static final Weapon unCommonSwordThree = createUnCommonSwordThree();
-    public static final Weapon unCommonBowOne = createUnCommonBowOne();
-    public static final Weapon unCommonBowTwo = createUnCommonBowTwo();
-    public static final Weapon unCommonBowThree = createUnCommonBowThree();
-    public static final Weapon unCommonStaffOne = createUnCommonStaffOne();
-    public static final Weapon unCommonStaffTwo = createUnCommonStaffTwo();
-    public static final Weapon unCommonStaffThree = createUnCommonStaffThree();
-    public static final Weapon rareSwordOne = createRareSwordOne();
-    public static final Weapon rareSwordTwo = createRareSwordTwo();
-    public static final Weapon rareSwordThree = createRareSwordThree();
-    public static final Weapon rareBowOne = createRareBowOne();
-    public static final Weapon rareBowTwo = createRareBowTwo();
-    public static final Weapon rareBowThree = createRareBowThree();
-    public static final Weapon rareStaffOne = createRareStaffOne();
-    public static final Weapon rareStaffTwo = createRareStaffTwo();
-    public static final Weapon rareStaffThree = createRareStaffThree();
-    public static final Weapon epicSwordOne = createEpicSwordOne();
-    public static final Weapon epicSwordTwo = createEpicSwordTwo();
-    public static final Weapon epicSwordThree = createEpicSwordThree();
-    public static final Weapon epicBowOne = createEpicBowOne();
-    public static final Weapon epicBowTwo = createEpicBowTwo();
-    public static final Weapon epicBowThree = createEpicBowThree();
-    public static final Weapon epicStaffOne = createEpicStaffOne();
-    public static final Weapon epicStaffTwo = createEpicStaffTwo();
-    public static final Weapon epicStaffThree = createEpicStaffThree();
-    public static final Weapon legendarySwordOne = createLegendarySwordOne();
-    public static final Weapon legendarySwordTwo = createLegendarySwordTwo();
-    public static final Weapon legendarySwordThree = createLegendarySwordThree();
-    public static final Weapon legendaryBowOne = createLegendaryBowOne();
-    public static final Weapon legendaryBowTwo = createLegendaryBowTwo();
-    public static final Weapon legendaryBowThree = createLegendaryBowThree();
-    public static final Weapon legendaryStaffOne = createLegendaryStaffOne();
-    public static final Weapon legendaryStaffTwo = createLegendaryStaffTwo();
-    public static final Weapon legendaryStaffThree = createLegendaryStaffThree();
+@Component
+@RequiredArgsConstructor
+public class WeaponFactory {
+
+    private final WeaponService weaponService;
 
     //Blueprint of common sword(dps=14.00).
-    private static Weapon createCommonSwordOne() {
-        Weapon sword = new Weapon();
-        sword.setName("Black sword");
-        sword.setRarity(Rarity.COMMON);
-        sword.setPng("swords/common-black-sword.png");
-        sword.setItemType(ItemType.SWORD);
-        sword.setDamage(14);
-        sword.setDamageType(DamageType.SLASHING);
-        sword.setCritChance(0);
-        sword.setCritDamage(0);
-        sword.setAttackSpeed(10);
-        sword.setAoeDamage(false);
-        return sword;
+    public Weapon getCommonSwordOne() {
+        Weapon weapon = weaponService.getWeaponByName("Black sword");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Black sword");
+            weapon.setRarity(Rarity.COMMON);
+            weapon.setPng("swords/common-black-sword.png");
+            weapon.setItemType(ItemType.SWORD);
+            weapon.setDamage(14);
+            weapon.setDamageType(DamageType.SLASHING);
+            weapon.setCritChance(0);
+            weapon.setCritDamage(0);
+            weapon.setAttackSpeed(10);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of common sword(dps=14.50).
-    private static Weapon createCommonSwordTwo() {
-        Weapon sword = new Weapon();
-        sword.setName("Bear sword");
-        sword.setRarity(Rarity.COMMON);
-        sword.setPng("swords/common-bear-sword.png");
-        sword.setItemType(ItemType.SWORD);
-        sword.setDamage(27);
-        sword.setDamageType(DamageType.SLASHING);
-        sword.setCritChance(10);
-        sword.setCritDamage(20);
-        sword.setAttackSpeed(5);
-        sword.setAoeDamage(false);
-        return sword;
+    public Weapon getCommonSwordTwo() {
+        Weapon weapon = weaponService.getWeaponByName("Bear sword");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Bear sword");
+            weapon.setRarity(Rarity.COMMON);
+            weapon.setPng("swords/common-bear-sword.png");
+            weapon.setItemType(ItemType.SWORD);
+            weapon.setDamage(27);
+            weapon.setDamageType(DamageType.SLASHING);
+            weapon.setCritChance(10);
+            weapon.setCritDamage(20);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of common sword(dps=14.45).
-    private static Weapon createCommonSwordThree() {
-        Weapon sword = new Weapon();
-        sword.setName("Red metal sword");
-        sword.setRarity(Rarity.COMMON);
-        sword.setPng("swords/common-redMetal-sword.png");
-        sword.setItemType(ItemType.SWORD);
-        sword.setDamage(14);
-        sword.setDamageType(DamageType.SLASHING);
-        sword.setCritChance(3);
-        sword.setCritDamage(15);
-        sword.setAttackSpeed(10);
-        sword.setAoeDamage(false);
-        return sword;
+    public Weapon getCommonSwordThree() {
+        Weapon weapon = weaponService.getWeaponByName("Red metal sword");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Red metal sword");
+            weapon.setRarity(Rarity.COMMON);
+            weapon.setPng("swords/common-redMetal-sword.png");
+            weapon.setItemType(ItemType.SWORD);
+            weapon.setDamage(14);
+            weapon.setDamageType(DamageType.SLASHING);
+            weapon.setCritChance(3);
+            weapon.setCritDamage(15);
+            weapon.setAttackSpeed(10);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+            }
+        return weapon;
     }
 
     //Blueprint of uncommon sword(dps=49.00).
-    private static Weapon createUnCommonSwordOne() {
-        Weapon sword = new Weapon();
-        sword.setName("Ancient sword");
-        sword.setRarity(Rarity.UNCOMMON);
-        sword.setPng("swords/uncommon-ancient-sword.png");
-        sword.setItemType(ItemType.SWORD);
-        sword.setDamage(45);
-        sword.setDamageType(DamageType.SLASHING);
-        sword.setCritChance(20);
-        sword.setCritDamage(20);
-        sword.setAttackSpeed(10);
-        sword.setAoeDamage(false);
-        return sword;
+    public Weapon getUnCommonSwordOne() {
+        Weapon weapon = weaponService.getWeaponByName("Ancient sword");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Ancient sword");
+            weapon.setRarity(Rarity.UNCOMMON);
+            weapon.setPng("swords/uncommon-ancient-sword.png");
+            weapon.setItemType(ItemType.SWORD);
+            weapon.setDamage(45);
+            weapon.setDamageType(DamageType.SLASHING);
+            weapon.setCritChance(20);
+            weapon.setCritDamage(20);
+            weapon.setAttackSpeed(10);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of uncommon sword(dps=48.75).
-    private static Weapon createUnCommonSwordTwo() {
-        Weapon sword = new Weapon();
-        sword.setName("Bone sword");
-        sword.setRarity(Rarity.UNCOMMON);
-        sword.setPng("swords/uncommon-bone-sword.png");
-        sword.setItemType(ItemType.SWORD);
-        sword.setDamage(31);
-        sword.setDamageType(DamageType.SLASHING);
-        sword.setCritChance(10);
-        sword.setCritDamage(15);
-        sword.setAttackSpeed(15);
-        sword.setAoeDamage(false);
-        return sword;
+    public Weapon getUnCommonSwordTwo() {
+        Weapon weapon = weaponService.getWeaponByName("Bone sword");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Bone sword");
+            weapon.setRarity(Rarity.UNCOMMON);
+            weapon.setPng("swords/uncommon-bone-sword.png");
+            weapon.setItemType(ItemType.SWORD);
+            weapon.setDamage(31);
+            weapon.setDamageType(DamageType.SLASHING);
+            weapon.setCritChance(10);
+            weapon.setCritDamage(15);
+            weapon.setAttackSpeed(15);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of uncommon sword(dps=48.75).
-    private static Weapon createUnCommonSwordThree() {
-        Weapon sword = new Weapon();
-        sword.setName("Eagle sword");
-        sword.setRarity(Rarity.UNCOMMON);
-        sword.setPng("swords/uncommon-eagle-sword.png");
-        sword.setItemType(ItemType.SWORD);
-        sword.setDamage(30);
-        sword.setDamageType(DamageType.SLASHING);
-        sword.setCritChance(10);
-        sword.setCritDamage(25);
-        sword.setAttackSpeed(15);
-        sword.setAoeDamage(false);
-        return sword;
+    public Weapon getUnCommonSwordThree() {
+        Weapon weapon = weaponService.getWeaponByName("Eagle sword");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Eagle sword");
+            weapon.setRarity(Rarity.UNCOMMON);
+            weapon.setPng("swords/uncommon-eagle-sword.png");
+            weapon.setItemType(ItemType.SWORD);
+            weapon.setDamage(30);
+            weapon.setDamageType(DamageType.SLASHING);
+            weapon.setCritChance(10);
+            weapon.setCritDamage(25);
+            weapon.setAttackSpeed(15);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of rare sword(dps=150.00).
-    private static Weapon createRareSwordOne() {
-        Weapon sword = new Weapon();
-        sword.setName("Cursed sword");
-        sword.setRarity(Rarity.RARE);
-        sword.setPng("swords/rare-cursed-sword.png");
-        sword.setItemType(ItemType.SWORD);
-        sword.setDamage(90);
-        sword.setDamageType(DamageType.SLASHING);
-        sword.setCritChance(25);
-        sword.setCritDamage(40);
-        sword.setAttackSpeed(15);
-        sword.setAoeDamage(false);
-        return sword;
+    public Weapon getRareSwordOne() {
+        Weapon weapon = weaponService.getWeaponByName("Cursed sword");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Cursed sword");
+            weapon.setRarity(Rarity.RARE);
+            weapon.setPng("swords/rare-cursed-sword.png");
+            weapon.setItemType(ItemType.SWORD);
+            weapon.setDamage(90);
+            weapon.setDamageType(DamageType.SLASHING);
+            weapon.setCritChance(25);
+            weapon.setCritDamage(40);
+            weapon.setAttackSpeed(15);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of rare sword(dps=150.00).
-    private static Weapon createRareSwordTwo() {
-        Weapon sword = new Weapon();
-        sword.setName("Executioner sword");
-        sword.setRarity(Rarity.RARE);
-        sword.setPng("swords/rare-executioner-sword.png");
-        sword.setItemType(ItemType.SWORD);
-        sword.setDamage(130);
-        sword.setDamageType(DamageType.SLASHING);
-        sword.setCritChance(25);
-        sword.setCritDamage(80);
-        sword.setAttackSpeed(10);
-        sword.setAoeDamage(false);
-        return sword;
+    public Weapon getRareSwordTwo() {
+        Weapon weapon = weaponService.getWeaponByName("Executioner sword");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Executioner sword");
+            weapon.setRarity(Rarity.RARE);
+            weapon.setPng("swords/rare-executioner-sword.png");
+            weapon.setItemType(ItemType.SWORD);
+            weapon.setDamage(130);
+            weapon.setDamageType(DamageType.SLASHING);
+            weapon.setCritChance(25);
+            weapon.setCritDamage(80);
+            weapon.setAttackSpeed(10);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of rare sword(dps=150.00).
-    private static Weapon createRareSwordThree() {
-        Weapon sword = new Weapon();
-        sword.setName("Necrotic sword");
-        sword.setRarity(Rarity.RARE);
-        sword.setPng("swords/rare-necrotic-sword.png");
-        sword.setItemType(ItemType.SWORD);
-        sword.setDamage(135);
-        sword.setDamageType(DamageType.SLASHING);
-        sword.setCritChance(30);
-        sword.setCritDamage(50);
-        sword.setAttackSpeed(10);
-        sword.setAoeDamage(false);
-        return sword;
+    public Weapon getRareSwordThree() {
+        Weapon weapon = weaponService.getWeaponByName("Necrotic sword");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Necrotic sword");
+            weapon.setRarity(Rarity.RARE);
+            weapon.setPng("swords/rare-necrotic-sword.png");
+            weapon.setItemType(ItemType.SWORD);
+            weapon.setDamage(135);
+            weapon.setDamageType(DamageType.SLASHING);
+            weapon.setCritChance(30);
+            weapon.setCritDamage(50);
+            weapon.setAttackSpeed(10);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of epic sword(dps=453.75).
-    private static Weapon createEpicSwordOne() {
-        Weapon sword = new Weapon();
-        sword.setName("Head splashing Hammer");
-        sword.setRarity(Rarity.EPIC);
-        sword.setPng("swords/epic-headSplashing-hammer.png");
-        sword.setItemType(ItemType.SWORD);
-        sword.setDamage(750);
-        sword.setDamageType(DamageType.BLUDGEONING);
-        sword.setCritChance(35);
-        sword.setCritDamage(450);
-        sword.setAttackSpeed(5);
-        sword.setAoeDamage(false);
-        return sword;
+    public Weapon getEpicSwordOne() {
+        Weapon weapon = weaponService.getWeaponByName("Head splashing Hammer");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Head splashing Hammer");
+            weapon.setRarity(Rarity.EPIC);
+            weapon.setPng("swords/epic-headSplashing-hammer.png");
+            weapon.setItemType(ItemType.SWORD);
+            weapon.setDamage(750);
+            weapon.setDamageType(DamageType.BLUDGEONING);
+            weapon.setCritChance(35);
+            weapon.setCritDamage(450);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of epic sword(dps=300.00*).
-    private static Weapon createEpicSwordTwo() {
-        Weapon sword = new Weapon();
-        sword.setName("Heroic Axe");
-        sword.setRarity(Rarity.EPIC);
-        sword.setPng("swords/epic-heroic-axe.png");
-        sword.setItemType(ItemType.SWORD);
-        sword.setDamage(260);
-        sword.setDamageType(DamageType.SLASHING);
-        sword.setCritChance(40);
-        sword.setCritDamage(100);
-        sword.setAttackSpeed(10);
-        sword.setAoeDamage(true);
-        return sword;
+    public Weapon getEpicSwordTwo() {
+        Weapon weapon = weaponService.getWeaponByName("Heroic Axe");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Heroic Axe");
+            weapon.setRarity(Rarity.EPIC);
+            weapon.setPng("swords/epic-heroic-axe.png");
+            weapon.setItemType(ItemType.SWORD);
+            weapon.setDamage(260);
+            weapon.setDamageType(DamageType.SLASHING);
+            weapon.setCritChance(40);
+            weapon.setCritDamage(100);
+            weapon.setAttackSpeed(10);
+            weapon.setAoeDamage(true);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of epic sword(dps=293.25*).
-    private static Weapon createEpicSwordThree() {
-        Weapon sword = new Weapon();
-        sword.setName("Magma Axe");
-        sword.setRarity(Rarity.EPIC);
-        sword.setPng("swords/epic-magma-axe.png");
-        sword.setItemType(ItemType.SWORD);
-        sword.setDamage(255);
-        sword.setDamageType(DamageType.FIRE);
-        sword.setCritChance(15);
-        sword.setCritDamage(255);
-        sword.setAttackSpeed(10);
-        sword.setAoeDamage(true);
-        return sword;
+    public Weapon getEpicSwordThree() {
+        Weapon weapon = weaponService.getWeaponByName("Magma Axe");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Magma Axe");
+            weapon.setRarity(Rarity.EPIC);
+            weapon.setPng("swords/epic-magma-axe.png");
+            weapon.setItemType(ItemType.SWORD);
+            weapon.setDamage(255);
+            weapon.setDamageType(DamageType.FIRE);
+            weapon.setCritChance(15);
+            weapon.setCritDamage(255);
+            weapon.setAttackSpeed(10);
+            weapon.setAoeDamage(true);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of legendary sword(dps=2420.00*).
-    private static Weapon createLegendarySwordOne() {
-        Weapon sword = new Weapon();
-        sword.setName("Demonic Spear");
-        sword.setRarity(Rarity.LEGENDARY);
-        sword.setPng("swords/legendary-demonic-spear.png");
-        sword.setItemType(ItemType.SWORD);
-        sword.setDamage(700);
-        sword.setDamageType(DamageType.POISON);
-        sword.setCritChance(85);
-        sword.setCritDamage(600);
-        sword.setAttackSpeed(20);
-        sword.setAoeDamage(true);
-        return sword;
+    public Weapon getLegendarySwordOne() {
+        Weapon weapon = weaponService.getWeaponByName("Demonic Spear");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Demonic Spear");
+            weapon.setRarity(Rarity.LEGENDARY);
+            weapon.setPng("swords/legendary-demonic-spear.png");
+            weapon.setItemType(ItemType.SWORD);
+            weapon.setDamage(700);
+            weapon.setDamageType(DamageType.POISON);
+            weapon.setCritChance(85);
+            weapon.setCritDamage(600);
+            weapon.setAttackSpeed(20);
+            weapon.setAoeDamage(true);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of legendary sword(dps=3945.00).
-    private static Weapon createLegendarySwordTwo() {
-        Weapon sword = new Weapon();
-        sword.setName("Samurai Sword");
-        sword.setRarity(Rarity.LEGENDARY);
-        sword.setPng("swords/legendary-samurai-sword.png");
-        sword.setItemType(ItemType.SWORD);
-        sword.setDamage(1000);
-        sword.setDamageType(DamageType.SLASHING);
-        sword.setCritChance(90);
-        sword.setCritDamage(350);
-        sword.setAttackSpeed(30);
-        sword.setAoeDamage(false);
-        return sword;
+    public Weapon getLegendarySwordTwo() {
+        Weapon weapon = weaponService.getWeaponByName("Samurai Sword");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Samurai Sword");
+            weapon.setRarity(Rarity.LEGENDARY);
+            weapon.setPng("swords/legendary-samurai-sword.png");
+            weapon.setItemType(ItemType.SWORD);
+            weapon.setDamage(1000);
+            weapon.setDamageType(DamageType.SLASHING);
+            weapon.setCritChance(90);
+            weapon.setCritDamage(350);
+            weapon.setAttackSpeed(30);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of legendary sword(dps=2590.50*).
-    private static Weapon createLegendarySwordThree() {
-        Weapon sword = new Weapon();
-        sword.setName("Demonic Scythe");
-        sword.setRarity(Rarity.LEGENDARY);
-        sword.setPng("swords/legendary-demonic-scythe.png");
-        sword.setItemType(ItemType.SWORD);
-        sword.setDamage(1650);
-        sword.setDamageType(DamageType.SLASHING);
-        sword.setCritChance(99);
-        sword.setCritDamage(950);
-        sword.setAttackSpeed(10);
-        sword.setAoeDamage(true);
-        return sword;
+    public Weapon getLegendarySwordThree() {
+        Weapon weapon = weaponService.getWeaponByName("Demonic Scythe");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Demonic Scythe");
+            weapon.setRarity(Rarity.LEGENDARY);
+            weapon.setPng("swords/legendary-demonic-scythe.png");
+            weapon.setItemType(ItemType.SWORD);
+            weapon.setDamage(1650);
+            weapon.setDamageType(DamageType.SLASHING);
+            weapon.setCritChance(99);
+            weapon.setCritDamage(950);
+            weapon.setAttackSpeed(10);
+            weapon.setAoeDamage(true);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of common bow(dps=18,00).
-    private static Weapon createCommonBowOne() {
-        Weapon bow = new Weapon();
-        bow.setName("Bone Bow");
-        bow.setRarity(Rarity.COMMON);
-        bow.setPng("bows/common-bone-bow.png");
-        bow.setItemType(ItemType.BOW);
-        bow.setDamage(36);
-        bow.setDamageType(DamageType.PIERCING);
-        bow.setCritChance(0);
-        bow.setCritDamage(0);
-        bow.setAttackSpeed(5);
-        bow.setAoeDamage(false);
-        return bow;
+    public Weapon getCommonBowOne() {
+        Weapon weapon = weaponService.getWeaponByName("Bone Bow");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Bone Bow");
+            weapon.setRarity(Rarity.COMMON);
+            weapon.setPng("bows/common-bone-bow.png");
+            weapon.setItemType(ItemType.BOW);
+            weapon.setDamage(36);
+            weapon.setDamageType(DamageType.PIERCING);
+            weapon.setCritChance(0);
+            weapon.setCritDamage(0);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of common bow(dps=19.00).
-    private static Weapon createCommonBowTwo() {
-        Weapon bow = new Weapon();
-        bow.setName("Old Bow");
-        bow.setRarity(Rarity.COMMON);
-        bow.setPng("bows/common-old-bow.png");
-        bow.setItemType(ItemType.BOW);
-        bow.setDamage(37);
-        bow.setDamageType(DamageType.PIERCING);
-        bow.setCritChance(5);
-        bow.setCritDamage(20);
-        bow.setAttackSpeed(5);
-        bow.setAoeDamage(false);
-        return bow;
+    public Weapon getCommonBowTwo() {
+        Weapon weapon = weaponService.getWeaponByName("Old Bow");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Old Bow");
+            weapon.setRarity(Rarity.COMMON);
+            weapon.setPng("bows/common-old-bow.png");
+            weapon.setItemType(ItemType.BOW);
+            weapon.setDamage(37);
+            weapon.setDamageType(DamageType.PIERCING);
+            weapon.setCritChance(5);
+            weapon.setCritDamage(20);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of common bow(dps=19.20).
-    private static Weapon createCommonBowThree() {
-        Weapon bow = new Weapon();
-        bow.setName("Birch Bow");
-        bow.setRarity(Rarity.COMMON);
-        bow.setPng("bows/common-birch-bow.png");
-        bow.setItemType(ItemType.BOW);
-        bow.setDamage(18);
-        bow.setDamageType(DamageType.PIERCING);
-        bow.setCritChance(8);
-        bow.setCritDamage(15);
-        bow.setAttackSpeed(10);
-        bow.setAoeDamage(false);
-        return bow;
+    public Weapon getCommonBowThree() {
+        Weapon weapon = weaponService.getWeaponByName("Birch Bow");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Birch Bow");
+            weapon.setRarity(Rarity.COMMON);
+            weapon.setPng("bows/common-birch-bow.png");
+            weapon.setItemType(ItemType.BOW);
+            weapon.setDamage(18);
+            weapon.setDamageType(DamageType.PIERCING);
+            weapon.setCritChance(8);
+            weapon.setCritDamage(15);
+            weapon.setAttackSpeed(10);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of uncommon bow(dps=52.20).
-    private static Weapon createUnCommonBowOne() {
-        Weapon bow = new Weapon();
-        bow.setName("Fast Bow");
-        bow.setRarity(Rarity.UNCOMMON);
-        bow.setPng("bows/uncommon-fast-bow.png");
-        bow.setItemType(ItemType.BOW);
-        bow.setDamage(33);
-        bow.setDamageType(DamageType.PIERCING);
-        bow.setCritChance(10);
-        bow.setCritDamage(18);
-        bow.setAttackSpeed(15);
-        bow.setAoeDamage(false);
-        return bow;
+    public Weapon getUnCommonBowOne() {
+        Weapon weapon = weaponService.getWeaponByName("Fast Bow");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Fast Bow");
+            weapon.setRarity(Rarity.UNCOMMON);
+            weapon.setPng("bows/uncommon-fast-bow.png");
+            weapon.setItemType(ItemType.BOW);
+            weapon.setDamage(33);
+            weapon.setDamageType(DamageType.PIERCING);
+            weapon.setCritChance(10);
+            weapon.setCritDamage(18);
+            weapon.setAttackSpeed(15);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of uncommon bow(dps=52.00).
-    private static Weapon createUnCommonBowTwo() {
-        Weapon bow = new Weapon();
-        bow.setName("Curved Bow");
-        bow.setRarity(Rarity.UNCOMMON);
-        bow.setPng("bows/uncommon-curved-bow.png");
-        bow.setItemType(ItemType.BOW);
-        bow.setDamage(50);
-        bow.setDamageType(DamageType.PIERCING);
-        bow.setCritChance(10);
-        bow.setCritDamage(20);
-        bow.setAttackSpeed(10);
-        bow.setAoeDamage(false);
-        return bow;
+    public Weapon getUnCommonBowTwo() {
+        Weapon weapon = weaponService.getWeaponByName("Curved Bow");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Curved Bow");
+            weapon.setRarity(Rarity.UNCOMMON);
+            weapon.setPng("bows/uncommon-curved-bow.png");
+            weapon.setItemType(ItemType.BOW);
+            weapon.setDamage(50);
+            weapon.setDamageType(DamageType.PIERCING);
+            weapon.setCritChance(10);
+            weapon.setCritDamage(20);
+            weapon.setAttackSpeed(10);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of uncommon bow(dps=52.25).
-    private static Weapon createUnCommonBowThree() {
-        Weapon bow = new Weapon();
-        bow.setName("Strong Bow");
-        bow.setRarity(Rarity.UNCOMMON);
-        bow.setPng("bows/uncommon-strong-bow.png");
-        bow.setItemType(ItemType.BOW);
-        bow.setDamage(85);
-        bow.setDamageType(DamageType.PIERCING);
-        bow.setCritChance(30);
-        bow.setCritDamage(65);
-        bow.setAttackSpeed(5);
-        bow.setAoeDamage(false);
-        return bow;
+    public Weapon getUnCommonBowThree() {
+        Weapon weapon = weaponService.getWeaponByName("Strong Bow");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Strong Bow");
+            weapon.setRarity(Rarity.UNCOMMON);
+            weapon.setPng("bows/uncommon-strong-bow.png");
+            weapon.setItemType(ItemType.BOW);
+            weapon.setDamage(85);
+            weapon.setDamageType(DamageType.PIERCING);
+            weapon.setCritChance(30);
+            weapon.setCritDamage(65);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of rare bow(dps=201.00).
-    private static Weapon createRareBowOne() {
-        Weapon bow = new Weapon();
-        bow.setName("Curling Bow");
-        bow.setRarity(Rarity.RARE);
-        bow.setPng("bows/rare-curling-bow.png");
-        bow.setItemType(ItemType.BOW);
-        bow.setDamage(120);
-        bow.setDamageType(DamageType.PIERCING);
-        bow.setCritChance(20);
-        bow.setCritDamage(70);
-        bow.setAttackSpeed(15);
-        bow.setAoeDamage(false);
-        return bow;
+    public Weapon getRareBowOne() {
+        Weapon weapon = weaponService.getWeaponByName("Curling Bow");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Curling Bow");
+            weapon.setRarity(Rarity.RARE);
+            weapon.setPng("bows/rare-curling-bow.png");
+            weapon.setItemType(ItemType.BOW);
+            weapon.setDamage(120);
+            weapon.setDamageType(DamageType.PIERCING);
+            weapon.setCritChance(20);
+            weapon.setCritDamage(70);
+            weapon.setAttackSpeed(15);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of rare bow(dps=145.25*).
-    private static Weapon createRareBowTwo() {
-        Weapon bow = new Weapon();
-        bow.setName("Piercing Bow");
-        bow.setRarity(Rarity.RARE);
-        bow.setPng("bows/rare-piercing-bow.png");
-        bow.setItemType(ItemType.BOW);
-        bow.setDamage(250);
-        bow.setDamageType(DamageType.PIERCING);
-        bow.setCritChance(45);
-        bow.setCritDamage(90);
-        bow.setAttackSpeed(5);
-        bow.setAoeDamage(true);
-        return bow;
+    public Weapon getRareBowTwo() {
+        Weapon weapon = weaponService.getWeaponByName("Piercing Bow");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Piercing Bow");
+            weapon.setRarity(Rarity.RARE);
+            weapon.setPng("bows/rare-piercing-bow.png");
+            weapon.setItemType(ItemType.BOW);
+            weapon.setDamage(250);
+            weapon.setDamageType(DamageType.PIERCING);
+            weapon.setCritChance(45);
+            weapon.setCritDamage(90);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(true);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of rare bow(dps=200.50).
-    private static Weapon createRareBowThree() {
-        Weapon bow = new Weapon();
-        bow.setName("Skeleton Bow");
-        bow.setRarity(Rarity.RARE);
-        bow.setPng("bows/rare-skeleton-bow.png");
-        bow.setItemType(ItemType.BOW);
-        bow.setDamage(160);
-        bow.setDamageType(DamageType.PIERCING);
-        bow.setCritChance(27);
-        bow.setCritDamage(150);
-        bow.setAttackSpeed(10);
-        bow.setAoeDamage(false);
-        return bow;
+    public Weapon getRareBowThree() {
+        Weapon weapon = weaponService.getWeaponByName("Skeleton Bow");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Skeleton Bow");
+            weapon.setRarity(Rarity.RARE);
+            weapon.setPng("bows/rare-skeleton-bow.png");
+            weapon.setItemType(ItemType.BOW);
+            weapon.setDamage(160);
+            weapon.setDamageType(DamageType.PIERCING);
+            weapon.setCritChance(27);
+            weapon.setCritDamage(150);
+            weapon.setAttackSpeed(10);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of epic bow(dps=412.50*).
-    private static Weapon createEpicBowOne() {
-        Weapon bow = new Weapon();
-        bow.setName("Crossbow");
-        bow.setRarity(Rarity.EPIC);
-        bow.setPng("bows/epic-crossbow.png");
-        bow.setItemType(ItemType.BOW);
-        bow.setDamage(650);
-        bow.setDamageType(DamageType.PIERCING);
-        bow.setCritChance(50);
-        bow.setCritDamage(350);
-        bow.setAttackSpeed(5);
-        bow.setAoeDamage(true);
-        return bow;
+    public Weapon getEpicBowOne() {
+        Weapon weapon = weaponService.getWeaponByName("Crossbow");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Crossbow");
+            weapon.setRarity(Rarity.EPIC);
+            weapon.setPng("bows/epic-crossbow.png");
+            weapon.setItemType(ItemType.BOW);
+            weapon.setDamage(650);
+            weapon.setDamageType(DamageType.PIERCING);
+            weapon.setCritChance(50);
+            weapon.setCritDamage(350);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(true);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of epic bow(dps=598.50).
-    private static Weapon createEpicBowTwo() {
-        Weapon bow = new Weapon();
-        bow.setName("Frost Bow");
-        bow.setRarity(Rarity.EPIC);
-        bow.setPng("bows/epic-frost-bow.png");
-        bow.setItemType(ItemType.BOW);
-        bow.setDamage(300);
-        bow.setDamageType(DamageType.COLD);
-        bow.setCritChance(45);
-        bow.setCritDamage(220);
-        bow.setAttackSpeed(15);
-        bow.setAoeDamage(false);
-        return bow;
+    public Weapon getEpicBowTwo() {
+        Weapon weapon = weaponService.getWeaponByName("Frost Bow");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Frost Bow");
+            weapon.setRarity(Rarity.EPIC);
+            weapon.setPng("bows/epic-frost-bow.png");
+            weapon.setItemType(ItemType.BOW);
+            weapon.setDamage(300);
+            weapon.setDamageType(DamageType.COLD);
+            weapon.setCritChance(45);
+            weapon.setCritDamage(220);
+            weapon.setAttackSpeed(15);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of epic bow(dps=600.00).
-    private static Weapon createEpicBowThree() {
-        Weapon bow = new Weapon();
-        bow.setName("Poison Bow");
-        bow.setRarity(Rarity.EPIC);
-        bow.setPng("bows/epic-poison-bow.png");
-        bow.setItemType(ItemType.BOW);
-        bow.setDamage(320);
-        bow.setDamageType(DamageType.POISON);
-        bow.setCritChance(40);
-        bow.setCritDamage(200);
-        bow.setAttackSpeed(15);
-        bow.setAoeDamage(false);
-        return bow;
+    public Weapon getEpicBowThree() {
+        Weapon weapon = weaponService.getWeaponByName("Poison Bow");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Poison Bow");
+            weapon.setRarity(Rarity.EPIC);
+            weapon.setPng("bows/epic-poison-bow.png");
+            weapon.setItemType(ItemType.BOW);
+            weapon.setDamage(320);
+            weapon.setDamageType(DamageType.POISON);
+            weapon.setCritChance(40);
+            weapon.setCritDamage(200);
+            weapon.setAttackSpeed(15);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of legendary bow(dps=4700.00).
-    private static Weapon createLegendaryBowOne() {
-        Weapon bow = new Weapon();
-        bow.setName("Grasp Bow");
-        bow.setRarity(Rarity.LEGENDARY);
-        bow.setPng("bows/legendary-grasp-bow.png");
-        bow.setItemType(ItemType.BOW);
-        bow.setDamage(1400);
-        bow.setDamageType(DamageType.PIERCING);
-        bow.setCritChance(80);
-        bow.setCritDamage(600);
-        bow.setAttackSpeed(25);
-        bow.setAoeDamage(false);
-        return bow;
+    public Weapon getLegendaryBowOne() {
+        Weapon weapon = weaponService.getWeaponByName("Grasp Bow");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Grasp Bow");
+            weapon.setRarity(Rarity.LEGENDARY);
+            weapon.setPng("bows/legendary-grasp-bow.png");
+            weapon.setItemType(ItemType.BOW);
+            weapon.setDamage(1400);
+            weapon.setDamageType(DamageType.PIERCING);
+            weapon.setCritChance(80);
+            weapon.setCritDamage(600);
+            weapon.setAttackSpeed(25);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of legendary bow(dps=3225.00*).
-    private static Weapon createLegendaryBowTwo() {
-        Weapon bow = new Weapon();
-        bow.setName("Magma Bow");
-        bow.setRarity(Rarity.LEGENDARY);
-        bow.setPng("bows/legendary-magma-bow.png");
-        bow.setItemType(ItemType.BOW);
-        bow.setDamage(1200);
-        bow.setDamageType(DamageType.FIRE);
-        bow.setCritChance(75);
-        bow.setCritDamage(550);
-        bow.setAttackSpeed(20);
-        bow.setAoeDamage(true);
-        return bow;
+    public Weapon getLegendaryBowTwo() {
+        Weapon weapon = weaponService.getWeaponByName("Magma Bow");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Magma Bow");
+            weapon.setRarity(Rarity.LEGENDARY);
+            weapon.setPng("bows/legendary-magma-bow.png");
+            weapon.setItemType(ItemType.BOW);
+            weapon.setDamage(1200);
+            weapon.setDamageType(DamageType.FIRE);
+            weapon.setCritChance(75);
+            weapon.setCritDamage(550);
+            weapon.setAttackSpeed(20);
+            weapon.setAoeDamage(true);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of legendary bow(dps=3468.75*).
-    private static Weapon createLegendaryBowThree() {
-        Weapon bow = new Weapon();
-        bow.setName("Precision Bow");
-        bow.setRarity(Rarity.LEGENDARY);
-        bow.setPng("bows/legendary-precision-bow.png");
-        bow.setItemType(ItemType.BOW);
-        bow.setDamage(1600);
-        bow.setDamageType(DamageType.PIERCING);
-        bow.setCritChance(95);
-        bow.setCritDamage(750);
-        bow.setAttackSpeed(15);
-        bow.setAoeDamage(true);
-        return bow;
+    public Weapon getLegendaryBowThree() {
+        Weapon weapon = weaponService.getWeaponByName("Precision Bow");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Precision Bow");
+            weapon.setRarity(Rarity.LEGENDARY);
+            weapon.setPng("bows/legendary-precision-bow.png");
+            weapon.setItemType(ItemType.BOW);
+            weapon.setDamage(1600);
+            weapon.setDamageType(DamageType.PIERCING);
+            weapon.setCritChance(95);
+            weapon.setCritDamage(750);
+            weapon.setAttackSpeed(15);
+            weapon.setAoeDamage(true);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of common staff(dps=20.00).
-    private static Weapon createCommonStaffOne() {
-        Weapon staff = new Weapon();
-        staff.setName("Leafy Staff");
-        staff.setRarity(Rarity.COMMON);
-        staff.setPng("staffs/common-leafy-staff.png");
-        staff.setItemType(ItemType.STAFF);
-        staff.setDamage(40);
-        staff.setDamageType(DamageType.BLUDGEONING);
-        staff.setCritChance(0);
-        staff.setCritDamage(0);
-        staff.setAttackSpeed(5);
-        staff.setAoeDamage(false);
-        return staff;
+    public Weapon getCommonStaffOne() {
+        Weapon weapon = weaponService.getWeaponByName("Leafy Staff");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Leafy Staff");
+            weapon.setRarity(Rarity.COMMON);
+            weapon.setPng("staffs/common-leafy-staff.png");
+            weapon.setItemType(ItemType.STAFF);
+            weapon.setDamage(40);
+            weapon.setDamageType(DamageType.BLUDGEONING);
+            weapon.setCritChance(0);
+            weapon.setCritDamage(0);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of common staff(dps=20.00).
-    private static Weapon createCommonStaffTwo() {
-        Weapon staff = new Weapon();
-        staff.setName("Sickle Staff");
-        staff.setRarity(Rarity.COMMON);
-        staff.setPng("staffs/common-sickle-staff.png");
-        staff.setItemType(ItemType.STAFF);
-        staff.setDamage(40);
-        staff.setDamageType(DamageType.BLUDGEONING);
-        staff.setCritChance(0);
-        staff.setCritDamage(0);
-        staff.setAttackSpeed(5);
-        staff.setAoeDamage(false);
-        return staff;
+    public Weapon getCommonStaffTwo() {
+        Weapon weapon = weaponService.getWeaponByName("Sickle Staff");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Sickle Staff");
+            weapon.setRarity(Rarity.COMMON);
+            weapon.setPng("staffs/common-sickle-staff.png");
+            weapon.setItemType(ItemType.STAFF);
+            weapon.setDamage(40);
+            weapon.setDamageType(DamageType.BLUDGEONING);
+            weapon.setCritChance(0);
+            weapon.setCritDamage(0);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of common staff(dps=20.00).
-    private static Weapon createCommonStaffThree() {
-        Weapon staff = new Weapon();
-        staff.setName("Steel Staff");
-        staff.setRarity(Rarity.COMMON);
-        staff.setPng("staffs/common-steel-staff.png");
-        staff.setItemType(ItemType.STAFF);
-        staff.setDamage(40);
-        staff.setDamageType(DamageType.BLUDGEONING);
-        staff.setCritChance(0);
-        staff.setCritDamage(0);
-        staff.setAttackSpeed(5);
-        staff.setAoeDamage(false);
-        return staff;
+    public Weapon getCommonStaffThree() {
+        Weapon weapon = weaponService.getWeaponByName("Steel Staff");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Steel Staff");
+            weapon.setRarity(Rarity.COMMON);
+            weapon.setPng("staffs/common-steel-staff.png");
+            weapon.setItemType(ItemType.STAFF);
+            weapon.setDamage(40);
+            weapon.setDamageType(DamageType.BLUDGEONING);
+            weapon.setCritChance(0);
+            weapon.setCritDamage(0);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of uncommon staff(dps=20.20).
-    private static Weapon createUnCommonStaffOne() {
-        Weapon staff = new Weapon();
-        staff.setName("Light and Dark Staff");
-        staff.setRarity(Rarity.UNCOMMON);
-        staff.setPng("staffs/uncommon-light&dark-staff.png");
-        staff.setItemType(ItemType.STAFF);
-        staff.setDamage(40);
-        staff.setDamageType(DamageType.BLUDGEONING);
-        staff.setCritChance(1);
-        staff.setCritDamage(40);
-        staff.setAttackSpeed(5);
-        staff.setAoeDamage(false);
-        return staff;
+    public Weapon getUnCommonStaffOne() {
+        Weapon weapon = weaponService.getWeaponByName("Light and Dark Staff");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Light and Dark Staff");
+            weapon.setRarity(Rarity.UNCOMMON);
+            weapon.setPng("staffs/uncommon-light&dark-staff.png");
+            weapon.setItemType(ItemType.STAFF);
+            weapon.setDamage(40);
+            weapon.setDamageType(DamageType.BLUDGEONING);
+            weapon.setCritChance(1);
+            weapon.setCritDamage(40);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of uncommon staff(dps=20.20).
-    private static Weapon createUnCommonStaffTwo() {
-        Weapon staff = new Weapon();
-        staff.setName("Orb Staff");
-        staff.setRarity(Rarity.UNCOMMON);
-        staff.setPng("staffs/uncommon-orb-staff.png");
-        staff.setItemType(ItemType.STAFF);
-        staff.setDamage(40);
-        staff.setDamageType(DamageType.BLUDGEONING);
-        staff.setCritChance(1);
-        staff.setCritDamage(40);
-        staff.setAttackSpeed(5);
-        staff.setAoeDamage(false);
-        return staff;
+    public Weapon getUnCommonStaffTwo() {
+        Weapon weapon = weaponService.getWeaponByName("Orb Staff");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Orb Staff");
+            weapon.setRarity(Rarity.UNCOMMON);
+            weapon.setPng("staffs/uncommon-orb-staff.png");
+            weapon.setItemType(ItemType.STAFF);
+            weapon.setDamage(40);
+            weapon.setDamageType(DamageType.BLUDGEONING);
+            weapon.setCritChance(1);
+            weapon.setCritDamage(40);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of uncommon staff(dps=20.20).
-    private static Weapon createUnCommonStaffThree() {
-        Weapon staff = new Weapon();
-        staff.setName("Winged Staff");
-        staff.setRarity(Rarity.UNCOMMON);
-        staff.setPng("staffs/uncommon-winged-staff.png");
-        staff.setItemType(ItemType.STAFF);
-        staff.setDamage(40);
-        staff.setDamageType(DamageType.BLUDGEONING);
-        staff.setCritChance(1);
-        staff.setCritDamage(40);
-        staff.setAttackSpeed(5);
-        staff.setAoeDamage(false);
-        return staff;
+    public Weapon getUnCommonStaffThree() {
+        Weapon weapon = weaponService.getWeaponByName("Winged Staff");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Winged Staff");
+            weapon.setRarity(Rarity.UNCOMMON);
+            weapon.setPng("staffs/uncommon-winged-staff.png");
+            weapon.setItemType(ItemType.STAFF);
+            weapon.setDamage(40);
+            weapon.setDamageType(DamageType.BLUDGEONING);
+            weapon.setCritChance(1);
+            weapon.setCritDamage(40);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of rare staff(dps=21.00).
-    private static Weapon createRareStaffOne() {
-        Weapon staff = new Weapon();
-        staff.setName("Gem Staff");
-        staff.setRarity(Rarity.RARE);
-        staff.setPng("staffs/rare-gem-staff.png");
-        staff.setItemType(ItemType.STAFF);
-        staff.setDamage(40);
-        staff.setDamageType(DamageType.BLUDGEONING);
-        staff.setCritChance(5);
-        staff.setCritDamage(40);
-        staff.setAttackSpeed(5);
-        staff.setAoeDamage(false);
-        return staff;
+    public Weapon getRareStaffOne() {
+        Weapon weapon = weaponService.getWeaponByName("Gem Staff");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Gem Staff");
+            weapon.setRarity(Rarity.RARE);
+            weapon.setPng("staffs/rare-gem-staff.png");
+            weapon.setItemType(ItemType.STAFF);
+            weapon.setDamage(40);
+            weapon.setDamageType(DamageType.BLUDGEONING);
+            weapon.setCritChance(5);
+            weapon.setCritDamage(40);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of rare staff(dps=21.00).
-    private static Weapon createRareStaffTwo() {
-        Weapon staff = new Weapon();
-        staff.setName("Holy Staff");
-        staff.setRarity(Rarity.RARE);
-        staff.setPng("staffs/rare-holy-staff.png");
-        staff.setItemType(ItemType.STAFF);
-        staff.setDamage(40);
-        staff.setDamageType(DamageType.BLUDGEONING);
-        staff.setCritChance(5);
-        staff.setCritDamage(40);
-        staff.setAttackSpeed(5);
-        staff.setAoeDamage(false);
-        return staff;
+    public Weapon getRareStaffTwo() {
+        Weapon weapon = weaponService.getWeaponByName("Holy Staff");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Holy Staff");
+            weapon.setRarity(Rarity.RARE);
+            weapon.setPng("staffs/rare-holy-staff.png");
+            weapon.setItemType(ItemType.STAFF);
+            weapon.setDamage(40);
+            weapon.setDamageType(DamageType.BLUDGEONING);
+            weapon.setCritChance(5);
+            weapon.setCritDamage(40);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of rare staff(dps=).
-    private static Weapon createRareStaffThree() {
-        Weapon staff = new Weapon();
-        staff.setName("Sea Staff");
-        staff.setRarity(Rarity.RARE);
-        staff.setPng("staffs/rare-sea-staff.png");
-        staff.setItemType(ItemType.STAFF);
-        staff.setDamage(40);
-        staff.setDamageType(DamageType.BLUDGEONING);
-        staff.setCritChance(5);
-        staff.setCritDamage(40);
-        staff.setAttackSpeed(5);
-        staff.setAoeDamage(false);
-        return staff;
+    public Weapon getRareStaffThree() {
+        Weapon weapon = weaponService.getWeaponByName("Sea Staff");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Sea Staff");
+            weapon.setRarity(Rarity.RARE);
+            weapon.setPng("staffs/rare-sea-staff.png");
+            weapon.setItemType(ItemType.STAFF);
+            weapon.setDamage(40);
+            weapon.setDamageType(DamageType.BLUDGEONING);
+            weapon.setCritChance(5);
+            weapon.setCritDamage(40);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of epic staff(dps=30.00).
-    private static Weapon createEpicStaffOne() {
-        Weapon staff = new Weapon();
-        staff.setName("Cobra Staff");
-        staff.setRarity(Rarity.EPIC);
-        staff.setPng("staffs/epic-cobra-staff.png");
-        staff.setItemType(ItemType.STAFF);
-        staff.setDamage(40);
-        staff.setDamageType(DamageType.BLUDGEONING);
-        staff.setCritChance(50);
-        staff.setCritDamage(40);
-        staff.setAttackSpeed(5);
-        staff.setAoeDamage(false);
-        return staff;
+    public Weapon getEpicStaffOne() {
+        Weapon weapon = weaponService.getWeaponByName("Cobra Staff");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Cobra Staff");
+            weapon.setRarity(Rarity.EPIC);
+            weapon.setPng("staffs/epic-cobra-staff.png");
+            weapon.setItemType(ItemType.STAFF);
+            weapon.setDamage(40);
+            weapon.setDamageType(DamageType.BLUDGEONING);
+            weapon.setCritChance(50);
+            weapon.setCritDamage(40);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of epic staff(dps=30.00).
-    private static Weapon createEpicStaffTwo() {
-        Weapon staff = new Weapon();
-        staff.setName("Elder Staff");
-        staff.setRarity(Rarity.EPIC);
-        staff.setPng("staffs/epic-elder-staff.png");
-        staff.setItemType(ItemType.STAFF);
-        staff.setDamage(40);
-        staff.setDamageType(DamageType.BLUDGEONING);
-        staff.setCritChance(50);
-        staff.setCritDamage(40);
-        staff.setAttackSpeed(5);
-        staff.setAoeDamage(false);
-        return staff;
+    public Weapon getEpicStaffTwo() {
+        Weapon weapon = weaponService.getWeaponByName("Elder Staff");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Elder Staff");
+            weapon.setRarity(Rarity.EPIC);
+            weapon.setPng("staffs/epic-elder-staff.png");
+            weapon.setItemType(ItemType.STAFF);
+            weapon.setDamage(40);
+            weapon.setDamageType(DamageType.BLUDGEONING);
+            weapon.setCritChance(50);
+            weapon.setCritDamage(40);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of epic staff(dps=30.00).
-    private static Weapon createEpicStaffThree() {
-        Weapon staff = new Weapon();
-        staff.setName("Necrotic Staff");
-        staff.setRarity(Rarity.EPIC);
-        staff.setPng("staffs/epic-necrotic-staff.png");
-        staff.setItemType(ItemType.STAFF);
-        staff.setDamage(40);
-        staff.setDamageType(DamageType.BLUDGEONING);
-        staff.setCritChance(50);
-        staff.setCritDamage(40);
-        staff.setAttackSpeed(5);
-        staff.setAoeDamage(false);
-        return staff;
+    public Weapon getEpicStaffThree() {
+        Weapon weapon = weaponService.getWeaponByName("Necrotic Staff");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Necrotic Staff");
+            weapon.setRarity(Rarity.EPIC);
+            weapon.setPng("staffs/epic-necrotic-staff.png");
+            weapon.setItemType(ItemType.STAFF);
+            weapon.setDamage(40);
+            weapon.setDamageType(DamageType.BLUDGEONING);
+            weapon.setCritChance(50);
+            weapon.setCritDamage(40);
+            weapon.setAttackSpeed(5);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of legendary staff(dps=80.00).
-    private static Weapon createLegendaryStaffOne() {
-        Weapon staff = new Weapon();
-        staff.setName("Fire Tentacle Staff");
-        staff.setRarity(Rarity.LEGENDARY);
-        staff.setPng("staffs/legendary-fireTentacle-staff.png");
-        staff.setItemType(ItemType.STAFF);
-        staff.setDamage(40);
-        staff.setDamageType(DamageType.FIRE);
-        staff.setCritChance(100);
-        staff.setCritDamage(40);
-        staff.setAttackSpeed(10);
-        staff.setAoeDamage(false);
-        return staff;
+    public Weapon getLegendaryStaffOne() {
+        Weapon weapon = weaponService.getWeaponByName("Fire Tentacle Staff");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Fire Tentacle Staff");
+            weapon.setRarity(Rarity.LEGENDARY);
+            weapon.setPng("staffs/legendary-fireTentacle-staff.png");
+            weapon.setItemType(ItemType.STAFF);
+            weapon.setDamage(40);
+            weapon.setDamageType(DamageType.FIRE);
+            weapon.setCritChance(100);
+            weapon.setCritDamage(40);
+            weapon.setAttackSpeed(10);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of legendary staff(dps=80.00).
-    private static Weapon createLegendaryStaffTwo() {
-        Weapon staff = new Weapon();
-        staff.setName("Naga Staff");
-        staff.setRarity(Rarity.LEGENDARY);
-        staff.setPng("staffs/legendary-naga-staff.png");
-        staff.setItemType(ItemType.STAFF);
-        staff.setDamage(40);
-        staff.setDamageType(DamageType.FIRE);
-        staff.setCritChance(100);
-        staff.setCritDamage(40);
-        staff.setAttackSpeed(10);
-        staff.setAoeDamage(false);
-        return staff;
+    public Weapon getLegendaryStaffTwo() {
+        Weapon weapon = weaponService.getWeaponByName("Naga Staff");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Naga Staff");
+            weapon.setRarity(Rarity.LEGENDARY);
+            weapon.setPng("staffs/legendary-naga-staff.png");
+            weapon.setItemType(ItemType.STAFF);
+            weapon.setDamage(40);
+            weapon.setDamageType(DamageType.FIRE);
+            weapon.setCritChance(100);
+            weapon.setCritDamage(40);
+            weapon.setAttackSpeed(10);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 
     //Blueprint of legendary staff(dps=30.00).
-    private static Weapon createLegendaryStaffThree() {
-        Weapon staff = new Weapon();
-        staff.setName("Syphon Staff");
-        staff.setRarity(Rarity.LEGENDARY);
-        staff.setPng("staffs/legendary-syphon-staff.png");
-        staff.setItemType(ItemType.STAFF);
-        staff.setDamage(40);
-        staff.setDamageType(DamageType.POISON);
-        staff.setCritChance(100);
-        staff.setCritDamage(40);
-        staff.setAttackSpeed(10);
-        staff.setAoeDamage(false);
-        return staff;
+    public Weapon getLegendaryStaffThree() {
+        Weapon weapon = weaponService.getWeaponByName("Syphon Staff");
+        if (weapon == null) {
+            weapon = new Weapon();
+            weapon.setName("Syphon Staff");
+            weapon.setRarity(Rarity.LEGENDARY);
+            weapon.setPng("staffs/legendary-syphon-staff.png");
+            weapon.setItemType(ItemType.STAFF);
+            weapon.setDamage(40);
+            weapon.setDamageType(DamageType.POISON);
+            weapon.setCritChance(100);
+            weapon.setCritDamage(40);
+            weapon.setAttackSpeed(10);
+            weapon.setAoeDamage(false);
+            weaponService.saveWeapon(weapon);
+        }
+        return weapon;
     }
 }
