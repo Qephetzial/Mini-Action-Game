@@ -1,18 +1,23 @@
 package com.beta.miniactiongame.service;
 
-import com.beta.miniactiongame.factory.ArmorFactory;
-import com.beta.miniactiongame.factory.WeaponFactory;
+import com.beta.miniactiongame.exceptions.WrongValueException;
 import com.beta.miniactiongame.model.item.Item;
 import com.beta.miniactiongame.model.item.Rarity;
+import com.beta.miniactiongame.util.UtilityMethods;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.mockStatic;
 
 class ChestServiceTest {
 
-    private final ChestService chestService = new ChestService(new ArmorFactory(), new WeaponFactory());
+    private final ChestService chestService = new ChestService();
 
     @Test
     void openChest() {
@@ -22,46 +27,56 @@ class ChestServiceTest {
 
     @Test
     void getCommonItem() {
-        List<Item> item = chestService.openChest(1000,0,0,0,false);
+        List<Item> item = chestService.openChest(1000, 0, 0, 0, false);
         assertEquals(Rarity.COMMON, item.get(0).getRarity());
     }
 
     @Test
     void getUnCommonItem() {
-        List<Item> item = chestService.openChest(0,1000,0,0,false);
+        List<Item> item = chestService.openChest(0, 1000, 0, 0, false);
         assertEquals(Rarity.UNCOMMON, item.get(0).getRarity());
     }
 
     @Test
     void getRareItem() {
-        List<Item> item = chestService.openChest(0,0,1000,0,false);
+        List<Item> item = chestService.openChest(0, 0, 1000, 0, false);
         assertEquals(Rarity.RARE, item.get(0).getRarity());
     }
 
     @Test
     void getEpicItem() {
-        List<Item> item = chestService.openChest(0,0,0,1000,false);
+        List<Item> item = chestService.openChest(0, 0, 0, 1000, false);
         assertEquals(Rarity.EPIC, item.get(0).getRarity());
     }
 
     @Test
     void getLegendaryItem() {
-        List<Item> item = chestService.openChest(0,0,0,0,false);
+        List<Item> item = chestService.openChest(0, 0, 0, 0, false);
         assertEquals(Rarity.LEGENDARY, item.get(0).getRarity());
     }
 
     @Test
     void getBonusLoot() {
-        boolean needBonusLoot = true;
-        int counter = 0;
-        List<Item> items;
-        while (needBonusLoot && counter < 100000) {
-            items = chestService.openChest(200, 400, 600, 800, true);
-            if (items.size() == 2) {
-                needBonusLoot = false;
-            }
-            counter ++;
+        try (MockedStatic<UtilityMethods> mocked = mockStatic(UtilityMethods.class)) {
+            mocked.when(() -> UtilityMethods.getRandomInt(anyInt())).thenReturn(0);
+            List<Item> items = chestService.openChest(200, 400, 600, 800, true);
+            assertEquals(2, items.size());
         }
-        assertFalse(needBonusLoot);
+    }
+
+    @Test
+    void wrongItemValue() {
+        try (MockedStatic<UtilityMethods> mocked = mockStatic(UtilityMethods.class)) {
+            mocked.when(() -> UtilityMethods.getRandomInt(anyInt())).thenReturn(12);
+            assertThrows(WrongValueException.class, ()-> chestService.openChest(200, 400, 600, 800, true));
+        }
+    }
+
+    @Test
+    void wrongRarityValue() {
+        try (MockedStatic<UtilityMethods> mocked = mockStatic(UtilityMethods.class)) {
+            mocked.when(() -> UtilityMethods.getRandomInt(anyInt())).thenReturn(1000);
+            assertThrows(WrongValueException.class, ()-> chestService.openChest(200, 400, 600, 800, true));
+        }
     }
 }
