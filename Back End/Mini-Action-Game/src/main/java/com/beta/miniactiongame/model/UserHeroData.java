@@ -11,13 +11,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor
-public class UserHeroData {
+public class UserHeroData implements Serializable {
     @Id
     @UuidGenerator
     private UUID id;

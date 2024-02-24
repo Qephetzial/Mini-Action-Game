@@ -22,7 +22,6 @@ public class AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    //This method creates the AppUser and a jwt token and return the token
     public AuthenticationResponse register(RegisterRequest request) {
         var appUser = AppUser.builder()
                 .name(request.getName())
@@ -38,7 +37,6 @@ public class AuthService {
         return AuthenticationResponse.builder().token(jwtToken).build();
     }
 
-    //This method creates and returns a jwt token upon logging in
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate( new UsernamePasswordAuthenticationToken(request.getName(), request.getPassword()));
         var appUser = appUserRepository.findByName(request.getName()).orElseThrow();

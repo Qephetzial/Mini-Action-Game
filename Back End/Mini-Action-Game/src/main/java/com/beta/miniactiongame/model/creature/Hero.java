@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Hero extends Attacker{
+public class Hero extends Attacker {
 
     private int movementSpeed;
     private int value;

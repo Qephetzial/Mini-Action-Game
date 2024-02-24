@@ -4,5 +4,5 @@ public enum CreatureType {
     FIGHTER,
     RANGER,
     MAGE,
-    DEMON;
+    DEMON
 }

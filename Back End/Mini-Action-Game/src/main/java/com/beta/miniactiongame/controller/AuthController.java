@@ -18,7 +18,6 @@ public class AuthController {
 
     private final AuthService authService;
 
-    //This route create a user and a jwt token for later authentication saved by http-only cookie
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request,
@@ -34,7 +33,6 @@ public class AuthController {
         return ResponseEntity.ok(jwtToken);
     }
 
-    //This route authenticate the user for log in and create a jwt token for later authentication saved by http-only cookie
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request,

@@ -6,12 +6,13 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
 @Getter
 @Setter
-public abstract class Creature {
+public abstract class Creature implements Serializable {
 
     @Id
     @UuidGenerator
