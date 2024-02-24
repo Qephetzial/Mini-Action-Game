@@ -3,9 +3,18 @@ package com.beta.miniactiongame.model;
 import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.Weapon;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.UuidGenerator;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,44 +25,31 @@ import java.util.UUID;
 
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @Builder
-//This class is for the user.
+@NoArgsConstructor
+@AllArgsConstructor
 public class AppUser implements UserDetails {
 
-    //This is a unique ID for the app user.
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @UuidGenerator
     private UUID id;
 
-    //This field determines the username, and it's unique for all user.
     @Column(unique=true)
     private String name;
-
-    //This field
     private String password;
-
     private Role role;
-
-    //This field determines how much coin the user has.
     private int coin;
 
-    //This field contains all the playable character from the game.
     @OneToMany (cascade = CascadeType.ALL)
     private List<UserHeroData> heroes;
 
-    //This field contains the armors what is not on the heroes and the user collected.
     @ManyToMany
     private List<Armor> armors;
 
-    //This field contains the weapons what is not on the heroes and the user collected.
     @ManyToMany
     private List<Weapon> weapons;
-
 
     public void addArmor(Armor armor) {
         armors.add(armor);

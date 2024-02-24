@@ -16,5 +16,6 @@ public class Weapon extends Item {
     private int criticalChance;
     private int criticalDamage;
     private int attackSpeed;
-    private Boolean aoeDamage;
+    private AOEDamageType aoeDamage;
+    //TODO: add Spell class
 }

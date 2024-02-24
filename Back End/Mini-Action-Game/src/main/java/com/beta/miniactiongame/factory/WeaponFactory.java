@@ -1,5 +1,6 @@
 package com.beta.miniactiongame.factory;
 
+import com.beta.miniactiongame.model.item.AOEDamageType;
 import com.beta.miniactiongame.model.item.DamageType;
 import com.beta.miniactiongame.model.item.ItemType;
 import com.beta.miniactiongame.model.item.Rarity;
@@ -27,7 +28,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(0);
             weapon.setCriticalDamage(0);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -46,7 +47,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(10);
             weapon.setCriticalDamage(20);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -65,7 +66,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(3);
             weapon.setCriticalDamage(15);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
             }
         return weapon;
@@ -84,7 +85,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(20);
             weapon.setCriticalDamage(20);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -103,7 +104,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(10);
             weapon.setCriticalDamage(15);
             weapon.setAttackSpeed(15);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -122,7 +123,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(10);
             weapon.setCriticalDamage(25);
             weapon.setAttackSpeed(15);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -141,7 +142,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(25);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(15);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -160,7 +161,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(25);
             weapon.setCriticalDamage(80);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -179,7 +180,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(30);
             weapon.setCriticalDamage(50);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -198,7 +199,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(35);
             weapon.setCriticalDamage(450);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -217,7 +218,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(40);
             weapon.setCriticalDamage(100);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(true);
+            weapon.setAoeDamage(AOEDamageType.MINOR_SWEEPING_EDGE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -236,7 +237,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(15);
             weapon.setCriticalDamage(255);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(true);
+            weapon.setAoeDamage(AOEDamageType.MINOR_SWEEPING_EDGE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -255,7 +256,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(85);
             weapon.setCriticalDamage(600);
             weapon.setAttackSpeed(20);
-            weapon.setAoeDamage(true);
+            weapon.setAoeDamage(AOEDamageType.PIERCE_THROUGH);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -274,7 +275,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(90);
             weapon.setCriticalDamage(350);
             weapon.setAttackSpeed(30);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -293,7 +294,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(99);
             weapon.setCriticalDamage(950);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(true);
+            weapon.setAoeDamage(AOEDamageType.MAJOR_SWEEPING_EDGE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -312,7 +313,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(0);
             weapon.setCriticalDamage(0);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -331,7 +332,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(5);
             weapon.setCriticalDamage(20);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -350,7 +351,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(8);
             weapon.setCriticalDamage(15);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -369,7 +370,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(10);
             weapon.setCriticalDamage(18);
             weapon.setAttackSpeed(15);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -388,7 +389,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(10);
             weapon.setCriticalDamage(20);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -407,7 +408,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(30);
             weapon.setCriticalDamage(65);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -426,7 +427,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(20);
             weapon.setCriticalDamage(70);
             weapon.setAttackSpeed(15);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -445,7 +446,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(45);
             weapon.setCriticalDamage(90);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(true);
+            weapon.setAoeDamage(AOEDamageType.MINOR_PIERCE_THROUGH);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -464,7 +465,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(27);
             weapon.setCriticalDamage(150);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -483,7 +484,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(50);
             weapon.setCriticalDamage(350);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(true);
+            weapon.setAoeDamage(AOEDamageType.MINOR_PIERCE_THROUGH);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -502,7 +503,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(45);
             weapon.setCriticalDamage(220);
             weapon.setAttackSpeed(15);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -521,7 +522,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(40);
             weapon.setCriticalDamage(200);
             weapon.setAttackSpeed(15);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -540,7 +541,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(80);
             weapon.setCriticalDamage(600);
             weapon.setAttackSpeed(25);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -559,7 +560,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(75);
             weapon.setCriticalDamage(550);
             weapon.setAttackSpeed(20);
-            weapon.setAoeDamage(true);
+            weapon.setAoeDamage(AOEDamageType.MAJOR_PIERCE_THROUGH);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -578,7 +579,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(95);
             weapon.setCriticalDamage(750);
             weapon.setAttackSpeed(15);
-            weapon.setAoeDamage(true);
+            weapon.setAoeDamage(AOEDamageType.MAJOR_PIERCE_THROUGH);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -597,7 +598,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(0);
             weapon.setCriticalDamage(0);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -616,7 +617,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(0);
             weapon.setCriticalDamage(0);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -635,7 +636,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(0);
             weapon.setCriticalDamage(0);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -654,7 +655,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(1);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -673,7 +674,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(1);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -692,7 +693,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(1);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -711,7 +712,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(5);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -730,7 +731,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(5);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -749,7 +750,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(5);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -768,7 +769,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(50);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -787,7 +788,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(50);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -806,7 +807,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(50);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -825,7 +826,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(100);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -844,7 +845,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(100);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
@@ -863,7 +864,7 @@ public class WeaponFactory {
             weapon.setCriticalChance(100);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(false);
+            weapon.setAoeDamage(AOEDamageType.NONE);
             weaponService.saveWeapon(weapon);
         }
         return weapon;
