@@ -1,6 +1,6 @@
 package com.beta.miniactiongame.model.item;
 
-public enum AOEDamageType {
+public enum BonusProperty {
     NONE,
     PIERCE_THROUGH,
     MINOR_PIERCE_THROUGH,

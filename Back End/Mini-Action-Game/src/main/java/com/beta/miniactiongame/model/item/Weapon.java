@@ -1,6 +1,9 @@
 package com.beta.miniactiongame.model.item;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +19,7 @@ public class Weapon extends Item {
     private int criticalChance;
     private int criticalDamage;
     private int attackSpeed;
-    private AOEDamageType aoeDamage;
-    //TODO: add Spell class
+    private BonusProperty bonusProperty;
+    @ManyToOne
+    private Spell spell;
 }

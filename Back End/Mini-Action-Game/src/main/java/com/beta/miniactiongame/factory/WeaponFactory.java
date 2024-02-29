@@ -1,11 +1,11 @@
 package com.beta.miniactiongame.factory;
 
-import com.beta.miniactiongame.model.item.AOEDamageType;
+import com.beta.miniactiongame.model.item.BonusProperty;
 import com.beta.miniactiongame.model.item.DamageType;
 import com.beta.miniactiongame.model.item.ItemType;
 import com.beta.miniactiongame.model.item.Rarity;
 import com.beta.miniactiongame.model.item.Weapon;
-import com.beta.miniactiongame.service.WeaponService;
+import com.beta.miniactiongame.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -13,10 +13,10 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class WeaponFactory {
 
-    private final WeaponService weaponService;
+    private final ItemService itemService;
 
     public Weapon getCommonSwordOne() {
-        Weapon weapon = weaponService.getWeaponByName("Black sword");
+        Weapon weapon = itemService.getWeaponByName("Black sword");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Black sword");
@@ -28,14 +28,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(0);
             weapon.setCriticalDamage(0);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getCommonSwordTwo() {
-        Weapon weapon = weaponService.getWeaponByName("Bear sword");
+        Weapon weapon = itemService.getWeaponByName("Bear sword");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Bear sword");
@@ -47,14 +47,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(10);
             weapon.setCriticalDamage(20);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getCommonSwordThree() {
-        Weapon weapon = weaponService.getWeaponByName("Red metal sword");
+        Weapon weapon = itemService.getWeaponByName("Red metal sword");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Red metal sword");
@@ -66,14 +66,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(3);
             weapon.setCriticalDamage(15);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
             }
         return weapon;
     }
 
     public Weapon getUnCommonSwordOne() {
-        Weapon weapon = weaponService.getWeaponByName("Ancient sword");
+        Weapon weapon = itemService.getWeaponByName("Ancient sword");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Ancient sword");
@@ -85,14 +85,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(20);
             weapon.setCriticalDamage(20);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getUnCommonSwordTwo() {
-        Weapon weapon = weaponService.getWeaponByName("Bone sword");
+        Weapon weapon = itemService.getWeaponByName("Bone sword");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Bone sword");
@@ -104,14 +104,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(10);
             weapon.setCriticalDamage(15);
             weapon.setAttackSpeed(15);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getUnCommonSwordThree() {
-        Weapon weapon = weaponService.getWeaponByName("Eagle sword");
+        Weapon weapon = itemService.getWeaponByName("Eagle sword");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Eagle sword");
@@ -123,14 +123,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(10);
             weapon.setCriticalDamage(25);
             weapon.setAttackSpeed(15);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getRareSwordOne() {
-        Weapon weapon = weaponService.getWeaponByName("Cursed sword");
+        Weapon weapon = itemService.getWeaponByName("Cursed sword");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Cursed sword");
@@ -142,14 +142,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(25);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(15);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getRareSwordTwo() {
-        Weapon weapon = weaponService.getWeaponByName("Executioner sword");
+        Weapon weapon = itemService.getWeaponByName("Executioner sword");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Executioner sword");
@@ -161,14 +161,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(25);
             weapon.setCriticalDamage(80);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getRareSwordThree() {
-        Weapon weapon = weaponService.getWeaponByName("Necrotic sword");
+        Weapon weapon = itemService.getWeaponByName("Necrotic sword");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Necrotic sword");
@@ -180,14 +180,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(30);
             weapon.setCriticalDamage(50);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getEpicSwordOne() {
-        Weapon weapon = weaponService.getWeaponByName("Head splashing Hammer");
+        Weapon weapon = itemService.getWeaponByName("Head splashing Hammer");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Head splashing Hammer");
@@ -199,14 +199,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(35);
             weapon.setCriticalDamage(450);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getEpicSwordTwo() {
-        Weapon weapon = weaponService.getWeaponByName("Heroic Axe");
+        Weapon weapon = itemService.getWeaponByName("Heroic Axe");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Heroic Axe");
@@ -218,14 +218,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(40);
             weapon.setCriticalDamage(100);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(AOEDamageType.MINOR_SWEEPING_EDGE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.MINOR_SWEEPING_EDGE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getEpicSwordThree() {
-        Weapon weapon = weaponService.getWeaponByName("Magma Axe");
+        Weapon weapon = itemService.getWeaponByName("Magma Axe");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Magma Axe");
@@ -237,14 +237,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(15);
             weapon.setCriticalDamage(255);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(AOEDamageType.MINOR_SWEEPING_EDGE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.MINOR_SWEEPING_EDGE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getLegendarySwordOne() {
-        Weapon weapon = weaponService.getWeaponByName("Demonic Spear");
+        Weapon weapon = itemService.getWeaponByName("Demonic Spear");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Demonic Spear");
@@ -256,14 +256,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(85);
             weapon.setCriticalDamage(600);
             weapon.setAttackSpeed(20);
-            weapon.setAoeDamage(AOEDamageType.PIERCE_THROUGH);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.PIERCE_THROUGH);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getLegendarySwordTwo() {
-        Weapon weapon = weaponService.getWeaponByName("Samurai Sword");
+        Weapon weapon = itemService.getWeaponByName("Samurai Sword");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Samurai Sword");
@@ -275,14 +275,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(90);
             weapon.setCriticalDamage(350);
             weapon.setAttackSpeed(30);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getLegendarySwordThree() {
-        Weapon weapon = weaponService.getWeaponByName("Demonic Scythe");
+        Weapon weapon = itemService.getWeaponByName("Demonic Scythe");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Demonic Scythe");
@@ -294,14 +294,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(99);
             weapon.setCriticalDamage(950);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(AOEDamageType.MAJOR_SWEEPING_EDGE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.MAJOR_SWEEPING_EDGE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getCommonBowOne() {
-        Weapon weapon = weaponService.getWeaponByName("Bone Bow");
+        Weapon weapon = itemService.getWeaponByName("Bone Bow");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Bone Bow");
@@ -313,14 +313,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(0);
             weapon.setCriticalDamage(0);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getCommonBowTwo() {
-        Weapon weapon = weaponService.getWeaponByName("Old Bow");
+        Weapon weapon = itemService.getWeaponByName("Old Bow");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Old Bow");
@@ -332,14 +332,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(5);
             weapon.setCriticalDamage(20);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getCommonBowThree() {
-        Weapon weapon = weaponService.getWeaponByName("Birch Bow");
+        Weapon weapon = itemService.getWeaponByName("Birch Bow");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Birch Bow");
@@ -351,14 +351,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(8);
             weapon.setCriticalDamage(15);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getUnCommonBowOne() {
-        Weapon weapon = weaponService.getWeaponByName("Fast Bow");
+        Weapon weapon = itemService.getWeaponByName("Fast Bow");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Fast Bow");
@@ -370,14 +370,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(10);
             weapon.setCriticalDamage(18);
             weapon.setAttackSpeed(15);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getUnCommonBowTwo() {
-        Weapon weapon = weaponService.getWeaponByName("Curved Bow");
+        Weapon weapon = itemService.getWeaponByName("Curved Bow");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Curved Bow");
@@ -389,14 +389,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(10);
             weapon.setCriticalDamage(20);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getUnCommonBowThree() {
-        Weapon weapon = weaponService.getWeaponByName("Strong Bow");
+        Weapon weapon = itemService.getWeaponByName("Strong Bow");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Strong Bow");
@@ -408,14 +408,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(30);
             weapon.setCriticalDamage(65);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getRareBowOne() {
-        Weapon weapon = weaponService.getWeaponByName("Curling Bow");
+        Weapon weapon = itemService.getWeaponByName("Curling Bow");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Curling Bow");
@@ -427,14 +427,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(20);
             weapon.setCriticalDamage(70);
             weapon.setAttackSpeed(15);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getRareBowTwo() {
-        Weapon weapon = weaponService.getWeaponByName("Piercing Bow");
+        Weapon weapon = itemService.getWeaponByName("Piercing Bow");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Piercing Bow");
@@ -446,14 +446,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(45);
             weapon.setCriticalDamage(90);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.MINOR_PIERCE_THROUGH);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.MINOR_PIERCE_THROUGH);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getRareBowThree() {
-        Weapon weapon = weaponService.getWeaponByName("Skeleton Bow");
+        Weapon weapon = itemService.getWeaponByName("Skeleton Bow");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Skeleton Bow");
@@ -465,14 +465,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(27);
             weapon.setCriticalDamage(150);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getEpicBowOne() {
-        Weapon weapon = weaponService.getWeaponByName("Crossbow");
+        Weapon weapon = itemService.getWeaponByName("Crossbow");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Crossbow");
@@ -484,14 +484,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(50);
             weapon.setCriticalDamage(350);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.MINOR_PIERCE_THROUGH);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.MINOR_PIERCE_THROUGH);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getEpicBowTwo() {
-        Weapon weapon = weaponService.getWeaponByName("Frost Bow");
+        Weapon weapon = itemService.getWeaponByName("Frost Bow");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Frost Bow");
@@ -503,14 +503,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(45);
             weapon.setCriticalDamage(220);
             weapon.setAttackSpeed(15);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getEpicBowThree() {
-        Weapon weapon = weaponService.getWeaponByName("Poison Bow");
+        Weapon weapon = itemService.getWeaponByName("Poison Bow");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Poison Bow");
@@ -522,14 +522,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(40);
             weapon.setCriticalDamage(200);
             weapon.setAttackSpeed(15);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getLegendaryBowOne() {
-        Weapon weapon = weaponService.getWeaponByName("Grasp Bow");
+        Weapon weapon = itemService.getWeaponByName("Grasp Bow");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Grasp Bow");
@@ -541,14 +541,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(80);
             weapon.setCriticalDamage(600);
             weapon.setAttackSpeed(25);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getLegendaryBowTwo() {
-        Weapon weapon = weaponService.getWeaponByName("Magma Bow");
+        Weapon weapon = itemService.getWeaponByName("Magma Bow");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Magma Bow");
@@ -560,14 +560,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(75);
             weapon.setCriticalDamage(550);
             weapon.setAttackSpeed(20);
-            weapon.setAoeDamage(AOEDamageType.MAJOR_PIERCE_THROUGH);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.MAJOR_PIERCE_THROUGH);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getLegendaryBowThree() {
-        Weapon weapon = weaponService.getWeaponByName("Precision Bow");
+        Weapon weapon = itemService.getWeaponByName("Precision Bow");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Precision Bow");
@@ -579,14 +579,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(95);
             weapon.setCriticalDamage(750);
             weapon.setAttackSpeed(15);
-            weapon.setAoeDamage(AOEDamageType.MAJOR_PIERCE_THROUGH);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.MAJOR_PIERCE_THROUGH);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getCommonStaffOne() {
-        Weapon weapon = weaponService.getWeaponByName("Leafy Staff");
+        Weapon weapon = itemService.getWeaponByName("Leafy Staff");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Leafy Staff");
@@ -598,14 +598,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(0);
             weapon.setCriticalDamage(0);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getCommonStaffTwo() {
-        Weapon weapon = weaponService.getWeaponByName("Sickle Staff");
+        Weapon weapon = itemService.getWeaponByName("Sickle Staff");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Sickle Staff");
@@ -617,14 +617,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(0);
             weapon.setCriticalDamage(0);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getCommonStaffThree() {
-        Weapon weapon = weaponService.getWeaponByName("Steel Staff");
+        Weapon weapon = itemService.getWeaponByName("Steel Staff");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Steel Staff");
@@ -636,14 +636,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(0);
             weapon.setCriticalDamage(0);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getUnCommonStaffOne() {
-        Weapon weapon = weaponService.getWeaponByName("Light and Dark Staff");
+        Weapon weapon = itemService.getWeaponByName("Light and Dark Staff");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Light and Dark Staff");
@@ -655,14 +655,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(1);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getUnCommonStaffTwo() {
-        Weapon weapon = weaponService.getWeaponByName("Orb Staff");
+        Weapon weapon = itemService.getWeaponByName("Orb Staff");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Orb Staff");
@@ -674,14 +674,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(1);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getUnCommonStaffThree() {
-        Weapon weapon = weaponService.getWeaponByName("Winged Staff");
+        Weapon weapon = itemService.getWeaponByName("Winged Staff");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Winged Staff");
@@ -693,14 +693,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(1);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getRareStaffOne() {
-        Weapon weapon = weaponService.getWeaponByName("Gem Staff");
+        Weapon weapon = itemService.getWeaponByName("Gem Staff");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Gem Staff");
@@ -712,14 +712,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(5);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getRareStaffTwo() {
-        Weapon weapon = weaponService.getWeaponByName("Holy Staff");
+        Weapon weapon = itemService.getWeaponByName("Holy Staff");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Holy Staff");
@@ -731,14 +731,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(5);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getRareStaffThree() {
-        Weapon weapon = weaponService.getWeaponByName("Sea Staff");
+        Weapon weapon = itemService.getWeaponByName("Sea Staff");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Sea Staff");
@@ -750,14 +750,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(5);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getEpicStaffOne() {
-        Weapon weapon = weaponService.getWeaponByName("Cobra Staff");
+        Weapon weapon = itemService.getWeaponByName("Cobra Staff");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Cobra Staff");
@@ -769,14 +769,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(50);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getEpicStaffTwo() {
-        Weapon weapon = weaponService.getWeaponByName("Elder Staff");
+        Weapon weapon = itemService.getWeaponByName("Elder Staff");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Elder Staff");
@@ -788,14 +788,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(50);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getEpicStaffThree() {
-        Weapon weapon = weaponService.getWeaponByName("Necrotic Staff");
+        Weapon weapon = itemService.getWeaponByName("Necrotic Staff");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Necrotic Staff");
@@ -807,14 +807,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(50);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(5);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getLegendaryStaffOne() {
-        Weapon weapon = weaponService.getWeaponByName("Fire Tentacle Staff");
+        Weapon weapon = itemService.getWeaponByName("Fire Tentacle Staff");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Fire Tentacle Staff");
@@ -826,14 +826,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(100);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getLegendaryStaffTwo() {
-        Weapon weapon = weaponService.getWeaponByName("Naga Staff");
+        Weapon weapon = itemService.getWeaponByName("Naga Staff");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Naga Staff");
@@ -845,14 +845,14 @@ public class WeaponFactory {
             weapon.setCriticalChance(100);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }
 
     public Weapon getLegendaryStaffThree() {
-        Weapon weapon = weaponService.getWeaponByName("Syphon Staff");
+        Weapon weapon = itemService.getWeaponByName("Syphon Staff");
         if (weapon == null) {
             weapon = new Weapon();
             weapon.setName("Syphon Staff");
@@ -864,8 +864,8 @@ public class WeaponFactory {
             weapon.setCriticalChance(100);
             weapon.setCriticalDamage(40);
             weapon.setAttackSpeed(10);
-            weapon.setAoeDamage(AOEDamageType.NONE);
-            weaponService.saveWeapon(weapon);
+            weapon.setBonusProperty(BonusProperty.NONE);
+            itemService.saveWeapon(weapon);
         }
         return weapon;
     }

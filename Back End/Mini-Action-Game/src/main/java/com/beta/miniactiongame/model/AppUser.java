@@ -4,7 +4,6 @@ import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.Weapon;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
@@ -35,8 +34,6 @@ public class AppUser implements UserDetails {
     @Id
     @UuidGenerator
     private UUID id;
-
-    @Column(unique=true)
     private String name;
     private String password;
     private Role role;

@@ -4,7 +4,7 @@ import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.DamageType;
 import com.beta.miniactiongame.model.item.ItemType;
 import com.beta.miniactiongame.model.item.Rarity;
-import com.beta.miniactiongame.service.ArmorService;
+import com.beta.miniactiongame.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ArmorFactory {
 
-    private final ArmorService armorService;
+    private final ItemService itemService;
 
     public Armor getCommonArmorOne() {
-        Armor armor = armorService.getArmorByName("Brigandine Armor");
+        Armor armor = itemService.getArmorByName("Brigandine Armor");
         if (armor == null) {
             armor = new Armor();
             armor.setName("Brigandine Armor");
@@ -27,13 +27,13 @@ public class ArmorFactory {
             armor.setResistance(null);
             armor.setSecondaryResistance(null);
             armor.setMovementSpeed(0);
-            armorService.saveArmor(armor);
+            itemService.saveArmor(armor);
         }
         return armor;
     }
 
     public Armor getCommonArmorTwo() {
-        Armor armor = armorService.getArmorByName("Hide Armor");
+        Armor armor = itemService.getArmorByName("Hide Armor");
         if(armor == null) {
             armor = new Armor();
             armor.setName("Hide Armor");
@@ -45,13 +45,13 @@ public class ArmorFactory {
             armor.setResistance(null);
             armor.setSecondaryResistance(null);
             armor.setMovementSpeed(0);
-            armorService.saveArmor(armor);
+            itemService.saveArmor(armor);
         }
         return armor;
     }
 
     public Armor getCommonArmorThree() {
-        Armor armor = armorService.getArmorByName("Shadow Sakura Armor");
+        Armor armor = itemService.getArmorByName("Shadow Sakura Armor");
         if(armor == null) {
             armor = new Armor();
             armor.setName("Shadow Sakura Armor");
@@ -63,13 +63,13 @@ public class ArmorFactory {
             armor.setResistance(null);
             armor.setSecondaryResistance(null);
             armor.setMovementSpeed(0);
-            armorService.saveArmor(armor);
+            itemService.saveArmor(armor);
         }
         return armor;
     }
 
     public Armor getUnCommonArmorOne() {
-        Armor armor = armorService.getArmorByName("Studded Survival Armor");
+        Armor armor = itemService.getArmorByName("Studded Survival Armor");
         if(armor == null) {
             armor = new Armor();
             armor.setName("Studded Survival Armor");
@@ -81,13 +81,13 @@ public class ArmorFactory {
             armor.setResistance(null);
             armor.setSecondaryResistance(null);
             armor.setMovementSpeed(0);
-            armorService.saveArmor(armor);
+            itemService.saveArmor(armor);
         }
         return armor;
     }
 
     public Armor getUnCommonArmorTwo() {
-        Armor armor = armorService.getArmorByName("Conquistador Armor");
+        Armor armor = itemService.getArmorByName("Conquistador Armor");
         if(armor == null) {
             armor = new Armor();
             armor.setName("Conquistador Armor");
@@ -99,13 +99,13 @@ public class ArmorFactory {
             armor.setResistance(null);
             armor.setSecondaryResistance(null);
             armor.setMovementSpeed(0);
-            armorService.saveArmor(armor);
+            itemService.saveArmor(armor);
         }
         return armor;
     }
 
     public Armor getUnCommonArmorThree() {
-        Armor armor = armorService.getArmorByName("Indomitable Samurai Armor");
+        Armor armor = itemService.getArmorByName("Indomitable Samurai Armor");
         if(armor == null) {
             armor = new Armor();
             armor.setName("Indomitable Samurai Armor");
@@ -117,13 +117,13 @@ public class ArmorFactory {
             armor.setResistance(null);
             armor.setSecondaryResistance(null);
             armor.setMovementSpeed(0);
-            armorService.saveArmor(armor);
+            itemService.saveArmor(armor);
         }
         return armor;
     }
 
     public Armor getRareArmorOne() {
-        Armor armor = armorService.getArmorByName("Knight Banneret Armor");
+        Armor armor = itemService.getArmorByName("Knight Banneret Armor");
         if(armor == null) {
             armor = new Armor();
             armor.setName("Knight Banneret Armor");
@@ -135,13 +135,13 @@ public class ArmorFactory {
             armor.setResistance(DamageType.POISON);
             armor.setSecondaryResistance(null);
             armor.setMovementSpeed(0);
-            armorService.saveArmor(armor);
+            itemService.saveArmor(armor);
         }
         return armor;
     }
 
     public Armor getRareArmorTwo() {
-        Armor armor = armorService.getArmorByName("Wide Mantle Robe");
+        Armor armor = itemService.getArmorByName("Wide Mantle Robe");
         if(armor == null) {
             armor = new Armor();
             armor.setName("Wide Mantle Robe");
@@ -153,13 +153,13 @@ public class ArmorFactory {
             armor.setResistance(DamageType.COLD);
             armor.setSecondaryResistance(null);
             armor.setMovementSpeed(0);
-            armorService.saveArmor(armor);
+            itemService.saveArmor(armor);
         }
         return armor;
     }
 
     public Armor getRareArmorThree() {
-        Armor armor = armorService.getArmorByName("Splint Armor");
+        Armor armor = itemService.getArmorByName("Splint Armor");
         if(armor == null) {
             armor = new Armor();
             armor.setName("Splint Armor");
@@ -171,13 +171,13 @@ public class ArmorFactory {
             armor.setResistance(DamageType.FIRE);
             armor.setSecondaryResistance(null);
             armor.setMovementSpeed(0);
-            armorService.saveArmor(armor);
+            itemService.saveArmor(armor);
         }
         return armor;
     }
 
     public Armor getEpicArmorOne() {
-        Armor armor = armorService.getArmorByName("Knight Challenger Armor");
+        Armor armor = itemService.getArmorByName("Knight Challenger Armor");
         if(armor == null) {
             armor = new Armor();
             armor.setName("Knight Challenger Armor");
@@ -189,13 +189,13 @@ public class ArmorFactory {
             armor.setResistance(DamageType.POISON);
             armor.setSecondaryResistance(null);
             armor.setMovementSpeed(0);
-            armorService.saveArmor(armor);
+            itemService.saveArmor(armor);
         }
         return armor;
     }
 
     public Armor getEpicArmorTwo() {
-        Armor armor = armorService.getArmorByName("Dragon Knight Armor");
+        Armor armor = itemService.getArmorByName("Dragon Knight Armor");
         if(armor == null) {
             armor = new Armor();
             armor.setName("Dragon Knight Armor");
@@ -207,13 +207,13 @@ public class ArmorFactory {
             armor.setResistance(DamageType.COLD);
             armor.setSecondaryResistance(null);
             armor.setMovementSpeed(0);
-            armorService.saveArmor(armor);
+            itemService.saveArmor(armor);
         }
         return armor;
     }
 
     public Armor getEpicArmorThree() {
-        Armor armor = armorService.getArmorByName("Power Armor");
+        Armor armor = itemService.getArmorByName("Power Armor");
         if(armor == null) {
             armor = new Armor();
             armor.setName("Power Armor");
@@ -225,13 +225,13 @@ public class ArmorFactory {
             armor.setResistance(DamageType.FIRE);
             armor.setSecondaryResistance(null);
             armor.setMovementSpeed(0);
-            armorService.saveArmor(armor);
+            itemService.saveArmor(armor);
         }
         return armor;
     }
 
     public Armor getLegendaryArmorOne() {
-        Armor armor = armorService.getArmorByName("Devil's Armor");
+        Armor armor = itemService.getArmorByName("Devil's Armor");
         if(armor == null) {
             armor = new Armor();
             armor.setName("Devil's Armor");
@@ -243,13 +243,13 @@ public class ArmorFactory {
             armor.setResistance(DamageType.COLD);
             armor.setSecondaryResistance(DamageType.SLASHING);
             armor.setMovementSpeed(2);
-            armorService.saveArmor(armor);
+            itemService.saveArmor(armor);
         }
         return armor;
     }
 
     public Armor getLegendaryArmorTwo() {
-        Armor armor = armorService.getArmorByName("Hired Gun Armor");
+        Armor armor = itemService.getArmorByName("Hired Gun Armor");
         if(armor == null) {
             armor = new Armor();
             armor.setName("Hired Gun Armor");
@@ -261,13 +261,13 @@ public class ArmorFactory {
             armor.setResistance(DamageType.POISON);
             armor.setSecondaryResistance(DamageType.BLUDGEONING);
             armor.setMovementSpeed(1);
-            armorService.saveArmor(armor);
+            itemService.saveArmor(armor);
         }
         return armor;
     }
 
     public Armor getLegendaryArmorThree() {
-        Armor armor = armorService.getArmorByName("Combat Uniform");
+        Armor armor = itemService.getArmorByName("Combat Uniform");
         if(armor == null) {
             armor = new Armor();
             armor.setName("Combat Uniform");
@@ -279,7 +279,7 @@ public class ArmorFactory {
             armor.setResistance(DamageType.FIRE);
             armor.setSecondaryResistance(DamageType.SLASHING);
             armor.setMovementSpeed(1);
-            armorService.saveArmor(armor);
+            itemService.saveArmor(armor);
         }
         return armor;
     }

@@ -3,7 +3,7 @@ package com.beta.miniactiongame.factory;
 import com.beta.miniactiongame.model.creature.Alignment;
 import com.beta.miniactiongame.model.creature.CreatureType;
 import com.beta.miniactiongame.model.creature.Hero;
-import com.beta.miniactiongame.service.HeroService;
+import com.beta.miniactiongame.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -11,13 +11,14 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class HeroFactory {
 
-    private final HeroService heroService;
+    private final ItemService itemService;
 
     public Hero getFighter() {
-        Hero hero = heroService.getHeroByName(CreatureType.FIGHTER);
+        Hero hero = itemService.getHeroByName("Jophiel");
         if (hero == null) {
             hero = new Hero();
-            hero.setName(CreatureType.FIGHTER);
+            hero.setName("Jophiel");
+            hero.setCreatureType(CreatureType.FIGHTER);
             hero.setHealth(1000);
             hero.setAlignment(Alignment.GOOD);
             hero.setStrength(80);
@@ -26,16 +27,17 @@ public class HeroFactory {
             hero.setValue(0);
             hero.setPng("heroes/fighter.png");
             hero.setGif("heroes/fighter.gif");
-            heroService.saveHero(hero);
+            itemService.saveHero(hero);
         }
         return hero;
     }
 
     public Hero getRanger() {
-        Hero hero = heroService.getHeroByName(CreatureType.RANGER);
+        Hero hero = itemService.getHeroByName("Haniel");
         if (hero == null) {
             hero = new Hero();
-            hero.setName(CreatureType.RANGER);
+            hero.setName("Haniel");
+            hero.setCreatureType(CreatureType.RANGER);
             hero.setHealth(800);
             hero.setAlignment(Alignment.GOOD);
             hero.setStrength(100);
@@ -44,16 +46,17 @@ public class HeroFactory {
             hero.setValue(1000);
             hero.setPng("heroes/ranger.png");
             hero.setGif("heroes/ranger.gif");
-            heroService.saveHero(hero);
+            itemService.saveHero(hero);
         }
         return hero;
     }
 
     public Hero getMage() {
-        Hero hero = heroService.getHeroByName(CreatureType.MAGE);
+        Hero hero = itemService.getHeroByName("Aiden");
         if (hero == null) {
             hero = new Hero();
-            hero.setName(CreatureType.MAGE);
+            hero.setName("Aiden");
+            hero.setCreatureType(CreatureType.MAGE);
             hero.setHealth(700);
             hero.setAlignment(Alignment.GOOD);
             hero.setStrength(130);
@@ -62,16 +65,17 @@ public class HeroFactory {
             hero.setValue(4000);
             hero.setPng("heroes/mage.png");
             hero.setGif("heroes/mage.gif");
-            heroService.saveHero(hero);
+            itemService.saveHero(hero);
         }
         return hero;
     }
 
     public Hero getDemon() {
-        Hero hero = heroService.getHeroByName(CreatureType.DEMON);
+        Hero hero = itemService.getHeroByName("Maalik");
         if (hero == null) {
             hero = new Hero();
-            hero.setName(CreatureType.DEMON);
+            hero.setName("Maalik");
+            hero.setCreatureType(CreatureType.DEMON);
             hero.setHealth(1500);
             hero.setAlignment(Alignment.GOOD);
             hero.setStrength(150);
@@ -80,7 +84,7 @@ public class HeroFactory {
             hero.setValue(10000);
             hero.setPng("heroes/demon.png");
             hero.setGif("heroes/demon.gif");
-            heroService.saveHero(hero);
+            itemService.saveHero(hero);
         }
         return hero;
     }
