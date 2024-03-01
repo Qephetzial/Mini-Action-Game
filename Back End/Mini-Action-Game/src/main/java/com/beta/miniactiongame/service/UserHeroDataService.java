@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -61,4 +62,20 @@ public class UserHeroDataService {
         }
     }
 
+    public void selectHero(List<UserHeroData> userHeroData, UUID heroId) {
+        UserHeroData heroData = null;
+        boolean isNewHeroSelected = false;
+        for (UserHeroData data: userHeroData) {
+            if (data.isSelected()) {
+                heroData = data;
+            }
+            if (data.getHero().getId().equals(heroId) && data.isObtained()) {
+                data.setSelected(true);
+                isNewHeroSelected = true;
+            }
+        }
+        if (isNewHeroSelected) {
+            Objects.requireNonNull(heroData).setSelected(false);
+        }
+    }
 }
