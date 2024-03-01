@@ -40,7 +40,7 @@ class HeroDataWrapperServiceTest {
     private final Weapon weaponTwo = new Weapon();
     private final Armor armorOne = new Armor();
     private final Armor armorTwo= new Armor();
-    List<HeroDataWrapper> allData;
+    List<HeroDataWrapper> heroDataWrappers;
     private static final UUID FIGHTER_ID = UUID.randomUUID();
     private static final UUID RANGER_ID = UUID.randomUUID();
     private static final UUID MAGE_ID = UUID.randomUUID();
@@ -71,80 +71,80 @@ class HeroDataWrapperServiceTest {
         when(weaponFactory.getCommonBowOne()).thenReturn(weaponOne);
         when(weaponFactory.getCommonStaffOne()).thenReturn(weaponOne);
         when(weaponFactory.getRareStaffOne()).thenReturn(weaponOne);
-        allData = heroDataWrapperService.getUserHeroData();
+        heroDataWrappers = heroDataWrapperService.getUserHeroData();
     }
 
     @Test
     void getUserHeroDataList() {
-         assertEquals(4, allData.size());
-         for (HeroDataWrapper data: allData) {
-             assertNotNull(data.getHero());
-             if (data.getHero().getId().equals(FIGHTER_ID)) {
-                 assertTrue(data.isObtained());
-                 assertTrue(data.isSelected());
+         assertEquals(4, heroDataWrappers.size());
+         for (HeroDataWrapper heroDataWrapper: heroDataWrappers) {
+             assertNotNull(heroDataWrapper.getHero());
+             if (heroDataWrapper.getHero().getId().equals(FIGHTER_ID)) {
+                 assertTrue(heroDataWrapper.isObtained());
+                 assertTrue(heroDataWrapper.isSelected());
              } else {
-                 assertFalse(data.isObtained());
-                 assertFalse(data.isSelected());
+                 assertFalse(heroDataWrapper.isObtained());
+                 assertFalse(heroDataWrapper.isSelected());
              }
-             assertNotNull(data.getArmor());
-             assertNotNull(data.getWeapon());
+             assertNotNull(heroDataWrapper.getArmor());
+             assertNotNull(heroDataWrapper.getWeapon());
          }
     }
 
     @Test
     void obtainAndSelectHero() {
-        heroDataWrapperService.obtainHero(allData, DEMON_ID);
-        for(HeroDataWrapper data: allData) {
-            if (data.getHero().getId().equals(DEMON_ID)) {
-                assertTrue(data.isObtained());
-                assertTrue(data.isSelected());
-            } else if (data.getHero().getId().equals(FIGHTER_ID)) {
-                assertTrue(data.isObtained());
-                assertFalse(data.isSelected());
+        heroDataWrapperService.obtainHero(heroDataWrappers, DEMON_ID);
+        for(HeroDataWrapper heroDataWrapper: heroDataWrappers) {
+            if (heroDataWrapper.getHero().getId().equals(DEMON_ID)) {
+                assertTrue(heroDataWrapper.isObtained());
+                assertTrue(heroDataWrapper.isSelected());
+            } else if (heroDataWrapper.getHero().getId().equals(FIGHTER_ID)) {
+                assertTrue(heroDataWrapper.isObtained());
+                assertFalse(heroDataWrapper.isSelected());
             } else {
-                assertFalse(data.isObtained());
-                assertFalse(data.isSelected());
+                assertFalse(heroDataWrapper.isObtained());
+                assertFalse(heroDataWrapper.isSelected());
             }
         }
     }
 
     @Test
     void selectSelectedHero() {
-        heroDataWrapperService.obtainHero(allData, RANGER_ID);
-        heroDataWrapperService.selectHero(allData, RANGER_ID);
-        for(HeroDataWrapper data: allData) {
-            if (data.getHero().getId().equals(RANGER_ID)) {
-                assertTrue(data.isSelected());
+        heroDataWrapperService.obtainHero(heroDataWrappers, RANGER_ID);
+        heroDataWrapperService.selectHero(heroDataWrappers, RANGER_ID);
+        for(HeroDataWrapper heroDataWrapper: heroDataWrappers) {
+            if (heroDataWrapper.getHero().getId().equals(RANGER_ID)) {
+                assertTrue(heroDataWrapper.isSelected());
             } else {
-                assertFalse(data.isSelected());
+                assertFalse(heroDataWrapper.isSelected());
             }
         }
     }
 
     @Test
     void selectUnObtainedHero() {
-        heroDataWrapperService.selectHero(allData, MAGE_ID);
-        for(HeroDataWrapper data: allData) {
-            if (data.getHero().getId().equals(FIGHTER_ID)) {
-                assertTrue(data.isSelected());
+        heroDataWrapperService.selectHero(heroDataWrappers, MAGE_ID);
+        for(HeroDataWrapper heroDataWrapper: heroDataWrappers) {
+            if (heroDataWrapper.getHero().getId().equals(FIGHTER_ID)) {
+                assertTrue(heroDataWrapper.isSelected());
             } else {
-                assertFalse(data.isSelected());
+                assertFalse(heroDataWrapper.isSelected());
             }
         }
     }
 
     @Test
     void changeWeapon() {
-        HeroDataWrapper userHeroData = allData.get(0);
-        assertEquals(WEAPON_ONE_ID, userHeroData.getWeapon().getId());
-        Weapon weapon = heroDataWrapperService.changeWeapon(userHeroData, weaponTwo);
-        assertEquals(WEAPON_TWO_ID, userHeroData.getWeapon().getId());
+        HeroDataWrapper heroDataWrapper = heroDataWrappers.get(0);
+        assertEquals(WEAPON_ONE_ID, heroDataWrapper.getWeapon().getId());
+        Weapon weapon = heroDataWrapperService.changeWeapon(heroDataWrapper, weaponTwo);
+        assertEquals(WEAPON_TWO_ID, heroDataWrapper.getWeapon().getId());
         assertEquals(WEAPON_ONE_ID, weapon.getId());
     }
 
     @Test
     void changeArmor() {
-        HeroDataWrapper heroDataWrapper = allData.get(0);
+        HeroDataWrapper heroDataWrapper = heroDataWrappers.get(0);
         assertEquals(ARMOR_ONE_ID, heroDataWrapper.getArmor().getId());
         Armor armor = heroDataWrapperService.changeArmor(heroDataWrapper, armorTwo);
         assertEquals(ARMOR_TWO_ID, heroDataWrapper.getArmor().getId());
