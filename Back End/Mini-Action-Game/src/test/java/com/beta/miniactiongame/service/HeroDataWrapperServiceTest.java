@@ -78,7 +78,7 @@ class HeroDataWrapperServiceTest {
     }
 
     @Test
-    void getUserHeroDataList() {
+    void createHeroDataWrappers() {
          assertEquals(4, heroDataWrappers.size());
          for (HeroDataWrapper heroDataWrapper: heroDataWrappers) {
              assertNotNull(heroDataWrapper.getHero());
