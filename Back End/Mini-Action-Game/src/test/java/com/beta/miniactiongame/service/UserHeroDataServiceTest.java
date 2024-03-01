@@ -38,6 +38,7 @@ class UserHeroDataServiceTest {
     private final Hero demon = new Hero();
     private final Weapon weapon = new Weapon();
     private final Armor armor = new Armor();
+    List<UserHeroData> allData;
     private static final UUID FIGHTER_ID = UUID.randomUUID();
     private static final UUID RANGER_ID = UUID.randomUUID();
     private static final UUID MAGE_ID = UUID.randomUUID();
@@ -60,11 +61,11 @@ class UserHeroDataServiceTest {
         when(weaponFactory.getCommonBowOne()).thenReturn(weapon);
         when(weaponFactory.getCommonStaffOne()).thenReturn(weapon);
         when(weaponFactory.getRareStaffOne()).thenReturn(weapon);
+        allData = userHeroDataService.getUserHeroData();
     }
 
     @Test
     void getUserHeroDataList() {
-         List<UserHeroData> allData = userHeroDataService.getUserHeroData();
          assertEquals(4, allData.size());
          for (UserHeroData data: allData) {
              assertNotNull(data.getHero());
@@ -81,14 +82,43 @@ class UserHeroDataServiceTest {
     }
 
     @Test
-    void obtainHero() {
-        List<UserHeroData> allData = userHeroDataService.getUserHeroData();
+    void obtainAndSelectHero() {
         userHeroDataService.obtainHero(allData, DEMON_ID);
         for(UserHeroData data: allData) {
-            if (data.getHero().getId().equals(FIGHTER_ID) || data.getHero().getId().equals(DEMON_ID)) {
+            if (data.getHero().getId().equals(DEMON_ID)) {
                 assertTrue(data.isObtained());
+                assertTrue(data.isSelected());
+            } else if (data.getHero().getId().equals(FIGHTER_ID)) {
+                assertTrue(data.isObtained());
+                assertFalse(data.isSelected());
             } else {
                 assertFalse(data.isObtained());
+                assertFalse(data.isSelected());
+            }
+        }
+    }
+
+    @Test
+    void selectSelectedHero() {
+        userHeroDataService.obtainHero(allData, RANGER_ID);
+        userHeroDataService.selectHero(allData, RANGER_ID);
+        for(UserHeroData data: allData) {
+            if (data.getHero().getId().equals(RANGER_ID)) {
+                assertTrue(data.isSelected());
+            } else {
+                assertFalse(data.isSelected());
+            }
+        }
+    }
+
+    @Test
+    void selectUnObtainedHero() {
+        userHeroDataService.selectHero(allData, MAGE_ID);
+        for(UserHeroData data: allData) {
+            if (data.getHero().getId().equals(FIGHTER_ID)) {
+                assertTrue(data.isSelected());
+            } else {
+                assertFalse(data.isSelected());
             }
         }
     }
