@@ -4,6 +4,8 @@ import com.beta.miniactiongame.factory.ArmorFactory;
 import com.beta.miniactiongame.factory.HeroFactory;
 import com.beta.miniactiongame.factory.WeaponFactory;
 import com.beta.miniactiongame.model.UserHeroData;
+import com.beta.miniactiongame.model.item.Armor;
+import com.beta.miniactiongame.model.item.Weapon;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -78,5 +80,17 @@ public class UserHeroDataService {
         if (isNewHeroSelected) {
             Objects.requireNonNull(heroData).setSelected(false);
         }
+    }
+
+    public Weapon changeWeapon(UserHeroData userHeroData, Weapon weapon) {
+        Weapon deselectedWeapon = userHeroData.getWeapon();
+        userHeroData.setWeapon(weapon);
+        return deselectedWeapon;
+    }
+
+    public Armor changeArmor(UserHeroData userHeroData, Armor armor) {
+        Armor deselectedArmor = userHeroData.getArmor();
+        userHeroData.setArmor(armor);
+        return deselectedArmor;
     }
 }
