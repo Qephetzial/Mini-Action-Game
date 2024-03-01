@@ -1,5 +1,6 @@
 package com.beta.miniactiongame.service;
 
+import com.beta.miniactiongame.exceptions.HeroDataWrapperNotFound;
 import com.beta.miniactiongame.factory.ArmorFactory;
 import com.beta.miniactiongame.factory.HeroFactory;
 import com.beta.miniactiongame.factory.WeaponFactory;
@@ -15,12 +16,15 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -52,6 +56,7 @@ class HeroDataWrapperServiceTest {
     private static final UUID WEAPON_TWO_ID = UUID.randomUUID();
     private static final UUID ARMOR_ONE_ID = UUID.randomUUID();
     private static final UUID ARMOR_TWO_ID = UUID.randomUUID();
+    private static final UUID NOT_ASSIGNED_UUID = java.util.UUID.randomUUID();
 
     @BeforeEach
     void setup() {
@@ -92,6 +97,19 @@ class HeroDataWrapperServiceTest {
              assertNotNull(heroDataWrapper.getArmor());
              assertNotNull(heroDataWrapper.getWeapon());
          }
+    }
+
+    @Test
+    void getHeroDataWrapperById() {
+        when(heroDataWrapperRepository.findById(any())).thenReturn(Optional.of(heroDataWrappers.get(0)));
+        assertNotNull(heroDataWrapperService.findHeroDataWrapperById(NOT_ASSIGNED_UUID));
+    }
+
+    @Test
+    void getHeroDataWrapperByWrongId() {
+        when(heroDataWrapperRepository.findById(any())).thenReturn(Optional.empty());
+        assertThrows(HeroDataWrapperNotFound.class,
+                () -> heroDataWrapperService.findHeroDataWrapperById(NOT_ASSIGNED_UUID));
     }
 
     @Test

@@ -58,7 +58,7 @@ public class HeroDataWrapperService {
         return userHeroData;
     }
 
-    public HeroDataWrapper getHeroDataWrapperById(UUID id) {
+    public HeroDataWrapper findHeroDataWrapperById(UUID id) {
         return heroDataWrapperRepository.findById(id).orElseThrow(
                 () -> new HeroDataWrapperNotFound("HeroDataWrapper with id(" + id + ") is not found!"));
     }
