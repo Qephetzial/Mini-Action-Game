@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -51,9 +52,9 @@ public class UserHeroDataService {
         return userHeroData;
     }
 
-    public void obtainHero(List<UserHeroData> userHeroData, String heroName) {
+    public void obtainHero(List<UserHeroData> userHeroData, UUID heroId) {
         for (UserHeroData data: userHeroData) {
-            if (data.getHero().getName().equals(heroName)) {
+            if (data.getHero().getId().equals(heroId)) {
                 data.setObtained(true);
                 break;
             }
