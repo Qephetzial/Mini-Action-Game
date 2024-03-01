@@ -22,7 +22,7 @@ public class HeroDataWrapperService {
     private final ArmorFactory armorFactory;
     private final WeaponFactory weaponFactory;
 
-    public List<HeroDataWrapper> getUserHeroData() {
+    public List<HeroDataWrapper> createHeroDataWrappers() {
         List<HeroDataWrapper> userHeroData = new ArrayList<>();
         userHeroData.add(
                 new HeroDataWrapper(

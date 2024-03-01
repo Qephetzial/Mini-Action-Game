@@ -71,7 +71,7 @@ class HeroDataWrapperServiceTest {
         when(weaponFactory.getCommonBowOne()).thenReturn(weaponOne);
         when(weaponFactory.getCommonStaffOne()).thenReturn(weaponOne);
         when(weaponFactory.getRareStaffOne()).thenReturn(weaponOne);
-        heroDataWrappers = heroDataWrapperService.getUserHeroData();
+        heroDataWrappers = heroDataWrapperService.createHeroDataWrappers();
     }
 
     @Test

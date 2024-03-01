@@ -27,7 +27,7 @@ public class AuthService {
                 .name(request.getName())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .coin(100000)
-                .heroes(heroDataWrapperService.getUserHeroData())
+                .heroes(heroDataWrapperService.createHeroDataWrappers())
                 .armors(new ArrayList<>())
                 .weapons(new ArrayList<>())
                 .role(Role.USER)
