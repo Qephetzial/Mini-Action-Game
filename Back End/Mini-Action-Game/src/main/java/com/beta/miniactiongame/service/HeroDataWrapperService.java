@@ -1,11 +1,13 @@
 package com.beta.miniactiongame.service;
 
+import com.beta.miniactiongame.exceptions.HeroDataWrapperNotFound;
 import com.beta.miniactiongame.factory.ArmorFactory;
 import com.beta.miniactiongame.factory.HeroFactory;
 import com.beta.miniactiongame.factory.WeaponFactory;
 import com.beta.miniactiongame.model.HeroDataWrapper;
 import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.Weapon;
+import com.beta.miniactiongame.repository.hero.HeroDataWrapperRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,7 @@ public class HeroDataWrapperService {
     private final HeroFactory heroFactory;
     private final ArmorFactory armorFactory;
     private final WeaponFactory weaponFactory;
+    private final HeroDataWrapperRepository heroDataWrapperRepository;
 
     public List<HeroDataWrapper> createHeroDataWrappers() {
         List<HeroDataWrapper> userHeroData = new ArrayList<>();
@@ -53,6 +56,11 @@ public class HeroDataWrapperService {
                         false,
                         false));
         return userHeroData;
+    }
+
+    public HeroDataWrapper getHeroDataWrapperById(UUID id) {
+        return heroDataWrapperRepository.findById(id).orElseThrow(
+                () -> new HeroDataWrapperNotFound("HeroDataWrapper with id(" + id + ") is not found!"));
     }
 
     public void obtainHero(List<HeroDataWrapper> userHeroData, UUID heroId) {
