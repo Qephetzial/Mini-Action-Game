@@ -40,7 +40,7 @@ public class AppUser implements UserDetails {
     private int coin;
 
     @OneToMany (cascade = CascadeType.ALL)
-    private List<UserHeroData> heroes;
+    private List<HeroDataWrapper> heroes;
 
     @ManyToMany
     private List<Armor> armors;

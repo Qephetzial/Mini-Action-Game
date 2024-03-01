@@ -3,7 +3,7 @@ package com.beta.miniactiongame.service;
 import com.beta.miniactiongame.factory.ArmorFactory;
 import com.beta.miniactiongame.factory.HeroFactory;
 import com.beta.miniactiongame.factory.WeaponFactory;
-import com.beta.miniactiongame.model.UserHeroData;
+import com.beta.miniactiongame.model.HeroDataWrapper;
 import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.Weapon;
 import lombok.RequiredArgsConstructor;
@@ -16,37 +16,37 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class UserHeroDataService {
+public class HeroDataWrapperService {
 
     private final HeroFactory heroFactory;
     private final ArmorFactory armorFactory;
     private final WeaponFactory weaponFactory;
 
-    public List<UserHeroData> getUserHeroData() {
-        List<UserHeroData> userHeroData = new ArrayList<>();
+    public List<HeroDataWrapper> getUserHeroData() {
+        List<HeroDataWrapper> userHeroData = new ArrayList<>();
         userHeroData.add(
-                new UserHeroData(
+                new HeroDataWrapper(
                         heroFactory.getFighter(),
                         armorFactory.getCommonArmorOne(),
                         weaponFactory.getCommonSwordOne(),
                         true,
                         true));
         userHeroData.add(
-                new UserHeroData(
+                new HeroDataWrapper(
                         heroFactory.getRanger(),
                         armorFactory.getCommonArmorOne(),
                         weaponFactory.getCommonBowOne(),
                         false,
                         false));
         userHeroData.add(
-                new UserHeroData(
+                new HeroDataWrapper(
                         heroFactory.getDemon(),
                         armorFactory.getRareArmorOne(),
                         weaponFactory.getRareStaffOne(),
                         false,
                         false));
         userHeroData.add(
-                new UserHeroData(
+                new HeroDataWrapper(
                         heroFactory.getMage(),
                         armorFactory.getCommonArmorOne(),
                         weaponFactory.getCommonStaffOne(),
@@ -55,8 +55,8 @@ public class UserHeroDataService {
         return userHeroData;
     }
 
-    public void obtainHero(List<UserHeroData> userHeroData, UUID heroId) {
-        for (UserHeroData data: userHeroData) {
+    public void obtainHero(List<HeroDataWrapper> userHeroData, UUID heroId) {
+        for (HeroDataWrapper data: userHeroData) {
             if (data.getHero().getId().equals(heroId)) {
                 data.setObtained(true);
                 selectHero(userHeroData, heroId);
@@ -65,10 +65,10 @@ public class UserHeroDataService {
         }
     }
 
-    public void selectHero(List<UserHeroData> userHeroData, UUID heroId) {
-        UserHeroData heroData = null;
+    public void selectHero(List<HeroDataWrapper> userHeroData, UUID heroId) {
+        HeroDataWrapper heroData = null;
         boolean isNewHeroSelected = false;
-        for (UserHeroData data: userHeroData) {
+        for (HeroDataWrapper data: userHeroData) {
             if (data.isSelected()) {
                 heroData = data;
             }
@@ -82,15 +82,15 @@ public class UserHeroDataService {
         }
     }
 
-    public Weapon changeWeapon(UserHeroData userHeroData, Weapon weapon) {
+    public Weapon changeWeapon(HeroDataWrapper userHeroData, Weapon weapon) {
         Weapon deselectedWeapon = userHeroData.getWeapon();
         userHeroData.setWeapon(weapon);
         return deselectedWeapon;
     }
 
-    public Armor changeArmor(UserHeroData userHeroData, Armor armor) {
-        Armor deselectedArmor = userHeroData.getArmor();
-        userHeroData.setArmor(armor);
+    public Armor changeArmor(HeroDataWrapper heroDataWrapper, Armor armor) {
+        Armor deselectedArmor = heroDataWrapper.getArmor();
+        heroDataWrapper.setArmor(armor);
         return deselectedArmor;
     }
 }

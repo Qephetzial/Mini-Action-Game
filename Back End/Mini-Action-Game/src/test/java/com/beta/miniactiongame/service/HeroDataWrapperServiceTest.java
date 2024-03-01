@@ -3,7 +3,7 @@ package com.beta.miniactiongame.service;
 import com.beta.miniactiongame.factory.ArmorFactory;
 import com.beta.miniactiongame.factory.HeroFactory;
 import com.beta.miniactiongame.factory.WeaponFactory;
-import com.beta.miniactiongame.model.UserHeroData;
+import com.beta.miniactiongame.model.HeroDataWrapper;
 import com.beta.miniactiongame.model.creature.Hero;
 import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.Weapon;
@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class UserHeroDataServiceTest {
+class HeroDataWrapperServiceTest {
 
     @Mock
     private HeroFactory heroFactory;
@@ -31,7 +31,7 @@ class UserHeroDataServiceTest {
     private ArmorFactory armorFactory;
     @Mock
     private WeaponFactory weaponFactory;
-    private UserHeroDataService userHeroDataService;
+    private HeroDataWrapperService heroDataWrapperService;
     private final Hero fighter = new Hero();
     private final Hero ranger = new Hero();
     private final Hero mage = new Hero();
@@ -40,7 +40,7 @@ class UserHeroDataServiceTest {
     private final Weapon weaponTwo = new Weapon();
     private final Armor armorOne = new Armor();
     private final Armor armorTwo= new Armor();
-    List<UserHeroData> allData;
+    List<HeroDataWrapper> allData;
     private static final UUID FIGHTER_ID = UUID.randomUUID();
     private static final UUID RANGER_ID = UUID.randomUUID();
     private static final UUID MAGE_ID = UUID.randomUUID();
@@ -52,7 +52,7 @@ class UserHeroDataServiceTest {
 
     @BeforeEach
     void setup() {
-        userHeroDataService = new UserHeroDataService(heroFactory, armorFactory, weaponFactory);
+        heroDataWrapperService = new HeroDataWrapperService(heroFactory, armorFactory, weaponFactory);
         fighter.setId(FIGHTER_ID);
         ranger.setId(RANGER_ID);
         mage.setId(MAGE_ID);
@@ -71,13 +71,13 @@ class UserHeroDataServiceTest {
         when(weaponFactory.getCommonBowOne()).thenReturn(weaponOne);
         when(weaponFactory.getCommonStaffOne()).thenReturn(weaponOne);
         when(weaponFactory.getRareStaffOne()).thenReturn(weaponOne);
-        allData = userHeroDataService.getUserHeroData();
+        allData = heroDataWrapperService.getUserHeroData();
     }
 
     @Test
     void getUserHeroDataList() {
          assertEquals(4, allData.size());
-         for (UserHeroData data: allData) {
+         for (HeroDataWrapper data: allData) {
              assertNotNull(data.getHero());
              if (data.getHero().getId().equals(FIGHTER_ID)) {
                  assertTrue(data.isObtained());
@@ -93,8 +93,8 @@ class UserHeroDataServiceTest {
 
     @Test
     void obtainAndSelectHero() {
-        userHeroDataService.obtainHero(allData, DEMON_ID);
-        for(UserHeroData data: allData) {
+        heroDataWrapperService.obtainHero(allData, DEMON_ID);
+        for(HeroDataWrapper data: allData) {
             if (data.getHero().getId().equals(DEMON_ID)) {
                 assertTrue(data.isObtained());
                 assertTrue(data.isSelected());
@@ -110,9 +110,9 @@ class UserHeroDataServiceTest {
 
     @Test
     void selectSelectedHero() {
-        userHeroDataService.obtainHero(allData, RANGER_ID);
-        userHeroDataService.selectHero(allData, RANGER_ID);
-        for(UserHeroData data: allData) {
+        heroDataWrapperService.obtainHero(allData, RANGER_ID);
+        heroDataWrapperService.selectHero(allData, RANGER_ID);
+        for(HeroDataWrapper data: allData) {
             if (data.getHero().getId().equals(RANGER_ID)) {
                 assertTrue(data.isSelected());
             } else {
@@ -123,8 +123,8 @@ class UserHeroDataServiceTest {
 
     @Test
     void selectUnObtainedHero() {
-        userHeroDataService.selectHero(allData, MAGE_ID);
-        for(UserHeroData data: allData) {
+        heroDataWrapperService.selectHero(allData, MAGE_ID);
+        for(HeroDataWrapper data: allData) {
             if (data.getHero().getId().equals(FIGHTER_ID)) {
                 assertTrue(data.isSelected());
             } else {
@@ -135,19 +135,19 @@ class UserHeroDataServiceTest {
 
     @Test
     void changeWeapon() {
-        UserHeroData userHeroData = allData.get(0);
+        HeroDataWrapper userHeroData = allData.get(0);
         assertEquals(WEAPON_ONE_ID, userHeroData.getWeapon().getId());
-        Weapon weapon = userHeroDataService.changeWeapon(userHeroData, weaponTwo);
+        Weapon weapon = heroDataWrapperService.changeWeapon(userHeroData, weaponTwo);
         assertEquals(WEAPON_TWO_ID, userHeroData.getWeapon().getId());
         assertEquals(WEAPON_ONE_ID, weapon.getId());
     }
 
     @Test
     void changeArmor() {
-        UserHeroData userHeroData = allData.get(0);
-        assertEquals(ARMOR_ONE_ID, userHeroData.getArmor().getId());
-        Armor armor = userHeroDataService.changeArmor(userHeroData, armorTwo);
-        assertEquals(ARMOR_TWO_ID, userHeroData.getArmor().getId());
+        HeroDataWrapper heroDataWrapper = allData.get(0);
+        assertEquals(ARMOR_ONE_ID, heroDataWrapper.getArmor().getId());
+        Armor armor = heroDataWrapperService.changeArmor(heroDataWrapper, armorTwo);
+        assertEquals(ARMOR_TWO_ID, heroDataWrapper.getArmor().getId());
         assertEquals(ARMOR_ONE_ID, armor.getId());
     }
 }

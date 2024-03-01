@@ -18,7 +18,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @NoArgsConstructor
-public class UserHeroData implements Serializable {
+public class HeroDataWrapper implements Serializable {
     @Id
     @UuidGenerator
     private UUID id;
@@ -31,7 +31,7 @@ public class UserHeroData implements Serializable {
     private boolean isSelected;
     private boolean isObtained;
 
-    public UserHeroData(Hero hero, Armor armor, Weapon weapon, boolean isSelected, boolean isObtained) {
+    public HeroDataWrapper(Hero hero, Armor armor, Weapon weapon, boolean isSelected, boolean isObtained) {
         this.hero = hero;
         this.armor = armor;
         this.weapon = weapon;

@@ -1,7 +1,7 @@
 package com.beta.miniactiongame.auth;
 
 import com.beta.miniactiongame.model.Role;
-import com.beta.miniactiongame.model.UserHeroData;
+import com.beta.miniactiongame.model.HeroDataWrapper;
 import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.Weapon;
 import lombok.AllArgsConstructor;
@@ -25,7 +25,7 @@ public class RegisterRequest {
 
     private int coin;
 
-    private List<UserHeroData> heroes;
+    private List<HeroDataWrapper> heroes;
 
     private List<Armor> armors;
 
