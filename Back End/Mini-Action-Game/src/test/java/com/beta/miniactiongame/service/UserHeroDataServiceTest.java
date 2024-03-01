@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -77,5 +78,18 @@ class UserHeroDataServiceTest {
              assertNotNull(data.getArmor());
              assertNotNull(data.getWeapon());
          }
+    }
+
+    @Test
+    void obtainHero() {
+        List<UserHeroData> allData = userHeroDataService.getUserHeroData();
+        userHeroDataService.obtainHero(allData, DEMON_ID);
+        for(UserHeroData data: allData) {
+            if (data.getHero().getId().equals(FIGHTER_ID) || data.getHero().getId().equals(DEMON_ID)) {
+                assertTrue(data.isObtained());
+            } else {
+                assertFalse(data.isObtained());
+            }
+        }
     }
 }
