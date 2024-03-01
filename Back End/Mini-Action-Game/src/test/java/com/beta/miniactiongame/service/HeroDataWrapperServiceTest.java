@@ -7,6 +7,7 @@ import com.beta.miniactiongame.model.HeroDataWrapper;
 import com.beta.miniactiongame.model.creature.Hero;
 import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.Weapon;
+import com.beta.miniactiongame.repository.hero.HeroDataWrapperRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,6 +32,8 @@ class HeroDataWrapperServiceTest {
     private ArmorFactory armorFactory;
     @Mock
     private WeaponFactory weaponFactory;
+    @Mock
+    private HeroDataWrapperRepository heroDataWrapperRepository;
     private HeroDataWrapperService heroDataWrapperService;
     private final Hero fighter = new Hero();
     private final Hero ranger = new Hero();
@@ -52,7 +55,7 @@ class HeroDataWrapperServiceTest {
 
     @BeforeEach
     void setup() {
-        heroDataWrapperService = new HeroDataWrapperService(heroFactory, armorFactory, weaponFactory);
+        heroDataWrapperService = new HeroDataWrapperService(heroFactory, armorFactory, weaponFactory, heroDataWrapperRepository);
         fighter.setId(FIGHTER_ID);
         ranger.setId(RANGER_ID);
         mage.setId(MAGE_ID);
