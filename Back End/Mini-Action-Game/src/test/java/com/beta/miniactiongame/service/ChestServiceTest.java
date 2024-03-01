@@ -13,6 +13,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
+import org.mockito.internal.util.Supplier;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
@@ -36,35 +37,35 @@ class ChestServiceTest {
     private final Armor armor = new Armor();
     //Value can be between 0 and 996 but lower than UNCOMMON_ITEM_LOOT_CHANCE.
     private static final int COMMON_ITEM_LOOT_CHANCE = 200;
-    //Value should be under COMMON_ITEM_LOOT_CHANCE.
+    //Value must be under COMMON_ITEM_LOOT_CHANCE.
     private static final int OPEN_COMMON_ITEM = COMMON_ITEM_LOOT_CHANCE-1;
     //Value can be between 1 and 997 but lower than RARE_ITEM_LOOT_CHANCE.
     private static final int UNCOMMON_ITEM_LOOT_CHANCE = 400;
-    //Value should be under UNCOMMON_ITEM_LOOT_CHANCE but at least equal to COMMON_ITEM_LOOT_CHANCE.
+    //Value must be under UNCOMMON_ITEM_LOOT_CHANCE but at least equal to COMMON_ITEM_LOOT_CHANCE.
     private static final int OPEN_UNCOMMON_ITEM = UNCOMMON_ITEM_LOOT_CHANCE-1;
     //Value can be between 2 and 998 but lower than EPIC_ITEM_LOOT_CHANCE.
     private static final int RARE_ITEM_LOOT_CHANCE = 600;
-    //Value should be under RARE_ITEM_LOOT_CHANCE but at least equal to UNCOMMON_ITEM_LOOT_CHANCE.
+    //Value must be under RARE_ITEM_LOOT_CHANCE but at least equal to UNCOMMON_ITEM_LOOT_CHANCE.
     private static final int OPEN_RARE_ITEM = RARE_ITEM_LOOT_CHANCE-1;
     //Value can be between 3 and 999.
     private static final int EPIC_ITEM_LOOT_CHANCE = 800;
-    //Value should be under EPIC_ITEM_LOOT_CHANCE but at least equal to RARE_ITEM_LOOT_CHANCE.
+    //Value must be under EPIC_ITEM_LOOT_CHANCE but at least equal to RARE_ITEM_LOOT_CHANCE.
     private static final int OPEN_EPIC_ITEM = EPIC_ITEM_LOOT_CHANCE-1;
-    //Value should be at least equal to EPIC_ITEM_LOOT_CHANCE but not higher than 999.
+    //Value must be at least equal to EPIC_ITEM_LOOT_CHANCE but not higher than 999.
     private static final int OPEN_LEGENDARY_ITEM = EPIC_ITEM_LOOT_CHANCE;
     //Value can be between 0 and 999 but bonus loot only available if it set to 0.
     private static final int GET_BONUS_LOOT = 0;
     /*
-    In the chestService.openChest method there is a switch case where an item being chosen
+    In the chestService.openChest method there are a switch cases where an item being chosen
     depending on the random number provided by UtilityMethods.getRandomInt(int). The provided int value
     to the getRandomInt method must be equal to the quantity of cases in the switch case. To identify
-    the exact call of this method this field value also should be equal to the quantity of cases in the switch case.
+    the exact call of getRandomInt method this field value also should be equal to the quantity of cases in the switch case.
      */
     private static final int AMOUNT_OF_CASES = 12;
     /*
     There are several cases in each switch statement. To simplify the mocking,
     the test cases designed to call the same method each time.
-    By changing the value of this field the "Mockito.when(armorFactory.getCommonArmorOne()).thenReturn(armor);"
+    By changing the value of this field the "openChest(OPEN_COMMON_ITEM, armorFactory::getCommonArmorOne, false);"
     part of each test cases must be changed accordingly.
      */
     private static final int CASE = 0;
@@ -88,101 +89,69 @@ class ChestServiceTest {
     @Test
     void openChestAndGetCommonItem() {
         //It sets up everything to open a common item.
-        mock(OPEN_COMMON_ITEM);
-        Mockito.when(armorFactory.getCommonArmorOne()).thenReturn(armor);
-
-        List<Item> items = openChest(false);
-        //Exactly one item expected since the bonusLoot is false.
-        assertEquals(1, items.size());
-        //Verify that only the expected method was called.
-        checkMethodCalls(OPEN_COMMON_ITEM);
+        List<Item> items = openChest(OPEN_COMMON_ITEM, armorFactory::getCommonArmorOne, false);
+        //Verify that only the expected method was called and only one item is returned.
+        checkMethodCalls(OPEN_COMMON_ITEM, 1, items);
     }
 
     @Test
     void openChestAndGetUnCommonItem() {
         //It sets up everything to open an unCommon item.
-        mock(OPEN_UNCOMMON_ITEM);
-        Mockito.when(armorFactory.getUnCommonArmorOne()).thenReturn(armor);
-
-        List<Item> items = openChest(false);
-        //Exactly one item expected since the bonusLoot is false.
-        assertEquals(1, items.size());
-        //Verify that only the expected method was called.
-        checkMethodCalls(OPEN_UNCOMMON_ITEM);
+        List<Item> items = openChest(OPEN_UNCOMMON_ITEM, armorFactory::getUnCommonArmorOne, false);
+        //Verify that only the expected method was called and only one item is returned.
+        checkMethodCalls(OPEN_UNCOMMON_ITEM, 1, items);
     }
 
 
     @Test
     void openChestAndGetRareItem() {
         //It sets up everything to open a rare item.
-        mock(OPEN_RARE_ITEM);
-        Mockito.when(armorFactory.getRareArmorOne()).thenReturn(armor);
-
-        List<Item> items = openChest(false);
-        //Exactly one item expected since the bonusLoot is false.
-        assertEquals(1, items.size());
-        //Verify that only the expected method was called.
-        checkMethodCalls(OPEN_RARE_ITEM);
+        List<Item> items = openChest(OPEN_RARE_ITEM, armorFactory::getRareArmorOne, false);
+        //Verify that only the expected method was called and only one item is returned.
+        checkMethodCalls(OPEN_RARE_ITEM, 1, items);
     }
 
 
     @Test
     void openChestAndGetEpicItem() {
         //It sets up everything to open an epic item.
-        mock(OPEN_EPIC_ITEM);
-        Mockito.when(armorFactory.getEpicArmorOne()).thenReturn(armor);
-
-        List<Item> items = openChest(false);
-        //Exactly one item expected since the bonusLoot is false.
-        assertEquals(1, items.size());
-        //Verify that only the expected method was called.
-        checkMethodCalls(OPEN_EPIC_ITEM);
+        List<Item> items = openChest(OPEN_EPIC_ITEM, armorFactory::getEpicArmorOne, false);
+        //Verify that only the expected method was called and only one item is returned.
+        checkMethodCalls(OPEN_EPIC_ITEM, 1, items);
     }
 
 
     @Test
     void openChestAndGetLegendaryItem() {
         //It sets up everything to open a legendary item.
-        mock(OPEN_LEGENDARY_ITEM);
-        Mockito.when(armorFactory.getLegendaryArmorOne()).thenReturn(armor);
-
-        List<Item> items = openChest(false);
-        //Exactly one item expected since the bonusLoot is false.
-        assertEquals(1, items.size());
-        //Verify that only the expected method was called.
-        checkMethodCalls(OPEN_LEGENDARY_ITEM);
+        List<Item> items = openChest(OPEN_LEGENDARY_ITEM, armorFactory::getLegendaryArmorOne, false);
+        //Verify that only the expected method was called and only one item is returned.
+        checkMethodCalls(OPEN_LEGENDARY_ITEM, 1, items);
     }
 
     @Test
     void getBonusLoot() {
         //It sets up everything to get a bonus loot
-        mock(GET_BONUS_LOOT);
-        Mockito.when(armorFactory.getCommonArmorOne()).thenReturn(armor);
-
-        List<Item> items = openChest(true);
-        //Exactly two item expected since the bonusLoot is true.
-        assertEquals(2, items.size());
+        List<Item> items = openChest(GET_BONUS_LOOT, armorFactory::getCommonArmorOne, true);
+        //Verify that only the expected method was called and two item are returned.
+        checkMethodCalls(OPEN_COMMON_ITEM, 2, items);
     }
 
     @Test
     void wrongItemValue() {
         //A wrong value is provided, so we can check if it throws the expected error.
-        mocked.when(() -> UtilityMethods.getRandomInt(AMOUNT_OF_CASES)).thenReturn(AMOUNT_OF_CASES+1);
-
         assertThrows(WrongValueException.class,
-                ()-> openChest(false));
+                ()-> openChestWithWrongValues(AMOUNT_OF_CASES));
     }
 
     @Test
     void wrongRarityValue() {
         //A wrong value is provided, so we can check if it throws the expected error.
-        mocked.when(() -> UtilityMethods.getRandomInt(PERCENTAGE_MAX_RANGE)).thenReturn(PERCENTAGE_MAX_RANGE+1);
-
         assertThrows(WrongValueException.class,
-                ()-> openChest(false));
+                ()-> openChestWithWrongValues(PERCENTAGE_MAX_RANGE));
     }
 
-    private void mock(int rarity) {
+    private void mock(int rarity, Supplier<Armor> factoryMethod) {
         /*
         Here, we specify that which rarity will be opened.
         Since the bonus loot is exactly the same if rarity 0 then there is a chance for bonus loot.
@@ -193,27 +162,44 @@ class ChestServiceTest {
         it set to 0, so every time the same method will be called.
          */
         mocked.when(() -> UtilityMethods.getRandomInt(AMOUNT_OF_CASES)).thenReturn(CASE);
+        Mockito.when(factoryMethod.get()).thenReturn(armor);
     }
 
-    private List<Item> openChest(boolean chanceForBonusLoot) {
+    private List<Item> openChest(int rarity, Supplier<Armor> factoryMethod, boolean chanceForBonusLoot) {
+        mock(rarity, factoryMethod);
         return chestService.openChest(COMMON_ITEM_LOOT_CHANCE, UNCOMMON_ITEM_LOOT_CHANCE,
                 RARE_ITEM_LOOT_CHANCE, EPIC_ITEM_LOOT_CHANCE, chanceForBonusLoot);
     }
 
-    private void checkMethodCalls(int rarity) {
+    private void openChestWithWrongValues(int value) {
+        /*
+        It sets up a wrong value from the getRandomInt method.
+        The value expected to be the same as the real method called with.
+        Those numbers are represented with AMOUNT_OF_CASES and PERCENTAGE_MAX_RANGE.
+         */
+        mocked.when(() -> UtilityMethods.getRandomInt(value)).thenReturn(value);
+        chestService.openChest(COMMON_ITEM_LOOT_CHANCE, UNCOMMON_ITEM_LOOT_CHANCE,
+                RARE_ITEM_LOOT_CHANCE, EPIC_ITEM_LOOT_CHANCE, false);
+    }
+
+    private void checkMethodCalls(int rarity, int expectedTimesCalled, List<Item> items) {
         int timesCommonMethodCalled = 0;
         int timesUnCommonMethodCalled = 0;
         int timesRareMethodCalled = 0;
         int timesEpicMethodCalled = 0;
         int timesLegendaryMethodCalled = 0;
+        //This case changes the value of times<rarity>MethodCalled field by the expected times it was called.
         switch (rarity) {
-            case OPEN_COMMON_ITEM -> timesCommonMethodCalled = 1;
-            case OPEN_UNCOMMON_ITEM -> timesUnCommonMethodCalled = 1;
-            case OPEN_RARE_ITEM -> timesRareMethodCalled = 1;
-            case OPEN_EPIC_ITEM -> timesEpicMethodCalled = 1;
-            case OPEN_LEGENDARY_ITEM -> timesLegendaryMethodCalled = 1;
+            case OPEN_COMMON_ITEM -> timesCommonMethodCalled = expectedTimesCalled;
+            case OPEN_UNCOMMON_ITEM -> timesUnCommonMethodCalled = expectedTimesCalled;
+            case OPEN_RARE_ITEM -> timesRareMethodCalled = expectedTimesCalled;
+            case OPEN_EPIC_ITEM -> timesEpicMethodCalled = expectedTimesCalled;
+            case OPEN_LEGENDARY_ITEM -> timesLegendaryMethodCalled = expectedTimesCalled;
             default -> throw new RuntimeException("checkMethodCalls method called with wrong value:" + rarity);
         }
+        //Check how many item was returned. It must be equal to the amount of method calls.
+        assertEquals(expectedTimesCalled, items.size());
+        //Verification which method was called and how many times.
         verify(armorFactory, times(timesCommonMethodCalled)).getCommonArmorOne();
         verify(armorFactory, times(timesUnCommonMethodCalled)).getUnCommonArmorOne();
         verify(armorFactory, times(timesRareMethodCalled)).getRareArmorOne();
