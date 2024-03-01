@@ -37,19 +37,19 @@ class ChestServiceTest {
     private final Armor armor = new Armor();
     //Value can be between 0 and 996 but lower than UNCOMMON_ITEM_LOOT_CHANCE.
     private static final int COMMON_ITEM_LOOT_CHANCE = 200;
-    //Value must be under COMMON_ITEM_LOOT_CHANCE.
+    //Value must be lower than COMMON_ITEM_LOOT_CHANCE.
     private static final int OPEN_COMMON_ITEM = COMMON_ITEM_LOOT_CHANCE-1;
     //Value can be between 1 and 997 but lower than RARE_ITEM_LOOT_CHANCE.
     private static final int UNCOMMON_ITEM_LOOT_CHANCE = 400;
-    //Value must be under UNCOMMON_ITEM_LOOT_CHANCE but at least equal to COMMON_ITEM_LOOT_CHANCE.
+    //Value must be lower than UNCOMMON_ITEM_LOOT_CHANCE but at least equal to COMMON_ITEM_LOOT_CHANCE.
     private static final int OPEN_UNCOMMON_ITEM = UNCOMMON_ITEM_LOOT_CHANCE-1;
     //Value can be between 2 and 998 but lower than EPIC_ITEM_LOOT_CHANCE.
     private static final int RARE_ITEM_LOOT_CHANCE = 600;
-    //Value must be under RARE_ITEM_LOOT_CHANCE but at least equal to UNCOMMON_ITEM_LOOT_CHANCE.
+    //Value must be lower than RARE_ITEM_LOOT_CHANCE but at least equal to UNCOMMON_ITEM_LOOT_CHANCE.
     private static final int OPEN_RARE_ITEM = RARE_ITEM_LOOT_CHANCE-1;
     //Value can be between 3 and 999.
     private static final int EPIC_ITEM_LOOT_CHANCE = 800;
-    //Value must be under EPIC_ITEM_LOOT_CHANCE but at least equal to RARE_ITEM_LOOT_CHANCE.
+    //Value must be lower than EPIC_ITEM_LOOT_CHANCE but at least equal to RARE_ITEM_LOOT_CHANCE.
     private static final int OPEN_EPIC_ITEM = EPIC_ITEM_LOOT_CHANCE-1;
     //Value must be at least equal to EPIC_ITEM_LOOT_CHANCE but not higher than 999.
     private static final int OPEN_LEGENDARY_ITEM = EPIC_ITEM_LOOT_CHANCE;
@@ -65,7 +65,7 @@ class ChestServiceTest {
     /*
     There are several cases in each switch statement. To simplify the mocking,
     the test cases designed to call the same method each time.
-    By changing the value of this field the "openChest(OPEN_COMMON_ITEM, armorFactory::getCommonArmorOne, false);"
+    By changing the value of this field, the "openChest(OPEN_COMMON_ITEM, armorFactory::getCommonArmorOne, false);"
     part of each test cases must be changed accordingly.
      */
     private static final int CASE = 0;
@@ -154,12 +154,12 @@ class ChestServiceTest {
     private void mock(int rarity, Supplier<Armor> factoryMethod) {
         /*
         Here, we specify that which rarity will be opened.
-        Since the bonus loot is exactly the same if rarity 0 then there is a chance for bonus loot.
+        Since the bonus loot is an identical call if rarity 0 and bonusLoot is true then bonus item will be opened.
          */
         mocked.when(() -> UtilityMethods.getRandomInt(PERCENTAGE_MAX_RANGE)).thenReturn(rarity);
         /*
-        To be able to provide an item without writing 12 case for all possibilities,
-        it set to 0, so every time the same method will be called.
+        To be able to provide an item without writing cases for all possibilities,
+        we can set which case will be chosen.
          */
         mocked.when(() -> UtilityMethods.getRandomInt(AMOUNT_OF_CASES)).thenReturn(CASE);
         Mockito.when(factoryMethod.get()).thenReturn(armor);
