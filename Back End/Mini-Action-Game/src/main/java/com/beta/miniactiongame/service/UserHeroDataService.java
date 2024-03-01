@@ -57,6 +57,7 @@ public class UserHeroDataService {
         for (UserHeroData data: userHeroData) {
             if (data.getHero().getId().equals(heroId)) {
                 data.setObtained(true);
+                selectHero(userHeroData, heroId);
                 break;
             }
         }
@@ -69,7 +70,7 @@ public class UserHeroDataService {
             if (data.isSelected()) {
                 heroData = data;
             }
-            if (data.getHero().getId().equals(heroId) && data.isObtained()) {
+            if (data.getHero().getId().equals(heroId) && data.isObtained() && heroData != data) {
                 data.setSelected(true);
                 isNewHeroSelected = true;
             }
