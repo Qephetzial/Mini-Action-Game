@@ -37,14 +37,18 @@ class UserHeroDataServiceTest {
     private final Hero demon = new Hero();
     private final Weapon weapon = new Weapon();
     private final Armor armor = new Armor();
+    private static final UUID FIGHTER_ID = UUID.randomUUID();
+    private static final UUID RANGER_ID = UUID.randomUUID();
+    private static final UUID MAGE_ID = UUID.randomUUID();
+    private static final UUID DEMON_ID = UUID.randomUUID();
 
     @BeforeEach
     void setup() {
         userHeroDataService = new UserHeroDataService(heroFactory, armorFactory, weaponFactory);
-        fighter.setName("fighter");
-        ranger.setName("Ranger");
-        mage.setName("mage");
-        demon.setName("demon");
+        fighter.setId(FIGHTER_ID);
+        ranger.setId(RANGER_ID);
+        mage.setId(MAGE_ID);
+        demon.setId(DEMON_ID);
         when(heroFactory.getFighter()).thenReturn(fighter);
         when(heroFactory.getRanger()).thenReturn(ranger);
         when(heroFactory.getMage()).thenReturn(mage);
@@ -63,7 +67,7 @@ class UserHeroDataServiceTest {
          assertEquals(4, allData.size());
          for (UserHeroData data: allData) {
              assertNotNull(data.getHero());
-             if (data.getHero().getName().equals("fighter")) {
+             if (data.getHero().getId().equals(FIGHTER_ID)) {
                  assertTrue(data.isObtained());
                  assertTrue(data.isSelected());
              } else {
