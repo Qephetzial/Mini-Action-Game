@@ -50,4 +50,14 @@ public class UserHeroDataService {
                         false));
         return userHeroData;
     }
+
+    public void obtainHero(List<UserHeroData> userHeroData, String heroName) {
+        for (UserHeroData data: userHeroData) {
+            if (data.getHero().getName().equals(heroName)) {
+                data.setObtained(true);
+                break;
+            }
+        }
+    }
+
 }
