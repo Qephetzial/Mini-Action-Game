@@ -40,7 +40,7 @@ public class ChestController {
                 chest.rareLootChance(),
                 chest.epicLootChance(),
                 chest.chanceForBonusLoot());
-        appUserService.addItem(items, appUser);
+        appUserService.addItems(items, appUser);
         return items;
     }
 }

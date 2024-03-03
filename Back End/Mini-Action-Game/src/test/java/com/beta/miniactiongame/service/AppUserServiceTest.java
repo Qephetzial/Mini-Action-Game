@@ -58,7 +58,7 @@ class AppUserServiceTest {
     void addItem() {
         assertEquals(0, appUser.getWeapons().size());
         assertEquals(0, appUser.getArmors().size());
-        appUserService.addItem(items, appUser);
+        appUserService.addItems(items, appUser);
         assertEquals(1, appUser.getWeapons().size());
         assertEquals(1, appUser.getArmors().size());
     }

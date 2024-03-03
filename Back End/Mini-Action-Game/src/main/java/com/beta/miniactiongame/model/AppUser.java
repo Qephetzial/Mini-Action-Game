@@ -1,5 +1,7 @@
 package com.beta.miniactiongame.model;
 
+import com.beta.miniactiongame.exceptions.ArmorNotFoundException;
+import com.beta.miniactiongame.exceptions.WeaponNotFoundException;
 import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.Weapon;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,6 +21,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -54,6 +57,30 @@ public class AppUser implements UserDetails {
 
     public void addWeapon(Weapon weapon) {
         weapons.add(weapon);
+    }
+
+    public Armor getArmor(UUID uuid) {
+        Iterator<Armor> iterator = armors.iterator();
+        while (iterator.hasNext()) {
+            Armor armor = iterator.next();
+            if (armor.getId().equals(uuid)) {
+                iterator.remove();
+                return armor;
+            }
+        }
+        throw new ArmorNotFoundException("Armor(" + uuid + ") was not found in the user's(" + id + ") armors list!");
+    }
+
+    public Weapon getWeapon(UUID uuid) {
+        Iterator<Weapon> iterator = weapons.iterator();
+        while (iterator.hasNext()) {
+            Weapon weapon = iterator.next();
+            if (weapon.getId().equals(uuid)) {
+                iterator.remove();
+                return weapon;
+            }
+        }
+        throw new WeaponNotFoundException("Weapon(" + uuid + ") was not found in the user's(" + id + ") weapons list!");
     }
 
     @Override

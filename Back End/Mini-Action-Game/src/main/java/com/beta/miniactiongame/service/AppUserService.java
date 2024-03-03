@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -27,20 +28,32 @@ public class AppUserService {
         appUserRepository.save(appUser);
     }
 
-    public void addItem(List<Item> items, AppUser appUser) {
+    public void addItems(List<Item> items, AppUser appUser) {
         for (Item item: items) {
-            if (item.getItemType().equals(ItemType.ARMOR)) {
-                Armor armor = (Armor) item;
-                appUser.addArmor(armor);
-            } else {
-                Weapon weapon = (Weapon) item;
-                appUser.addWeapon(weapon);
-            }
+            addItem(item, appUser);
+        }
+    }
+
+    public void addItem(Item item, AppUser appUser) {
+        if (item.getItemType().equals(ItemType.ARMOR)) {
+            Armor armor = (Armor) item;
+            appUser.addArmor(armor);
+        } else {
+            Weapon weapon = (Weapon) item;
+            appUser.addWeapon(weapon);
         }
         updateAppUser(appUser);
     }
 
     public AppUser getAppUser(String name) {
         return appUserRepository.findByName(name).orElseThrow(() -> new UsernameNotFoundException(name + " not found"));
+    }
+
+    public Armor getArmor(UUID uuid, AppUser appUser) {
+        return appUser.getArmor(uuid);
+    }
+
+    public Weapon getWeapon(UUID uuid, AppUser appUser) {
+        return appUser.getWeapon(uuid);
     }
 }

@@ -1,6 +1,6 @@
 package com.beta.miniactiongame.service;
 
-import com.beta.miniactiongame.exceptions.HeroDataWrapperNotFound;
+import com.beta.miniactiongame.exceptions.HeroDataWrapperNotFoundException;
 import com.beta.miniactiongame.factory.ArmorFactory;
 import com.beta.miniactiongame.factory.HeroFactory;
 import com.beta.miniactiongame.factory.WeaponFactory;
@@ -108,7 +108,7 @@ class HeroDataWrapperServiceTest {
     @Test
     void getHeroDataWrapperByWrongId() {
         when(heroDataWrapperRepository.findById(any())).thenReturn(Optional.empty());
-        assertThrows(HeroDataWrapperNotFound.class,
+        assertThrows(HeroDataWrapperNotFoundException.class,
                 () -> heroDataWrapperService.findHeroDataWrapperById(NOT_ASSIGNED_UUID));
     }
 

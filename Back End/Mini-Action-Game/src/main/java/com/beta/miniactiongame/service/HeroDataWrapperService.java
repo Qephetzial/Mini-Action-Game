@@ -1,6 +1,6 @@
 package com.beta.miniactiongame.service;
 
-import com.beta.miniactiongame.exceptions.HeroDataWrapperNotFound;
+import com.beta.miniactiongame.exceptions.HeroDataWrapperNotFoundException;
 import com.beta.miniactiongame.factory.ArmorFactory;
 import com.beta.miniactiongame.factory.HeroFactory;
 import com.beta.miniactiongame.factory.WeaponFactory;
@@ -60,7 +60,7 @@ public class HeroDataWrapperService {
 
     public HeroDataWrapper findHeroDataWrapperById(UUID id) {
         return heroDataWrapperRepository.findById(id).orElseThrow(
-                () -> new HeroDataWrapperNotFound("HeroDataWrapper with id(" + id + ") is not found!"));
+                () -> new HeroDataWrapperNotFoundException("HeroDataWrapper with id(" + id + ") is not found!"));
     }
 
     public void updateHeroDataWrapper(HeroDataWrapper heroDataWrapper) {
