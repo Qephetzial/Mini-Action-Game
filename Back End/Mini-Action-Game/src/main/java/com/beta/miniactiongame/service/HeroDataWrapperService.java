@@ -26,36 +26,36 @@ public class HeroDataWrapperService {
     private final HeroDataWrapperRepository heroDataWrapperRepository;
 
     public List<HeroDataWrapper> createHeroDataWrappers() {
-        List<HeroDataWrapper> userHeroData = new ArrayList<>();
-        userHeroData.add(
+        List<HeroDataWrapper> heroDataWrappers = new ArrayList<>();
+        heroDataWrappers.add(
                 new HeroDataWrapper(
                         heroFactory.getFighter(),
                         armorFactory.getCommonArmorOne(),
                         weaponFactory.getCommonSwordOne(),
                         true,
                         true));
-        userHeroData.add(
+        heroDataWrappers.add(
                 new HeroDataWrapper(
                         heroFactory.getRanger(),
                         armorFactory.getCommonArmorOne(),
                         weaponFactory.getCommonBowOne(),
                         false,
                         false));
-        userHeroData.add(
+        heroDataWrappers.add(
                 new HeroDataWrapper(
                         heroFactory.getDemon(),
                         armorFactory.getRareArmorOne(),
                         weaponFactory.getRareStaffOne(),
                         false,
                         false));
-        userHeroData.add(
+        heroDataWrappers.add(
                 new HeroDataWrapper(
                         heroFactory.getMage(),
                         armorFactory.getCommonArmorOne(),
                         weaponFactory.getCommonStaffOne(),
                         false,
                         false));
-        return userHeroData;
+        return saveAllHeroDataWrapper(heroDataWrappers);
     }
 
     public HeroDataWrapper findHeroDataWrapperById(UUID id) {
@@ -63,42 +63,54 @@ public class HeroDataWrapperService {
                 () -> new HeroDataWrapperNotFound("HeroDataWrapper with id(" + id + ") is not found!"));
     }
 
-    public void obtainHero(List<HeroDataWrapper> userHeroData, UUID heroId) {
-        for (HeroDataWrapper data: userHeroData) {
-            if (data.getHero().getId().equals(heroId)) {
-                data.setObtained(true);
-                selectHero(userHeroData, heroId);
+    public void updateHeroDataWrapper(HeroDataWrapper heroDataWrapper) {
+        heroDataWrapperRepository.save(heroDataWrapper);
+    }
+
+    public List<HeroDataWrapper> saveAllHeroDataWrapper(List<HeroDataWrapper> heroDataWrappers) {
+        return heroDataWrapperRepository.saveAll(heroDataWrappers);
+    }
+
+    public void obtainHero(List<HeroDataWrapper> heroDataWrappers, UUID heroId) {
+        for (HeroDataWrapper heroDataWrapper: heroDataWrappers) {
+            if (heroDataWrapper.getHero().getId().equals(heroId)) {
+                heroDataWrapper.setObtained(true);
+                selectHero(heroDataWrappers, heroId);
+                updateHeroDataWrapper(heroDataWrapper);
                 break;
             }
         }
     }
 
-    public void selectHero(List<HeroDataWrapper> userHeroData, UUID heroId) {
+    public void selectHero(List<HeroDataWrapper> heroDataWrappers, UUID heroId) {
         HeroDataWrapper heroData = null;
         boolean isNewHeroSelected = false;
-        for (HeroDataWrapper data: userHeroData) {
-            if (data.isSelected()) {
-                heroData = data;
+        for (HeroDataWrapper heroDataWrapper: heroDataWrappers) {
+            if (heroDataWrapper.isSelected()) {
+                heroData = heroDataWrapper;
             }
-            if (data.getHero().getId().equals(heroId) && data.isObtained() && heroData != data) {
-                data.setSelected(true);
+            if (heroDataWrapper.getHero().getId().equals(heroId) && heroDataWrapper.isObtained() && heroData != heroDataWrapper) {
+                heroDataWrapper.setSelected(true);
                 isNewHeroSelected = true;
             }
         }
         if (isNewHeroSelected) {
             Objects.requireNonNull(heroData).setSelected(false);
         }
+        saveAllHeroDataWrapper(heroDataWrappers);
     }
 
-    public Weapon changeWeapon(HeroDataWrapper userHeroData, Weapon weapon) {
-        Weapon deselectedWeapon = userHeroData.getWeapon();
-        userHeroData.setWeapon(weapon);
+    public Weapon changeWeapon(HeroDataWrapper heroDataWrapper, Weapon weapon) {
+        Weapon deselectedWeapon = heroDataWrapper.getWeapon();
+        heroDataWrapper.setWeapon(weapon);
+        updateHeroDataWrapper(heroDataWrapper);
         return deselectedWeapon;
     }
 
     public Armor changeArmor(HeroDataWrapper heroDataWrapper, Armor armor) {
         Armor deselectedArmor = heroDataWrapper.getArmor();
         heroDataWrapper.setArmor(armor);
+        updateHeroDataWrapper(heroDataWrapper);
         return deselectedArmor;
     }
 }
