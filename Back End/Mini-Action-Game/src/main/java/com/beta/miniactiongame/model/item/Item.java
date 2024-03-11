@@ -15,4 +15,5 @@ public abstract class Item extends Identifier implements Serializable {
     private Rarity rarity;
     private String png;
     private ItemType itemType;
+    private int value;
 }

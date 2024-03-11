@@ -23,6 +23,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.COMMON);
             weapon.setPng("swords/common-black-sword.png");
             weapon.setItemType(ItemType.SWORD);
+            weapon.setValue(15);
             weapon.setDamage(14);
             weapon.setDamageType(DamageType.SLASHING);
             weapon.setCriticalChance(0);
@@ -42,6 +43,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.COMMON);
             weapon.setPng("swords/common-bear-sword.png");
             weapon.setItemType(ItemType.SWORD);
+            weapon.setValue(15);
             weapon.setDamage(27);
             weapon.setDamageType(DamageType.SLASHING);
             weapon.setCriticalChance(10);
@@ -61,6 +63,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.COMMON);
             weapon.setPng("swords/common-redMetal-sword.png");
             weapon.setItemType(ItemType.SWORD);
+            weapon.setValue(15);
             weapon.setDamage(14);
             weapon.setDamageType(DamageType.SLASHING);
             weapon.setCriticalChance(3);
@@ -80,6 +83,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.UNCOMMON);
             weapon.setPng("swords/uncommon-ancient-sword.png");
             weapon.setItemType(ItemType.SWORD);
+            weapon.setValue(45);
             weapon.setDamage(45);
             weapon.setDamageType(DamageType.SLASHING);
             weapon.setCriticalChance(20);
@@ -99,6 +103,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.UNCOMMON);
             weapon.setPng("swords/uncommon-bone-sword.png");
             weapon.setItemType(ItemType.SWORD);
+            weapon.setValue(45);
             weapon.setDamage(31);
             weapon.setDamageType(DamageType.SLASHING);
             weapon.setCriticalChance(10);
@@ -118,6 +123,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.UNCOMMON);
             weapon.setPng("swords/uncommon-eagle-sword.png");
             weapon.setItemType(ItemType.SWORD);
+            weapon.setValue(45);
             weapon.setDamage(30);
             weapon.setDamageType(DamageType.SLASHING);
             weapon.setCriticalChance(10);
@@ -137,6 +143,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.RARE);
             weapon.setPng("swords/rare-cursed-sword.png");
             weapon.setItemType(ItemType.SWORD);
+            weapon.setValue(150);
             weapon.setDamage(90);
             weapon.setDamageType(DamageType.SLASHING);
             weapon.setCriticalChance(25);
@@ -156,6 +163,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.RARE);
             weapon.setPng("swords/rare-executioner-sword.png");
             weapon.setItemType(ItemType.SWORD);
+            weapon.setValue(150);
             weapon.setDamage(130);
             weapon.setDamageType(DamageType.SLASHING);
             weapon.setCriticalChance(25);
@@ -175,6 +183,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.RARE);
             weapon.setPng("swords/rare-necrotic-sword.png");
             weapon.setItemType(ItemType.SWORD);
+            weapon.setValue(150);
             weapon.setDamage(135);
             weapon.setDamageType(DamageType.SLASHING);
             weapon.setCriticalChance(30);
@@ -194,6 +203,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.EPIC);
             weapon.setPng("swords/epic-headSplashing-hammer.png");
             weapon.setItemType(ItemType.SWORD);
+            weapon.setValue(450);
             weapon.setDamage(750);
             weapon.setDamageType(DamageType.BLUDGEONING);
             weapon.setCriticalChance(35);
@@ -213,6 +223,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.EPIC);
             weapon.setPng("swords/epic-heroic-axe.png");
             weapon.setItemType(ItemType.SWORD);
+            weapon.setValue(450);
             weapon.setDamage(260);
             weapon.setDamageType(DamageType.SLASHING);
             weapon.setCriticalChance(40);
@@ -232,6 +243,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.EPIC);
             weapon.setPng("swords/epic-magma-axe.png");
             weapon.setItemType(ItemType.SWORD);
+            weapon.setValue(450);
             weapon.setDamage(255);
             weapon.setDamageType(DamageType.FIRE);
             weapon.setCriticalChance(15);
@@ -251,6 +263,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.LEGENDARY);
             weapon.setPng("swords/legendary-demonic-spear.png");
             weapon.setItemType(ItemType.SWORD);
+            weapon.setValue(900);
             weapon.setDamage(700);
             weapon.setDamageType(DamageType.POISON);
             weapon.setCriticalChance(85);
@@ -270,6 +283,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.LEGENDARY);
             weapon.setPng("swords/legendary-samurai-sword.png");
             weapon.setItemType(ItemType.SWORD);
+            weapon.setValue(900);
             weapon.setDamage(1000);
             weapon.setDamageType(DamageType.SLASHING);
             weapon.setCriticalChance(90);
@@ -289,6 +303,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.LEGENDARY);
             weapon.setPng("swords/legendary-demonic-scythe.png");
             weapon.setItemType(ItemType.SWORD);
+            weapon.setValue(900);
             weapon.setDamage(1650);
             weapon.setDamageType(DamageType.SLASHING);
             weapon.setCriticalChance(99);
@@ -308,6 +323,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.COMMON);
             weapon.setPng("bows/common-bone-bow.png");
             weapon.setItemType(ItemType.BOW);
+            weapon.setValue(15);
             weapon.setDamage(36);
             weapon.setDamageType(DamageType.PIERCING);
             weapon.setCriticalChance(0);
@@ -327,6 +343,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.COMMON);
             weapon.setPng("bows/common-old-bow.png");
             weapon.setItemType(ItemType.BOW);
+            weapon.setValue(15);
             weapon.setDamage(37);
             weapon.setDamageType(DamageType.PIERCING);
             weapon.setCriticalChance(5);
@@ -346,6 +363,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.COMMON);
             weapon.setPng("bows/common-birch-bow.png");
             weapon.setItemType(ItemType.BOW);
+            weapon.setValue(15);
             weapon.setDamage(18);
             weapon.setDamageType(DamageType.PIERCING);
             weapon.setCriticalChance(8);
@@ -365,6 +383,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.UNCOMMON);
             weapon.setPng("bows/uncommon-fast-bow.png");
             weapon.setItemType(ItemType.BOW);
+            weapon.setValue(45);
             weapon.setDamage(33);
             weapon.setDamageType(DamageType.PIERCING);
             weapon.setCriticalChance(10);
@@ -384,6 +403,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.UNCOMMON);
             weapon.setPng("bows/uncommon-curved-bow.png");
             weapon.setItemType(ItemType.BOW);
+            weapon.setValue(45);
             weapon.setDamage(50);
             weapon.setDamageType(DamageType.PIERCING);
             weapon.setCriticalChance(10);
@@ -403,6 +423,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.UNCOMMON);
             weapon.setPng("bows/uncommon-strong-bow.png");
             weapon.setItemType(ItemType.BOW);
+            weapon.setValue(45);
             weapon.setDamage(85);
             weapon.setDamageType(DamageType.PIERCING);
             weapon.setCriticalChance(30);
@@ -422,6 +443,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.RARE);
             weapon.setPng("bows/rare-curling-bow.png");
             weapon.setItemType(ItemType.BOW);
+            weapon.setValue(150);
             weapon.setDamage(120);
             weapon.setDamageType(DamageType.PIERCING);
             weapon.setCriticalChance(20);
@@ -441,6 +463,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.RARE);
             weapon.setPng("bows/rare-piercing-bow.png");
             weapon.setItemType(ItemType.BOW);
+            weapon.setValue(150);
             weapon.setDamage(250);
             weapon.setDamageType(DamageType.PIERCING);
             weapon.setCriticalChance(45);
@@ -460,6 +483,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.RARE);
             weapon.setPng("bows/rare-skeleton-bow.png");
             weapon.setItemType(ItemType.BOW);
+            weapon.setValue(150);
             weapon.setDamage(160);
             weapon.setDamageType(DamageType.PIERCING);
             weapon.setCriticalChance(27);
@@ -479,6 +503,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.EPIC);
             weapon.setPng("bows/epic-crossbow.png");
             weapon.setItemType(ItemType.BOW);
+            weapon.setValue(450);
             weapon.setDamage(650);
             weapon.setDamageType(DamageType.PIERCING);
             weapon.setCriticalChance(50);
@@ -498,6 +523,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.EPIC);
             weapon.setPng("bows/epic-frost-bow.png");
             weapon.setItemType(ItemType.BOW);
+            weapon.setValue(450);
             weapon.setDamage(300);
             weapon.setDamageType(DamageType.COLD);
             weapon.setCriticalChance(45);
@@ -517,6 +543,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.EPIC);
             weapon.setPng("bows/epic-poison-bow.png");
             weapon.setItemType(ItemType.BOW);
+            weapon.setValue(450);
             weapon.setDamage(320);
             weapon.setDamageType(DamageType.POISON);
             weapon.setCriticalChance(40);
@@ -536,6 +563,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.LEGENDARY);
             weapon.setPng("bows/legendary-grasp-bow.png");
             weapon.setItemType(ItemType.BOW);
+            weapon.setValue(900);
             weapon.setDamage(1400);
             weapon.setDamageType(DamageType.PIERCING);
             weapon.setCriticalChance(80);
@@ -555,6 +583,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.LEGENDARY);
             weapon.setPng("bows/legendary-magma-bow.png");
             weapon.setItemType(ItemType.BOW);
+            weapon.setValue(900);
             weapon.setDamage(1200);
             weapon.setDamageType(DamageType.FIRE);
             weapon.setCriticalChance(75);
@@ -574,6 +603,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.LEGENDARY);
             weapon.setPng("bows/legendary-precision-bow.png");
             weapon.setItemType(ItemType.BOW);
+            weapon.setValue(900);
             weapon.setDamage(1600);
             weapon.setDamageType(DamageType.PIERCING);
             weapon.setCriticalChance(95);
@@ -593,6 +623,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.COMMON);
             weapon.setPng("staffs/common-leafy-staff.png");
             weapon.setItemType(ItemType.STAFF);
+            weapon.setValue(15);
             weapon.setDamage(40);
             weapon.setDamageType(DamageType.BLUDGEONING);
             weapon.setCriticalChance(0);
@@ -612,6 +643,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.COMMON);
             weapon.setPng("staffs/common-sickle-staff.png");
             weapon.setItemType(ItemType.STAFF);
+            weapon.setValue(15);
             weapon.setDamage(40);
             weapon.setDamageType(DamageType.BLUDGEONING);
             weapon.setCriticalChance(0);
@@ -631,6 +663,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.COMMON);
             weapon.setPng("staffs/common-steel-staff.png");
             weapon.setItemType(ItemType.STAFF);
+            weapon.setValue(15);
             weapon.setDamage(40);
             weapon.setDamageType(DamageType.BLUDGEONING);
             weapon.setCriticalChance(0);
@@ -650,6 +683,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.UNCOMMON);
             weapon.setPng("staffs/uncommon-light&dark-staff.png");
             weapon.setItemType(ItemType.STAFF);
+            weapon.setValue(45);
             weapon.setDamage(40);
             weapon.setDamageType(DamageType.BLUDGEONING);
             weapon.setCriticalChance(1);
@@ -669,6 +703,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.UNCOMMON);
             weapon.setPng("staffs/uncommon-orb-staff.png");
             weapon.setItemType(ItemType.STAFF);
+            weapon.setValue(45);
             weapon.setDamage(40);
             weapon.setDamageType(DamageType.BLUDGEONING);
             weapon.setCriticalChance(1);
@@ -688,6 +723,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.UNCOMMON);
             weapon.setPng("staffs/uncommon-winged-staff.png");
             weapon.setItemType(ItemType.STAFF);
+            weapon.setValue(45);
             weapon.setDamage(40);
             weapon.setDamageType(DamageType.BLUDGEONING);
             weapon.setCriticalChance(1);
@@ -707,6 +743,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.RARE);
             weapon.setPng("staffs/rare-gem-staff.png");
             weapon.setItemType(ItemType.STAFF);
+            weapon.setValue(150);
             weapon.setDamage(40);
             weapon.setDamageType(DamageType.BLUDGEONING);
             weapon.setCriticalChance(5);
@@ -726,6 +763,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.RARE);
             weapon.setPng("staffs/rare-holy-staff.png");
             weapon.setItemType(ItemType.STAFF);
+            weapon.setValue(150);
             weapon.setDamage(40);
             weapon.setDamageType(DamageType.BLUDGEONING);
             weapon.setCriticalChance(5);
@@ -745,6 +783,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.RARE);
             weapon.setPng("staffs/rare-sea-staff.png");
             weapon.setItemType(ItemType.STAFF);
+            weapon.setValue(150);
             weapon.setDamage(40);
             weapon.setDamageType(DamageType.BLUDGEONING);
             weapon.setCriticalChance(5);
@@ -764,6 +803,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.EPIC);
             weapon.setPng("staffs/epic-cobra-staff.png");
             weapon.setItemType(ItemType.STAFF);
+            weapon.setValue(450);
             weapon.setDamage(40);
             weapon.setDamageType(DamageType.BLUDGEONING);
             weapon.setCriticalChance(50);
@@ -783,6 +823,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.EPIC);
             weapon.setPng("staffs/epic-elder-staff.png");
             weapon.setItemType(ItemType.STAFF);
+            weapon.setValue(450);
             weapon.setDamage(40);
             weapon.setDamageType(DamageType.BLUDGEONING);
             weapon.setCriticalChance(50);
@@ -802,6 +843,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.EPIC);
             weapon.setPng("staffs/epic-necrotic-staff.png");
             weapon.setItemType(ItemType.STAFF);
+            weapon.setValue(450);
             weapon.setDamage(40);
             weapon.setDamageType(DamageType.BLUDGEONING);
             weapon.setCriticalChance(50);
@@ -821,6 +863,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.LEGENDARY);
             weapon.setPng("staffs/legendary-fireTentacle-staff.png");
             weapon.setItemType(ItemType.STAFF);
+            weapon.setValue(900);
             weapon.setDamage(40);
             weapon.setDamageType(DamageType.FIRE);
             weapon.setCriticalChance(100);
@@ -840,6 +883,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.LEGENDARY);
             weapon.setPng("staffs/legendary-naga-staff.png");
             weapon.setItemType(ItemType.STAFF);
+            weapon.setValue(900);
             weapon.setDamage(40);
             weapon.setDamageType(DamageType.FIRE);
             weapon.setCriticalChance(100);
@@ -859,6 +903,7 @@ public class WeaponFactory {
             weapon.setRarity(Rarity.LEGENDARY);
             weapon.setPng("staffs/legendary-syphon-staff.png");
             weapon.setItemType(ItemType.STAFF);
+            weapon.setValue(900);
             weapon.setDamage(40);
             weapon.setDamageType(DamageType.POISON);
             weapon.setCriticalChance(100);
