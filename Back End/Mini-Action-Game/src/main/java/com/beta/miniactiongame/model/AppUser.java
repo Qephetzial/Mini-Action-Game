@@ -51,38 +51,6 @@ public class AppUser implements UserDetails {
     @ManyToMany
     private List<Weapon> weapons;
 
-    public void addArmor(Armor armor) {
-        armors.add(armor);
-    }
-
-    public void addWeapon(Weapon weapon) {
-        weapons.add(weapon);
-    }
-
-    public Armor getArmor(UUID uuid) {
-        Iterator<Armor> iterator = armors.iterator();
-        while (iterator.hasNext()) {
-            Armor armor = iterator.next();
-            if (armor.getId().equals(uuid)) {
-                iterator.remove();
-                return armor;
-            }
-        }
-        throw new ArmorNotFoundException("Armor(" + uuid + ") was not found in the user's(" + id + ") armors list!");
-    }
-
-    public Weapon getWeapon(UUID uuid) {
-        Iterator<Weapon> iterator = weapons.iterator();
-        while (iterator.hasNext()) {
-            Weapon weapon = iterator.next();
-            if (weapon.getId().equals(uuid)) {
-                iterator.remove();
-                return weapon;
-            }
-        }
-        throw new WeaponNotFoundException("Weapon(" + uuid + ") was not found in the user's(" + id + ") weapons list!");
-    }
-
     @Override
     @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
