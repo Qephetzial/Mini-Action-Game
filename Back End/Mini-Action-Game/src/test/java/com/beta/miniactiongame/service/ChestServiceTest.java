@@ -87,7 +87,7 @@ class ChestServiceTest {
     }
 
     @Test
-    void openChestAndGetCommonItem() {
+    void openChestGetCommonItem() {
         //It sets up everything to open a common item.
         List<Item> items = openChest(OPEN_COMMON_ITEM, armorFactory::getCommonArmorOne, false);
         //Verify that only the expected method was called and only one item is returned.
@@ -95,7 +95,7 @@ class ChestServiceTest {
     }
 
     @Test
-    void openChestAndGetUnCommonItem() {
+    void openChestGetUnCommonItem() {
         //It sets up everything to open an unCommon item.
         List<Item> items = openChest(OPEN_UNCOMMON_ITEM, armorFactory::getUnCommonArmorOne, false);
         //Verify that only the expected method was called and only one item is returned.
@@ -104,7 +104,7 @@ class ChestServiceTest {
 
 
     @Test
-    void openChestAndGetRareItem() {
+    void openChestGetRareItem() {
         //It sets up everything to open a rare item.
         List<Item> items = openChest(OPEN_RARE_ITEM, armorFactory::getRareArmorOne, false);
         //Verify that only the expected method was called and only one item is returned.
@@ -113,7 +113,7 @@ class ChestServiceTest {
 
 
     @Test
-    void openChestAndGetEpicItem() {
+    void openChestGetEpicItem() {
         //It sets up everything to open an epic item.
         List<Item> items = openChest(OPEN_EPIC_ITEM, armorFactory::getEpicArmorOne, false);
         //Verify that only the expected method was called and only one item is returned.
@@ -122,7 +122,7 @@ class ChestServiceTest {
 
 
     @Test
-    void openChestAndGetLegendaryItem() {
+    void openChestGetLegendaryItem() {
         //It sets up everything to open a legendary item.
         List<Item> items = openChest(OPEN_LEGENDARY_ITEM, armorFactory::getLegendaryArmorOne, false);
         //Verify that only the expected method was called and only one item is returned.
@@ -130,7 +130,7 @@ class ChestServiceTest {
     }
 
     @Test
-    void getBonusLoot() {
+    void openChestGetBonusLoot() {
         //It sets up everything to get a bonus loot
         List<Item> items = openChest(GET_BONUS_LOOT, armorFactory::getCommonArmorOne, true);
         //Verify that only the expected method was called and two item are returned.
@@ -138,14 +138,14 @@ class ChestServiceTest {
     }
 
     @Test
-    void wrongItemValue() {
+    void openChestWrongItemValue() {
         //A wrong value is provided, so we can check if it throws the expected error.
         assertThrows(WrongValueException.class,
                 ()-> openChestWithWrongValues(AMOUNT_OF_CASES));
     }
 
     @Test
-    void wrongRarityValue() {
+    void openChestWrongRarityValue() {
         //A wrong value is provided, so we can check if it throws the expected error.
         assertThrows(WrongValueException.class,
                 ()-> openChestWithWrongValues(PERCENTAGE_MAX_RANGE));
