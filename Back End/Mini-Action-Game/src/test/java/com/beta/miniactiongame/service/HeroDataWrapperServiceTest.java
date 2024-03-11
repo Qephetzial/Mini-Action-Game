@@ -25,6 +25,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -79,11 +81,12 @@ class HeroDataWrapperServiceTest {
         when(weaponFactory.getCommonBowOne()).thenReturn(weaponOne);
         when(weaponFactory.getCommonStaffOne()).thenReturn(weaponOne);
         when(weaponFactory.getRareStaffOne()).thenReturn(weaponOne);
+        when(heroDataWrapperRepository.saveAll(any())).thenAnswer(invocation -> invocation.<List<HeroDataWrapper>>getArgument(0));
         heroDataWrappers = heroDataWrapperService.createHeroDataWrappers();
     }
 
     @Test
-    void createHeroDataWrappers() {
+    void createHeroDataWrappersGetAListOfWrappers() {
          assertEquals(4, heroDataWrappers.size());
          for (HeroDataWrapper heroDataWrapper: heroDataWrappers) {
              assertNotNull(heroDataWrapper.getHero());
@@ -100,20 +103,20 @@ class HeroDataWrapperServiceTest {
     }
 
     @Test
-    void getHeroDataWrapperById() {
+    void findHeroDataWrapperById() {
         when(heroDataWrapperRepository.findById(any())).thenReturn(Optional.of(heroDataWrappers.get(0)));
         assertNotNull(heroDataWrapperService.findHeroDataWrapperById(NOT_ASSIGNED_UUID));
     }
 
     @Test
-    void getHeroDataWrapperByWrongId() {
+    void findHeroDataWrapperByIdWrongId() {
         when(heroDataWrapperRepository.findById(any())).thenReturn(Optional.empty());
         assertThrows(HeroDataWrapperNotFoundException.class,
                 () -> heroDataWrapperService.findHeroDataWrapperById(NOT_ASSIGNED_UUID));
     }
 
     @Test
-    void obtainAndSelectHero() {
+    void obtainHeroAndSelectHero() {
         heroDataWrapperService.obtainHero(heroDataWrappers, DEMON_ID);
         for(HeroDataWrapper heroDataWrapper: heroDataWrappers) {
             if (heroDataWrapper.getHero().getId().equals(DEMON_ID)) {
@@ -127,11 +130,13 @@ class HeroDataWrapperServiceTest {
                 assertFalse(heroDataWrapper.isSelected());
             }
         }
+        verify(heroDataWrapperRepository, times(2)).save(any());
     }
 
     @Test
-    void selectSelectedHero() {
+    void selectedHeroSelectedHero() {
         heroDataWrapperService.obtainHero(heroDataWrappers, RANGER_ID);
+        verify(heroDataWrapperRepository, times(2)).save(any());
         heroDataWrapperService.selectHero(heroDataWrappers, RANGER_ID);
         for(HeroDataWrapper heroDataWrapper: heroDataWrappers) {
             if (heroDataWrapper.getHero().getId().equals(RANGER_ID)) {
@@ -140,10 +145,11 @@ class HeroDataWrapperServiceTest {
                 assertFalse(heroDataWrapper.isSelected());
             }
         }
+        verify(heroDataWrapperRepository, times(2)).save(any());
     }
 
     @Test
-    void selectUnObtainedHero() {
+    void selectHeroUnObtainedHero() {
         heroDataWrapperService.selectHero(heroDataWrappers, MAGE_ID);
         for(HeroDataWrapper heroDataWrapper: heroDataWrappers) {
             if (heroDataWrapper.getHero().getId().equals(FIGHTER_ID)) {
@@ -152,6 +158,7 @@ class HeroDataWrapperServiceTest {
                 assertFalse(heroDataWrapper.isSelected());
             }
         }
+        verify(heroDataWrapperRepository, times(0)).save(any());
     }
 
     @Test
@@ -161,6 +168,7 @@ class HeroDataWrapperServiceTest {
         Weapon weapon = heroDataWrapperService.changeWeapon(heroDataWrapper, weaponTwo);
         assertEquals(WEAPON_TWO_ID, heroDataWrapper.getWeapon().getId());
         assertEquals(WEAPON_ONE_ID, weapon.getId());
+        verify(heroDataWrapperRepository, times(1)).save(any());
     }
 
     @Test
@@ -170,5 +178,6 @@ class HeroDataWrapperServiceTest {
         Armor armor = heroDataWrapperService.changeArmor(heroDataWrapper, armorTwo);
         assertEquals(ARMOR_TWO_ID, heroDataWrapper.getArmor().getId());
         assertEquals(ARMOR_ONE_ID, armor.getId());
+        verify(heroDataWrapperRepository, times(1)).save(any());
     }
 }
