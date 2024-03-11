@@ -92,33 +92,19 @@ function ItemPlaceHolder({item, appUser, setAppUser, setEquippedWeapon, setEquip
     }
 
     async function sellItem() {
-        switch (item.rarity) {
-            case "COMMON":
-                appUser.coin += 15;
-                break;
-            case "UNCOMMON":
-                appUser.coin += 45;
-                break;
-            case "RARE":
-                appUser.coin += 150;
-                break;
-            case "EPIC":
-                appUser.coin += 450;
-                break;
-            case "LEGENDARY":
-                appUser.coin += 900;
-                break;
-        }
+        appUser.coin += item.value;
         if (item.itemType === "ARMOR") {
             for (let i = 0; i < appUser.armors.length; i++) {
                 if (appUser.armors[i].id === item.id) {
                     appUser.armors.splice(i, 1);
+                    break;
                 }
             }
         } else {
             for (let i = 0; i < appUser.weapons.length; i++) {
                 if (appUser.weapons[i].id === item.id) {
                     appUser.weapons.splice(i, 1);
+                    break;
                 }
             }
         }
@@ -133,6 +119,7 @@ function ItemPlaceHolder({item, appUser, setAppUser, setEquippedWeapon, setEquip
         for (let i = 0; i < newItems.length; i++) {
             if (newItems[i].id === item.id) {
                 newItems.splice(i, 1);
+                break;
             }
         }
         setItems(newItems);
