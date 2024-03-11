@@ -76,7 +76,6 @@ public class HeroDataWrapperService {
             if (heroDataWrapper.getHero().getId().equals(heroId)) {
                 heroDataWrapper.setObtained(true);
                 selectHero(heroDataWrappers, heroId);
-                updateHeroDataWrapper(heroDataWrapper);
                 break;
             }
         }
@@ -92,12 +91,14 @@ public class HeroDataWrapperService {
             if (heroDataWrapper.getHero().getId().equals(heroId) && heroDataWrapper.isObtained() && heroData != heroDataWrapper) {
                 heroDataWrapper.setSelected(true);
                 isNewHeroSelected = true;
+                updateHeroDataWrapper(heroDataWrapper);
             }
         }
         if (isNewHeroSelected) {
             Objects.requireNonNull(heroData).setSelected(false);
+            updateHeroDataWrapper(heroData);
         }
-        saveAllHeroDataWrapper(heroDataWrappers);
+
     }
 
     public Weapon changeWeapon(HeroDataWrapper heroDataWrapper, Weapon weapon) {
