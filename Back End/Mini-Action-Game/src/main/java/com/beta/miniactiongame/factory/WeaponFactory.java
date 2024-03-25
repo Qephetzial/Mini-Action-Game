@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 public class WeaponFactory {
 
     private final ItemService itemService;
+    private final SpellFactory spellFactory;
 
     public Weapon getCommonSwordOne() {
         Weapon weapon = itemService.getWeaponByName("Black sword");
@@ -624,10 +625,7 @@ public class WeaponFactory {
             weapon.setPng("staffs/common-leafy-staff.png");
             weapon.setItemType(ItemType.STAFF);
             weapon.setValue(15);
-            weapon.setDamage(40);
-            weapon.setDamageType(DamageType.BLUDGEONING);
-            weapon.setCriticalChance(0);
-            weapon.setCriticalDamage(0);
+            weapon.setSpell(spellFactory.createBaseSpell(50, 1, DamageType.FIRE));
             weapon.setAttackSpeed(5);
             weapon.setBonusProperty(BonusProperty.NONE);
             itemService.saveWeapon(weapon);
@@ -644,10 +642,7 @@ public class WeaponFactory {
             weapon.setPng("staffs/common-sickle-staff.png");
             weapon.setItemType(ItemType.STAFF);
             weapon.setValue(15);
-            weapon.setDamage(40);
-            weapon.setDamageType(DamageType.BLUDGEONING);
-            weapon.setCriticalChance(0);
-            weapon.setCriticalDamage(0);
+            weapon.setSpell(spellFactory.createBaseSpell(55, 1, DamageType.COLD));
             weapon.setAttackSpeed(5);
             weapon.setBonusProperty(BonusProperty.NONE);
             itemService.saveWeapon(weapon);
@@ -664,10 +659,7 @@ public class WeaponFactory {
             weapon.setPng("staffs/common-steel-staff.png");
             weapon.setItemType(ItemType.STAFF);
             weapon.setValue(15);
-            weapon.setDamage(40);
-            weapon.setDamageType(DamageType.BLUDGEONING);
-            weapon.setCriticalChance(0);
-            weapon.setCriticalDamage(0);
+            weapon.setSpell(spellFactory.createBaseSpell(55, 1, DamageType.NECROTIC));
             weapon.setAttackSpeed(5);
             weapon.setBonusProperty(BonusProperty.NONE);
             itemService.saveWeapon(weapon);
@@ -684,10 +676,7 @@ public class WeaponFactory {
             weapon.setPng("staffs/uncommon-light&dark-staff.png");
             weapon.setItemType(ItemType.STAFF);
             weapon.setValue(45);
-            weapon.setDamage(40);
-            weapon.setDamageType(DamageType.BLUDGEONING);
-            weapon.setCriticalChance(1);
-            weapon.setCriticalDamage(40);
+            weapon.setSpell(spellFactory.createBaseSpell(150, 2, DamageType.DARK));
             weapon.setAttackSpeed(5);
             weapon.setBonusProperty(BonusProperty.NONE);
             itemService.saveWeapon(weapon);
@@ -704,10 +693,7 @@ public class WeaponFactory {
             weapon.setPng("staffs/uncommon-orb-staff.png");
             weapon.setItemType(ItemType.STAFF);
             weapon.setValue(45);
-            weapon.setDamage(40);
-            weapon.setDamageType(DamageType.BLUDGEONING);
-            weapon.setCriticalChance(1);
-            weapon.setCriticalDamage(40);
+            weapon.setSpell(spellFactory.smallExplosiveSpell(180, 1, DamageType.ACID));
             weapon.setAttackSpeed(5);
             weapon.setBonusProperty(BonusProperty.NONE);
             itemService.saveWeapon(weapon);
@@ -724,10 +710,7 @@ public class WeaponFactory {
             weapon.setPng("staffs/uncommon-winged-staff.png");
             weapon.setItemType(ItemType.STAFF);
             weapon.setValue(45);
-            weapon.setDamage(40);
-            weapon.setDamageType(DamageType.BLUDGEONING);
-            weapon.setCriticalChance(1);
-            weapon.setCriticalDamage(40);
+            weapon.setSpell(spellFactory.smallConeSpell(200, 1, DamageType.RADIANT));
             weapon.setAttackSpeed(5);
             weapon.setBonusProperty(BonusProperty.NONE);
             itemService.saveWeapon(weapon);
@@ -745,9 +728,7 @@ public class WeaponFactory {
             weapon.setItemType(ItemType.STAFF);
             weapon.setValue(150);
             weapon.setDamage(40);
-            weapon.setDamageType(DamageType.BLUDGEONING);
-            weapon.setCriticalChance(5);
-            weapon.setCriticalDamage(40);
+            weapon.setSpell(spellFactory.smallChainSpell(170, 1, DamageType.PSYCHIC));
             weapon.setAttackSpeed(5);
             weapon.setBonusProperty(BonusProperty.NONE);
             itemService.saveWeapon(weapon);
@@ -765,9 +746,7 @@ public class WeaponFactory {
             weapon.setItemType(ItemType.STAFF);
             weapon.setValue(150);
             weapon.setDamage(40);
-            weapon.setDamageType(DamageType.BLUDGEONING);
-            weapon.setCriticalChance(5);
-            weapon.setCriticalDamage(40);
+            weapon.setSpell(spellFactory.smallInlineSpell(300, 1, DamageType.FIRE));
             weapon.setAttackSpeed(5);
             weapon.setBonusProperty(BonusProperty.NONE);
             itemService.saveWeapon(weapon);
@@ -784,10 +763,7 @@ public class WeaponFactory {
             weapon.setPng("staffs/rare-sea-staff.png");
             weapon.setItemType(ItemType.STAFF);
             weapon.setValue(150);
-            weapon.setDamage(40);
-            weapon.setDamageType(DamageType.BLUDGEONING);
-            weapon.setCriticalChance(5);
-            weapon.setCriticalDamage(40);
+            weapon.setSpell(spellFactory.smallExplosiveSpell(260, 1, DamageType.COLD));
             weapon.setAttackSpeed(5);
             weapon.setBonusProperty(BonusProperty.NONE);
             itemService.saveWeapon(weapon);
@@ -804,10 +780,7 @@ public class WeaponFactory {
             weapon.setPng("staffs/epic-cobra-staff.png");
             weapon.setItemType(ItemType.STAFF);
             weapon.setValue(450);
-            weapon.setDamage(40);
-            weapon.setDamageType(DamageType.BLUDGEONING);
-            weapon.setCriticalChance(50);
-            weapon.setCriticalDamage(40);
+            weapon.setSpell(spellFactory.largeConeSpell(550, 1, DamageType.POISON));
             weapon.setAttackSpeed(5);
             weapon.setBonusProperty(BonusProperty.NONE);
             itemService.saveWeapon(weapon);
@@ -824,10 +797,7 @@ public class WeaponFactory {
             weapon.setPng("staffs/epic-elder-staff.png");
             weapon.setItemType(ItemType.STAFF);
             weapon.setValue(450);
-            weapon.setDamage(40);
-            weapon.setDamageType(DamageType.BLUDGEONING);
-            weapon.setCriticalChance(50);
-            weapon.setCriticalDamage(40);
+            weapon.setSpell(spellFactory.smallChainSpell(400, 4, DamageType.LIGHTNING));
             weapon.setAttackSpeed(5);
             weapon.setBonusProperty(BonusProperty.NONE);
             itemService.saveWeapon(weapon);
@@ -844,10 +814,7 @@ public class WeaponFactory {
             weapon.setPng("staffs/epic-necrotic-staff.png");
             weapon.setItemType(ItemType.STAFF);
             weapon.setValue(450);
-            weapon.setDamage(40);
-            weapon.setDamageType(DamageType.BLUDGEONING);
-            weapon.setCriticalChance(50);
-            weapon.setCriticalDamage(40);
+            weapon.setSpell(spellFactory.largeExplosiveSpell(550, 1, DamageType.NECROTIC));
             weapon.setAttackSpeed(5);
             weapon.setBonusProperty(BonusProperty.NONE);
             itemService.saveWeapon(weapon);
@@ -864,10 +831,7 @@ public class WeaponFactory {
             weapon.setPng("staffs/legendary-fireTentacle-staff.png");
             weapon.setItemType(ItemType.STAFF);
             weapon.setValue(900);
-            weapon.setDamage(40);
-            weapon.setDamageType(DamageType.FIRE);
-            weapon.setCriticalChance(100);
-            weapon.setCriticalDamage(40);
+            weapon.setSpell(spellFactory.largeInlineSpell(1800, 2, DamageType.FIRE));
             weapon.setAttackSpeed(10);
             weapon.setBonusProperty(BonusProperty.NONE);
             itemService.saveWeapon(weapon);
@@ -884,10 +848,7 @@ public class WeaponFactory {
             weapon.setPng("staffs/legendary-naga-staff.png");
             weapon.setItemType(ItemType.STAFF);
             weapon.setValue(900);
-            weapon.setDamage(40);
-            weapon.setDamageType(DamageType.FIRE);
-            weapon.setCriticalChance(100);
-            weapon.setCriticalDamage(40);
+            weapon.setSpell(spellFactory.largeChainSpell(1400, 3, DamageType.ACID));
             weapon.setAttackSpeed(10);
             weapon.setBonusProperty(BonusProperty.NONE);
             itemService.saveWeapon(weapon);
@@ -904,10 +865,7 @@ public class WeaponFactory {
             weapon.setPng("staffs/legendary-syphon-staff.png");
             weapon.setItemType(ItemType.STAFF);
             weapon.setValue(900);
-            weapon.setDamage(40);
-            weapon.setDamageType(DamageType.POISON);
-            weapon.setCriticalChance(100);
-            weapon.setCriticalDamage(40);
+            weapon.setSpell(spellFactory.createBaseSpell(1600, 5, DamageType.NECROTIC));
             weapon.setAttackSpeed(10);
             weapon.setBonusProperty(BonusProperty.NONE);
             itemService.saveWeapon(weapon);
