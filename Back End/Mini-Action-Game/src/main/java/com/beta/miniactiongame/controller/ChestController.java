@@ -6,8 +6,10 @@ import com.beta.miniactiongame.service.AppUserService;
 import com.beta.miniactiongame.service.ChestService;
 import com.beta.miniactiongame.util.ChestType;
 import com.beta.miniactiongame.util.LootChest;
+import java.util.Collections;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,18 +31,22 @@ public class ChestController {
 
     @PostMapping
     public List<Item> openChest(@RequestParam("type") ChestType chestType, @RequestBody AppUser appUser) {
-        log.trace("/api/chest endpoint");
-        log.debug("The request parameter \"type\" is {}", chestType);
-        log.debug("The appUser's id is {}", appUser.getId());
         LootChest.Chest chest = getChest(chestType);
-        log.debug("The chest type is {}", chest.name());
-        List<Item> items = chestService.openChest(
-                chest.commonLootChance(),
-                chest.unCommonLootChance(),
-                chest.rareLootChance(),
-                chest.epicLootChance(),
-                chest.chanceForBonusLoot());
-        appUserService.addItems(items, appUser);
-        return items;
+        if (appUserService.changeCoin(-chest.price(), appUser)) {
+            List<Item> items = chestService.openChest(
+                    chest.commonLootChance(),
+                    chest.unCommonLootChance(),
+                    chest.rareLootChance(),
+                    chest.epicLootChance(),
+                    chest.chanceForBonusLoot());
+            appUserService.addItems(items, appUser);
+            return items;
+        }
+        return Collections.emptyList();
+    }
+
+    @GetMapping
+    public List<LootChest.Chest> getChests() {
+        return chestService.getChests();
     }
 }

@@ -114,7 +114,7 @@ public class ChestService {
                 default -> throw new WrongValueException(ERROR_MESSAGE + item);
             });
         } else {
-            throw new WrongValueException("The value of rarity is forbidden. The wrong value is:" + rarity);
+            throw new WrongValueException(STR."The value of rarity is forbidden. The wrong value is:\{ rarity }");
         }
         if (bonusLoot && getRandomInt(1000) == 0) {
             LootChest.Chest silverChest = getChest(ChestType.SILVER);
@@ -123,8 +123,17 @@ public class ChestService {
                     silverChest.unCommonLootChance(),
                     silverChest.rareLootChance(),
                     silverChest.epicLootChance(),
-                    silverChest.chanceForBonusLoot()).get(0));
+                    silverChest.chanceForBonusLoot()).getFirst());
         }
         return items;
+    }
+
+    public List<LootChest.Chest> getChests() {
+        List<LootChest.Chest> chests = new ArrayList<>();
+        chests.add(LootChest.getChest(ChestType.IRON));
+        chests.add(LootChest.getChest(ChestType.BRONZE));
+        chests.add(LootChest.getChest(ChestType.SILVER));
+        chests.add(LootChest.getChest(ChestType.GOLDEN));
+        return chests;
     }
 }

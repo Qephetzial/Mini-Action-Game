@@ -40,6 +40,7 @@ function ItemPlaceHolder({item, appUser, setAppUser, setEquippedWeapon, setEquip
     async function equipItem() {
         let newAppUser = appUser;
         let newItems = [...items]
+        let heroDataWrapperId;
         if (item.itemType === "ARMOR") {
             for (const hero of newAppUser.heroes) {
                 if (hero.selected) {
@@ -47,6 +48,7 @@ function ItemPlaceHolder({item, appUser, setAppUser, setEquippedWeapon, setEquip
                     newAppUser.armors.push(hero.armor);
                     hero.armor = item;
                     setEquippedArmor(item)
+                    heroDataWrapperId = hero.id
                 }
             }
             for (let i = 0; i < newAppUser.armors.length; i++) {
@@ -66,6 +68,7 @@ function ItemPlaceHolder({item, appUser, setAppUser, setEquippedWeapon, setEquip
                     newAppUser.weapons.push(hero.weapon);
                     hero.weapon = item;
                     setEquippedWeapon(item)
+                    heroDataWrapperId = hero.id
                 }
             }
             for (let i = 0; i < newAppUser.weapons.length; i++) {
@@ -81,12 +84,13 @@ function ItemPlaceHolder({item, appUser, setAppUser, setEquippedWeapon, setEquip
         }
         setItems(newItems)
         setAppUser(newAppUser)
+        let identification = "herodatawrapper:" + heroDataWrapperId + ";" + item.itemType + ":" + item.id
         const requestOptions = {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(appUser)
         }
-        await fetch(`/api/user`, requestOptions);
+        const response = await(await fetch(`/api/herodatawrapper/equip/${identification}`, requestOptions)).json();
         localStorage.setItem('appUser', JSON.stringify(appUser));
         closeModal();
     }

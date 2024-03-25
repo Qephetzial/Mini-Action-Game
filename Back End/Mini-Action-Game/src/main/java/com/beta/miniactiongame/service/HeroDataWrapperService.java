@@ -4,6 +4,7 @@ import com.beta.miniactiongame.exceptions.HeroDataWrapperNotFoundException;
 import com.beta.miniactiongame.factory.ArmorFactory;
 import com.beta.miniactiongame.factory.HeroFactory;
 import com.beta.miniactiongame.factory.WeaponFactory;
+import com.beta.miniactiongame.model.AppUser;
 import com.beta.miniactiongame.model.HeroDataWrapper;
 import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.Weapon;
@@ -60,7 +61,16 @@ public class HeroDataWrapperService {
 
     public HeroDataWrapper findHeroDataWrapperById(UUID id) {
         return heroDataWrapperRepository.findById(id).orElseThrow(
-                () -> new HeroDataWrapperNotFoundException("HeroDataWrapper with id(" + id + ") is not found!"));
+                () -> new HeroDataWrapperNotFoundException(STR."HeroDataWrapper with id(\{id}) is not found!"));
+    }
+
+    public HeroDataWrapper findHeroDataWrapperById(UUID id, AppUser appUser) {
+        for (HeroDataWrapper heroDataWrapper: appUser.getHeroes()) {
+            if (heroDataWrapper.getId().equals(id)) {
+                return heroDataWrapper;
+            }
+        }
+        throw new HeroDataWrapperNotFoundException(STR."HeroDataWrapper with id(\{id}) is not found!");
     }
 
     public void updateHeroDataWrapper(HeroDataWrapper heroDataWrapper) {

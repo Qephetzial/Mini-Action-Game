@@ -1,6 +1,5 @@
 package com.beta.miniactiongame.service;
 
-import com.beta.miniactiongame.model.creature.CreatureType;
 import com.beta.miniactiongame.model.creature.Hero;
 import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.Spell;

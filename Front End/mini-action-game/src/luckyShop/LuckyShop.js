@@ -10,50 +10,15 @@ function LuckyShop({appUser, setAppUser}) {
 
     const [coin, setCoin] = useState(appUser.coin)
 
-
-    const chests = [
-        {
-            png: 'chests/iron-chest.png',
-            Type: 'IronChest',
-            Price: '150G',
-            commonDropChance: "80%",
-            uncommonDropChance: "15%",
-            rareDropChance: "4%",
-            epicDropChance: "1%",
-            legendaryDropChance: "0%"
-        },
-        {
-            png: 'chests/bronze-chest.png',
-            Type: 'BronzeChest',
-            Price: '250G',
-            commonDropChance: "70.3%",
-            uncommonDropChance: "20.2%",
-            rareDropChance: "7.2%",
-            epicDropChance: "2,2%",
-            legendaryDropChance: "0.1%"
-        },
-        {
-            png: 'chests/silver-chest.png',
-            Type: 'SilverChest',
-            Price: '400G',
-            commonDropChance: "60%",
-            uncommonDropChance: "25%",
-            rareDropChance: "10%",
-            epicDropChance: "4.5%",
-            legendaryDropChance: "0.5%"
-        },
-        {
-            png: 'chests/golden-chest.png',
-            Type: 'goldenChest',
-            Price: '700G',
-            commonDropChance: "50%",
-            uncommonDropChance: "25%",
-            rareDropChance: "15%",
-            epicDropChance: "9%",
-            legendaryDropChance: "1%",
-            chanceForBonusDrop: "0,1%"
+    async function getChests() {
+        const requestOptions = {
+            method: 'GET',
         }
-    ]
+        return await (await fetch(`/api/chest`, requestOptions)).json();
+    }
+
+    const chests = getChests();
+
 
 
     return (
