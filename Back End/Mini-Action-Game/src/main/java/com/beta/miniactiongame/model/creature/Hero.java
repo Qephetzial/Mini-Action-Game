@@ -9,8 +9,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Hero extends Attacker {
+public class Hero extends Creature {
 
+    private int strength;
+    private int defence;
     private int movementSpeed;
     private int value;
     private String png;
