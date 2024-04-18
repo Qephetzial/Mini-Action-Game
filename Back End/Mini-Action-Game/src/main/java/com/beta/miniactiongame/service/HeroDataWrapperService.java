@@ -86,7 +86,7 @@ public class HeroDataWrapperService {
     public void obtainHero(List<HeroDataWrapper> heroDataWrappers, UUID heroId, AppUser appUser) {
         for (HeroDataWrapper heroDataWrapper: heroDataWrappers) {
             Hero hero = heroDataWrapper.getHero();
-            if (hero.getId().equals(heroId) && appUserService.changeCoin(hero.getValue(), appUser)) {
+            if (hero.getId().equals(heroId) && appUserService.changeCoin(-hero.getValue(), appUser)) {
                 heroDataWrapper.setObtained(true);
                 selectHero(heroDataWrappers, heroId);
                 break;
@@ -111,7 +111,6 @@ public class HeroDataWrapperService {
             Objects.requireNonNull(heroData).setSelected(false);
             updateHeroDataWrapper(heroData);
         }
-
     }
 
     public Weapon changeWeapon(HeroDataWrapper heroDataWrapper, Weapon weapon) {

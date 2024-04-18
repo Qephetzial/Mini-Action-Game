@@ -40,6 +40,8 @@ class HeroDataWrapperServiceTest {
     private WeaponFactory weaponFactory;
     @Mock
     private HeroDataWrapperRepository heroDataWrapperRepository;
+    @Mock
+    private AppUserService appUserService;
     private HeroDataWrapperService heroDataWrapperService;
     private final Hero fighter = new Hero();
     private final Hero ranger = new Hero();
@@ -62,7 +64,7 @@ class HeroDataWrapperServiceTest {
 
     @BeforeEach
     void setup() {
-        heroDataWrapperService = new HeroDataWrapperService(heroFactory, armorFactory, weaponFactory, heroDataWrapperRepository);
+        heroDataWrapperService = new HeroDataWrapperService(heroFactory, armorFactory, weaponFactory, appUserService, heroDataWrapperRepository);
         fighter.setId(FIGHTER_ID);
         ranger.setId(RANGER_ID);
         mage.setId(MAGE_ID);
@@ -163,7 +165,7 @@ class HeroDataWrapperServiceTest {
 
     @Test
     void changeWeapon() {
-        HeroDataWrapper heroDataWrapper = heroDataWrappers.get(0);
+        HeroDataWrapper heroDataWrapper = heroDataWrappers.getFirst();
         assertEquals(WEAPON_ONE_ID, heroDataWrapper.getWeapon().getId());
         Weapon weapon = heroDataWrapperService.changeWeapon(heroDataWrapper, weaponTwo);
         assertEquals(WEAPON_TWO_ID, heroDataWrapper.getWeapon().getId());
@@ -173,7 +175,7 @@ class HeroDataWrapperServiceTest {
 
     @Test
     void changeArmor() {
-        HeroDataWrapper heroDataWrapper = heroDataWrappers.get(0);
+        HeroDataWrapper heroDataWrapper = heroDataWrappers.getFirst();
         assertEquals(ARMOR_ONE_ID, heroDataWrapper.getArmor().getId());
         Armor armor = heroDataWrapperService.changeArmor(heroDataWrapper, armorTwo);
         assertEquals(ARMOR_TWO_ID, heroDataWrapper.getArmor().getId());
