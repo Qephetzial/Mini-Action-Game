@@ -6,6 +6,7 @@ import com.beta.miniactiongame.factory.HeroFactory;
 import com.beta.miniactiongame.factory.WeaponFactory;
 import com.beta.miniactiongame.model.AppUser;
 import com.beta.miniactiongame.model.HeroDataWrapper;
+import com.beta.miniactiongame.model.creature.Hero;
 import com.beta.miniactiongame.model.item.Armor;
 import com.beta.miniactiongame.model.item.Weapon;
 import com.beta.miniactiongame.repository.hero.HeroDataWrapperRepository;
@@ -24,6 +25,7 @@ public class HeroDataWrapperService {
     private final HeroFactory heroFactory;
     private final ArmorFactory armorFactory;
     private final WeaponFactory weaponFactory;
+    private final AppUserService appUserService;
     private final HeroDataWrapperRepository heroDataWrapperRepository;
 
     public List<HeroDataWrapper> createHeroDataWrappers() {
@@ -81,9 +83,10 @@ public class HeroDataWrapperService {
         return heroDataWrapperRepository.saveAll(heroDataWrappers);
     }
 
-    public void obtainHero(List<HeroDataWrapper> heroDataWrappers, UUID heroId) {
+    public void obtainHero(List<HeroDataWrapper> heroDataWrappers, UUID heroId, AppUser appUser) {
         for (HeroDataWrapper heroDataWrapper: heroDataWrappers) {
-            if (heroDataWrapper.getHero().getId().equals(heroId)) {
+            Hero hero = heroDataWrapper.getHero();
+            if (hero.getId().equals(heroId) && appUserService.changeCoin(hero.getValue(), appUser)) {
                 heroDataWrapper.setObtained(true);
                 selectHero(heroDataWrappers, heroId);
                 break;

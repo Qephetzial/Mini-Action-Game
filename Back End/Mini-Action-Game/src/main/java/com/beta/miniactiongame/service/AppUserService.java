@@ -84,6 +84,7 @@ public class AppUserService {
         userCoin += coin;
         if (userCoin >= 0) {
             appUser.setCoin(userCoin);
+            appUserRepository.save(appUser);
             return true;
         }
         return false;

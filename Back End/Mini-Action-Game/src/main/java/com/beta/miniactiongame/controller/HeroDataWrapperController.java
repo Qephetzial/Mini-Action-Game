@@ -7,16 +7,18 @@ import com.beta.miniactiongame.model.item.Weapon;
 import com.beta.miniactiongame.service.AppUserService;
 import com.beta.miniactiongame.service.HeroDataWrapperService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/herodatawrapper")
+@RequestMapping("/api/hero_data_wrapper")
 @RequiredArgsConstructor
 public class HeroDataWrapperController {
 
@@ -43,4 +45,20 @@ public class HeroDataWrapperController {
         return heroDataWrapper;
     }
 
+    @PostMapping("buy_hero")
+    public List<HeroDataWrapper> buyHero(@RequestParam("heroDataWrappers") List<HeroDataWrapper> heroDataWrappers,
+                                   @RequestParam("heroId") String id,
+                                   @RequestBody AppUser appUser) {
+        UUID heroId = UUID.fromString(id);
+        heroDataWrapperService.obtainHero(heroDataWrappers, heroId, appUser);
+        return heroDataWrappers;
+    }
+
+    @PostMapping("select_hero")
+    public List<HeroDataWrapper> selectHero(@RequestParam("heroId") String id,
+                                            @RequestBody List<HeroDataWrapper> heroDataWrappers) {
+        UUID heroId = UUID.fromString(id);
+        heroDataWrapperService.selectHero(heroDataWrappers, heroId);
+        return heroDataWrappers;
+    }
 }
